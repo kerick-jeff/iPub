@@ -23,4 +23,44 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * a user has a single profile
+    * @return Profile
+    */
+    public function profile(){
+        return hasOne('App\Profile');
+    }
+
+    /**
+    * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address
+    * @return Link
+    */
+    public function links(){
+        return hasMany('App\Link');
+    }
+
+    /**
+    * a user has 0 or more notifications
+    * @return Notification
+    */
+    public function notifications(){
+        return hasMany('App\Notification')
+    }
+
+    /**
+    * a user makes 0 or more pubs
+    * @return Pub
+    */
+    public function pubs(){
+        return hasMany('App\Pub');
+    }
+
+    /**
+    * a user makes 0 or more subscriptions i.e video_pub_subscription, continous_pub_subscription, priorit_zone_subscription
+    * @return Subscription
+    */
+    public function subscriptions(){
+        return hasMany('App\Subscription');
+    }
 }
