@@ -13,7 +13,7 @@ class Pub extends Model
     protected $fillable = ['caption', 'category', 'sub_category', 'priority', 'views', 'ratings'];
 
     /**
-    * a pub has a single pubfile
+    * a pub has a single pub multimedia file i.e photo or video file but not audio
     * @return PubFile
     */
     public function pubfile(){
