@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="ipub.ico">
         <title>iPub @yield('title') </title>
+        @yield('description')
+        <meta http-equiv = "Content-Type" content = "txt/html; charset=utf-8" />
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0" />
+        <link rel = "shortcut icon" href = "ipub.ico">
     </head>
     <body>
         @section('header')
