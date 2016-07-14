@@ -4,8 +4,10 @@
 
 @section('description')
     <meta name="description" content = "describe iPub">
+    <meta name="author" content = "name of author">
 @endsection
 
 @section('content')
-    iPub
+<!-- Page Content -->
+
 @endsection

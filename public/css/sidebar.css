@@ -1,3 +1,4 @@
+
 /* Toggle Styles */
 
 #wrapper {
@@ -22,7 +23,7 @@
    height: 100%;
    margin-left: -250px;
    overflow-y: auto;
-   background: #000;
+   background: #f4f4f4;
    -webkit-transition: all 0.5s ease;
    -moz-transition: all 0.5s ease;
    -o-transition: all 0.5s ease;
@@ -48,6 +49,9 @@
     margin-right: 0px;
 }
 
+.navbar-toggle { margin-top: 0px; margin-bottom: 0px; height: 54px; width: 49px }
+.navbar-toggle:hover, .navbar-toggle:focus{ margin-top: 0px; margin-bottom: 0px; height: 54px; width: 49px; padding-left: 15px}
+
 .fixed-brand{
     width: auto;
 }
@@ -64,21 +68,26 @@
 }
 
 .sidebar-nav li {
-    text-indent: 15px;
+    text-indent: 9px;
     line-height: 40px;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: rgba(51,122,183,1);
+
+}
+
+.sidebar-nav li a i {
+    margin-right: 11px;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
-    border-left: red 2px solid;
+    background: rgba(51,122,183,1);
+    border-left: #31708f 2px solid;
 }
 
 .sidebar-nav li a:active,

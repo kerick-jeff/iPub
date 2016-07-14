@@ -26,4 +26,8 @@ $("#menu-toggle").click(function(e) {
           }
         );
       }
-    $(document).ready(function() {initMenu();});
+    $(document).ready(function() {
+      $("#wrapper").toggleClass("toggled-2");
+      $('#menu ul').hide();
+      initMenu();
+    });
