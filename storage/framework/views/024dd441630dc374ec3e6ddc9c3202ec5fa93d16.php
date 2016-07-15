@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="<?php echo e(asset('css/hover.css')); ?>" media="screen" title="no title" charset="utf-8">
 
         <style media="screen">
-            #login:hover, #register:hover, #pubs:hover {
+            #login:hover, #register:hover, #pubs:hover, #about:hover {
                 background: rgba(51,122,183,.2);
             }
         </style>
@@ -37,7 +37,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li><a href="#" id = "pubs" class = "hoverable" style = "color: rgba(51,122,183,1);">Pubs</a></li>
+                    <li><a href="#" id = "pubs" style = "color: rgba(51,122,183,1);">Pubs</a></li>
+                    <li><a href="#" id = "about" style = "color: rgba(51,122,183,1);">About Us</a></li>
                   </ul>
                   <ul class = "nav navbar-nav navbar-right">
                     <li><a href="#" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
