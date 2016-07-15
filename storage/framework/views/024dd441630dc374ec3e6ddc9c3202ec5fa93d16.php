@@ -14,16 +14,23 @@
     </head>
     <body>
         <?php $__env->startSection('header'); ?>
-            <nav class="navbar navbar-default no-margin">
+            <nav class="navbar navbar-default no-margin navbar-fixed-top">
                 <!-- Brand and toggle get grouped for better mobile display -->
-
                 <div class="navbar-header fixed-brand">
                     <ul class="nav navbar-nav">
-                        <li class="active" ><button style = "border-style: none;" class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button></li>
+                        <li class="active" ><button style = "border-style: none;" class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2" data-target = "#collapsable"> <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button></li>
+                        <a class="navbar-brand" href="/" style = "color: rgba(51,122,183,1); font-size: 48px">iPub</a>
                     </ul>
-
-                    <a class="navbar-brand" href="#" style = "color: rgba(51,122,183,1); font-size: 48px">iPub</a>
                 </div> <!-- bs-example-navbar-collapse-1 -->
+                <div class="collapse navbar-collapse" id = "collapsable">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><input type="button" class = "btn btn-primary" name="pubs" value="Pubs"></a></li>
+                    </ul>
+                    <ul class = "nav navbar-nav pull-right">
+                        <li><a href="#"><input type="button" class = "btn btn-primary" name="login" value="Login"></a></li>
+                        <li><a href="#"><input type="button" class = "btn btn-primary" name="register" value="Register"></a></li>
+                    </ul>
+                </div>
             </nav>
         <?php echo $__env->yieldSection(); ?>
 
@@ -66,22 +73,20 @@
                           </li>
                       </ul>
                   </div><!-- /#sidebar-wrapper -->
+
+                  <!-- Page Content -->
                   <!-- Page Content -->
                   <div id="page-content-wrapper">
                       <div class="container-fluid xyz">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                                  <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
-                              </div>
-                          </div>
+
+                          <?php echo $__env->yieldContent('content'); ?>
+
                       </div>
                   </div>
                   <!-- /#page-content-wrapper -->
               </div>
           <?php echo $__env->yieldSection(); ?>
 
-          <?php echo $__env->yieldContent('content'); ?>
         </div>
 
         <?php $__env->startSection('footer'); ?>
