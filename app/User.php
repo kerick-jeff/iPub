@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone_number', 'password', 'profile_picture', 'description', 'country', 'country_code', 'geo_longitude', 'geo_latitude', 'stars'
     ];
 
     /**
@@ -23,14 +23,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-    * a user has a single profile
-    * @return Profile
-    */
-    public function profile(){
-        return hasOne('App\Profile');
-    }
 
     /**
     * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address

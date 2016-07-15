@@ -16,6 +16,8 @@ class CreatePubsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('caption', 255);
+            $table->boolean('type')->default(0); // media file type [0 => image, 1 => video]
+            $table->string('filename', 255); // media filename, depending on the type specified
             $table->string('category');
             $table->string('sub_category');
             $table->enum('priority', [0, 1, 2, 3]);

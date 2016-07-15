@@ -264,14 +264,13 @@ class ComposerStaticInit504a5d3afc0b9ee1c4413fd3b6da96b6
     );
 
     public static $classMap = array (
+        'CreateIndividualsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_063426_create_individuals_table.php',
         'CreateLinksTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_152412_create_links_table.php',
         'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_153242_create_notifications_table.php',
+        'CreateOrganisationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_060516_create_organisations_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateProfilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_150955_create_profiles_table.php',
-        'CreatePubFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_154634_create_pub_files_table.php',
         'CreatePubsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_152626_create_pubs_table.php',
         'CreateSubscriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_153757_create_subscriptions_table.php',
-        'CreateTaxesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_03_153524_create_taxes_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',

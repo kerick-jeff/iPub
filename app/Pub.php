@@ -10,13 +10,13 @@ class Pub extends Model
     * the attributes that are mass assignable
     * @var array
     */
-    protected $fillable = ['caption', 'category', 'sub_category', 'priority', 'views', 'ratings'];
+    protected $fillable = ['caption', 'type', 'filename', 'category', 'sub_category', 'priority', 'views', 'ratings'];
 
     /**
-    * a pub has a single pub multimedia file i.e photo or video file but not audio
-    * @return PubFile
+    * 0 or more pubs can be made by a user
+    * @return User
     */
-    public function pubfile(){
-        return hasOne('App\PubFile');
+    public function user(){
+        return BelongsTo('App\User');
     }
 }
