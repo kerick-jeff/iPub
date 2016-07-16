@@ -10,7 +10,10 @@ class Link extends Model
     * the attributes that are mass assignable
     * @var array
     */
-    protected $fillable = ['link', 'caption'];
+    protected $fillable = [
+        'link',
+        'caption'
+    ];
 
     /**
     * 0 or more links belongs to a user

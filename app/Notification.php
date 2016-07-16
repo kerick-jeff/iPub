@@ -10,7 +10,11 @@ class Notification extends Model
     * the attributes that are mass assignable
     * @var array
     */
-    protected $fillable = ['body', 'status', 'on_board'];
+    protected $fillable = [
+        'body',
+        'status',
+        'on_board'
+    ];
 
     /**
     * 0 or more notifications are received a user
