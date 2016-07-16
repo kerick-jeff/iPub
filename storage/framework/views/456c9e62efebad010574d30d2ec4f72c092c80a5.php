@@ -7,7 +7,7 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="row">
-        <img src="<?php echo e(asset('images\land1.jpg')); ?>" class="img img-responsive" alt="landing_page" height="100%" width="120%">
+    <img src="<?php echo e(asset('images\land1.jpg')); ?>" class="img img-responsive" alt="landing_page" height="100%" width="120%">
 </div>
 <?php $__env->stopSection(); ?>
 

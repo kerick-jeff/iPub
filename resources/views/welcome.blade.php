@@ -9,6 +9,6 @@
 
 @section('content')
 <div class="row">
-        <img src="{{asset('images\land1.jpg')}}" class="img img-responsive" alt="landing_page" height="100%" width="120%">
+    <img src="{{asset('images\land1.jpg')}}" class="img img-responsive" alt="landing_page" height="100%" width="120%">
 </div>
 @endsection
