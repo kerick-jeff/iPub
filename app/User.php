@@ -40,7 +40,7 @@ class User extends Authenticatable
     * @return Link
     */
     public function links(){
-        return  $this->hasMany('App\Link');
+        return $this->hasMany('App\Link');
     }
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
     * @return Notification
     */
     public function notifications(){
-        return $this->hasMany('App\Notification');
+        return $this->hasMany('App\Notification')
     }
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable
     * @return Pub
     */
     public function pubs(){
-        return  $this->hasMany('App\Pub');
+        return $this->hasMany('App\Pub');
     }
 
     /**
@@ -64,6 +64,6 @@ class User extends Authenticatable
     * @return Subscription
     */
     public function subscriptions(){
-        return  $this->hasMany('App\Subscription');
+        return $this->hasMany('App\Subscription');
     }
 }
