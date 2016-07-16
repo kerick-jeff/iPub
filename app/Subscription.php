@@ -22,6 +22,6 @@ class Subscription extends Model
     * @return User
     */
     public function user(){
-        return $this->BelongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }
