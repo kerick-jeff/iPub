@@ -80,7 +80,7 @@
               </nav>
           </div>
           <!-- Page content -->
-          <div class="container-fluid" style = "margin-top: 50px">
+          <div class="container-fluid" style = "margin-top: 50px;">
 
               <?php echo $__env->yieldContent('content'); ?>
 
