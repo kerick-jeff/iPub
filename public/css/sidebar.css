@@ -25,6 +25,10 @@
   left: 0;
 }
 
+#wrapper.active #wrapper .container-fluid {
+    margin-left: -50px;
+}
+
 #page-content-wrapper {
   width: 100%;
   padding-top: 70px;
