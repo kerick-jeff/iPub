@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
- 
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -40,7 +40,7 @@ class User extends Authenticatable
     * @return Link
     */
     public function links(){
-        return hasMany('App\Link');
+        return $this->hasMany('App\Link');
     }
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
     * @return Notification
     */
     public function notifications(){
-        return hasMany('App\Notification')
+        return $this->hasMany('App\Notification')
     }
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable
     * @return Pub
     */
     public function pubs(){
-        return hasMany('App\Pub');
+        return $this->hasMany('App\Pub');
     }
 
     /**
@@ -64,6 +64,6 @@ class User extends Authenticatable
     * @return Subscription
     */
     public function subscriptions(){
-        return hasMany('App\Subscription');
+        return $this->hasMany('App\Subscription');
     }
 }

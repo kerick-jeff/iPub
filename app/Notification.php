@@ -21,6 +21,6 @@ class Notification extends Model
     * @return User
     */
     public function user(){
-        return BelongsTo('App\User');
+        return $this->BelongsTo('App\User');
     }
 }
