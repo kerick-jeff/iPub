@@ -1242,3 +1242,6 @@ Stack trace:
 #24 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #25 {main}  
 >>>>>>> e543671d753c75e69c9b1340c9217213642e0d23
+[2016-07-16 14:10:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Illuminate\Database\Schema\Blueprint::bcrypt()' in /home/kerick/iPub/database/migrations/2014_10_12_000000_create_users_table.php:20
+Stack trace:
+#0 {main}  
