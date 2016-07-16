@@ -15,7 +15,7 @@
 
         <style media="screen">
             #login:hover, #register:hover, #pubs:hover, #about:hover {
-                background: rgba(51,122,183,.2);
+                background: rgba(51,122,183,.2); 
             }
         </style>
     </head>
