@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <title>iPub @yield('title')</title>
-        @yield('description')
-        @yield('author')
+        <title>iPub <?php echo $__env->yieldContent('title'); ?></title>
+        <?php echo $__env->yieldContent('description'); ?>
+        <?php echo $__env->yieldContent('author'); ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "shortcut icon" href = "ipub.ico">
 
-        <link rel="stylesheet" href="{{ asset('boot/css/bootstrap.min.css') }}" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="{{ asset('css/hover.css') }}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="<?php echo e(asset('boot/css/bootstrap.min.css')); ?>" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="<?php echo e(asset('css/sidebar.css')); ?>" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="<?php echo e(asset('css/hover.css')); ?>" media="screen" title="no title" charset="utf-8">
 
         <style media="screen">
             #login:hover, #register:hover, #pubs:hover, #about:hover {
@@ -82,18 +82,18 @@
           <!-- Page content -->
           <div class="container-fluid" style = "margin-top: 50px;">
 
-              @yield('content')
+              <?php echo $__env->yieldContent('content'); ?>
 
           </div>
         </div>
 
-        @section('footer')
+        <?php $__env->startSection('footer'); ?>
 
             <!-- display footer -->
-        @show
+        <?php echo $__env->yieldSection(); ?>
 
-        <script type="text/javascript" src = "{{ asset('js/jquery.min.js') }}"> </script>
-        <script type="text/javascript" src = "{{ asset('boot/js/bootstrap.min.js') }}"> </script>
-        <script type="text/javascript" src = "{{ asset('js/sidebar.js') }}"> </script>
+        <script type="text/javascript" src = "<?php echo e(asset('js/jquery.min.js')); ?>"> </script>
+        <script type="text/javascript" src = "<?php echo e(asset('boot/js/bootstrap.min.js')); ?>"> </script>
+        <script type="text/javascript" src = "<?php echo e(asset('js/sidebar.js')); ?>"> </script>
     </body>
 </html>
