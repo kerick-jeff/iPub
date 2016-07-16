@@ -18,6 +18,7 @@
 
 #wrapper.active {
   padding-left: 0;
+  margin-left: -20px;
 }
 
 #wrapper.active #sidebar-wrapper {
