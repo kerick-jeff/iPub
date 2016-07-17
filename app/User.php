@@ -22,7 +22,8 @@ class User extends Authenticatable
         'country_code',
         'geo_longitude',
         'geo_latitude',
-        'stars'
+        'stars',
+        'status'
     ];
 
     /**
