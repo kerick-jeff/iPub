@@ -26,6 +26,7 @@ class DebugClassLoader
 {
     private $classLoader;
     private $isFinder;
+    private $wasFinder;
     private static $caseCheck;
     private static $deprecated = array();
     private static $php7Reserved = array('int', 'float', 'bool', 'string', 'true', 'false', 'null');
@@ -34,12 +35,20 @@ class DebugClassLoader
     /**
      * Constructor.
      *
-     * @param callable $classLoader A class loader
+     * @param callable|object $classLoader Passing an object is @deprecated since version 2.5 and support for it will be removed in 3.0
      */
-    public function __construct(callable $classLoader)
+    public function __construct($classLoader)
     {
-        $this->classLoader = $classLoader;
-        $this->isFinder = is_array($classLoader) && method_exists($classLoader[0], 'findFile');
+        $this->wasFinder = is_object($classLoader) && method_exists($classLoader, 'findFile');
+
+        if ($this->wasFinder) {
+            @trigger_error('The '.__METHOD__.' method will no longer support receiving an object into its $classLoader argument in 3.0.', E_USER_DEPRECATED);
+            $this->classLoader = array($classLoader, 'loadClass');
+            $this->isFinder = true;
+        } else {
+            $this->classLoader = $classLoader;
+            $this->isFinder = is_array($classLoader) && method_exists($classLoader[0], 'findFile');
+        }
 
         if (!isset(self::$caseCheck)) {
             $file = file_exists(__FILE__) ? __FILE__ : rtrim(realpath('.'), DIRECTORY_SEPARATOR);
@@ -68,11 +77,11 @@ class DebugClassLoader
     /**
      * Gets the wrapped class loader.
      *
-     * @return callable The wrapped class loader
+     * @return callable|object A class loader. Since version 2.5, returning an object is @deprecated and support for it will be removed in 3.0
      */
     public function getClassLoader()
     {
-        return $this->classLoader;
+        return $this->wasFinder ? $this->classLoader[0] : $this->classLoader;
     }
 
     /**
@@ -124,6 +133,24 @@ class DebugClassLoader
     }
 
     /**
+     * Finds a file by class name.
+     *
+     * @param string $class A class name to resolve to file
+     *
+     * @return string|null
+     *
+     * @deprecated since version 2.5, to be removed in 3.0.
+     */
+    public function findFile($class)
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.5 and will be removed in 3.0.', E_USER_DEPRECATED);
+
+        if ($this->wasFinder) {
+            return $this->classLoader[0]->findFile($class);
+        }
+    }
+
+    /**
      * Loads the given class or interface.
      *
      * @param string $class The name of the class
@@ -145,11 +172,19 @@ class DebugClassLoader
                 call_user_func($this->classLoader, $class);
                 $file = false;
             }
-        } finally {
+        } catch (\Exception $e) {
             ErrorHandler::unstackErrors();
+
+            throw $e;
+        } catch (\Throwable $e) {
+            ErrorHandler::unstackErrors();
+
+            throw $e;
         }
 
-        $exists = class_exists($class, false) || interface_exists($class, false) || trait_exists($class, false);
+        ErrorHandler::unstackErrors();
+
+        $exists = class_exists($class, false) || interface_exists($class, false) || (function_exists('trait_exists') && trait_exists($class, false));
 
         if ('\\' === $class[0]) {
             $class = substr($class, 1);

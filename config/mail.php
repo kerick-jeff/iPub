@@ -42,7 +42,10 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    //I changed this
+    //'port' => env('MAIL_PORT', 587),
+
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +58,8 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+//i changed this    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'tigrodrige@gmail.com', 'name' => 'Tayong'],
 
     /*
     |--------------------------------------------------------------------------
