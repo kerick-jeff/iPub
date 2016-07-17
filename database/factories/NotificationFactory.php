@@ -14,7 +14,7 @@
 $factory->define(App\Notification::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $faker->numberBetween(1,25),
-        'body' => $faker->sentences,
+        'body' => $faker->paragraph,
         'status' => $faker->boolean,
         'on_board' => $faker->boolean
     ];
