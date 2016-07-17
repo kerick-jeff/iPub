@@ -1,33 +1,33 @@
-@extends('layouts.master')
-
 <!-- Main Content -->
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container" style="margin-top: 10px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="color:#337AB7">
                 <div class="panel-heading" style="background:#337AB7; color:#fff">Reset Password</div>
                 <div class="panel-body">
-                    @if (session('status'))
+                    <?php if(session('status')): ?>
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            <?php echo e(session('status')); ?>
+
                         </div>
-                    @endif
+                    <?php endif; ?>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/password/email')); ?>">
+                        <?php echo e(csrf_field()); ?>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+
+                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter email address">
+                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="Enter email address">
 
-                                @if ($errors->has('email'))
+                                <?php if($errors->has('email')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -44,4 +44,6 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

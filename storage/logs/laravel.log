@@ -31,7 +31,7 @@ Stack trace:
 #28 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /opt/lampp/htdocs/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#31 {main}  
+#31 {main}
 [2016-07-04 04:49:14] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -46,7 +46,7 @@ Stack trace:
 #9 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /opt/lampp/htdocs/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#12 {main}  
+#12 {main}
 [2016-07-06 20:02:54] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -80,7 +80,7 @@ Stack trace:
 #28 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /opt/lampp/htdocs/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#31 {main}  
+#31 {main}
 [2016-07-06 20:02:54] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -95,7 +95,7 @@ Stack trace:
 #9 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /opt/lampp/htdocs/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#12 {main}  
+#12 {main}
 [2016-07-06 20:21:09] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -129,7 +129,7 @@ Stack trace:
 #28 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /opt/lampp/htdocs/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#31 {main}  
+#31 {main}
 [2016-07-06 20:21:09] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -144,7 +144,7 @@ Stack trace:
 #9 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /opt/lampp/htdocs/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#12 {main}  
+#12 {main}
 [2016-07-06 20:21:12] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -178,7 +178,7 @@ Stack trace:
 #28 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /opt/lampp/htdocs/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#31 {main}  
+#31 {main}
 [2016-07-06 20:21:12] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -193,7 +193,7 @@ Stack trace:
 #9 /opt/lampp/htdocs/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /opt/lampp/htdocs/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /opt/lampp/htdocs/iPub/server.php(21): require_once('/opt/lampp/htdo...')
-#12 {main}  
+#12 {main}
 [2016-07-06 20:57:15] production.ERROR: exception 'ErrorException' with message 'file_get_contents(/opt/lampp/htdocs/iPub/.env): failed to open stream: No such file or directory' in /opt/lampp/htdocs/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php:57
 Stack trace:
 #0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_get_conten...', '/opt/lampp/htdo...', 57, Array)
@@ -209,7 +209,7 @@ Stack trace:
 #10 /opt/lampp/htdocs/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #11 /opt/lampp/htdocs/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #12 /opt/lampp/htdocs/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#13 {main}  
+#13 {main}
 [2016-07-16 10:59:54] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -243,7 +243,7 @@ Stack trace:
 #28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#31 {main}  
+#31 {main}
 [2016-07-16 10:59:54] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -258,7 +258,7 @@ Stack trace:
 #9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#12 {main}  
+#12 {main}
 [2016-07-16 11:01:49] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -292,7 +292,7 @@ Stack trace:
 #28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#31 {main}  
+#31 {main}
 [2016-07-16 11:01:49] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -307,7 +307,7 @@ Stack trace:
 #9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#12 {main}  
+#12 {main}
 [2016-07-16 11:01:50] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -341,7 +341,7 @@ Stack trace:
 #28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#31 {main}  
+#31 {main}
 [2016-07-16 11:01:50] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -356,7 +356,7 @@ Stack trace:
 #9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#12 {main}  
+#12 {main}
 [2016-07-16 11:01:51] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -390,7 +390,7 @@ Stack trace:
 #28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#31 {main}  
+#31 {main}
 [2016-07-16 11:01:51] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -405,7 +405,7 @@ Stack trace:
 #9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#12 {main}  
+#12 {main}
 [2016-07-16 11:01:52] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -439,7 +439,7 @@ Stack trace:
 #28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#31 {main}  
+#31 {main}
 [2016-07-16 11:01:52] local.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher('SomeRandomStrin...', 'AES-256-CBC')
@@ -454,7 +454,7 @@ Stack trace:
 #9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
-#12 {main}  
+#12 {main}
 [2016-07-16 11:18:17] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -507,7 +507,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:26:24] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'links' already exists' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -560,7 +560,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:27:45] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -613,7 +613,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:29:59] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1067 Invalid default value for 'stars'' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDO->prepare('create table `u...')
@@ -666,7 +666,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:30:44] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -719,7 +719,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:39:32] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -772,7 +772,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:40:22] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -825,7 +825,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:41:59] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -878,7 +878,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 11:43:33] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -931,8 +931,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
-<<<<<<< HEAD
+#22 {main}
 [2016-07-16 12:48:14] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/kerick/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/kerick/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -966,7 +965,7 @@ Stack trace:
 #28 /home/kerick/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #29 /home/kerick/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #30 /home/kerick/iPub/server.php(21): require_once('/home/kerick/iP...')
-#31 {main}  
+#31 {main}
 [2016-07-16 12:48:14] production.ERROR: exception 'RuntimeException' with message 'No supported encrypter found. The cipher and / or key length are invalid.' in /home/kerick/iPub/bootstrap/cache/compiled.php:7737
 Stack trace:
 #0 /home/kerick/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
@@ -981,7 +980,7 @@ Stack trace:
 #9 /home/kerick/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
 #10 /home/kerick/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
 #11 /home/kerick/iPub/server.php(21): require_once('/home/kerick/iP...')
-#12 {main}  
+#12 {main}
 [2016-07-16 12:48:38] production.ERROR: exception 'ErrorException' with message 'file_get_contents(/home/kerick/iPub/.env): failed to open stream: No such file or directory' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/KeyGenerateCommand.php:57
 Stack trace:
 #0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_get_conten...', '/home/kerick/iP...', 57, Array)
@@ -997,7 +996,7 @@ Stack trace:
 #10 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #11 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #12 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#13 {main}  
+#13 {main}
 [2016-07-16 12:55:47] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1064,7 +1063,7 @@ Stack trace:
 #26 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #27 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #28 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#29 {main}  
+#29 {main}
 [2016-07-16 13:04:41] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'links' already exists' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1131,7 +1130,7 @@ Stack trace:
 #26 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #27 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #28 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#29 {main}  
+#29 {main}
 [2016-07-16 13:13:12] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1198,8 +1197,7 @@ Stack trace:
 #26 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #27 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #28 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#29 {main}  
-=======
+#29 {main} 
 [2016-07-16 13:13:51] local.ERROR: exception 'Symfony\Component\Console\Exception\RuntimeException' with message 'The "--refresh" option does not exist.' in /home/trodrige/Documents/iPub/vendor/symfony/console/Input/ArgvInput.php:211
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/symfony/console/Input/ArgvInput.php(152): Symfony\Component\Console\Input\ArgvInput->addLongOption('refresh', NULL)
@@ -1212,7 +1210,7 @@ Stack trace:
 #7 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #9 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#10 {main}  
+#10 {main}
 [2016-07-16 13:14:09] local.ERROR: exception 'ErrorException' with message 'include(/home/trodrige/Documents/iPub/vendor/composer/../../database/migrations/2014_10_12_000000_create_users_table.php): failed to open stream: No such file or directory' in /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php:412
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php(412): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/t...', '/home/trodrige/...', 412, Array)
@@ -1240,8 +1238,7 @@ Stack trace:
 #22 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #23 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #24 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#25 {main}  
-<<<<<<< HEAD
+#25 {main}
 [2016-07-16 13:34:16] local.ERROR: exception 'ErrorException' with message 'include(/home/trodrige/Documents/iPub/vendor/composer/../../database/migrations/2014_10_12_000000_create_users_table.php): failed to open stream: No such file or directory' in /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php:412
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php(412): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/t...', '/home/trodrige/...', 412, Array)
@@ -1269,7 +1266,7 @@ Stack trace:
 #22 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #23 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #24 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#25 {main}  
+#25 {main}
 [2016-07-16 13:36:22] local.ERROR: exception 'ErrorException' with message 'include(/home/trodrige/Documents/iPub/vendor/composer/../../database/migrations/2014_10_12_000000_create_users_table.php): failed to open stream: No such file or directory' in /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php:412
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/composer/ClassLoader.php(412): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/t...', '/home/trodrige/...', 412, Array)
@@ -1290,7 +1287,7 @@ Stack trace:
 #15 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #17 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#18 {main}  
+#18 {main}
 [2016-07-16 13:40:17] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'users' already exists' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1343,7 +1340,7 @@ Stack trace:
 #19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 13:41:09] local.ERROR: exception 'ErrorException' with message 'file_put_contents(/home/trodrige/Documents/iPub/bootstrap/cache/services.php): failed to open stream: No such file or directory' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:109
 Stack trace:
 #0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/home/trodrige/...', 109, Array)
@@ -1357,16 +1354,426 @@ Stack trace:
 #8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(219): Illuminate\Foundation\Application->bootstrapWith(Array)
 #9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(105): Illuminate\Foundation\Console\Kernel->bootstrap()
 #10 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#11 {main}  
-=======
->>>>>>> e543671d753c75e69c9b1340c9217213642e0d23
-<<<<<<< HEAD
+#11 {main}
 [2016-07-16 14:10:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Illuminate\Database\Schema\Blueprint::bcrypt()' in /home/kerick/iPub/database/migrations/2014_10_12_000000_create_users_table.php:20
 Stack trace:
-#0 {main}  
-=======
->>>>>>> 08893dd8821e5d2682dbdaca27bf1b9b786011c1
->>>>>>> 25eea99d024d83c56c9a5637e05ef62af8610135
+#0 {main}
+[2016-07-16 15:18:50] local.ERROR: exception 'RuntimeException' with message 'Unable to detect application namespace.' in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:2044
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/GeneratorCommand.php(167): Illuminate\Foundation\Application->getNamespace()
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/GeneratorCommand.php(150): Illuminate\Console\GeneratorCommand->replaceNamespace('<?php\n\nuse Illu...', 'UserTableSeeder')
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/GeneratorCommand.php(64): Illuminate\Console\GeneratorCommand->buildClass('UserTableSeeder')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeederMakeCommand.php(60): Illuminate\Console\GeneratorCommand->fire()
+#4 [internal function]: Illuminate\Database\Console\Seeds\SeederMakeCommand->fire()
+#5 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#7 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeederMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 {main}
+[2016-07-16 16:01:20] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'alter table `li...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('alter table `li...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('alter table `li...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(83): Illuminate\Database\Connection->statement('alter table `li...')
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(229): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(148): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(6302): Illuminate\Database\Schema\Builder->create('links', Object(Closure))
+#8 /home/trodrige/Documents/iPub/database/migrations/2016_07_03_152412_create_links_table.php(24): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#9 /home/trodrige/Documents/iPub/database/migrations/2016_07_03_152412_create_links_table.php(24): Illuminate\Support\Facades\Schema::create('links', Object(Closure))
+#10 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(147): CreateLinksTable->up()
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(117): Illuminate\Database\Migrations\Migrator->runUp('2016_07_03_1524...', 1, false)
+#12 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(86): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, Array)
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(77): Illuminate\Database\Migrations\Migrator->run('/home/trodrige/...', Array)
+#14 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#17 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#18 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(185): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RefreshCommand.php(55): Illuminate\Console\Command->call('migrate', Array)
+#21 [internal function]: Illuminate\Database\Console\Migrations\RefreshCommand->fire()
+#22 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#23 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#24 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RefreshCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#31 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint (SQL: alter table `links` add constraint `links_user_id_foreign` foreign key (`user_id`) references `users` (`id`) on delete cascade)' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('alter table `li...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('alter table `li...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(83): Illuminate\Database\Connection->statement('alter table `li...')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(229): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(148): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#5 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(6302): Illuminate\Database\Schema\Builder->create('links', Object(Closure))
+#6 /home/trodrige/Documents/iPub/database/migrations/2016_07_03_152412_create_links_table.php(24): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#7 /home/trodrige/Documents/iPub/database/migrations/2016_07_03_152412_create_links_table.php(24): Illuminate\Support\Facades\Schema::create('links', Object(Closure))
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(147): CreateLinksTable->up()
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(117): Illuminate\Database\Migrations\Migrator->runUp('2016_07_03_1524...', 1, false)
+#10 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(86): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, Array)
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(77): Illuminate\Database\Migrations\Migrator->run('/home/trodrige/...', Array)
+#12 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#14 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#15 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(185): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#18 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RefreshCommand.php(55): Illuminate\Console\Command->call('migrate', Array)
+#19 [internal function]: Illuminate\Database\Console\Migrations\RefreshCommand->fire()
+#20 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#21 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#22 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RefreshCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 {main}
+[2016-07-16 16:02:53] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'iPub.migrations' doesn't exist' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:333
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): PDO->prepare('select max(`bat...')
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'select max(`bat...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('select max(`bat...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(342): Illuminate\Database\Connection->run('select max(`bat...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1583): Illuminate\Database\Connection->select('select max(`bat...', Array, true)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1569): Illuminate\Database\Query\Builder->runSelect()
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1974): Illuminate\Database\Query\Builder->get(Array)
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1916): Illuminate\Database\Query\Builder->aggregate('max', Array)
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(110): Illuminate\Database\Query\Builder->max('batch')
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(63): Illuminate\Database\Migrations\DatabaseMigrationRepository->getLastBatchNumber()
+#10 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(170): Illuminate\Database\Migrations\DatabaseMigrationRepository->getLast()
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RollbackCommand.php(63): Illuminate\Database\Migrations\Migrator->rollback(false)
+#12 [internal function]: Illuminate\Database\Console\Migrations\RollbackCommand->fire()
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#14 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#15 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RollbackCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'iPub.migrations' doesn't exist (SQL: select max(`batch`) as aggregate from `migrations`)' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('select max(`bat...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(342): Illuminate\Database\Connection->run('select max(`bat...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1583): Illuminate\Database\Connection->select('select max(`bat...', Array, true)
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1569): Illuminate\Database\Query\Builder->runSelect()
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1974): Illuminate\Database\Query\Builder->get(Array)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(1916): Illuminate\Database\Query\Builder->aggregate('max', Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(110): Illuminate\Database\Query\Builder->max('batch')
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(63): Illuminate\Database\Migrations\DatabaseMigrationRepository->getLastBatchNumber()
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(170): Illuminate\Database\Migrations\DatabaseMigrationRepository->getLast()
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RollbackCommand.php(63): Illuminate\Database\Migrations\Migrator->rollback(false)
+#10 [internal function]: Illuminate\Database\Console\Migrations\RollbackCommand->fire()
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#12 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#13 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RollbackCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 {main}
+[2016-07-16 16:04:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Model' not found' in /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php:14
+Stack trace:
+#0 {main}
+[2016-07-16 16:06:12] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}', expecting ']'' in /home/trodrige/Documents/iPub/database/factories/Link.php:19
+Stack trace:
+#0 {main}
+[2016-07-16 16:07:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in /home/trodrige/Documents/iPub/app/User.php:52
+Stack trace:
+#0 {main}
+[2016-07-16 16:07:47] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'field list'' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDO->prepare('insert into `us...')
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `us...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#14 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#16 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#20 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#21 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'field list' (SQL: insert into `users` (`user_id`, `type`, `amount`, `start_date`, `end_date`, `updated_at`, `created_at`) values (2, velit, commodi, 2016-01-24 18:18:32, 2016-03-16 23:48:16, 2016-07-16 16:07:46, 2016-07-16 16:07:46))' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#12 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#14 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#16 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#18 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#19 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#21 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 {main}
+[2016-07-16 16:13:41] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'field list'' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDO->prepare('insert into `us...')
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `us...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#14 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#16 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#20 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#21 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'field list' (SQL: insert into `users` (`user_id`, `type`, `amount`, `start_date`, `end_date`, `updated_at`, `created_at`) values (25, aliquid, 283, 2016-03-14 14:21:01, 2015-10-17 16:16:55, 2016-07-16 16:13:41, 2016-07-16 16:13:41))' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#12 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#14 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#16 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#18 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#19 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#21 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 {main}
+[2016-07-16 16:13:48] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'field list'' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDO->prepare('insert into `us...')
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `us...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#14 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#16 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#20 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#21 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'field list' (SQL: insert into `users` (`type`, `amount`, `start_date`, `end_date`, `updated_at`, `created_at`) values (sequi, 996, 2016-05-30 13:17:48, 2015-09-10 00:36:09, 2016-07-16 16:13:48, 2016-07-16 16:13:48))' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/FactoryBuilder.php(90): Illuminate\Database\Eloquent\Model->save()
+#12 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(14): Illuminate\Database\Eloquent\FactoryBuilder->create()
+#13 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#14 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#15 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#16 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#17 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#18 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#19 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#21 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#24 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#25 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#26 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#27 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#28 {main}
+[2016-07-16 16:14:30] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined function App\hasMany()' in /home/trodrige/Documents/iPub/app/User.php:51
+Stack trace:
+#0 {main}
+[2016-07-16 16:22:59] local.ERROR: exception 'ErrorException' with message 'preg_replace(): Parameter mismatch, pattern is a string while replacement is an array' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php:747
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'preg_replace():...', '/home/trodrige/...', 747, Array)
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php(747): preg_replace('/\\?/', Array, 'insert into `no...', 1)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(56): str_replace_array('\\?', Array, 'insert into `no...')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(39): Illuminate\Database\QueryException->formatMessage('insert into `no...', Array, Object(ErrorException))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(715): Illuminate\Database\QueryException->__construct('insert into `no...', Array, Object(ErrorException))
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `no...', Array, Object(Closure))
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `no...', Array, Object(Closure))
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `no...', Array)
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `no...', Array)
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `no...', Array, 'id')
+#10 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#14 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOneOrMany.php(225): Illuminate\Database\Eloquent\Model->save()
+#17 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(15): Illuminate\Database\Eloquent\Relations\HasOneOrMany->save(Object(App\Notification))
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(12510): UserSeederTable->{closure}(Object(App\User), 0)
+#19 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(19): Illuminate\Support\Collection->each(Object(Closure))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#21 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#23 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#25 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#27 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#28 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#31 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#32 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#33 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#34 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#35 {main}
+[2016-07-16 16:25:53] local.ERROR: exception 'ErrorException' with message 'preg_replace(): Parameter mismatch, pattern is a string while replacement is an array' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php:747
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'preg_replace():...', '/home/trodrige/...', 747, Array)
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php(747): preg_replace('/\\?/', Array, 'insert into `no...', 1)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(56): str_replace_array('\\?', Array, 'insert into `no...')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(39): Illuminate\Database\QueryException->formatMessage('insert into `no...', Array, Object(ErrorException))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(715): Illuminate\Database\QueryException->__construct('insert into `no...', Array, Object(ErrorException))
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `no...', Array, Object(Closure))
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `no...', Array, Object(Closure))
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `no...', Array)
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `no...', Array)
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `no...', Array, 'id')
+#10 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#14 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOneOrMany.php(225): Illuminate\Database\Eloquent\Model->save()
+#17 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(15): Illuminate\Database\Eloquent\Relations\HasOneOrMany->save(Object(App\Notification))
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(12510): UserSeederTable->{closure}(Object(App\User), 0)
+#19 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(19): Illuminate\Support\Collection->each(Object(Closure))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#21 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#23 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#25 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#27 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#28 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#31 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#32 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#33 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#34 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#35 {main}
 [2016-07-16 14:18:23] local.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1419,7 +1826,7 @@ Stack trace:
 #19 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #20 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #21 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#22 {main}  
+#22 {main}
 [2016-07-16 14:49:39] local.ERROR: exception 'RuntimeException' with message 'Unable to detect application namespace.' in /home/kerick/iPub/bootstrap/cache/compiled.php:2044
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Console/GeneratorCommand.php(167): Illuminate\Foundation\Application->getNamespace()
@@ -1436,7 +1843,7 @@ Stack trace:
 #11 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #12 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #13 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#14 {main}  
+#14 {main}
 [2016-07-16 16:05:27] local.ERROR: exception 'Symfony\Component\Console\Exception\RuntimeException' with message 'Too many arguments.' in /home/kerick/iPub/vendor/symfony/console/Input/ArgvInput.php:179
 Stack trace:
 #0 /home/kerick/iPub/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('password_resets...')
@@ -1448,7 +1855,7 @@ Stack trace:
 #6 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #7 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #8 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
-#9 {main}  
+#9 {main}
 [2016-07-16 16:12:05] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
 Stack trace:
 #0 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDOStatement->execute(Array)
@@ -1515,6 +1922,96 @@ Stack trace:
 #26 /home/kerick/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #27 /home/kerick/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #28 /home/kerick/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+<<<<<<< HEAD
+#29 {main}
+>>>>>>> c795b7790e7ded2d12ffe0faf8ab47c809a46314
+[2016-07-16 16:59:22] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in /home/trodrige/Documents/iPub/app/User.php:52
+Stack trace:
+#0 {main}  
+[2016-07-16 17:00:06] local.ERROR: exception 'ErrorException' with message 'preg_replace(): Parameter mismatch, pattern is a string while replacement is an array' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php:747
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'preg_replace():...', '/home/trodrige/...', 747, Array)
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php(747): preg_replace('/\\?/', Array, 'insert into `no...', 1)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(56): str_replace_array('\\?', Array, 'insert into `no...')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(39): Illuminate\Database\QueryException->formatMessage('insert into `no...', Array, Object(ErrorException))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(715): Illuminate\Database\QueryException->__construct('insert into `no...', Array, Object(ErrorException))
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `no...', Array, Object(Closure))
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `no...', Array, Object(Closure))
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `no...', Array)
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `no...', Array)
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `no...', Array, 'id')
+#10 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#14 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOneOrMany.php(225): Illuminate\Database\Eloquent\Model->save()
+#17 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(15): Illuminate\Database\Eloquent\Relations\HasOneOrMany->save(Object(App\Notification))
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(12510): UserSeederTable->{closure}(Object(App\User), 0)
+#19 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(19): Illuminate\Support\Collection->each(Object(Closure))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#21 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#23 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#25 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#27 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#28 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#29 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#30 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#31 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#32 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#33 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#34 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#35 {main}  
+[2016-07-17 09:16:57] local.ERROR: exception 'ErrorException' with message 'preg_replace(): Parameter mismatch, pattern is a string while replacement is an array' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php:747
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'preg_replace():...', '/home/trodrige/...', 747, Array)
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Support/helpers.php(747): preg_replace('/\\?/', Array, 'insert into `li...', 1)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(56): str_replace_array('\\?', Array, 'insert into `li...')
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(39): Illuminate\Database\QueryException->formatMessage('insert into `li...', Array, Object(ErrorException))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(715): Illuminate\Database\QueryException->__construct('insert into `li...', Array, Object(ErrorException))
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `li...', Array, Object(Closure))
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `li...', Array, Object(Closure))
+#7 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `li...', Array)
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `li...', Array)
+#9 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `li...', Array, 'id')
+#10 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#14 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#16 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOneOrMany.php(225): Illuminate\Database\Eloquent\Model->save()
+#17 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(16): Illuminate\Database\Eloquent\Relations\HasOneOrMany->save(Object(App\Link))
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(12510): UserSeederTable->{closure}(Object(App\User), 0)
+#19 /home/trodrige/Documents/iPub/database/seeds/UserSeederTable.php(19): Illuminate\Support\Collection->each(Object(Closure))
+#20 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(39): UserSeederTable->run()
+#21 /home/trodrige/Documents/iPub/database/seeds/DatabaseSeeder.php(14): Illuminate\Database\Seeder->call('UserSeederTable')
+#22 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(63): DatabaseSeeder->run()
+#23 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11098): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#25 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#27 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#28 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#29 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#30 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(185): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArrayInput), Object(Illuminate\Console\OutputStyle))
+#31 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(90): Illuminate\Console\Command->call('db:seed', Array)
+#32 [internal function]: Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#33 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1257): call_user_func_array(Array, Array)
+#34 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#35 /home/trodrige/Documents/iPub/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#36 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#37 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#38 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#39 /home/trodrige/Documents/iPub/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#40 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#41 /home/trodrige/Documents/iPub/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#42 {main}  
+=======
 #29 {main}  
 [2016-07-17 09:18:48] local.ERROR: exception 'ErrorException' with message 'Use of undefined constant images - assumed 'images'' in /home/kerick/iPub/storage/framework/views/c272cf5ca68cb071c1b558ea95b627ea8560c2b2.php(4) : assert code:1
 Stack trace:
@@ -1635,3 +2132,172 @@ Stack trace:
 #53 /home/kerick/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #54 /home/kerick/iPub/server.php(21): require_once('/home/kerick/iP...')
 #55 {main}  
+>>>>>>> 177e3125edb530f0bec8de982e405f09c8bdb16a
+[2016-07-17 12:31:33] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'field list'' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:441
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(441): PDO->prepare('insert into `us...')
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(706): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `us...', Array)
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#5 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#12 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10421): Illuminate\Database\Eloquent\Model->save()
+#14 /home/trodrige/Documents/iPub/app/Http/Controllers/Auth/AuthController.php(75): Illuminate\Database\Eloquent\Model::create(Array)
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2577): App\Http\Controllers\Auth\AuthController->create(Array)
+#16 [internal function]: App\Http\Controllers\Auth\AuthController->register(Object(Illuminate\Http\Request))
+#17 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9392): call_user_func_array(Array, Array)
+#18 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9454): Illuminate\Routing\Controller->callAction('register', Array)
+#19 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9434): Illuminate\Routing\ControllerDispatcher->call(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), 'register')
+#20 [internal function]: Illuminate\Routing\ControllerDispatcher->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#22 /home/trodrige/Documents/iPub/app/Http/Middleware/RedirectIfAuthenticated.php(24): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#23 [internal function]: App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#25 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#27 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#29 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9435): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9422): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'register')
+#31 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8490): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'register')
+#32 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8477): Illuminate\Routing\Route->runController(Object(Illuminate\Http\Request))
+#33 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8191): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#34 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#35 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#36 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(3222): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#37 [internal function]: Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#39 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#40 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#41 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13369): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#42 [internal function]: Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#43 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#44 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#45 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#46 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11912): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#47 [internal function]: Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#49 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#51 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13108): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#52 [internal function]: Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#54 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#55 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#56 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13045): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#57 [internal function]: Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#58 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#59 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#60 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#61 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#62 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#63 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8192): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#64 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8183): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#65 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8173): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#66 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2416): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#67 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#68 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#69 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(3283): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#70 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#71 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#72 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#73 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#74 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#75 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#76 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2363): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#77 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#78 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#79 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
+#80 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'field list' (SQL: insert into `users` (`name`, `email`, `password`, `country`, `status`, `updated_at`, `created_at`) values (Trodrige, trodrige@yahoo.com, ydpAAvF3qr6fjW4vgPMn7O/dbSiv9kpNotfSIuvozRLX82Fef9fLe, country1, 0, 2016-07-17 12:31:33, 2016-07-17 12:31:33))' in /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php:713
+Stack trace:
+#0 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(669): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(442): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#3 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#4 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2055): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1399): call_user_func_array(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10821): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10810): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#10 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10761): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(10421): Illuminate\Database\Eloquent\Model->save()
+#12 /home/trodrige/Documents/iPub/app/Http/Controllers/Auth/AuthController.php(75): Illuminate\Database\Eloquent\Model::create(Array)
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2577): App\Http\Controllers\Auth\AuthController->create(Array)
+#14 [internal function]: App\Http\Controllers\Auth\AuthController->register(Object(Illuminate\Http\Request))
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9392): call_user_func_array(Array, Array)
+#16 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9454): Illuminate\Routing\Controller->callAction('register', Array)
+#17 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9434): Illuminate\Routing\ControllerDispatcher->call(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), 'register')
+#18 [internal function]: Illuminate\Routing\ControllerDispatcher->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/trodrige/Documents/iPub/app/Http/Middleware/RedirectIfAuthenticated.php(24): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 [internal function]: App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#23 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#25 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#27 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9435): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9422): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'register')
+#29 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8490): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'register')
+#30 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8477): Illuminate\Routing\Route->runController(Object(Illuminate\Http\Request))
+#31 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8191): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#32 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#33 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#34 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(3222): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#35 [internal function]: Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#36 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#37 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#39 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13369): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#40 [internal function]: Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#41 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#42 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#44 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(11912): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#45 [internal function]: Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#47 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#49 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13108): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#50 [internal function]: Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#52 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#53 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#54 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(13045): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#55 [internal function]: Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#56 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#57 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#58 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#59 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#60 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#61 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8192): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#62 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8183): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#63 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8173): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#64 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2416): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#65 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#66 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#67 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(3283): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#68 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#69 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#70 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#71 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#72 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#73 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#74 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2363): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#75 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#76 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#77 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
+#78 {main}  
+[2016-07-17 12:33:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in /home/trodrige/Documents/iPub/app/Http/Controllers/HomeController.php:27
+Stack trace:
+#0 {main}  

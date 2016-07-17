@@ -14,7 +14,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-	      "paypal/rest-api-sdk-php": "*",
+	       "paypal/rest-api-sdk-php": "*",
 	      "laravel/cashier": "~5.0"
     },
     "autoload": {

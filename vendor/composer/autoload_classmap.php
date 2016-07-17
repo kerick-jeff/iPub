@@ -6,6 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateLinksTable' => $baseDir . '/database/migrations/2016_07_03_152412_create_links_table.php',
+    'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_07_03_153242_create_notifications_table.php',
+    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePubsTable' => $baseDir . '/database/migrations/2016_07_03_152626_create_pubs_table.php',
+    'CreateSubscriptionsTable' => $baseDir . '/database/migrations/2016_07_03_153757_create_subscriptions_table.php',
+    'CreateUsersTable' => $baseDir . '/database/migrations/2016_07_16_112512_create_users_table.php',
     'CreateLinksTable' => $baseDir . '/database/migrations/2016_07_16_160840_create_links_table.php',
     'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_07_16_160606_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_07_16_160539_create_password_resets_table.php',
@@ -85,6 +91,8 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'LinkSeederTable' => $baseDir . '/database/seeds/LinkSeederTable.php',
+    'NotificationSeederTable' => $baseDir . '/database/seeds/NotificationSeederTable.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -480,6 +488,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'PubSeederTable' => $baseDir . '/database/seeds/PubSeederTable.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -516,6 +525,8 @@ return array(
     'SebastianBergmann\\RecursionContext\\Exception' => $vendorDir . '/sebastian/recursion-context/src/Exception.php',
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'SubscriptionSeederTable' => $baseDir . '/database/seeds/SubscriptionSeederTable.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserSeederTable' => $baseDir . '/database/seeds/UserSeederTable.php',
 );

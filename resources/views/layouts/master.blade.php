@@ -43,6 +43,7 @@
                     <li><a href="{{ url('/pubs') }}" id = "colored" >Pubs</a></li>
                     <li><a href="{{ url('/about') }}" id = "colored" >About Us</a></li>
                   </ul>
+
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                       <!-- Authentication Links -->
