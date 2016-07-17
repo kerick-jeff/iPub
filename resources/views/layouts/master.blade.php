@@ -17,6 +17,9 @@
             #login:hover, #register:hover, #pubs:hover, #about:hover {
                 background: rgba(51,122,183,.2);
             }
+            #colored {
+                color: rgba(51,122,183, 1);
+            }
         </style>
     </head>
     <body>
@@ -32,17 +35,55 @@
                         <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <a href="#" style = "text-decoration: none; color: rgba(51,122,183,1);">iPub</a>
+                        <a href="#" style = "text-decoration: none;" id = "colored">iPub</a>
                     </div>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li><a href="#" id = "pubs" style = "color: rgba(51,122,183,1);">Pubs</a></li>
-                    <li><a href="#" id = "about" style = "color: rgba(51,122,183,1);">About Us</a></li>
+                    <li><a href="{{ url('/pubs') }}" id = "colored" >Pubs</a></li>
+                    <li><a href="{{ url('/about') }}" id = "colored" >About Us</a></li>
                   </ul>
-                  <ul class = "nav navbar-nav navbar-right">
-                    <li><a href="#" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
-                    <li><a href="#" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
+
+                  <!-- Right Side Of Navbar -->
+                  <ul class="nav navbar-nav navbar-right">
+                      <!-- Authentication Links -->
+                      @if (Auth::guest())
+                          <li><a href="{{ url('/login') }}" id = "colored">Login</a></li>
+                          <li><a href="{{ url('/register') }}" id = "colored">Register</a></li>
+                      @else
+                          <li>
+                              <a href = "{{ url('/inbox') }}" id = "colored" data-toggle = "tooltip" data-placement = "bottom" title = "You have unread messages"><span class = "glyphicon glyphicon-inbox"></span></a>
+                          </li>
+
+                          <li>
+                              <a href = "{{ url('/notifications') }}" id = "colored" data-toggle = "tooltip" data-placement = "bottom" title = "You have unread notifications"><span class = "glyphicon glyphicon-globe"></span></a>
+                          </li>
+
+                          <li class="dropdown">
+                              <a href="#" id = "colored" class="dropdown-toggle" data-placement = "bottom" title = "Upload pub" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  <span class = "glyphicon glyphicon-upload"></span> <span class="caret"></span>
+                              </a>
+
+                              <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{{ url('/upload/photo') }}" id = "colored"><i class = "glyphicon glyphicon-picture"></i>&nbsp;Photo</a></li>
+                                  <li><a href="{{ url('/upload/video') }}" id = "colored"><i class = "glyphicon glyphicon-film"></i>&nbsp;Video</a></li>
+                              </ul>
+                          </li>
+
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" id = "colored" data-placement = "bottom" title = "View Profile" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  {{ Auth::user()->name }} <span class="caret"></span>
+                              </a>
+
+                              <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{{ url('/account') }}" id = "colored"><i class = "glyphicon glyphicon-user"></i>&nbsp;Your account</a></li>
+                                  <li><a href="{{ url('/statistics') }}" id = "colored"><i class = "glyphicon glyphicon-stats"></i>&nbsp;Statistics</a></li>
+                                  <li role = "presentation" class = "divider"></li>
+                                  <li><a href="{{ url('/settings') }}" id = "colored"><i class = "glyphicon glyphicon-cog"></i>&nbsp;Settings</a></li>
+                                  <li><a href="{{ url('/logout') }}" id = "colored"><i class = "glyphicon glyphicon-log-out"></i>&nbsp;Logout</a></li>
+                              </ul>
+                          </li>
+                      @endif
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
@@ -52,29 +93,29 @@
               <nav id="spy">
                   <ul class="sidebar-nav nav" style = "color: rgba(51,122,183,1);">
                       <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-inbox"></i></span>Inbox</a>
+                          <a href="{{ url('/account') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user"></i></span>Account</a>
                       </li>
                       <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-globe"></i></span>Notifications</a>
+                          <a href="{{ url('/inbox') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-inbox"></i></span>Inbox</a>
+                      </li>
+                      <li>
+                          <a href="{{ url('/notifications') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-globe"></i></span>Notifications</a>
                       </li>
                       <li>
                           <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-upload"></i></span>Upload File</a>
                           <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                              <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-picture"></i></span>Photo</a></li>
-                              <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-film"></i></span>Video</a></li>
+                              <li><a href="{{ url('/upload/photo') }}"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-picture"></i></span>Photo</a></li>
+                              <li><a href="{{ url('/upload/video') }}"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-film"></i></span>Video</a></li>
                           </ul>
                       </li>
                       <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user"></i></span>Profile</a>
+                          <a href="{{ url('/settings') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog"></i></span>Settings</a>
                       </li>
                       <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog"></i></span>Settings</a>
+                          <a href="{{ url('/statistics') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-stats"></i></span>Statistics</a>
                       </li>
                       <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-stats"></i></span>Statistics</a>
-                      </li>
-                      <li>
-                          <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-log-out"></i></span>Logout</a>
+                          <a href="{{ url('/logout') }}"> <span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-log-out"></i></span>Logout</a>
                       </li>
                   </ul>
               </nav>

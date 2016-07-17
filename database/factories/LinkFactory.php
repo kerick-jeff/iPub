@@ -11,11 +11,10 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Link::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
+        'user_id' => $faker->numberBetween(1,25),
+        'link' => $faker->url,
+        'caption' => $faker->sentence
     ];
 });

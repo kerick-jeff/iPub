@@ -20,6 +20,6 @@ class Link extends Model
     * @return User
     */
     public function user(){
-        return BelongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

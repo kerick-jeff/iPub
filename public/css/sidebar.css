@@ -1,4 +1,4 @@
-#wrapper {
+ a#wrapper {
   padding-left: 250px;
   transition: all 0.4s ease 0s;
 }
@@ -116,12 +116,17 @@
 
 #wrapper.active #sidebar-wrapper {
   left: 250px;
-  width: 250px;
+  width: 200px;
   transition: all 0.4s ease 0s;
 }
 
 #menu-toggle {
   display: inline-block;
+}
+
+.sidebar-nav li {
+  line-height: 18px;
+  text-indent: -22px;
 }
 
 }

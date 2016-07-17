@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
              $table->string('email', 255)->unique();
              $table->string('phone_number');
              $table->string('password', 60);
+             $table->enum('type', ['individual', 'business', 'company', 'organisation', 'ngo'])->default('individual');
              $table->string('profile_picture', 255);
              $table->text('description');
              $table->string('country');
@@ -25,6 +26,8 @@ class CreateUsersTable extends Migration
              $table->string('geo_longitude', 3);
              $table->string('geo_latitude', 3);
              $table->enum('stars', [1, 2, 3, 4, 5])->default(1);
+             $table->boolean('status')->default(0);
+             $table->status('boolean'); // unconfirmed user account(false), confirmed user account(true)
              $table->rememberToken();
              $table->timestamps();
          });
