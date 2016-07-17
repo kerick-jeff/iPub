@@ -54,7 +54,8 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed',
             'category' => 'required',
             'country' => 'required',
-        ]);
+            'agreement_policy' => 'required',
+        ], ['agreement_policy.required' => 'You need to accept the User Agreement and Privacy Policy']);
     }
 
     /**

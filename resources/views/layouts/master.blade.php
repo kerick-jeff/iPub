@@ -2,16 +2,19 @@
 <html lang = "en">
     <head>
         <title>iPub @yield('title')</title>
+
         @yield('description')
         @yield('author')
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel = "shortcut icon" href = "ipub.ico">
+        <link rel = "shortcut icon" href = "{{ asset('images/favicon.ico') }}">
 
         <link rel="stylesheet" href="{{ asset('boot/css/bootstrap.min.css') }}" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="{{ asset('css/hover.css') }}" media="screen" title="no title" charset="utf-8">
+
+        @yield('css')
 
         <style media="screen">
             #login:hover, #register:hover, #pubs:hover, #about:hover {
@@ -35,7 +38,7 @@
                         <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <a href="#" style = "text-decoration: none;" id = "colored">iPub</a>
+                        <a href="/" style = "text-decoration: none;" id = "colored">iPub</a>
                     </div>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -76,7 +79,7 @@
                               </a>
 
                               <ul class="dropdown-menu" role="menu">
-                                  <li><a href="{{ url('/account') }}" id = "colored"><i class = "glyphicon glyphicon-user"></i>&nbsp;Your account</a></li>
+                                  <li><a href="{{ url('/account') }}" id = "colored"><i class = "glyphicon glyphicon-user"></i>&nbsp;Account</a></li>
                                   <li><a href="{{ url('/statistics') }}" id = "colored"><i class = "glyphicon glyphicon-stats"></i>&nbsp;Statistics</a></li>
                                   <li role = "presentation" class = "divider"></li>
                                   <li><a href="{{ url('/settings') }}" id = "colored"><i class = "glyphicon glyphicon-cog"></i>&nbsp;Settings</a></li>

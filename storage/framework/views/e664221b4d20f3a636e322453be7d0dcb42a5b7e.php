@@ -1,3 +1,16 @@
+<?php $__env->startSection('description'); ?>
+    <meta name = "description" content = "Register an account with iPub. An iPub account enables users of the platform to be able manage their data and resources related to iPub's aim." >
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('author'); ?>
+    <meta name="author" content="kerick-jeff">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/countrySelect.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="container" style="margin-top: 10px">
     <div class="row">
@@ -79,17 +92,37 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Select country</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="country">
-                                    <option value="country1">country 1</option>
-                                    <option value="country2">country 2</option>
-                                </select>
+                                <input type="text" id = "country" name="country" class="form-control">
+                                <input type="hidden" name="country_code">
                             </div>
+
+                            <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+                            <script src="<?php echo e(asset('js/countrylist/build/js/countrySelect.js')); ?>"></script>
+                            <script type="text/javascript">
+                                $("#country").countrySelect({
+                                  preferredCountries: ['us', 'gb', 'cm'],
+
+                                });
+                            </script>
                         </div>
 
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                              <div class="checkbox">
+                                    <input type="checkbox" name = "agreement_policy">  <a href="/agreement-policy">Accept User agreement and Privacy Policy</a>
+                                    <?php if($errors->has('agreement_policy')): ?>
+                                        <span class="help-block" style = "color: #A94442;">
+                                            <strong><?php echo e($errors->first('agreement_policy')); ?></strong>
+                                        </span>
+                                    <?php endif; ?>
+                              </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

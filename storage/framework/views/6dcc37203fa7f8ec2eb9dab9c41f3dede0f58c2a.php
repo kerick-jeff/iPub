@@ -2,16 +2,19 @@
 <html lang = "en">
     <head>
         <title>iPub <?php echo $__env->yieldContent('title'); ?></title>
+
         <?php echo $__env->yieldContent('description'); ?>
         <?php echo $__env->yieldContent('author'); ?>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel = "shortcut icon" href = "ipub.ico">
+        <link rel = "shortcut icon" href = "<?php echo e(asset('images/favicon.ico')); ?>">
 
         <link rel="stylesheet" href="<?php echo e(asset('boot/css/bootstrap.min.css')); ?>" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="<?php echo e(asset('css/sidebar.css')); ?>" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="<?php echo e(asset('css/hover.css')); ?>" media="screen" title="no title" charset="utf-8">
+
+        <?php echo $__env->yieldContent('css'); ?>
 
         <style media="screen">
             #login:hover, #register:hover, #pubs:hover, #about:hover {
@@ -35,7 +38,7 @@
                         <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <a href="#" style = "text-decoration: none;" id = "colored">iPub</a>
+                        <a href="/" style = "text-decoration: none;" id = "colored">iPub</a>
                     </div>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -43,6 +46,7 @@
                     <li><a href="<?php echo e(url('/pubs')); ?>" id = "colored" >Pubs</a></li>
                     <li><a href="<?php echo e(url('/about')); ?>" id = "colored" >About Us</a></li>
                   </ul>
+
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                       <!-- Authentication Links -->
@@ -75,7 +79,7 @@
                               </a>
 
                               <ul class="dropdown-menu" role="menu">
-                                  <li><a href="<?php echo e(url('/account')); ?>" id = "colored"><i class = "glyphicon glyphicon-user"></i>&nbsp;Your account</a></li>
+                                  <li><a href="<?php echo e(url('/account')); ?>" id = "colored"><i class = "glyphicon glyphicon-user"></i>&nbsp;Account</a></li>
                                   <li><a href="<?php echo e(url('/statistics')); ?>" id = "colored"><i class = "glyphicon glyphicon-stats"></i>&nbsp;Statistics</a></li>
                                   <li role = "presentation" class = "divider"></li>
                                   <li><a href="<?php echo e(url('/settings')); ?>" id = "colored"><i class = "glyphicon glyphicon-cog"></i>&nbsp;Settings</a></li>
