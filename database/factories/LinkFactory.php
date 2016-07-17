@@ -14,7 +14,7 @@
 $factory->define(App\Link::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $faker->numberBetween(1,25),
-        'link' => $faker->words,
+        'link' => $faker->url,
         'caption' => $faker->sentence
     ];
 });

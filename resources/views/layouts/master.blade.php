@@ -41,8 +41,23 @@
                     <li><a href="#" id = "about" style = "color: rgba(51,122,183,1);">About Us</a></li>
                   </ul>
                   <ul class = "nav navbar-nav navbar-right">
-                    <li><a href="#" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
-                    <li><a href="#" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
+                    <li><a href="{{ url('/register') }}" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/account') }}"><i class="fa fa-btn fa-sign-out"></i>Your account</a></li>
+                                <li><a href="{{ url('/stars') }}"><i class="fa fa-btn fa-sign-out"></i>Your stars</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Your stars</a></li>
+                            </ul>
+                        </li>
+                    @endif
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>

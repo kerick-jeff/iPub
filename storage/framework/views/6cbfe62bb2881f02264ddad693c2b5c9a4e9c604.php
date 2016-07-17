@@ -41,8 +41,21 @@
                     <li><a href="#" id = "about" style = "color: rgba(51,122,183,1);">About Us</a></li>
                   </ul>
                   <ul class = "nav navbar-nav navbar-right">
-                    <li><a href="#" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
-                    <li><a href="#" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
+                    <!-- Authentication Links -->
+                    <?php if(Auth::guest()): ?>
+                    <li><a href="<?php echo e(url('/login')); ?>" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
+                    <li><a href="<?php echo e(url('/register')); ?>" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
+                    <?php else: ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
