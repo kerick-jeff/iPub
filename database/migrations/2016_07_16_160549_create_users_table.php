@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
              $table->string('geo_longitude', 3);
              $table->string('geo_latitude', 3);
              $table->enum('stars', [1, 2, 3, 4, 5])->default(1);
-             $table->status('boolean'); // unconfirmed user account(false), confirmed user account(true)
+             $table->status('boolean')->default(0); // unconfirmed user account(false), confirmed user account(true)
              $table->rememberToken();
              $table->timestamps();
          });

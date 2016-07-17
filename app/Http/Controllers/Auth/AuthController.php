@@ -71,7 +71,6 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'category' => $data['category'],
             'country' => $data['country'],
-            'status'=> 0,
         ]);
     }
 }
