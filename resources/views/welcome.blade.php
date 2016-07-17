@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-<div class="row">
-    <img src="{{ asset('images/land1.jpg') }}" class="img img-responsive" alt="landing_page" height="100%" width="120%">
-</div>
+    <div class="row" style = "margin-left: -70px">
+        <img src="{{ asset('images/land1.jpg') }}" class="img-responsive" alt="landing_page photo" height="auto" max-width="100%">
+    </div>
 @endsection
