@@ -43,26 +43,7 @@
                     <li><a href="{{ url('/pubs') }}" id = "colored" >Pubs</a></li>
                     <li><a href="{{ url('/about') }}" id = "colored" >About Us</a></li>
                   </ul>
-<<<<<<< HEAD
-                  <ul class = "nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}" id = "login" style = "color: rgba(51,122,183,1);">Login</a></li>
-                    <li><a href="{{ url('/register') }}" id = "register" class = "hoverable" style = "color: rgba(51,122,183,1);">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/account') }}"><i class="fa fa-btn fa-sign-out"></i>Your account</a></li>
-                                <li><a href="{{ url('/stars') }}"><i class="fa fa-btn fa-sign-out"></i>Your stars</a></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Your stars</a></li>
-                            </ul>
-                        </li>
-                    @endif
-=======
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                       <!-- Authentication Links -->
@@ -103,7 +84,6 @@
                               </ul>
                           </li>
                       @endif
->>>>>>> 177e3125edb530f0bec8de982e405f09c8bdb16a
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>

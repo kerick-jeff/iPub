@@ -50,11 +50,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-<<<<<<< HEAD
                                 <button type="submit" class="btn btn-primary" style="background:#337AB7;">
-=======
-                                <button type="submit" class="btn btn-primary">
->>>>>>> 177e3125edb530f0bec8de982e405f09c8bdb16a
                                     <i class="glyphicon glyphicon-log-in"></i> Login
                                 </button>
                             </div>
