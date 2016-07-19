@@ -1,3 +1,5 @@
+<!-- This file is used when the user has forgotten their password -->
+
 @extends('layouts.master')
 
 <!-- Main Content -->

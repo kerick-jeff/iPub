@@ -31,6 +31,7 @@ return [
 
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
+
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -42,10 +43,7 @@ return [
     |
     */
 
-    //I changed this
-    //'port' => env('MAIL_PORT', 587),
-
-    'port' => env('MAIL_PORT', 2525),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,8 +56,7 @@ return [
     |
     */
 
-//i changed this    'from' => ['address' => null, 'name' => null],
-    'from' => ['address' => 'tigrodrige@gmail.com', 'name' => 'Tayong'],
+    'from' => ['address' => null, 'name' => null],
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +68,6 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*

@@ -19,4 +19,4 @@ Route::auth();
 
 Route::get('/account', 'HomeController@account');
 
-Route::post('/password/email', 'Auth\PasswordController@send');
+Route::post('/password/email', 'Auth\PasswordController@postEmail');

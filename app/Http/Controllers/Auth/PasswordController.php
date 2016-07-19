@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Mail;
+use App\User;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -32,22 +32,6 @@ class PasswordController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware());
-    }
-
-    public function send(Request $request){
-        $email = $request->input('email');
-        $content = 'App\User::find($email)';
-
-        Mail::send('auth.passwords.email', ['email' => $content], function ($man)
-        {
-
-            $man->from('tigrodrige@gmail.com', 'Tayong Rodrige')
-
-                ->to('trodrige@yahoo.com');
-
-        });
-
-        return response()->json(['message' => 'Request completed']);
     }
 
 }
