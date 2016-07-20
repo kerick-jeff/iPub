@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>iPub <?php echo $__env->yieldContent('title'); ?></title>
-  <?php echo $__env->yieldContent('description'); ?>
-  <?php echo $__env->yieldContent('author'); ?>
+  <title>iPub @yield('title')</title>
+  @yield('description')
+  @yield('author')
   <!-- favicon -->
   <link rel = "shortcut icon" href = "ipub.ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <!--      <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">        -->
-  <link rel="stylesheet" href="<?php echo e(asset('ipub/bootstrap/css/bootstrap.min.css')); ?>">
+  <link rel="stylesheet" href="{{ asset('ipub/bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <!--       <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">     -->
-  <link rel="stylesheet" href="<?php echo e(asset('ipub/dist/css/AdminLTE.min.css')); ?>">
+  <link rel="stylesheet" href="{{ asset('ipub/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo e(asset('ipub/dist/css/skins/_all-skins.min.css')); ?>">
+  <link rel="stylesheet" href="{{ asset('ipub/dist/css/skins/_all-skins.min.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,6 +30,9 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  @yield('css')
+
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -47,33 +50,30 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
+
+@yield('toggle')
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
 
-                <?php if(Auth::guest()): ?>
+                @if (Auth::guest())
+
+                     <li style="right: 270%"><a href="" >Pubs</a></li>
+                      <li style="right: 270%"><a href="" >About Us</a></li>
                     <li>
-                        <a href="<?php echo e(url('/login')); ?>" id = "colored">Login
+                        <a href="{{ url('/login') }}" id = "colored">Login
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo e(url('/register')); ?>" id = "colored">Register
+                        <a href="{{ url('/register') }}" id = "colored">Register
                         </a>
                     </li>
-                <?php else: ?>
+                @else
 
           <!-- Messages: style can be found in dropdown.less-->
+
+               <li style="right: 120%"><a href="" >Pubs</a></li>
+                <li style="right: 120%"><a href="" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -87,7 +87,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+                        <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -99,7 +99,7 @@
                   <!-- end message -->
                 </ul>
               </li>
-              <li class="footer"><a href="<?php echo e(url('/inbox')); ?>">See All Messages</a></li>
+              <li class="footer"><a href="{{ url('/inbox') }}">See All Messages</a></li>
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less -->
@@ -120,7 +120,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="<?php echo e(url('/notifications')); ?>">View all</a></li>
+              <li class="footer"><a href="{{ url('/notifications') }}">View all</a></li>
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -158,13 +158,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="user-image" alt="User Image">
+              <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">Tayong Rodrige</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+                <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
                   Tayong Rodrige - Web Developer
@@ -192,7 +192,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo e(url('/logout')); ?>" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -202,37 +202,35 @@
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
 
-          <?php endif; ?>
+          @endif
 
         </ul>
       </div>
     </nav>
   </header>
 
-
-  <?php echo $__env->yieldContent('content'); ?>
-
+@yield('extendable_content')
 
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
 <!--        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>        -->
-<script src="<?php echo e(asset('ipub/plugins/jQuery/jquery-2.2.3.min.js')); ?>"></script>
+<script src="{{ asset('ipub/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <!--        <script src="../../bootstrap/js/bootstrap.min.js"></script>     -->
-<script src="<?php echo e(asset('ipub/bootstrap/js/bootstrap.min.js')); ?>"></script>
+<script src="{{ asset('ipub/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
 <!--        <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>     -->
-<script src="<?php echo e(asset('ipub/plugins/slimScroll/jquery.slimscroll.min.js')); ?>"></script>
+<script src="{{ asset('ipub/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <!--        <script src="../../plugins/fastclick/fastclick.js"></script>     -->
-<script src="<?php echo e(asset('ipub/plugins/fastclick/fastclick.js')); ?>"></script>
+<script src="{{ asset('ipub/plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <!--        <script src="../../dist/js/app.min.js"></script>     -->
-<script src="<?php echo e(asset('ipub/dist/js/app.min.js')); ?>"></script>
+<script src="{{ asset('ipub/dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <!--        <script src="../../dist/js/demo.js"></script>     -->
-<script src="<?php echo e(asset('ipub/dist/js/demo.js')); ?>"></script>
+<script src="{{ asset('ipub/dist/js/demo.js') }}"></script>
 </body>
 </html>

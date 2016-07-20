@@ -30,6 +30,9 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <?php echo $__env->yieldContent('css'); ?>
+
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -39,7 +42,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size:45px"><b>iP</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -47,16 +50,16 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
+
+<?php echo $__env->yieldContent('toggle'); ?>
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-            <li style="right:700px">
-                <a href=""> Pubs </a>
-            </li>
-            <li style="right:700px">
-                <a href=""> About Us </a>
-            </li>
 
                 <?php if(Auth::guest()): ?>
+
+                     <li style="right: 270%"><a href="" >Pubs</a></li>
+                      <li style="right: 270%"><a href="" >About Us</a></li>
                     <li>
                         <a href="<?php echo e(url('/login')); ?>" id = "colored">Login
                         </a>
@@ -68,6 +71,9 @@
                 <?php else: ?>
 
           <!-- Messages: style can be found in dropdown.less-->
+
+               <li style="right: 120%"><a href="" >Pubs</a></li>
+                <li style="right: 120%"><a href="" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -203,9 +209,7 @@
     </nav>
   </header>
 
-
-  <?php echo $__env->yieldContent('content'); ?>
-
+<?php echo $__env->yieldContent('extendable_content'); ?>
 
 </div>
 <!-- ./wrapper -->

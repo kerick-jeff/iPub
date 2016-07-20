@@ -1,26 +1,27 @@
-<?php $__env->startSection('content'); ?>
+@extends('layouts.form')
+
+@section('content')
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="<?php echo e(url('/login')); ?>" method="POST">
-        <?php echo e(csrf_field()); ?>
-
-      <div class="form-group has-feedback  <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-        <input type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="Email">
+    <form action="{{ url('/login') }}" method="POST">
+        {{ csrf_field() }}
+      <div class="form-group has-feedback  {{ $errors->has('email') ? ' has-error' : '' }}">
+        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        <?php if($errors->has('email')): ?>
+        @if ($errors->has('email'))
             <span class="help-block">
-                <strong><?php echo e($errors->first('email')); ?></strong>
+                <strong>{{ $errors->first('email') }}</strong>
             </span>
-        <?php endif; ?>
+        @endif
       </div>
-      <div class="form-group has-feedback  <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+      <div class="form-group has-feedback  {{ $errors->has('password') ? ' has-error' : '' }}">
         <input type="password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        <?php if($errors->has('password')): ?>
+        @if ($errors->has('password'))
             <span class="help-block">
-                <strong><?php echo e($errors->first('password')); ?></strong>
+                <strong>{{ $errors->first('password') }}</strong>
             </span>
-        <?php endif; ?>
+        @endif
       </div>
       <div class="row">
         <div class="col-xs-8">
@@ -47,9 +48,7 @@
     </div>
     <!-- /.social-auth-links -->
 
-    <a href="<?php echo e(url('/password/reset')); ?>">I forgot my password</a><br>
-    <a href="<?php echo e(url('/register')); ?>" class="text-center">Register a new membership</a>
+    <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+    <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
 
- <?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+ @endsection
