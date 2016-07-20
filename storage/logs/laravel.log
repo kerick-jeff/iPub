@@ -12999,3 +12999,6 @@ Stack trace:
 #67 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #68 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
 #69 {main}  
+[2016-07-20 11:07:24] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '->' (T_OBJECT_OPERATOR)' in /home/trodrige/Documents/iPub/storage/framework/views/6cbfe62bb2881f02264ddad693c2b5c9a4e9c604.php:28
+Stack trace:
+#0 {main}  
