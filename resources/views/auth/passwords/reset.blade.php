@@ -1,3 +1,5 @@
+<!-- This file is used when the user wants to reset their password -->
+
 @extends('layouts.master')
 
 @section('content')
