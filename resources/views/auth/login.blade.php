@@ -6,6 +6,20 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="color:#337AB7">
                 <div class="panel-heading" style="background:#337AB7; color:#fff">Login</div>
+                @if(session('status'))
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         {{ session('status') }}
+                         <a href="/resend/{{session('email') }}/{{ session('name') }}">Resend link</a>
+                    </div>
+                @endif
+                @if(session('info'))
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         {{ session('info') }}
+                         <!-- <a href="/resend/{{session('email') }}/{{ session('name') }}">Resend link</a> -->
+                    </div>
+                @endif
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

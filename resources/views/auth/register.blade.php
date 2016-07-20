@@ -115,7 +115,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                               <div class="checkbox">
-                                    <input type="checkbox" name = "agreement_policy">  <a href="/agreement-policy">Accept User agreement and Privacy Policy</a>
+                                    <input type="checkbox" name = "agreement_policy"> I agree to the <a href="/agreement-policy"> terms and conditions</a>
                                     @if ($errors->has('agreement_policy'))
                                         <span class="help-block" style = "color: #A94442;">
                                             <strong>{{ $errors->first('agreement_policy') }}</strong>

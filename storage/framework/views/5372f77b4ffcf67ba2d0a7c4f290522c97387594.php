@@ -4,6 +4,22 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="color:#337AB7">
                 <div class="panel-heading" style="background:#337AB7; color:#fff">Login</div>
+                <?php if(session('status')): ?>
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('status')); ?>
+
+                         <a href="/resend/<?php echo e(session('email')); ?>/<?php echo e(session('name')); ?>">Resend link</a>
+                    </div>
+                <?php endif; ?>
+                <?php if(session('info')): ?>
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('info')); ?>
+
+                         <!-- <a href="/resend/<?php echo e(session('email')); ?>/<?php echo e(session('name')); ?>">Resend link</a> -->
+                    </div>
+                <?php endif; ?>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/login')); ?>">
                         <?php echo e(csrf_field()); ?>

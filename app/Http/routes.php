@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,4 +18,32 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('/register/verify/{email}/{code}', function($email, $code){
+    $user = User::where('email', $email);
+    if(!empty($user) && empty($user->confirmation_code)){
+        $user->update(['confirmation_code' => $code, 'confirmed' => 1]);
+        return redirect('/account');
+    }
+    return 'Please register an account to activate!';
+});
+
+Route::get('/resend/{email}/{name}', function($email, $name){
+    // send verification email
+    $confirmation_code = str_random(30);
+
+    $send = Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $email], function($message) use ($name, $email) {
+        $message->from('frukerickjeff@gmail.com', 'iPub');
+        $message->to($email, $name)
+                ->subject('Verify your email address');
+    });
+    return redirect('/login')->with(['status' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
+});
+
 Route::get('/account', 'HomeController@account');
+
+//test email Routes
+Route::post('/send', 'EmailController@send');
+
+Route::get('/sendmail', function(){
+    return view('sendmail');
+});

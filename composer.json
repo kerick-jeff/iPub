@@ -15,7 +15,9 @@
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
 	      "paypal/rest-api-sdk-php": "*",
-	      "laravel/cashier": "~5.0"
+	      "laravel/cashier": "~5.0",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "captcha-com/laravel-captcha": "4.*"
     },
     "autoload": {
         "classmap": [
