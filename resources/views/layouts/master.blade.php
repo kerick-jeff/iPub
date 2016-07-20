@@ -81,33 +81,21 @@
         <li>
           <a href="{{ url('/account') }}">
             <i class="fa fa-user"></i> <span>Account</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-purple"><b>iP</b></small>
-            </span>
           </a>
         </li>
         <li>
           <a href="{{ url('/statistics') }}">
             <i class="fa fa-pie-chart"></i> <span>Statistics</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-purple"><b>iP</b></small>
-            </span>
           </a>
         </li>
         <li>
           <a href="{{ url('/settings') }}">
             <i class="fa fa-cogs"></i> <span>Settings</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-purple"><b>iP</b></small>
-            </span>
           </a>
         </li>
         <li>
           <a href="{{ url('/logout') }}">
             <i class="fa fa-sign-out"></i> <span>Logout</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red"><b>iP</b></small>
-            </span>
           </a>
         </li>
       </ul>

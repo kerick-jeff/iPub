@@ -177,7 +177,7 @@
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
                   </div>
-                  <div class="col-xs-4 text-center"> </div>
+                  <div class="col-xs-4 text-center"> put stars </div>
                   <div class="col-xs-4 text-center">
                     <a href="#">Invited</a>
                   </div>
