@@ -3646,5 +3646,99 @@
             "rest",
             "web service"
         ]
+    },
+    {
+        "name": "captcha-com/captcha",
+        "version": "4.1.0",
+        "version_normalized": "4.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.captcha.com/botdetect-php-captcha-library.git",
+            "reference": "1019ff13b82ee6f30119e6d3738acf4a8d36c2d3"
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "suggest": {
+            "captcha-com/cakephp-captcha": "BotDetect 4 PHP Captcha generator integration for the CakePHP framework.",
+            "captcha-com/laravel-captcha": "BotDetect 4 PHP Captcha generator integration for the Laravel framework.",
+            "captcha-com/symfony-captcha-bundle": "BotDetect 4 PHP Captcha generator integration for the Symfony framework."
+        },
+        "time": "2016-06-06 13:31:24",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Commercial"
+        ],
+        "authors": [
+            {
+                "name": "BotDetect Captcha",
+                "email": "botdetect.support@captcha.com",
+                "homepage": "http://captcha.com/php-captcha.html"
+            }
+        ],
+        "description": "BotDetect 4 PHP Captcha Generator -- Free composer package.",
+        "homepage": "http://captcha.com/php-captcha.html",
+        "keywords": [
+            "captcha"
+        ]
+    },
+    {
+        "name": "captcha-com/laravel-captcha",
+        "version": "4.1.0",
+        "version_normalized": "4.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/captcha-com/laravel-captcha.git",
+            "reference": "6e30020bce79391e517b1bbdca674f42a33cfb8d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/captcha-com/laravel-captcha/zipball/6e30020bce79391e517b1bbdca674f42a33cfb8d",
+            "reference": "6e30020bce79391e517b1bbdca674f42a33cfb8d",
+            "shasum": ""
+        },
+        "require": {
+            "captcha-com/captcha": "4.*",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-06-06 13:37:53",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "LaravelCaptcha\\": "src/"
+            },
+            "files": [
+                "src/Support/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "BotDetect Captcha",
+                "email": "botdetect.support@captcha.com",
+                "homepage": "http://captcha.com/doc/php/laravel-captcha-quickstart.html"
+            }
+        ],
+        "description": "BotDetect 4 PHP Captcha generator integration for the Laravel framework.",
+        "homepage": "http://captcha.com/doc/php/laravel-captcha-quickstart.html",
+        "keywords": [
+            "Laravel Captcha",
+            "captcha"
+        ]
+=======
+>>>>>>> ebf71184c83fbbbf5fe7cfe719d50f8130f3cc61
     }
 ]

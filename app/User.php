@@ -23,7 +23,8 @@ class User extends Authenticatable
         'geo_longitude',
         'geo_latitude',
         'stars',
-        'status'
+        'confirmed',
+        'confirmation_code'
     ];
 
     /**

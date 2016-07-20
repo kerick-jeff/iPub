@@ -54,7 +54,8 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed',
             'category' => 'required',
             'country' => 'required',
-        ]);
+            'terms' => 'required',
+        ], ['terms.required' => 'You need to accept the terms and conditions']);
     }
 
     /**
