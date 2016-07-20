@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>iPub | Reset password</title>
+  <title>iPub | @yield('title')</title>
+  @yield('description')
+  @yield('author')
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -19,6 +21,8 @@
   <!-- iCheck -->
   <!--      <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">        -->
   <link rel="stylesheet" href="{{ asset('ipub/plugins/iCheck/square/blue.css') }}">
+
+  @yield('css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

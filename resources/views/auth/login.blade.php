@@ -1,7 +1,29 @@
 @extends('layouts.form')
 
+@section('title', 'Login')
+
 @section('content')
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Login</p>
+
+    @if(session('info'))
+        <div class="alert alert-info alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             {{ session('info') }}
+             <a href="/resend/{{ session('email') }}/{{ session('name') }}">Resend link</a>
+        </div>
+    @endif
+    @if(session('warning'))
+        <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             {{ session('warning') }}
+        </div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             {{ session('success') }}
+        </div>
+    @endif
 
     <form action="{{ url('/login') }}" method="POST">
         {{ csrf_field() }}

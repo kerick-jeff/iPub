@@ -19,12 +19,12 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/register/verify/{email}/{code}', function($email, $code){
-    $user = User::where('email', $email);
-    if(!empty($user) && empty($user->confirmation_code)){
+    $user = User::where('email', $email)->first();
+    if(!empty($user) && $user->confirmed == 0){
         $user->update(['confirmation_code' => $code, 'confirmed' => 1]);
-        return redirect('/account');
+        return redirect('/login')->with('success', 'Your email has been verified. You can now login');
     }
-    return 'Please register an account to activate!';
+    return '<a href = "/register">Please register an account to activate!</a>';
 });
 
 Route::get('/resend/{email}/{name}', function($email, $name){
@@ -36,7 +36,7 @@ Route::get('/resend/{email}/{name}', function($email, $name){
         $message->to($email, $name)
                 ->subject('Verify your email address');
     });
-    return redirect('/login')->with(['status' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
+    return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
 });
 
 Route::get('/account', 'HomeController@account');

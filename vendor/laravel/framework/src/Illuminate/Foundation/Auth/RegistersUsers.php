@@ -74,7 +74,7 @@ trait RegistersUsers
                     ->subject('Verify your email address');
         });
 
-        return redirect('/login')->with(['status' => 'Please verify your email. Click the link in the email sent to you', 'email' => $request->input('email'), 'name' => $request->input('name')]);
+        return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $request->input('email'), 'name' => $request->input('name')]);
     }
 
     /**

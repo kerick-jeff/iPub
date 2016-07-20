@@ -1,5 +1,12 @@
+<?php $__env->startSection('title', 'Registration'); ?>
+
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/countrySelect.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/demo.css')); ?>">
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
-    <p class="login-box-msg">Register a new membership</p>
+    <p class="login-box-msg">Register</p>
 
     <form method="POST" action="<?php echo e(url('/register')); ?>">
         <?php echo e(csrf_field()); ?>
@@ -32,7 +39,7 @@
         <?php endif; ?>
       </div>
       <div class="form-group has-feedback <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
-        <input type="password" class="form-control" name="password_confirmation" placeholder="Retype password">
+        <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type password">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         <?php if($errors->has('password_confirmation')): ?>
             <span class="help-block">
@@ -50,17 +57,26 @@
           </select>
       </div>
       <div class="form-group has-feedback">
-        <select class="form-control" name="country">
-          <option value="country1">country 1</option>
-          <option value="country2">country 2</option>
-        </select>
+          <input type="text" id = "country" name="country" class="form-control " placeholder="country">
+          <input type="hidden" name="country_code">
+
+          <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+          <script src="<?php echo e(asset('js/countrylist/build/js/countrySelect.js')); ?>"></script>
+          <script type="text/javascript">
+              $("#country").countrySelect({
+                preferredCountries: ['us', 'gb', 'cm'],
+              });
+          </script>
       </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-            </label>
+              <input type="checkbox" name = "terms"> I agree to the <a href="#">terms and conditions</a>
+              <?php if($errors->has('terms')): ?>
+                  <span class="help-block" style = "color: #DD4B39;">
+                      <strong><?php echo e($errors->first('terms')); ?></strong>
+                  </span>
+              <?php endif; ?>
           </div>
         </div>
         <!-- /.col -->

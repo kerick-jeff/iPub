@@ -1,5 +1,30 @@
+<?php $__env->startSection('title', 'Login'); ?>
+
 <?php $__env->startSection('content'); ?>
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Login</p>
+
+    <?php if(session('info')): ?>
+        <div class="alert alert-info alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <?php echo e(session('info')); ?>
+
+             <a href="/resend/<?php echo e(session('email')); ?>/<?php echo e(session('name')); ?>">Resend link</a>
+        </div>
+    <?php endif; ?>
+    <?php if(session('warning')): ?>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <?php echo e(session('warning')); ?>
+
+        </div>
+    <?php endif; ?>
+    <?php if(session('success')): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <?php echo e(session('success')); ?>
+
+        </div>
+    <?php endif; ?>
 
     <form action="<?php echo e(url('/login')); ?>" method="POST">
         <?php echo e(csrf_field()); ?>

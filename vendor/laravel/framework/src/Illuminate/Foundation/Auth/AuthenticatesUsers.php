@@ -58,10 +58,9 @@ trait AuthenticatesUsers
     public function login(Request $request)
     {
         $this->validateLogin($request);
-
-        $user = User::where('email', $this->loginUsername())->first();
-        if(!empty($user) && ($user->confirmed != 0)){
-            return redirect('/login')->with('info', 'You need to verify your email. An email was sent to you.');
+        $user = User::where('email', $request->input('email'))->first();
+        if(!empty($user) && $user->confirmed == 0){
+            return redirect('/login')->with('warning', 'You need to verify your email. An email was sent to you.');
         }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
