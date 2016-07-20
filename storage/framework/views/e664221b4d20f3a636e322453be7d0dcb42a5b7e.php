@@ -1,5 +1,7 @@
 <?php $__env->startSection('title', 'Registration'); ?>
 
+<!-- provide author and page desc -->
+
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/countrySelect.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/demo.css')); ?>">
@@ -73,7 +75,7 @@
           <div class="checkbox icheck">
               <input type="checkbox" name = "terms"> I agree to the <a href="#">terms and conditions</a>
               <?php if($errors->has('terms')): ?>
-                  <span class="help-block" style = "color: #DD4B39;">
+                  <span class="help-block" style = "color: #DD4B39 !important;;">
                       <strong><?php echo e($errors->first('terms')); ?></strong>
                   </span>
               <?php endif; ?>

@@ -11,7 +11,8 @@ class Pub extends Model
     * @var array
     */
     protected $fillable = [
-        'caption',
+        'title',
+        'description',
         'type',
         'filename',
         'category',

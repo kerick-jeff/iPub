@@ -8,18 +8,21 @@
     @if(session('info'))
         <div class="alert alert-info alert-dismissible" role="alert">
              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <i class = "icon fa fa-info"></i> <br />
              {{ session('info') }}
              <a href="/resend/{{ session('email') }}/{{ session('name') }}">Resend link</a>
         </div>
     @endif
     @if(session('warning'))
         <div class="alert alert-warning alert-dismissible" role="alert">
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <i class = "icon fa fa-warning"></i> <br />
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
              {{ session('warning') }}
         </div>
     @endif
     @if(session('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
+             <i class = "icon fa fa-check"></i> <br />
              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
              {{ session('success') }}
         </div>
