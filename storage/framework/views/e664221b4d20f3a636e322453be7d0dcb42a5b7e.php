@@ -1,142 +1,154 @@
-<?php $__env->startSection('description'); ?>
-    <meta name = "description" content = "Register an account with iPub. An iPub account enables users of the platform to be able manage their data and resources related to iPub's aim." >
-<?php $__env->stopSection(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>iPub | Registration</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+ <!--        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">       -->
+ <link rel="stylesheet" href="<?php echo e(asset('ipub/bootstrap/css/bootstrap.min.css')); ?>">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <!--        <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">     -->
+  <link rel="stylesheet" href="<?php echo e(asset('ipub/dist/css/AdminLTE.min.css')); ?>">
+  <!-- iCheck -->
+  <!--        <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">     -->
+  <link rel="stylesheet" href="<?php echo e(asset('ipub/plugins/iCheck/square/blue.css')); ?>">
 
-<?php $__env->startSection('author'); ?>
-    <meta name="author" content="kerick-jeff">
-<?php $__env->stopSection(); ?>
+  <!-- css for country list -->
+  <link rel="stylesheet" href="js/countrylist/build/css/countrySelect.min.css">
+	<link rel="stylesheet" href="js/countrylist/build/css/demo.css">
 
-<?php $__env->startSection('css'); ?>
-    <link rel="stylesheet" href="<?php echo e(asset('js/countrylist/build/css/countrySelect.css')); ?>">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition register-page">
+<div class="register-box" style="margin-top: -0.5px;">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>iP</b>ub</a>
+  </div>
 
-<?php $__env->stopSection(); ?>
+  <div class="register-box-body">
+    <p class="login-box-msg">Register a new membership</p>
 
-<?php $__env->startSection('content'); ?>
-<div class="container" style="margin-top: 10px">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default" style = "color: #337AB7">
-                <div class="panel-heading" style = "background-color: #337AB7; color: #fff">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
-                        <?php echo e(csrf_field()); ?>
+    <form method="POST" action="<?php echo e(url('/register')); ?>">
+        <?php echo e(csrf_field()); ?>
 
+      <div class="form-group has-feedback  <?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
+        <input type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" placeholder="Name of Individual, Organisation, Business or Company">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <?php if($errors->has('name')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('name')); ?></strong>
+            </span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group has-feedback  <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+        <input type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <?php if($errors->has('email')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('email')); ?></strong>
+            </span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group has-feedback  <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+        <input type="password" class="form-control" name="password" placeholder="Atleast 8 characters." placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <?php if($errors->has('password')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('password')); ?></strong>
+            </span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group has-feedback <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+        <input type="password" class="form-control" name="password_confirmation" placeholder="Retype password">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <?php if($errors->has('password_confirmation')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
+            </span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group has-feedback">
+          <select class="form-control" name="category">
+            <option value="individual">Individual</option>
+            <option value="organisation">Organisation</option>
+            <option value="business">Business</option>
+            <option value="company">Company</option>
+            <option value="ngo">NGO</option>
+          </select>
+      </div>
+      <div class="form-group has-feedback">
+          <input type="text" id = "country" name="country" class="form-control">
+          <input type="hidden" name="country_code">
 
-                        <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+          <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+          <script src="<?php echo e(asset('js/countrylist/build/js/countrySelect.js')); ?>"></script>
+          <script type="text/javascript">
+              $("#country").countrySelect({
+                preferredCountries: ['us', 'gb', 'cm'],
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" placeholder="Individual, Organisation, Business or Company">
+              });
+          </script>
+      </div>
 
-                                <?php if($errors->has('name')): ?>
-                                    <span class="help-block">
-                                        <strong><?php echo e($errors->first('name')); ?></strong>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="someone@example.com">
-
-                                <?php if($errors->has('email')): ?>
-                                    <span class="help-block">
-                                        <strong><?php echo e($errors->first('email')); ?></strong>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" placeholder="Atleast 8 characters.">
-
-                                <?php if($errors->has('password')): ?>
-                                    <span class="help-block">
-                                        <strong><?php echo e($errors->first('password')); ?></strong>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Re-enter your password">
-
-                                <?php if($errors->has('password_confirmation')): ?>
-                                    <span class="help-block">
-                                        <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Select category</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" name="category">
-                                    <option value="individual">Individual</option>
-                                    <option value="organisation">Organisation</option>
-                                    <option value="business">Business</option>
-                                    <option value="company">Company</option>
-                                    <option value="ngo">NGO</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Select country</label>
-
-                            <div class="col-md-6">
-                                <input type="text" id = "country" name="country" class="form-control">
-                                <input type="hidden" name="country_code">
-                            </div>
-
-                            <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
-                            <script src="<?php echo e(asset('js/countrylist/build/js/countrySelect.js')); ?>"></script>
-                            <script type="text/javascript">
-                                $("#country").countrySelect({
-                                  preferredCountries: ['us', 'gb', 'cm'],
-
-                                });
-                            </script>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                              <div class="checkbox">
-                                    <input type="checkbox" name = "agreement_policy"> I agree to the <a href="/agreement-policy"> terms and conditions</a>
-                                    <?php if($errors->has('agreement_policy')): ?>
-                                        <span class="help-block" style = "color: #A94442;">
-                                            <strong><?php echo e($errors->first('agreement_policy')); ?></strong>
-                                        </span>
-                                    <?php endif; ?>
-                              </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-user"></i> Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> I agree to the <a href="/terms">terms and conditions</a>
+            </label>
+          </div>
         </div>
-    </div>
-</div>
-<?php $__env->stopSection(); ?>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
-<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+        Google+</a>
+    </div>
+
+    <a href="<?php echo e(url('/login')); ?>" class="text-center">I already have a membership</a>
+  </div>
+  <!-- /.form-box -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery 2.2.3 -->
+<!--        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>     -->
+<script src="<?php echo e(asset('ipub/plugins/jQuery/jquery-2.2.3.min.js')); ?>"></script>
+<!-- Bootstrap 3.3.6 -->
+<!--        <script src="../../bootstrap/js/bootstrap.min.js"></script>     -->
+<script src="<?php echo e(asset('ipub/bootstrap/js/bootstrap.min.js')); ?>"></script>
+<!-- iCheck -->
+<!--        <script src="../../plugins/iCheck/icheck.min.js"></script>      -->
+<script src="<?php echo e(asset('ipub/plugins/iCheck/icheck.min.js')); ?>"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>

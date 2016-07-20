@@ -40,10 +40,3 @@ Route::get('/resend/{email}/{name}', function($email, $name){
 });
 
 Route::get('/account', 'HomeController@account');
-
-//test email Routes
-Route::post('/send', 'EmailController@send');
-
-Route::get('/sendmail', function(){
-    return view('sendmail');
-});
