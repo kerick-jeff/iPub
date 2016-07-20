@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function account()
     {
-        return view('account');
+        return view('layouts.admin_master');
     }
 
 }

@@ -12777,3 +12777,6 @@ Stack trace:
 #63 /home/trodrige/Documents/iPub/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #64 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
 #65 {main}  
+[2016-07-19 17:01:21] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/trodrige/Documents/iPub/storage/framework/views/ac283875ad85bce5c0a776ce8c0ad60b7731f841.php:689
+Stack trace:
+#0 {main}  
