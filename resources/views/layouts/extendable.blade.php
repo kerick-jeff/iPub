@@ -30,6 +30,9 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  @yield('css')
+
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -47,22 +50,16 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
+
+@yield('toggle')
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
-            <li style="right:700px">
-                <a href=""> Pubs</a>
-            </li>
 
                 @if (Auth::guest())
+
+                     <li style="right: 270%"><a href="" >Pubs</a></li>
+                      <li style="right: 270%"><a href="" >About Us</a></li>
                     <li>
                         <a href="{{ url('/login') }}" id = "colored">Login
                         </a>
@@ -74,6 +71,9 @@
                 @else
 
           <!-- Messages: style can be found in dropdown.less-->
+
+               <li style="right: 120%"><a href="" >Pubs</a></li>
+                <li style="right: 120%"><a href="" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -209,9 +209,7 @@
     </nav>
   </header>
 
-
-  @yield('content')
-
+@yield('extendable_content')
 
 </div>
 <!-- ./wrapper -->

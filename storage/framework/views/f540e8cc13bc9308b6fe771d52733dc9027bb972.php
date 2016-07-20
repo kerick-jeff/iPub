@@ -28,49 +28,15 @@
   <![endif]-->
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+<div class="login-box" style="margin-top:15px">
   <div class="login-logo">
     <a href="../../index2.html"><b>iP</b>ub</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Reset Password</p>
 
-    <form method="POST" action="<?php echo e(url('/password/reset')); ?>">
-        <?php echo e(csrf_field()); ?>
+<?php echo $__env->yieldContent('content'); ?>
 
-        <input type="hidden" name="token" value="<?php echo e($token); ?>">
-      <div class="form-group has-feedback  <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-        <input type="email" class="form-control" name="email" value="<?php echo e(isset($email) ? $email : old('email')); ?>" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        <?php if($errors->has('email')): ?>
-            <span class="help-block">
-                <strong><?php echo e($errors->first('email')); ?></strong>
-            </span>
-        <?php endif; ?>
-      </div>
-      <div class="form-group has-feedback  <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-        <input type="password" class="form-control" name="password" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        <?php if($errors->has('password')): ?>
-            <span class="help-block">
-                <strong><?php echo e($errors->first('password')); ?></strong>
-            </span>
-        <?php endif; ?>
-      </div>
-      <div class="form-group has-feedback  <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-        <input type="password" class="form-control" name="password_confirmation" placeholder="Retype assword">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        <?php if($errors->has('password_confirmation')): ?>
-            <span class="help-block">
-                <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
-            </span>
-        <?php endif; ?>
-      </div>
-      <div class="form-group has-feedback ">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Reset Password</button>
-      </div>
-  </form>
   </div>
   <!-- /.login-box-body -->
 </div>
