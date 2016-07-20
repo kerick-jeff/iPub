@@ -35,15 +35,7 @@
 @endif
 
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
@@ -65,8 +57,8 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="{{ url('/uploads') }}">
-            <i class="fa fa-upload"></i> <span>Uploads</span>
+          <a href="{{ url('/upload') }}">
+            <i class="fa fa-upload"></i> <span>Upload</span>
             <span class="pull-right-container">
               <span class="label label-info pull-right">28</span>
             </span>
@@ -95,7 +87,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/account') }}">
+          <a href="{{ url('/statistics') }}">
             <i class="fa fa-pie-chart"></i> <span>Statistics</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-purple"><b>iP</b></small>
@@ -103,7 +95,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/setting') }}">
+          <a href="{{ url('/settings') }}">
             <i class="fa fa-cogs"></i> <span>Settings</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-purple"><b>iP</b></small>
@@ -133,11 +125,9 @@
         Fixed Layout
         <small>Blank example to the fixed layout</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Layout</a></li>
-        <li class="active">Fixed</li>
-      </ol>
+
+      @yield('breadcrumb')
+      
     </section>
 
 
