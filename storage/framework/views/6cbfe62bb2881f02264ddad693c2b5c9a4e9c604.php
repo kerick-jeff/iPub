@@ -1,6 +1,4 @@
-@extends('layouts.extendable')
-
-@section('toggle')
+<?php $__env->startSection('toggle'); ?>
 <!-- Sidebar toggle button-->
 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
   <span class="sr-only">Toggle navigation</span>
@@ -8,9 +6,9 @@
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>
 </a>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('extendable_content')
+<?php $__env->startSection('extendable_content'); ?>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
 
@@ -20,19 +18,19 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
 
-@if (Auth::check())
+<?php if(Auth::check()): ?>
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ Auth::user()->name}}</p>
+          <p><?php echo e(Auth::user()->name); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
 
-@endif
+<?php endif; ?>
 
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
@@ -49,7 +47,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="{{ url('/inbox') }}">
+          <a href="<?php echo e(url('/inbox')); ?>">
             <i class="fa fa-inbox"></i> <span>Inbox</span>
             <span class="pull-right-container">
               <span class="label label-success pull-right">10</span>
@@ -57,7 +55,7 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="{{ url('/notifications') }}">
+          <a href="<?php echo e(url('/notifications')); ?>">
             <i class="fa fa-bell"></i> <span>Notifications</span>
             <span class="pull-right-container">
               <span class="label label-warning pull-right">20</span>
@@ -65,20 +63,20 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="{{ url('/uploads') }}">
+          <a href="<?php echo e(url('/uploads')); ?>">
             <i class="fa fa-upload"></i> <span>Uploads</span>
             <span class="pull-right-container">
               <span class="label label-info pull-right">28</span>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/uploads/photo') }}"><i class="fa fa-photo"></i> Photo
+            <li><a href="<?php echo e(url('/uploads/photo')); ?>"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
                 </a>
             </li>
-            <li><a href="{{ url('/uploads/video') }}"><i class="fa fa-video-camera"></i> Video
+            <li><a href="<?php echo e(url('/uploads/video')); ?>"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
@@ -87,7 +85,7 @@
           </ul>
         </li>
         <li>
-          <a href="{{ url('/account') }}">
+          <a href="<?php echo e(url('/account')); ?>">
             <i class="fa fa-user"></i> <span>Account</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-purple"><b>iP</b></small>
@@ -95,7 +93,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/account') }}">
+          <a href="<?php echo e(url('/account')); ?>">
             <i class="fa fa-pie-chart"></i> <span>Statistics</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-purple"><b>iP</b></small>
@@ -103,7 +101,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/setting') }}">
+          <a href="<?php echo e(url('/setting')); ?>">
             <i class="fa fa-cogs"></i> <span>Settings</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-purple"><b>iP</b></small>
@@ -111,7 +109,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/logout') }}">
+          <a href="<?php echo e(url('/logout')); ?>">
             <i class="fa fa-sign-out"></i> <span>Logout</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"><b>iP</b></small>
@@ -141,7 +139,7 @@
     </section>
 
 
- @yield('content')
+ <?php echo $__env->yieldContent('content'); ?>
 
 
     <!-- Main content -->
@@ -382,4 +380,6 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.extendable', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
