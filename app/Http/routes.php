@@ -40,3 +40,15 @@ Route::get('/resend/{email}/{name}', function($email, $name){
 });
 
 Route::get('/account', 'HomeController@account');
+
+Route::get('/upload/photo',function(){
+    return view('uploads.photo');
+});
+
+Route::post('/photo/store', 'Upload\UploadController@storePhoto');
+
+Route::get('/upload/video', function(){
+    return view('uploads.video');
+});
+
+Route::post('/video/store', 'Upload\UploadController@storeVideo');
