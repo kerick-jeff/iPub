@@ -58,7 +58,7 @@ trait AuthenticatesUsers
     public function login(Request $request)
     {
         $this->validateLogin($request);
-        $user = User::where('email', $request->input('email'))->first();
+        $user = User::where('email', $request->email)->first();
         if(!empty($user) && $user->confirmed == 0){
             return redirect('/login')->with('warning', 'You need to verify your email. An email was sent to you.');
         }

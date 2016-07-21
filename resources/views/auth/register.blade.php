@@ -53,7 +53,7 @@
       </div>
       <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
         <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type password">
-        <span class="fa fa-circle form-control-feedback"></span>
+        <span class="glyphicon glyphicon-repeat form-control-feedback"></span>
         @if ($errors->has('password_confirmation'))
             <span class="help-block">
                 <strong>{{ $errors->first('password_confirmation') }}</strong>

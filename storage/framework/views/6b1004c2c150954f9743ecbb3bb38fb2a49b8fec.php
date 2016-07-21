@@ -25,7 +25,14 @@
 
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
-            <b>Rating</b> <a class="pull-right">put stars</a>
+            <b>Rating</b>
+            <a class="pull-right">
+              <i class = "fa fa-star" style = "color: #FFC733"></i>
+              <i class = "fa fa-star" style = "color: #FFC733"></i>
+              <i class = "fa fa-star-half-full" style = "color: #FFC733"></i>
+              <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+              <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+            </a>
           </li>
           <li class="list-group-item">
             <b>Followers</b> <a class="pull-right">1247</a>
@@ -66,30 +73,56 @@
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">Basic Information</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <strong><i class="icon fa fa-file-text"></i> Description </strong>
-
         <p class="text-muted">
           B.S. in Computer Science from the University of Tennessee at Knoxville
         </p>
-
+        <a href = "/setings#description" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>Edit</a>
         <hr>
 
         <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-        <p class="text-muted">Malibu, California</p>
-
+        <p class="text-muted">
+          Malibu, California
+        </p>
+        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>Set</a>
         <hr>
 
-        <strong><i class="fa fa-circle-o-notch"></i> Products/Services </strong>
+        <strong><i class="icon fa fa-envelope"></i> Email </strong>
+        <p class="text-muted">
+            frukerickjeff@gmail.com
+        </p>
+        <hr>
 
+        <?php if(!empty(Auth::user())): ?>
+          <strong><i class="icon fa fa-phone"></i> Phone </strong>
+          <p class="text-muted">
+            ( <?php echo e(Auth::user()->country_code); ?> ) <?php echo e(chunk_split(Auth::user()->phone_number, 3)); ?>
+
+          </p>
+          <hr>
+        <?php endif; ?>
+
+        <strong><i class="fa fa-list-alt"></i> Products/Services </strong>
         <p>
           <span class="label label-danger">UI Design</span>
+        </p>
+        <p>
           <span class="label label-success">Coding</span>
+        </p>
+        <p>
           <span class="label label-info">Javascript</span>
+        </p>
+        <p>
           <span class="label label-warning">PHP</span>
+        </p>
+        <p>
           <span class="label label-primary">Node.js</span>
         </p>
 
@@ -103,125 +136,310 @@
   <div class="col-md-9">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+        <li class="active"><a href="#general" data-toggle="tab">General</a></li>
         <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-        <li><a href="#followers" data-toggle="tab">Followers</a></li>
-        <li><a href="#invited" data-toggle="tab">Invited</a></li>
       </ul>
       <div class="tab-content">
-        <div class="active tab-pane" id="activity">
-          <!-- Post -->
-          <div class="post">
-            <div class="user-block">
-              <img class="img-circle img-bordered-sm" src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="user image">
-                  <span class="username">
-                    <a href="#">Jonathan Burke Jr.</a>
-                    <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                  </span>
-              <span class="description">Shared publicly - 7:30 PM today</span>
+        <div class="active tab-pane" id="general">
+          <!-- status -->
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class = "fa fa-spinner">Status</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
             </div>
-            <!-- /.user-block -->
-            <p>
-              Lorem ipsum represents a long-held tradition for designers,
-              typographers and the like. Some people hate it and argue for
-              its demise, but others ignore the hate as they create awesome
-              tools to help create filler text for everyone from bacon lovers
-              to Charlie Sheen fans.
-            </p>
-            <ul class="list-inline">
-              <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-              <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-              </li>
-              <li class="pull-right">
-                <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                  (5)</a></li>
-            </ul>
-
-            <input class="form-control input-sm" type="text" placeholder="Type a comment">
-          </div>
-          <!-- /.post -->
-
-          <!-- Post -->
-          <div class="post clearfix">
-            <div class="user-block">
-              <img class="img-circle img-bordered-sm" src="<?php echo e(asset('ipub/dist/img/user7-128x128.jpg')); ?>" alt="User Image">
-                  <span class="username">
-                    <a href="#">Sarah Ross</a>
-                    <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                  </span>
-              <span class="description">Sent you a message - 3 days ago</span>
-            </div>
-            <!-- /.user-block -->
-            <p>
-              Lorem ipsum represents a long-held tradition for designers,
-              typographers and the like. Some people hate it and argue for
-              its demise, but others ignore the hate as they create awesome
-              tools to help create filler text for everyone from bacon lovers
-              to Charlie Sheen fans.
-            </p>
-
-            <form class="form-horizontal">
-              <div class="form-group margin-bottom-none">
-                <div class="col-sm-9">
-                  <input class="form-control input-sm" placeholder="Response">
-                </div>
-                <div class="col-sm-3">
-                  <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+            <div class="box-body">
+              <p>
+                Your account is 60% complete
+              </p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete</span>
                 </div>
               </div>
-            </form>
-          </div>
-          <!-- /.post -->
-
-          <!-- Post -->
-          <div class="post">
-            <div class="user-block">
-              <img class="img-circle img-bordered-sm" src="<?php echo e(asset('ipub/dist/img/user6-128x128.jpg')); ?>" alt="User Image">
-                  <span class="username">
-                    <a href="#">Adam Jones</a>
-                    <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                  </span>
-              <span class="description">Posted 5 photos - 5 days ago</span>
             </div>
-            <!-- /.user-block -->
-            <div class="row margin-bottom">
-              <div class="col-sm-6">
-                <img class="img-responsive" src="<?php echo e(asset('ipub/dist/img/photo1.png')); ?>" alt="Photo">
+          </div>
+          <!-- end status box-->
+
+          <!-- contact List -->
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class="fa fa-link">Link/Contact List</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-              <!-- /.col -->
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <img class="img-responsive" src="<?php echo e(asset('ipub/dist/img/photo2.png')); ?>" alt="Photo">
-                    <br>
-                    <img class="img-responsive" src="<?php echo e(asset('ipub/dist/img/photo3.jpg')); ?>" alt="Photo">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <ul class="todo-list">
+                <?php if(!empty($links)): ?>
+                  <?php foreach($links as $link): ?>
+                    <li>
+                      <span class="text"><?php echo e($link->link); ?></span>
+                      <small class="label label-info"> <?php echo e($link->caption); ?> </small>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editlink"><i class="fa fa-edit"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletelink"><i class="fa fa-trash-o"></i></button>
+                      </div>
+                    </li>
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <p> It is essential that you provide links/contacts in order to be reachable by visitors to iPub. Please add a link/contact by clicking the button below. </p>
+                <?php endif; ?>
+
+              <!--  <li>
+                  <span class="text">+237 772 250 234</span>
+                  <small class="label label-info"> Phone </small>
+                  <div class="tools">
+                    <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editlink"><i class="fa fa-edit"></i></button>
+                    <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletelink"><i class="fa fa-trash-o"></i></button>
                   </div>
-                  <!-- /.col -->
-                  <div class="col-sm-6">
-                    <img class="img-responsive" src="<?php echo e(asset('ipub/dist/img/photo4.jpg')); ?>" alt="Photo">
-                    <br>
-                    <img class="img-responsive" src="<?php echo e(asset('ipub/dist/img/photo1.png')); ?>" alt="Photo">
+                </li>-->
+              </ul>
+
+              <!-- edit link/contact modal -->
+              <div class="modal fade" id="editlink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Edit Link/Contact</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group has-feedback">
+                          <input type="email" class="form-control" name="email" placeholder="Your website link, email, phone contact, P.O Box, etc">
+                          <span class="fa fa-link form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label>Select type</label>
+                          <select class="form-control select2" style="width: 100%;">
+                            <option selected="website" value = "website">Website</option>
+                            <option value = "email">Email</option>
+                            <option value = "phone">Phone</option>
+                            <option value = "address">Address</option>
+                            <option value = "pobox">P.O Box</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Add</button>
+                    </div>
                   </div>
-                  <!-- /.col -->
                 </div>
-                <!-- /.row -->
               </div>
-              <!-- /.col -->
+              <!-- edit link/contact modal -->
+
+              <!-- delete link/contact modal -->
+              <div class="modal fade" id="deletelink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Delete Link/Contact</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p> Are you sure you want to delete this? </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary">Yes</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- delete link/contact modal -->
             </div>
-            <!-- /.row -->
+            <!-- /.box-body -->
+            <div class="box-footer clearfix no-border">
+                <!-- add link/contact modal -->
+                <button type="button" class="btn btn-primary pull-right" title = "Add a link or contact information, for iPub visitors to see" data-toggle = "modal" data-target = "#addlink"><i class="fa fa-plus"></i> Add Link/Contact</button>
 
-            <ul class="list-inline">
-              <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-              <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-              </li>
-              <li class="pull-right">
-                <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                  (5)</a></li>
-            </ul>
+                <form action = "/link/add" method = "POST">
+                  <?php echo e(csrf_field()); ?>
 
-            <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                  <div class="modal fade" id="addlink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Add Link/Contact</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group has-feedback">
+                              <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
+                              <input type="text" class="form-control" name="link" placeholder="Your website link, email, phone contact, P.O Box, etc">
+                              <span class="fa fa-link form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                              <label>Select type</label>
+                              <select name = "caption" class="form-control select2" style="width: 100%;">
+                                <option selected="website" value = "website">Website</option>
+                                <option value = "email">Email</option>
+                                <option value = "phone">Phone</option>
+                                <option value = "address">Address</option>
+                                <option value = "pobox">P.O Box</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          <button type = "submit" class="btn btn-primary">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- add link/contact modal -->
+            </div>
           </div>
-          <!-- /.post -->
+          <!-- /.box -->
+
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-6" id = "invited">
+              <!-- follwers list -->
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Invited</h3>
+
+                  <div class="box-tools pull-right">
+                    <span class="label label-info">8 Recently Invited</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Alexander Pierce</a>
+                      <span class="users-list-date">Today</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user8-128x128.jpg')); ?>" alt="Inivited Image">
+                      <a class="users-list-name" href="#">Norman</a>
+                      <span class="users-list-date">Yesterday</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user7-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Jane</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user6-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">John</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Alexander</a>
+                      <span class="users-list-date">13 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user5-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Sarah</a>
+                      <span class="users-list-date">14 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user4-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Nora</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user3-128x128.jpg')); ?>" alt="Invited Image">
+                      <a class="users-list-name" href="#">Nadia</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="javascript:void(0)" class="uppercase">View All</a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+              <!-- followers list -->
+              <div class="box box-info" id = "followers">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Followers</h3>
+
+                  <div class="box-tools pull-right">
+                    <span class="label label-info">8 New Followers</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Alexander Pierce</a>
+                      <span class="users-list-date">Today</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user8-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Norman</a>
+                      <span class="users-list-date">Yesterday</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user7-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Jane</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user6-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">John</a>
+                      <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Alexander</a>
+                      <span class="users-list-date">13 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user5-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Sarah</a>
+                      <span class="users-list-date">14 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user4-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Nora</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                    <li>
+                      <img src="<?php echo e(asset('ipub/dist/img/user3-128x128.jpg')); ?>" alt="Follower Image">
+                      <a class="users-list-name" href="#">Nadia</a>
+                      <span class="users-list-date">15 Jan</span>
+                    </li>
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="javascript:void(0)" class="uppercase">View All</a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- end row -->
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="timeline">
@@ -318,63 +536,7 @@
             </li>
           </ul>
         </div>
-        <!-- /.tab-pane -->
 
-        <div class="tab-pane" id="settings">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-              <div class="col-sm-10">
-                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- /.tab-pane -->
-      </div>
       <!-- /.tab-content -->
     </div>
     <!-- /.nav-tabs-custom -->
@@ -382,7 +544,6 @@
   <!-- /.col -->
 </div>
 <!-- /.row -->
-
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

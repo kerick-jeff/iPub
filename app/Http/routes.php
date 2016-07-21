@@ -16,8 +16,15 @@ Route::get('/', function () {
 
 Route::auth();
 
+/* EmailController routes */
 Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');
 
 Route::get('/resend/{email}/{name}', 'EmailController@resendVerificationEmail');
 
+/* HomeController routes */
 Route::get('/account', 'HomeController@account');
+
+/* LinkController routes */
+Route::post('/link/add', 'LinkController@add');
+
+Route::delete('/link/remove/{id}', 'LinkController@remove');

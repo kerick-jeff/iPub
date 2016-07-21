@@ -175,11 +175,17 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    Followers <br /> 1907
                   </div>
-                  <div class="col-xs-4 text-center"> put stars </div>
+                  <div class="col-xs-4 text-center" style = "padding-left: 20px; padding-right: 20px">
+                    <i class = "fa fa-star" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-half-full" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+                  </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Invited</a>
+                    Invited <br /> 498
                   </div>
                 </div>
                 <!-- /.row -->
@@ -187,10 +193,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/account" class="btn btn-default btn-flat">Account</a>
+                  <a href="/account" class="btn btn-primary btn-flat">Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo e(url('/logout')); ?>" class="btn btn-default btn-flat">Logout</a>
+                  <a href="/logout" class="btn btn-danger btn-flat">Logout</a>
                 </div>
               </li>
             </ul>

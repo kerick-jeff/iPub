@@ -52,7 +52,7 @@
       </div>
       <div class="form-group has-feedback <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
         <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type password">
-        <span class="fa fa-circle form-control-feedback"></span>
+        <span class="glyphicon glyphicon-repeat form-control-feedback"></span>
         <?php if($errors->has('password_confirmation')): ?>
             <span class="help-block">
                 <strong><?php echo e($errors->first('password_confirmation')); ?></strong>

@@ -61,7 +61,7 @@ trait RegistersUsers
                 $request, $validator
             );
         }
-
+        
         //Auth::guard($this->getGuard())->login($this->create($request->all()));
         $this->create($request->all());
 

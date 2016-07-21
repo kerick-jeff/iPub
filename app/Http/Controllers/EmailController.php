@@ -10,6 +10,11 @@ use App\Http\Requests;
 
 class EmailController extends Controller
 {
+    /**
+    * verify the registered user's email, to give access to the user account
+    * @param String $email
+    * @param String $code
+    */
     public function verifyRegistrationEmail($email, $code) {
         $user = User::where('email', $email)->first();
         if(!empty($user) && $user->confirmed == 0){
@@ -20,11 +25,16 @@ class EmailController extends Controller
 
             return redirect('/login')->with('success', 'Your email has been verified. You can now login');
         }
-      
+
         $message = "This email has already been verified.<br /><a href = '/'>Please return back</a>";
         return view('bounce', ['message' => $message]);
     }
 
+    /**
+    * resend the verification email to the newly registered user
+    * @param String $email
+    * @param String $name
+    */
     public function resendVerificationEmail($email, $name){
       // resend verification email
       $confirmation_code = str_random(30);
