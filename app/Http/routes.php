@@ -21,10 +21,14 @@ Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistratio
 
 Route::get('/resend/{email}/{name}', 'EmailController@resendVerificationEmail');
 
-/* HomeController routes */
-Route::get('/account', 'HomeController@account');
+Route::get('/invite/{email}', 'EmailController@invite');
+
+/* AccountController routes */
+Route::get('/account', 'AccountController@index');
 
 /* LinkController routes */
 Route::post('/link/add', 'LinkController@add');
 
-Route::delete('/link/remove/{id}', 'LinkController@remove');
+Route::patch('/link/edit/{id}/{link}/{caption}', 'LinkController@edit');
+
+Route::delete('/link/delete/{id}', 'LinkController@delete');

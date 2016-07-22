@@ -22,9 +22,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function account()
-    {
-        return view('account');
-    }
+    
 
 }
