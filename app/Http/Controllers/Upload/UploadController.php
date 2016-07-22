@@ -4,23 +4,25 @@ namespace App\Http\Controllers\Upload;
 
 use Illuminate\Http\Request;
 
+use App\Pub;
 use App\User;
 use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UploadController.php extends Controller
+class UploadController extends Controller
 {
     public function storePhoto(Request $request)
     {
         // validate the inputs
-        $validate = Validator::make($request, [
+        $validate = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'required',
+            'photo' => 'required'
         ]);
          // validation ends
-         if(!$validate){
-             return redirect('/upload/photo')->withErrors()->withInput();
+         if($validate->fails()){
+             return redirect('/upload/photo')->withErrors($validate)->withInput();
          }
 
         $type = 'image';
@@ -29,22 +31,22 @@ class UploadController.php extends Controller
         $user_id = $request->input('user_id');
         $category = $request->input('category');
         $subcategory = $request->input('subcategory');
-        $photo = Request::file('photo');
-        $userName = User::find('$userId')->value('name');
-        $mimeType = $photo->getClientMimeType();
+        $photo = $request->file('photo');
+        $user_name = User::find($user_id)->value('name');
+        $mime_type = $photo->getClientMimeType();
         $filename = $photo->getClientOriginalName();
-        $size = $photo=>getClientSize();
+        $size = $photo->getClientSize();
         $data = getimagesize($photo);
         $width = $data[0];
         $height = $data[1];
 
-        if(Request::hasFile('photo') && $photo->isValid() ){  // check file exists and valid
+        if($request->hasFile('photo') && $photo->isValid() ){  // check file exists and valid
             if( $size > 10240){  // check file size
                 if($width >= 510.5){ //check file dimensions
-                    if ($mimeType != null && substr($mimeType, 0, strlen($type)) === '$type')) {   // checkong mime type
+                    if ($mime_type != null && substr($mime_type, 0, strlen($type)) === $type) {   // checkong mime type
                         // It starts with 'http'
-                        $destinationPath = 'storage/app/public/' . $user_id . '-' . $userName . '/photo';
-                        $photo->move($destinationPath, $name);
+                        $destination_path = 'storage/app/public/' . $user_id . '-' . $user_name . '/photo';
+                        $photo->move($destination_path, $filename);
 
                         Pub::create([
                             'user_id' => $user_id,
@@ -55,8 +57,9 @@ class UploadController.php extends Controller
                             'category' => $category,
                             'subcategory' => $subcategory
                         ]);
+                        return back()->with('success', 'Your image was successfully uploaded');
                     }   // mime type check ends
-                    else{ return redirect('/upload/photo')->with('typeError', 'The image you uploaded is not an image. Please upload an image.');}
+                    else{ return redirect('/upload/photo')->with('typeError', 'The file you uploaded is not an image. Please upload an image.');}
                 } // dimensions check ends
                 else{ return redirect('/upload/photo')->with('widthError', 'The image you uploaded is too small. Please get a larger image. ');}
             } // file size check ends

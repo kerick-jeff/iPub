@@ -35,26 +35,71 @@
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <?php if(session('success')): ?>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <?php echo e(session('success')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if(session('typeError')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('typeError')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if(session('widthError')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('widthError')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if(session('sizeError')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('sizeError')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if(session('fileError')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <?php echo e(session('fileError')); ?>
+
+                    </div>
+                <?php endif; ?>
               <div class="panel-body">
-                  <div class="timeline-item " style="background:none; ">
-                      <div class="fileUpload btn  btn-file btn-primary" style="width:98%;">
-                          <span> CLICK HERE TO CHOOSE</span>
-                          <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px">
-                      </div>
-                      <span style="margin-left:9px;">
-                          <input id="uploadFile" placeholder="Choose File" disabled="disabled" style="width:98%;margin-left:2px; border-radius:3px"/>
-                      </span>
+                  <div class="timeline-item " style="background:none;margin-top:-20px ">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
-                          <form action="<?php echo e(url('/photo/store')); ?>" method="POST" style="width:101%;">
+                          <form action="<?php echo e(url('/photo/store')); ?>" method="POST" style="width:101%;" enctype="multipart/form-data">
                              <?php echo e(csrf_field()); ?>
 
-                             <div class="form-group has-feedback" >
-                                 <label for="title">Title</label>
-                                    <input type="text" class="form-control" name="title" value="Title" placeholder="Title" style="border-radius:3px" >
+                             <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
+                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px">
                              </div>
-                             <div class="form-group has-feedback">
+                             <span style="margin-left:2px;">
+                                 <input id="uploadFile" placeholder="Choose File" name="photo" disabled="disabled" style="width:100%; border-radius:3px"/>
+                             </span>
+                             <div class="form-group has-feedback  <?php echo e($errors->has('title') ? ' has-error' : ''); ?>" >
+                                 <label for="title">Title</label>
+                                 <input type="text" class="form-control" name="title" placeholder="Title" style="border-radius:3px" >
+                                 <?php if($errors->has('title')): ?>
+                                     <span class="help-block">
+                                         <strong><?php echo e($errors->first('title')); ?></strong>
+                                     </span>
+                                 <?php endif; ?>
+                             </div>
+                             <div class="form-group has-feedback  <?php echo e($errors->has('description') ? ' has-error' : ''); ?>">
                                  <label for="description">Brief description</label>
-                                    <textarea type="text" class="form-control" name="description" rows="3" value="Brief description" placeholder="Brief description" style="border-radius:3px"></textarea>
+                                 <textarea type="text" class="form-control" name="description" rows="3" value="Brief description" placeholder="Brief description" style="border-radius:3px"></textarea>
+                                 <?php if($errors->has('description')): ?>
+                                     <span class="help-block">
+                                         <strong><?php echo e($errors->first('description')); ?></strong>
+                                     </span>
+                                 <?php endif; ?>
                              </div>
                              <div class="form-group has-feedback">
                                  <label for="category">Category</label>
