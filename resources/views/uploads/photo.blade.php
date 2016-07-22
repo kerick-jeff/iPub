@@ -108,8 +108,8 @@
                                  </select>
                              </div>
                              <div class="form-group has-feedback">
-                                 <label for="subcategory">Sub-category</label>
-                                 <select class="form-control" name="subcategory" style="border-radius:3px">
+                                 <label for="sub_category">Sub-category</label>
+                                 <select class="form-control" name="sub_category" style="border-radius:3px">
                                    <option value="electronics">Electronics</option>
                                    <option value="fashion">Fashion</option>
                                    <option value="sports">Sports</option>

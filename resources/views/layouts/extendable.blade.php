@@ -58,8 +58,8 @@
 
                 @if (Auth::guest())
 
-                     <li style="right: 270%"><a href="" >Pubs</a></li>
-                      <li style="right: 270%"><a href="" >About Us</a></li>
+                     <li style="right: 270%"><a href="/pubs" >Pubs</a></li>
+                      <li style="right: 270%"><a href="/about" >About Us</a></li>
                     <li>
                         <a href="{{ url('/login') }}" id = "colored">Login
                         </a>
@@ -72,8 +72,8 @@
 
           <!-- Messages: style can be found in dropdown.less-->
 
-               <li style="right: 120%"><a href="" >Pubs</a></li>
-                <li style="right: 120%"><a href="" >About Us</a></li>
+               <li style="right: 120%"><a href="/pubs" >Pubs</a></li>
+                <li style="right: 120%"><a href="/about" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -175,13 +175,17 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    Followers <br /> 1907
+                  </div>
+                  <div class="col-xs-4 text-center" style = "padding-left: 20px; padding-right: 20px">
+                    <i class = "fa fa-star" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-half-full" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+                    <i class = "fa fa-star-o" style = "color: #FFC733"></i>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    Invited <br /> 498
                   </div>
                 </div>
                 <!-- /.row -->
@@ -189,10 +193,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/account" class="btn btn-primary btn-flat">Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/logout" class="btn btn-danger btn-flat">Logout</a>
                 </div>
               </li>
             </ul>

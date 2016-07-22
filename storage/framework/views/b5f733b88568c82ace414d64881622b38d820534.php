@@ -8,8 +8,8 @@
 
         <div>
             Thank you for creating an account with iPub<br/>
-            Please follow the link below to verify your email address
-            <?php echo e(URL::to('register/verify/'.$email.'/'.$confirmation_code)); ?>.
+            Please follow the link below to verify your email address or click on the
+            <a href="<?php echo e(url('register/verify/'.$email.'/'.$confirmation_code)); ?>"><?php echo e(url('register/verify/'.$email.'/'.$confirmation_code)); ?></a>
         </div>
 
     </body>

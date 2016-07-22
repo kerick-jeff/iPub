@@ -2,9 +2,21 @@
 
 @section('title', 'Registration')
 
+<!-- provide author and page desc -->
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/countrylist/build/css/countrySelect.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/countrylist/build/css/demo.css') }}">
+    <style media="screen">
+        #country {
+            width: 319px;
+        }
+        @@media (max-width: 767px) {
+            #country {
+                width: 183px;
+            }
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -41,7 +53,7 @@
       </div>
       <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
         <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type password">
-        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <span class="glyphicon glyphicon-repeat form-control-feedback"></span>
         @if ($errors->has('password_confirmation'))
             <span class="help-block">
                 <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -58,7 +70,7 @@
           </select>
       </div>
       <div class="form-group has-feedback">
-          <input type="text" id = "country" name="country" class="form-control " placeholder="country">
+          <input type="text" id = "country" name="country" class="form-control" placeholder="country">
           <input type="hidden" name="country_code">
 
           <script src="{{ asset('js/jquery.min.js')}}"></script>
@@ -74,7 +86,7 @@
           <div class="checkbox icheck">
               <input type="checkbox" name = "terms"> I agree to the <a href="#">terms and conditions</a>
               @if ($errors->has('terms'))
-                  <span class="help-block" style = "color: #DD4B39;">
+                  <span class="help-block" style = "color: #DD4B39 !important;;">
                       <strong>{{ $errors->first('terms') }}</strong>
                   </span>
               @endif

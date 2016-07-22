@@ -15,7 +15,8 @@ class CreatePubsTable extends Migration
         Schema::create('pubs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('caption', 255);
+            $table->string('title', 255);
+            $table->text('description');
             $table->boolean('type')->default(0); // media file type [0 => image, 1 => video]
             $table->string('filename', 255); // media filename, depending on the type specified
             $table->string('category');

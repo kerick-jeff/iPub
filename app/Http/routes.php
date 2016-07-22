@@ -1,6 +1,4 @@
 <?php
-
-use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,29 +16,15 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/register/verify/{email}/{code}', function($email, $code){
-    $user = User::where('email', $email)->first();
-    if(!empty($user) && $user->confirmed == 0){
-        $user->update(['confirmation_code' => $code, 'confirmed' => 1]);
-        return redirect('/login')->with('success', 'Your email has been verified. You can now login');
-    }
-    return '<a href = "/register">Please register an account to activate!</a>';
-});
+/* EmailController routes */
+Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');
 
-Route::get('/resend/{email}/{name}', function($email, $name){
-    // send verification email
-    $confirmation_code = str_random(30);
+Route::get('/resend/{email}/{name}', 'EmailController@resendVerificationEmail');
 
-    $send = Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $email], function($message) use ($name, $email) {
-        $message->from('frukerickjeff@gmail.com', 'iPub');
-        $message->to($email, $name)
-                ->subject('Verify your email address');
-    });
-    return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
-});
-
+/* HomeController routes */
 Route::get('/account', 'HomeController@account');
 
+/* UploadController routes */
 Route::get('/upload/photo',function(){
     return view('uploads.photo');
 });
@@ -52,3 +36,8 @@ Route::get('/upload/video', function(){
 });
 
 Route::post('/video/store', 'Upload\UploadController@storeVideo');
+
+/* LinkController routes */
+Route::post('/link/add', 'LinkController@add');
+
+Route::delete('/link/remove/{id}', 'LinkController@remove');

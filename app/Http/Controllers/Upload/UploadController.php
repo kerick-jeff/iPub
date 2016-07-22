@@ -30,7 +30,7 @@ class UploadController extends Controller
         $description = $request->input('description');
         $user_id = $request->input('user_id');
         $category = $request->input('category');
-        $subcategory = $request->input('subcategory');
+        $sub_category = $request->input('sub_category');
         $photo = $request->file('photo');
         $user_name = User::find($user_id)->value('name');
         $mime_type = $photo->getClientMimeType();
@@ -55,7 +55,7 @@ class UploadController extends Controller
                             'type' => $type,
                             'filename' => $filename,
                             'category' => $category,
-                            'subcategory' => $subcategory
+                            'sub_category' => $sub_category
                         ]);
                         return back()->with('success', 'Your image was successfully uploaded');
                     }   // mime type check ends
