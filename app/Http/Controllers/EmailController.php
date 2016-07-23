@@ -59,12 +59,17 @@ class EmailController extends Controller
      * an authenticated user can invite someone through email to follow his pubs on iPub
      * @param String $email
      */
-    public function invite(Request $request, $email){
-        Mail::send('emails.invite', ['user' => Auth::user()], function($message) use ($email){
+    public function invite(Request $request){
+        $email = $request->email;
+        $send = Mail::send('emails.invite', ['user' => Auth::user(), 'email' => $email], function($message) use ($email){
             $message->from('frukerickjeff@gmail.com', 'iPub');
             $message->to($email)
                     ->subject('iPub. Invitation to follow');
         });
-        return redirect('/account')->with('success', 'Your invitation has been sent to '.$email);
+        if($send){
+            return redirect('/account')->with('success', 'Your invitation has been sent to '.$email);
+        } else {
+            return redirect('/account')->with('failure', 'Sending your invitation to'.$email." failed");
+        }
     }
 }

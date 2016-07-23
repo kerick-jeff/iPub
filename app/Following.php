@@ -19,7 +19,7 @@ class Following extends Model
      * 0 or more followings belong to a follower_id
      * @return \App\Follower
      */
-     public follower(){
+     public function follower(){
         return $this->belongsTo('App\Follower');
      }
 }

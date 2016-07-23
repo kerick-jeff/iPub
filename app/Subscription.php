@@ -11,6 +11,7 @@ class Subscription extends Model
     * @var array;
     */
     protected $fillable = [
+        'user_id',
         'type',
         'amount',
         'start_date',

@@ -18,6 +18,23 @@
 
     </div>
 <?php endif; ?>
+<!-- alert user of successfully sending an invitation -->
+<?php if(session('success')): ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-check"></i> <br />
+         <?php echo e(session('success')); ?>
+
+    </div>
+<?php endif; ?>
+<?php if(session('failure')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> <br />
+         <?php echo e(session('failure')); ?>
+
+    </div>
+<?php endif; ?>
 
 <div class="row">
   <div class="col-md-3">
@@ -56,6 +73,8 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <form action="/invite" method="POST">
+                <?php echo e(csrf_field()); ?>
+
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Invite someone to follow you on iPub</h4>

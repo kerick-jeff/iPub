@@ -14,9 +14,10 @@ class CreateFollowersTable extends Migration
     {
         Schema::create('followers', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('name', 255);
-            $table->String('email', 255)->unique();
-            $table->picture('picture', 255);
+            $table->integer('user_id')->unsigned();
+            $table->String('name', 255)->nullable();
+            $table->String('email', 255);
+            $table->String('picture', 255)->nullable();
             $table->timestamps();
         });
     }
