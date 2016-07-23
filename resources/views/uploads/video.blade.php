@@ -22,7 +22,7 @@
 @endsection
 
 @section('breadcrumb')
-<ol class="breadcrumb">
+<ol class="breadcrumb" style="margin-top:-15px">
     <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
     <li>Upload</li>
     <li>Video</li>
@@ -30,8 +30,8 @@
 @endsection
 
 @section('content')
-<section class="content">
-    <div class="callout callout-warning">
+<section class="content" style="margin-top:-35px">
+    <div class="callout callout-info">
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p>Your video should be less <b>120secs</b>.  Click 'SEE ALL VIDEOS' to see older videos</p>
     </div>
@@ -46,31 +46,31 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 @if(session('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         {{ session('success') }}
                     </div>
                 @endif
                 @if(session('typeError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          {{ session('typeError') }}
                     </div>
                 @endif
                 @if(session('lengthError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          {{ session('lengthError') }}
                     </div>
                 @endif
                 @if(session('fileError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          {{ session('fileError') }}
                     </div>
                 @endif
               <div class="panel-body">
-                  <div class="timeline-item " style="background:none; ">
+                  <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
                           <form action="{{ url('/video/store') }}" method="POST" style="width:101%;" enctype="multipart/form-data">
                              {{ csrf_field() }}

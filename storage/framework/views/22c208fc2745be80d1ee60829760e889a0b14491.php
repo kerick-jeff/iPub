@@ -20,7 +20,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
-<ol class="breadcrumb">
+<ol class="breadcrumb" style="margin-top:-15px">
     <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
     <li>Upload</li>
     <li>Photo</li>
@@ -28,8 +28,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-<section class="content">
-    <div class="callout callout-warning">
+<section class="content" style="margin-top:-35px">
+    <div class="callout callout-info">
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</p>
     </div>
@@ -44,42 +44,42 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <?php if(session('success')): ?>
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <?php echo e(session('success')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('typeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('typeError')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('widthError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('widthError')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('sizeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('sizeError')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('fileError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('fileError')); ?>
 
                     </div>
                 <?php endif; ?>
               <div class="panel-body">
-                  <div class="timeline-item " style="background:none;margin-top:-20px ">
+                  <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
                           <form action="<?php echo e(url('/photo/store')); ?>" method="POST" style="width:101%;" enctype="multipart/form-data">
                              <?php echo e(csrf_field()); ?>
@@ -148,21 +148,23 @@
             <div class="panel-heading" role="tab" id="headingTwo">
               <h4 class="panel-title">
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  See all photos
+                 See all photos
                 </a>
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                         <div class="timeline-item">  <!-- timeline-item start -->
-                            <!---- CREATE ROWS FOR PHOTOS> EACH ROW HAS TW PHOTOS --->
+                            <!---- CREATE ROWS FOR PHOTOS> EACH ROW HAS TWO PHOTOS --->
+                            <?php for($i = 0; $i < 3; $i++): ?>
                             <div class="row" style="margin-left:-7.5%"><!-- row start -->
+                                <?php for($j = 0; $j < 2; $j++): ?>
                               <div class="col-md-6"><!-- COL _1 start -->
                                 <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
-                                      <span class="username">The title </span>
-                                      <span class="description">Shared publicly - 7:30 PM Today</span>
+                                      <span class="username"><?php echo e($photos[$i+$j]->title); ?></span>
+                                      <span class="description">Shared publicly - <?php echo e($photos[$i+$j]->created_at); ?></span>
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -174,42 +176,21 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src="<?php echo e(asset('ipub/dist/img/photo2.png')); ?>" alt="Photo">
+                                    <img class="img-responsive pad" src="storage/app/public/<?php echo e(asset('public/'.$user_id.'-'.$user_name)); ?>/photo/<?php echo e($photos[$i+$j]->filename); ?>" alt="Photo">
+                                    <?php echo e(asset('public/'.$user_id.'-'.$user_name)); ?>/photo/<?php echo e($photos[$i+$j]->filename); ?>
 
-                                    <p style="margin-left:10px">I took this photo this morning. What do you guys think?</p>
-                                    <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="<?php echo e(asset('/photo/edit')); ?>" style="color:#fff">Edit</a></button>
-                                    <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="<?php echo e(asset('/photo/delete')); ?>" style="color:#fff">Delete</a></button>
-                                    <span class="pull-right text-muted">127 views - 80 ratings</span>
+                                    <p style="margin-left:10px"><?php echo e($photos[$i+$j]->description); ?></p>
+                                    <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="<?php echo e(url('/photo/edit/'.$photos[$i+$j]->id)); ?>" style="color:#fff">Edit</a></button>
+                                    <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="<?php echo e(url('/photo/delete'.$photos[$i+$j]->id)); ?>" style="color:#fff">Delete</a></button>
+                                    <span class="pull-right text-muted"><?php echo e($photos[$i+$j]->views); ?> views - <?php echo e($photos[$i+$j]->ratings); ?> ratings</span>
                                   </div>
                                 </div>
-                            </div> <!-- COL _1 end-->
-                            <div class="col-md-6"><!-- COL _1 start -->
-                              <div class="box box-widget">
-                                <div class="box-header with-border">
-                                  <div class="user-block" style="margin-left:-40px">
-                                    <span class="username">The title</span>
-                                    <span class="description">Shared publicly - 7:30 PM Today</span>
-                                  </div>
-                                  <!-- /.user-block -->
-                                  <div class="box-tools">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                  </div>
-                                  <!-- /.box-tools -->
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                  <img class="img-responsive pad" src="<?php echo e(asset('ipub/dist/img/photo1.png')); ?>" alt="Photo">
-
-                                  <p style="margin-left:10px">I took this photo this morning. What do you guys think?</p>
-                                  <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="<?php echo e(asset('/photo/edit')); ?>" style="color:#fff">Edit</a></button>
-                                  <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="<?php echo e(asset('/photo/delete')); ?>" style="color:#fff">Delete</a></button>
-                                  <span class="pull-right text-muted">127 views - 80 ratings</span>
-                                </div>
-                              </div>
-                          </div> <!-- COL _1 end-->
+                              </div> <!-- COL _1 end-->
+                              <?php endfor; ?>
                             </div> <!-- row end -->
+                            <?php endfor; ?>
+                            <?php echo e($photos->links()); ?>
+
                         </div><!-- timeline-item end -->
                     </div><!-- panel-body start -->
                 </div><!-- /.collapsible end -->

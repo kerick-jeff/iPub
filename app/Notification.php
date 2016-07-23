@@ -11,6 +11,7 @@ class Notification extends Model
     * @var array
     */
     protected $fillable = [
+        'user_id',
         'body',
         'status',
         'on_board'

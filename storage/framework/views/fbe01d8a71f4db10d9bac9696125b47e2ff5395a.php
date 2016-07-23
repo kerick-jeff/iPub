@@ -20,7 +20,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
-<ol class="breadcrumb">
+<ol class="breadcrumb"  style="margin-top:-15px">
     <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
     <li>Upload</li>
     <li>Video</li>
@@ -28,8 +28,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-<section class="content">
-    <div class="callout callout-warning">
+<section class="content" style="margin-top:-35px">
+    <div class="callout callout-info">
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p>Your video should be less <b>120secs</b>.  Click 'SEE ALL VIDEOS' to see older videos</p>
     </div>
@@ -72,7 +72,7 @@
                     </div>
                 <?php endif; ?>
               <div class="panel-body">
-                  <div class="timeline-item " style="background:none; ">
+                  <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
                           <form action="<?php echo e(url('/video/store')); ?>" method="POST" style="width:101%;" enctype="multipart/form-data">
                              <?php echo e(csrf_field()); ?>
