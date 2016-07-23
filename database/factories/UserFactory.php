@@ -21,10 +21,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'country' => $faker->country,
         'country_code' => $faker->countryCode,
         'stars' => $faker->numberBetween(1,5),
-        'status' => $faker->boolean,
+        'confirmed' => $faker->boolean,
         'geo_latitude' => $faker->latitude,
         'geo_longitude' => $faker->longitude,
         'password' => bcrypt(str_random(10)),
+        'confirmation_code' => str_random(255),
         'remember_token' => str_random(10)
     ];
 });

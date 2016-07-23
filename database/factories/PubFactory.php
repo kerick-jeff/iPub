@@ -14,7 +14,8 @@
 $factory->define(App\Pub::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $faker->numberBetween(1,25),
-        'caption' => $faker->word,
+        'title' => $faker->word,
+        'description' => $faker->paragraph,
         'type' => $faker->boolean,
         'filename' => str_random(15).$faker->fileExtension,
         'category' => $faker->word,

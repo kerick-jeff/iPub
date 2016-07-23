@@ -47,7 +47,6 @@ class UploadController extends Controller
                         // It starts with 'http'
                         $destination_path = 'storage/app/public/' . $user_id . '-' . $user_name . '/photo';
                         $photo->move($destination_path, $filename);
-
                         Pub::create([
                             'user_id' => $user_id,
                             'title' => $title,
@@ -69,5 +68,54 @@ class UploadController extends Controller
     }
 
 
+    public function storeVideo(Request $request)
+    {
+        // validate the inputs
+        $validate = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'video' => 'required'
+        ]);
+         // validation ends
+         if($validate->fails()){
+             return redirect('/upload/video')->withErrors($validate)->withInput();
+         }
+
+        $type = 'video';
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $user_id = $request->input('user_id');
+        $category = $request->input('category');
+        $sub_category = $request->input('sub_category');
+        $video = $request->file('video');
+        $user_name = User::find($user_id)->value('name');
+        $mime_type = $video->getClientMimeType();
+        $filename = $video->getClientOriginalName();
+        ///$length = $video->getClientLength();   GET THE LENGTH OF THE VIDEO
+
+        if($request->hasFile('video') && $video->isValid() ){  // check file exists and valid
+                if(1){ //check file length
+                    if ($mime_type != null && substr($mime_type, 0, strlen($type)) === $type) {   // checkong mime type
+                        // It starts with 'http'
+                        $destination_path = 'storage/app/public/' . $user_id . '-' . $user_name . '/video';
+                        $video->move($destination_path, $filename);
+
+                        Pub::create([
+                            'user_id' => $user_id,
+                            'title' => $title,
+                            'description' => $description,
+                            'type' => $type,
+                            'filename' => $filename,
+                            'category' => $category,
+                            'sub_category' => $sub_category
+                        ]);
+                        return back()->with('success', 'Your video was successfully uploaded');
+                    }   // mime type check ends
+                    else{ return redirect('/upload/video')->with('typeError', 'The file you uploaded is not a video. Please upload a video.');}
+                } // length check ends
+                else{ return redirect('/upload/video')->with('lengthError', 'The videos you uploaded is more than 120secs. Please get a shorter video.');}
+        }   // file exists and valid end
+        else{ return redirect('/upload/video')->with('fileError', 'No valid file has been uploaded.');}
+    }
 
 }

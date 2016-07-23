@@ -21,6 +21,14 @@
 </style>
 @endsection
 
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
+    <li>Upload</li>
+    <li>Video</li>
+</ol>
+@endsection
+
 @section('content')
 <section class="content">
     <div class="callout callout-warning">
@@ -37,25 +45,79 @@
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if(session('typeError'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         {{ session('typeError') }}
+                    </div>
+                @endif
+                @if(session('lengthError'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         {{ session('lengthError') }}
+                    </div>
+                @endif
+                @if(session('fileError'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         {{ session('fileError') }}
+                    </div>
+                @endif
               <div class="panel-body">
                   <div class="timeline-item " style="background:none; ">
-                      <div class="fileUpload btn  btn-file btn-primary" style="width:98%;">
-                          <span> CLICK HERE TO CHOOSE</span>
-                          <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px">
-                      </div>
-                      <span style="margin-left:9px;">
-                          <input id="uploadFile" placeholder="Choose File" disabled="disabled" style="width:98%;margin-left:2px; border-radius:3px"/>
-                      </span>
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
-                          <form action="{{ url('/video/store') }}" method="POST" style="width:101%;">
+                          <form action="{{ url('/video/store') }}" method="POST" style="width:101%;" enctype="multipart/form-data">
                              {{ csrf_field() }}
-                             <div class="form-group has-feedback" >
+                             <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
+                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px">
+                             </div>
+                             <span style="margin-left:2px;">
+                                 <input id="uploadFile" placeholder="Choose File" name="video" disabled="disabled" style="width:100%;border-radius:3px"; border-radius:3px"/>
+                             </span>
+                             <div class="form-group has-feedback {{ $errors->has('title') ? ' has-error' : '' }}" >
                                  <label for="title">Title</label>
                                     <input type="text" class="form-control" name="title" value="Title" placeholder="Title" style="border-radius:3px" >
+                                    @if ($errors->has('title'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
+                                    @endif
                              </div>
-                             <div class="form-group has-feedback">
+                             <div class="form-group has-feedback  {{ $errors->has('description') ? ' has-error' : '' }}">
                                  <label for="description">Brief description</label>
                                     <textarea type="text" class="form-control" name="description" rows="3" value="Brief description" placeholder="Brief description" style="border-radius:3px"></textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('description') }}</strong>
+                                        </span>
+                                    @endif
+                             </div>
+                             <div class="form-group has-feedback">
+                                 <label for="category">Category</label>
+                                 <select class="form-control" name="category" style="border-radius:3px">
+                                   <option value="electronics">Electronics</option>
+                                   <option value="fashion">Fashion</option>
+                                   <option value="sports">Sports</option>
+                                   <option value="health">Health</option>
+                                   <option value="ngo">NGO</option>
+                                 </select>
+                             </div>
+                             <div class="form-group has-feedback">
+                                 <label for="sub_category">Sub-category</label>
+                                 <select class="form-control" name="sub_category" style="border-radius:3px">
+                                   <option value="electronics">Electronics</option>
+                                   <option value="fashion">Fashion</option>
+                                   <option value="sports">Sports</option>
+                                   <option value="health">Health</option>
+                                   <option value="ngo">NGO</option>
+                                 </select>
                              </div>
                              @if(Auth::check())
                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
@@ -83,7 +145,7 @@
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                         <div class="timeline-item">  <!-- timeline-item start -->
-                            <!---- CREATE ROWS FOR PHOTOS> EACH ROW HAS TW PHOTOS --->
+                            <!---- CREATE ROWS FOR VIDEOS> EACH ROW HAS TW VIDEOS --->
                             <div class="row" style="margin-left:-7.5%"><!-- row start -->
 
                                 <!-- DO A FOREACH HERE TO SHOW ALL THE VIDEOS -->

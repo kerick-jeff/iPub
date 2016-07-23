@@ -19,6 +19,14 @@
 </style>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('breadcrumb'); ?>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
+    <li>Upload</li>
+    <li>Photo</li>
+</ol>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <section class="content">
     <div class="callout callout-warning">

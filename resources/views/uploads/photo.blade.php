@@ -21,6 +21,14 @@
 </style>
 @endsection
 
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
+    <li>Upload</li>
+    <li>Photo</li>
+</ol>
+@endsection
+
 @section('content')
 <section class="content">
     <div class="callout callout-warning">
