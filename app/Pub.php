@@ -15,7 +15,6 @@ class Pub extends Model
         'title',
         'description',
         'type',
-        'filename',
         'category',
         'sub_category',
         'priority',
@@ -24,8 +23,16 @@ class Pub extends Model
     ];
 
     /**
+    * a pub has one or more pub files
+    * @return \App\PubFile
+    */
+    public function pubFiles(){
+        return $this->hasMany('App\PubFile');
+    }
+
+    /**
     * 0 or more pubs can be made by a user
-    * @return User
+    * @return \App\User
     */
     public function user(){
         return $this->belongsTo('App\User');

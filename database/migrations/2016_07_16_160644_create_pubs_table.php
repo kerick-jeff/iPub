@@ -18,7 +18,6 @@ class CreatePubsTable extends Migration
             $table->string('title', 255);
             $table->text('description');
             $table->boolean('type')->default(0); // media file type [0 => image, 1 => video]
-            $table->string('filename', 255); // media filename, depending on the type specified
             $table->string('category');
             $table->string('sub_category');
             $table->enum('priority', [0, 1, 2, 3]);
