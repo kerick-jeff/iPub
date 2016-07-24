@@ -178,8 +178,8 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src="storage/app/public/{{ asset('public/'.$user_id.'-'.$user_name)}}/photo/{{$photos[$i+$j]->filename}}" alt="Photo">
-                                    {{ asset('public/'.$user_id.'-'.$user_name)}}/photo/{{$photos[$i+$j]->filename}}
+                                    <img class="img-responsive pad" src="{{storage_path()}}/app/public/{{$user_id}}-{{$user_name}}/photo/{{$photos[$i+$j]->filename}}" alt="Photo">
+                                    {{ storage_path()}}/app/public/{{$user_id}}-{{$user_name}}/photo/{{$photos[$i+$j]->filename}}
                                     <p style="margin-left:10px">{{ $photos[$i+$j]->description }}</p>
                                     <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="{{ url('/photo/edit/'.$photos[$i+$j]->id) }}" style="color:#fff">Edit</a></button>
                                     <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="{{ url('/photo/delete'.$photos[$i+$j]->id) }}" style="color:#fff">Delete</a></button>

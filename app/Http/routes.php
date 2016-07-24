@@ -9,6 +9,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('images/{filename}', function ($filename)
+{
+    return Image::make(storage_path() . '/app/public/2-Trodrige/photo/' . $filename)->response();
+});
 
 Route::get('/storage', function(){
     $storagePath  = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();

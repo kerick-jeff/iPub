@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Upload;
 use Illuminate\Http\Request;
 
 use Auth;
+use Image;
 use App\Pub;
 use Storage;
 use App\User;
@@ -38,21 +39,26 @@ class UploadController extends Controller
         $user_id = $request->input('user_id');
         $category = $request->input('category');
         $sub_category = $request->input('sub_category');
-        $photo = $request->file('photo');
+        //$photo = $request->file('photo');
+        $photo = Image::make($request->file('photo'));
+    //    $size = $photo->filesize();
+        //$file = $request->file('photo')->getRealPath();
         $user_name = User::find($user_id)->value('name');
-        $mime_type = $photo->getClientMimeType();
-        $filename = $photo->getClientOriginalName();
-        $size = Storage::size($photo);
-        $data = getimagesize($photo);
-        $width = $data[0];
-        $height = $data[1];
+        //$mime_type = $photo->getClientMimeType();
+        $mime_type = $photo->mime();
+        $filename = $request->file('photo')->getClientOriginalName();
+        //$extension = $request->file('photo')->getClientOriginalExtension();
+        $size = Storage::getSize($photo);
+        $width = $photo->width();
 
-        if($request->hasFile('photo') && $photo->isValid() ){  // check file exists and valid
-            if( $size > 10485760){  // check file size
+        if($request->hasFile('photo') && $request->file('photo')->isValid() ){  // check file exists and valid
+            if( 1){  // check file size
                 if($width >= 510.5){ //check file dimensions
+                    $photo = $photo->resize(510,800);
                     if ($mime_type != null && substr($mime_type, 0, strlen($type)) === $type) {   // check mime type
-                        $destination_path = $user_id . '-' . $user_name . '/photo/' . $filename;
-                        Storage::disk('public')->put($destination_path ,file_get_contents($photo->getRealPath()) );
+                        $destination_path = storage_path().'/app/public/' . $user_id . '-' . $user_name . '/photo/' . $filename;
+                        //Storage::disk('public')->put($destination_path ,file_get_contents($photo->getRealPath()) );
+                        $photo->save($destination_path, 70);
                         Pub::create([
                             'user_id' => $user_id,
                             'title' => $title,
@@ -72,6 +78,12 @@ class UploadController extends Controller
         }   // file exists and valid end
         else{ return redirect('/upload/photo')->with('fileError', 'No valid file has been uploaded.');}
     }
+
+    Route::get('images/{filename}', function ($filename)
+    {
+        return Image::make(storage_path() . '/app/public/2-Trodrige/photo/' . $filename)->response();
+    });
+
 
     public function showPhoto()
     {
@@ -99,7 +111,27 @@ class UploadController extends Controller
         }
     }
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
