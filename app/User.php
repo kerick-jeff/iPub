@@ -16,7 +16,6 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'password',
-        'profile_picture',
         'description',
         'country',
         'country_code',
@@ -36,6 +35,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * a user has one profile picture
+     * @return App\ProfilePicture
+     */
+    public function profilePicture(){
+        return $this->hasOne('App\ProfilePicture');
+    }
 
     /**
      * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address
