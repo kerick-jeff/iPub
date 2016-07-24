@@ -14,16 +14,16 @@
     <?php endif; ?>
     <?php if(session('warning')): ?>
         <div class="alert alert-warning alert-dismissible" role="alert">
-            <i class = "icon fa fa-warning"></i> <br />
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <?php echo e(session('warning')); ?>
+            <i class = "icon fa fa-warning"></i> <br />
+            <?php echo e(session('warning')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('success')): ?>
         <div class="alert alert-success alert-dismissible" role="alert">
-             <i class = "icon fa fa-check"></i> <br />
              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <i class = "icon fa fa-check"></i> <br />
              <?php echo e(session('success')); ?>
 
         </div>

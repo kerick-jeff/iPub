@@ -12,6 +12,28 @@
 @endsection
 
 @section('content')
+<!-- display any errors stored in the $errors array-->
+@if($errors->has('link'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ $errors->first('link') }}
+    </div>
+@endif
+<!-- alert user of successfully sending an invitation -->
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-check"></i> <br />
+         {{ session('success') }}
+    </div>
+@endif
+@if(session('failure'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> <br />
+         {{ session('failure') }}
+    </div>
+@endif
 
 <div class="row">
   <div class="col-md-3">
@@ -49,20 +71,23 @@
         <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-labelledby="Invite" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Invite someone to follow you on iPub</h4>
-              </div>
-              <div class="modal-body">
-                <div class="form-group has-feedback">
-                  <input type="email" class="form-control" name="email" placeholder="Email">
-                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <form action="/invite" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Invite someone to follow you on iPub</h4>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Invite</button>
-              </div>
+                <div class="modal-body">
+                  <div class="form-group has-feedback">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Invite</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -102,7 +127,7 @@
         </p>
         <hr>
 
-        @if(!empty(Auth::user()))
+        @if(!empty(Auth::user()->phone_number))
           <strong><i class="icon fa fa-phone"></i> Phone </strong>
           <p class="text-muted">
             ( {{ Auth::user()->country_code}} ) {{ chunk_split(Auth::user()->phone_number, 3) }}
@@ -182,8 +207,8 @@
                       <span class="text">{{ $link->link }}</span>
                       <small class="label label-info"> {{ $link->caption }} </small>
                       <div class="tools">
-                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editlink"><i class="fa fa-edit"></i></button>
-                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletelink"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editlink" data-lid = "{{ $link->id }}" data-link = "{{ $link->link }}" data-caption = "{{ $link->caption }}"><i class="fa fa-edit"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletelink" data-lid = "{{ $link->id }}"><i class="fa fa-trash-o"></i></button>
                       </div>
                     </li>
                   @endforeach
@@ -198,27 +223,33 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Edit Link/Contact</h4>
+                      <h4 class="modal-title" id="editlinkLabel">Edit Link/Contact</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group has-feedback">
-                          <input type="email" class="form-control" name="email" placeholder="Your website link, email, phone contact, P.O Box, etc">
+                          <input type="text" class="form-control" name="link" id = "link" placeholder="Your website link, email, phone contact, fax, zip code, etc">
                           <span class="fa fa-link form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
                           <label>Select type</label>
-                          <select class="form-control select2" style="width: 100%;">
+                          <select name = "caption" class="form-control select2" id = "caption" style="width: 100%;">
                             <option selected="website" value = "website">Website</option>
                             <option value = "email">Email</option>
                             <option value = "phone">Phone</option>
+                            <option value = "fax">Fax</option>
                             <option value = "address">Address</option>
-                            <option value = "pobox">P.O Box</option>
+                            <option value = "zip code">Zip Code</option>
                           </select>
                         </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Add</button>
+                      <form id="editform" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        <input type="hidden" name="lid" id = "lid" >
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -231,14 +262,18 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete Link/Contact</h4>
+                        <h4 class="modal-title" id="deletelinkLabel">Delete Link/Contact</h4>
                       </div>
                       <div class="modal-body">
                           <p> Are you sure you want to delete this? </p>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Yes</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                        <form id="deleteform" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-primary">Yes</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -262,7 +297,7 @@
                         <div class="modal-body">
                             <div class="form-group has-feedback">
                               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                              <input type="text" class="form-control" name="link" placeholder="Your website link, email, phone contact, P.O Box, etc">
+                              <input type="text" class="form-control" name="link" placeholder="Your website link, email, phone contact, fax, zip code, etc">
                               <span class="fa fa-link form-control-feedback"></span>
                             </div>
                             <div class="form-group has-feedback">
@@ -271,14 +306,15 @@
                                 <option selected="website" value = "website">Website</option>
                                 <option value = "email">Email</option>
                                 <option value = "phone">Phone</option>
+                                <option value = "fax">Fax</option>
                                 <option value = "address">Address</option>
-                                <option value = "pobox">P.O Box</option>
+                                <option value = "zip code">Zip Code</option>
                               </select>
                             </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           <button type = "submit" class="btn btn-primary">Add</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
@@ -291,81 +327,11 @@
 
           <!-- row -->
           <div class="row">
-            <div class="col-md-6" id = "invited">
-              <!-- follwers list -->
-              <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Invited</h3>
-
-                  <div class="box-tools pull-right">
-                    <span class="label label-info">8 Recently Invited</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Alexander Pierce</a>
-                      <span class="users-list-date">Today</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user8-128x128.jpg') }}" alt="Inivited Image">
-                      <a class="users-list-name" href="#">Norman</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user7-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Jane</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user6-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">John</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Alexander</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user5-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Sarah</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user4-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Nora</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user3-128x128.jpg') }}" alt="Invited Image">
-                      <a class="users-list-name" href="#">Nadia</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                  </ul>
-                  <!-- /.users-list -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="javascript:void(0)" class="uppercase">View All</a>
-                </div>
-                <!-- /.box-footer -->
-              </div>
-              <!--/.box -->
-            </div>
-            <!-- /.col -->
+            <!-- followers list -->
             <div class="col-md-6">
-              <!-- followers list -->
               <div class="box box-info" id = "followers">
                 <div class="box-header with-border">
                   <h3 class="box-title">Followers</h3>
-
                   <div class="box-tools pull-right">
                     <span class="label label-info">8 New Followers</span>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -429,7 +395,87 @@
               <!--/.box -->
             </div>
             <!-- /.col -->
+
+            <!-- recently added products -->
+          <div class = "col-md-6">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Recently Added Pubs</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <ul class="products-list product-list-in-box">
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Samsung TV
+                        <span class="label label-warning pull-right">$1800</span></a>
+                          <span class="product-description">
+                            Samsung 32" 1080p 60Hz LED Smart HDTV.
+                          </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Bicycle
+                        <span class="label label-info pull-right">$700</span></a>
+                          <span class="product-description">
+                            26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                          </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
+                          <span class="product-description">
+                            Xbox One Console Bundle with Halo Master Chief Collection.
+                          </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title">PlayStation 4
+                        <span class="label label-success pull-right">$399</span></a>
+                          <span class="product-description">
+                            PlayStation 4 500GB Console (PS4)
+                          </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                </ul>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer text-center">
+                <a href="javascript:void(0)" class="uppercase">View All</a>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
           </div>
+          <!-- /.col -->
+          </div>
+
+          <!-- recently added pubs -->
           <!-- end row -->
         </div>
         <!-- /.tab-pane -->
@@ -535,4 +581,31 @@
   <!-- /.col -->
 </div>
 <!-- /.row -->
+
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+    //when edit link/contact modal is about to be shown
+    $("#editlink").on('show.bs.modal', function(e){
+        var lid = $(e.relatedTarget).data('lid');
+        var link = $(e.relatedTarget).data('link');
+        var caption = $(e.relatedTarget).data('caption');
+        $("#editlink #lid").val(lid);
+        $("#editlink #link").val(link);
+        $("#editlink #caption").val(caption);
+        $("#editform").submit(function(){
+            var newlink = $("#editlink #link").val();
+            var newcaption = $("#editlink #caption").val();
+            $("#editform").attr("action", "/link/edit/" + lid + "/" + newlink + "/" + newcaption);
+        });
+    });
+
+    //when delete link/contact modal is about to be shown
+    $("#deletelink").on('show.bs.modal', function(e){
+        var lid = $(e.relatedTarget).data('lid');
+        $("#deletelink #lid").val(lid);
+        $("#deleteform").attr("action", "/link/delete/" + lid);
+    });
+</script>
 @endsection

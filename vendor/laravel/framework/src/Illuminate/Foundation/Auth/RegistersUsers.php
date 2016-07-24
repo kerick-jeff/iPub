@@ -61,17 +61,17 @@ trait RegistersUsers
                 $request, $validator
             );
         }
-        
+
         //Auth::guard($this->getGuard())->login($this->create($request->all()));
         $this->create($request->all());
 
         // send verification email
         $confirmation_code = str_random(30);
 
-        $send = Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $request->input('email')], function($message) use ($request) {
+        Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $request->input('email')], function($message) use ($request) {
             $message->from('frukerickjeff@gmail.com', 'iPub');
             $message->to($request->input('email'), $request->input('name'))
-                    ->subject('Verify your email address');
+                    ->subject('iPub. Verify your email address');
         });
 
         return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $request->input('email'), 'name' => $request->input('name')]);

@@ -16,6 +16,12 @@
         opacity: 0;
         filter: alpha(opacity=0);
     }
+
+    @media(max-width: 767px) {
+        #collapseOne {
+            padding-right: 35px;
+        }
+    }
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -144,7 +150,7 @@
               </div>
             </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="panel2">
             <div class="panel-heading" role="tab" id="headingTwo">
               <h4 class="panel-title">
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

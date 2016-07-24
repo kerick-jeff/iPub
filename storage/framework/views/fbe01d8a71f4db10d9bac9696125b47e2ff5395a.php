@@ -16,11 +16,17 @@
         opacity: 0;
         filter: alpha(opacity=0);
     }
+
+    @media(max-width: 767px) {
+        #collapseOne {
+            padding-right: 35px;
+        }
+    }
 </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
-<ol class="breadcrumb"  style="margin-top:-15px">
+<ol class="breadcrumb" style="margin-top:-15px">
     <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
     <li>Upload</li>
     <li>Video</li>
@@ -44,28 +50,28 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <?php if(session('success')): ?>
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <?php echo e(session('success')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('typeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('typeError')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('lengthError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('lengthError')); ?>
 
                     </div>
                 <?php endif; ?>
                 <?php if(session('fileError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                          <?php echo e(session('fileError')); ?>
 

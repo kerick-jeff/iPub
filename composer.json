@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "intervention/image": "^2.3",
+        "intervention/imagecache": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -19,8 +21,8 @@
 	      "laravel/cashier": "~5.0",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "captcha-com/laravel-captcha": "4.*",
-	    "paypal/rest-api-sdk-php": "*",
-	    "laravel/cashier": "~5.0"
+  	    "paypal/rest-api-sdk-php": "*",
+  	    "laravel/cashier": "~5.0"
     },
     "autoload": {
         "classmap": [

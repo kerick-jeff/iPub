@@ -18,6 +18,12 @@
         opacity: 0;
         filter: alpha(opacity=0);
     }
+
+    @@media (max-width: 767px) {
+        #collapseOne {
+            padding-right: 35px;
+        }
+    }
 </style>
 @endsection
 

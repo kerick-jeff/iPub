@@ -15,15 +15,15 @@
     @endif
     @if(session('warning'))
         <div class="alert alert-warning alert-dismissible" role="alert">
-            <i class = "icon fa fa-warning"></i> <br />
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             {{ session('warning') }}
+            <i class = "icon fa fa-warning"></i> <br />
+            {{ session('warning') }}
         </div>
     @endif
     @if(session('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
-             <i class = "icon fa fa-check"></i> <br />
              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <i class = "icon fa fa-check"></i> <br />
              {{ session('success') }}
         </div>
     @endif

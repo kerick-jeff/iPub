@@ -10,6 +10,11 @@
 |
 */
 
+Route::get('/storage', function(){
+    $storagePath  = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+    return view('storage', ['path' => $storagePath]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,8 +26,10 @@ Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistratio
 
 Route::get('/resend/{email}/{name}', 'EmailController@resendVerificationEmail');
 
-/* HomeController routes */
-Route::get('/account', 'HomeController@account');
+Route::post('/invite', 'EmailController@invite', ['middleware' => 'auth']);
+
+/* AccountController routes */
+Route::get('/account', 'AccountController@index');
 
 /* UploadController routes */
 
@@ -41,4 +48,11 @@ Route::post('/video/store', 'Upload\UploadController@storeVideo');
 
 /* LinkController routes */
 Route::post('/link/add', 'LinkController@add');
-Route::delete('/link/remove/{id}', 'LinkController@remove');
+
+Route::patch('/link/edit/{id}/{link}/{caption}', 'LinkController@edit');
+
+Route::delete('/link/delete/{id}', 'LinkController@delete');
+
+/* FollowController routes */
+// an invited visitor or guest agrees to follow an iPub user on iPub
+Route::get('/follow/agree/{user_id}/{user_name}/{email}', 'FollowController@agree');

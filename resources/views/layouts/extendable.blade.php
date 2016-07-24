@@ -193,10 +193,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/account" class="btn btn-primary btn-flat">Account</a>
+                  <a href="/account" class="btn btn-primary btn-flat"><i class = "fa fa-user"></i> &nbsp; Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="/logout" class="btn btn-danger btn-flat">Logout</a>
+                  <a href="/logout" class="btn btn-danger btn-flat">Logout &nbsp; <i class = "fa fa-sign-out"></i></a>
                 </div>
               </li>
             </ul>
@@ -236,5 +236,8 @@
 <!-- AdminLTE for demo purposes -->
 <!--        <script src="../../dist/js/demo.js"></script>     -->
 <script src="{{ asset('ipub/dist/js/demo.js') }}"></script>
+
+@yield('javascript')
+
 </body>
 </html>
