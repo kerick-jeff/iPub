@@ -11,7 +11,7 @@
     cursor: pointer;
   }
 
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     #profile {
       width: 100%;
       height: 250px;
@@ -69,27 +69,20 @@
               <hr />
 
               <!-- set phone contact -->
-              <form action = "/settings/phone-contact" method = "POST">
+              <form action = "/settings/phone-number" method = "POST">
+                <?php echo e(csrf_field()); ?>
+
                 <strong><i class = "fa fa-phone"></i>&nbsp; Phone Contact </strong>
                 <div class="form-group has-feedback">
-                  <input type="tel" id = "phone" class="form-control" name="phone_number" placeholder="e.g 672 250 234">
-                  <script src="js/jquery.min.js"></script>
-                  <script src="js/countrytel/build/js/intlTelInput.js"></script>
-                  <script>
-                      $("#phone").intlTelInput({
-                          geoIpLookup: function(callback) {
-                              $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-                                  var countryCode = (resp && resp.country) ? resp.country : "";
-                                  callback(countryCode);
-                                });
-                              },
-                              separateDialCode: true,
-                              utilsScript: "js/countrytel/build/js/utils.js"
-                      });
-                  </script>
+                  <input type="tel" id = "phone" class="form-control" name="phone_number" placeholder = "<?php echo e(Auth::user()->phone_number); ?>">
+                  <?php if($errors->has('phone_number')): ?>
+                      <span class="help-block" style = "color: #DD4B39 !important;;">
+                          <strong><?php echo e($errors->first('phone_number')); ?></strong>
+                      </span>
+                  <?php endif; ?>
                 </div>
                 <div class="form-group has-feedback">
-                  <button type="button" class = "btn btn-primary btn-block" title = "Set your phone number">Set phone number</button>
+                  <button type="submit" class = "btn btn-primary btn-block" title = "Set your phone number">Set phone number</button>
                 </div>
               </form>
               <hr />
@@ -124,21 +117,13 @@
                   <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
                   <textarea class="form-control" rows="8" placeholder="Map"></textarea>
                 </div>
-                <div class="form-group has-feedback">
-                  <select class="form-control" name="longitude" style = "width: 40%; display: inline">
-                    <option>Longitude</option>
-                    <?php for($i = 1; $i <= 360; $i++){ ?>
-                        <option value=""><?php echo e($i); ?></option>
-                    <?php } ?>
-                  </select>
+                <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
+                  <strong>Longitude</strong>
+                  <input type="number" class = "form-control" name="longitude" value = "180" min = "1" max = "360">
                 </div>
-                <div class = "form-group has-feedback">
-                  <select class="form-control" name="latitude" style = "width: 40%; display: inline; clear: Both">
-                    <option>Latitude</option>
-                    <?php for($i = 1; $i <= 360; $i++){ ?>
-                        <option value=""><?php echo e($i); ?></option>
-                    <?php } ?>
-                  </select>
+                <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
+                  <strong>Latitude</strong>
+                  <input type="number" class = "form-control" name="latitude" value="180" min = "1" max = "360">
                 </div>
                 <div class="form-group has-feedback">
                   <input type="submit" name="location" class = "btn btn-primary" value="Set">
@@ -168,11 +153,33 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascript'); ?>
-  <script type="text/javascript">
+<script src="js/jquery.min.js"></script>
+<script src="js/countrytel/build/js/intlTelInput.js"></script>
+<script type="text/javascript">
+    $("#phone").intlTelInput({
+        geoIpLookup: function(callback) {
+            $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                var countryCode = (resp && resp.country) ? resp.country : "";
+                callback(countryCode);
+            });
+        },
+        initialCountry: "auto",
+        numberType: "MOBILE",
+        nationalMode: true,
+        autoPlaceholder: true,
+        separateDialCode: true,
+        utilsScript: "js/countrytel/build/js/utils.js"
+    });
+
+    $("form").submit(function(){
+        var p = phone_number.val(phone_number.intlTelInput("getNumber"));
+        alert();
+    });
+
     function fiopen(){
        document.getElementById('file').click();
     }
-  </script>
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -40,6 +40,8 @@ Route::get('/settings', 'SettingsController@settings');
 
 Route::post('/settings/profile-picture', 'SettingsController@setProfilePicture');
 
+Route::post('/settings/phone-number', 'SettingsController@setPhoneNumber');
+
 /* EmailController routes */
 Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');
 
