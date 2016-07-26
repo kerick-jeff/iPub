@@ -23,7 +23,11 @@ class AccountController extends Controller
     public function index()
     {
         // links/contacts of authenticated user
-        $links = User::find(Auth::user()->id)->links;
-        return view('account', ['links' => $links]);
+        $links = Auth::user()->links;
+
+        // get an authenticated user's followers
+        $followers = Auth::user()->followers()->get();
+        
+        return view('account', ['links' => $links, 'followers' => $followers]);
     }
 }

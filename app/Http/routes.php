@@ -9,10 +9,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/storage', function(){
-    $storagePath  = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
-    return view('storage', ['path' => $storagePath]);
+Route::get('/photos', function(){
+    $photos = ['8577innovation-is-great-British-Embassy.jpg', 'AZ-home-rebrand_02.jpg', 'IMAG0787.jpg', 'rain.jpeg'];
+    return view('photos', ['photos' => $photos]);
+});
+Route::get('/photo/{name}', function($name){
+  $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+  return Image::make($path."/".$name)->response("jpg");
 });
 
 Route::get('/', function () {
@@ -20,6 +23,22 @@ Route::get('/', function () {
 });
 
 Route::auth();
+
+/* Profile Picture route */
+Route::get('/profilePicture', function(){
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+    if(!empty(Auth::user()->profile_picture)){
+        return Image::make($path."/".Auth::user()->profile_picture)->response("jpg");
+    }
+
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+    return Image::make($path."prayer.jpg")->response("jpg");
+});
+
+/* SettingsController routes */
+Route::get('/settings', 'SettingsController@settings');
+
+Route::post('/settings/profile-picture', 'SettingsController@setProfilePicture');
 
 /* EmailController routes */
 Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');

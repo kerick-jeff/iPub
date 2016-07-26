@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
              $table->string('phone_number');
              $table->string('password', 60);
              $table->enum('type', ['individual', 'business', 'company', 'organisation', 'ngo'])->default('individual');
+             $table->string('profile_picture', 255);
              $table->text('description');
              $table->string('country');
              $table->char('country_code', 6);

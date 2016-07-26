@@ -11,7 +11,7 @@
         #country {
             width: 319px;
         }
-        @@media (max-width: 767px) {
+        @media (max-width: 767px) {
             #country {
                 width: 183px;
             }
@@ -71,8 +71,6 @@
       </div>
       <div class="form-group has-feedback">
           <input type="text" id = "country" name="country" class="form-control" placeholder="country">
-          <input type="hidden" name="country_code">
-
           <script src="{{ asset('js/jquery.min.js')}}"></script>
           <script src="{{ asset('js/countrylist/build/js/countrySelect.js') }}"></script>
           <script type="text/javascript">

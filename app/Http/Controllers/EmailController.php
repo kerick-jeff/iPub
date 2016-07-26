@@ -30,7 +30,7 @@ class EmailController extends Controller
             $link->save();
 
             // create a directory for holding content for each user upon verification
-            Storage::makeDirectory('public/'.$user->id."-".$user->name);
+            Storage::disk('public')->makeDirectory($user->id."-".$user->name);
 
             return redirect('/login')->with('success', 'Your email has been verified. You can now login');
         }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Follower;
-use App\Following;
 use App\Notification;
+use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -15,11 +16,22 @@ class FollowController extends Controller
      * @param String $email
      */
     public function agree($user_id, $user_name, $email){
-        if(Follower::where('user_id', $user_id)->where('email', $email)->first()){
+        //check if database entry already exists
+        $follower = Follower::where('user_id', $user_id)
+                    ->where('email', $email)->first();
+        if($follower){
             return redirect('/')->with(['follow' => 'You are already following '.$user_name.' on iPub', 'followHeader' => 'Invitation Already Accepted']);
         }
-        // create a follower model in the database and retrieve it or retrieve it directly if it alredy exists
-        $follower = Follower::firstOrCreate(['user_id' => $user_id, 'email' => $email]);
+
+        $user = User::find($user_id);
+        $follower = new Follower();
+        $follower->user_id = $user_id;
+        $follower->email = $email;
+        $user->followers()->save($follower);
+
+        //create a folder for the visitor
+        Storage::disk('followers')->makeDirectory($email);
+
         // notify account user of the invitation request being accepted
         $notification = new Notification();
         $notification->user_id = $user_id;
@@ -27,11 +39,6 @@ class FollowController extends Controller
         $notification->status = 0;
         $notification->on_board = 0;
         $notification->save();
-        // insert records in the following table
-        $following = new Following();
-        $following->follower_id = $follower->id;
-        $following->user_id = $user_id;
-        $following->save();
 
         return redirect('/')->with(['follow' => 'You are now following '.$user_name.' on iPub', 'followHeader' => 'Follow Status Confirmed']);
     }

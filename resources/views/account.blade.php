@@ -41,12 +41,9 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ asset('ipub/dist/img/user4-128x128.jpg') }}" alt="User profile picture">
-
-        <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-        <p class="text-muted text-center">Software Engineer</p>
-
+        <img class="profile-user-img img-responsive img-circle" src="{{ url('/profilePicture') }}" alt="User profile picture">
+        <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
+        <p class="text-muted text-center">{{ Auth::user()->type }}</p>
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
             <b>Rating</b>
@@ -123,7 +120,7 @@
 
         <strong><i class="icon fa fa-envelope"></i> Email </strong>
         <p class="text-muted">
-            frukerickjeff@gmail.com
+            {{ Auth::user()->email }}
         </p>
         <hr>
 
@@ -134,6 +131,12 @@
           </p>
           <hr>
         @endif
+
+        <strong><i class="icon fa fa-clock-o"></i> Joined on </strong>
+        <p class="text-muted">
+            {{ Auth::user()->created_at }}
+        </p>
+        <hr>
 
         <strong><i class="fa fa-list-alt"></i> Products/Services </strong>
         <p>
@@ -170,7 +173,7 @@
           <!-- status -->
           <div class="box box-info">
             <div class="box-header">
-              <h3 class = "fa fa-spinner">Status</h3>
+              <h3 class = "fa fa-spinner">&nbsp; Status</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -189,10 +192,85 @@
           </div>
           <!-- end status box-->
 
+          <!-- subscriptions box -->
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class = "fa fa-credit-card">&nbsp; Subscriptions</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <ul class="todo-list">
+                    <li>
+                      <span class="text">Video pub subscription</span>
+                      <small class="label label-info"> <i class = "fa fa-clock-o">2016-07-13 to 2016-08-13</i> </small>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#extendsubs" title = "Extend subscription"><i class="fa fa-arrow-circle-o-right"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#cancelsubs" title = "Cancel subscription"><i class="fa fa-close"></i></button>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="text">Continuous pub subscription</span>
+                      <small class="label label-info"> <i class = "fa fa-clock-o">2016-07-13 to 2016-08-13</i> </small>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#extendsubs" title = "Extend subscription"><i class="fa fa-arrow-circle-o-right"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#cancelsubs" title = "Cancel subscription"><i class="fa fa-close"></i></button>
+                      </div>
+                    </li>
+              </ul>
+            </div>
+            <div class="box-footer clearfix no-border">
+                <!-- subscription modal -->
+                <button type="button" class="btn btn-primary pull-right" title = "Subscripe for an iPub service" data-toggle = "modal" data-target = "#subscribe"><i class="fa fa-plus"></i> Add Subscription </button>
+
+                <form action = "/subscribe" method = "POST">
+                  {{ csrf_field() }}
+                  <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="Subscription" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Subscribe for an iPub service</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group has-feedback">
+                              <label>Select service</label>
+                              <select name = "service" class="form-control select2" style="width: 100%;">
+                                <option selected="video_pub_subscription" value = "video_pub_subscription">Video Pub Subscription</option>
+                                <option value = "continuous_pub_subscription">Continuous Pub Subscription</option>
+                                <option value = "priority_zone_subscription">Priority Zone Subscription</option>
+                              </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                              <label>Period (Duration of service)</label>
+                              <select name = "service" class="form-control select2" style="width: 100%;">
+                                <option selected="1" value = "1">1 month</option>
+                                <option value = "2">2 months</option>
+                                <option value = "3">3 months</option>
+                                <option value = "6">6 months</option>
+                                <option value = "12">1 year</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type = "submit" class="btn btn-primary">Subscribe</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- add link/contact modal -->
+            </div>
+          </div>
+          <!-- end subscriptions box -->
+
           <!-- contact List -->
           <div class="box box-info">
             <div class="box-header">
-              <h3 class="fa fa-link">Link/Contact List</h3>
+              <h3 class="fa fa-link">&nbsp; Link/Contact List</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -340,50 +418,19 @@
                     </button>
                   </div>
                 </div>
+
                 <!-- /.box-header -->
+                @if(count($followers) > 0)
                 <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Alexander Pierce</a>
-                      <span class="users-list-date">Today</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user8-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Norman</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user7-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Jane</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user6-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">John</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Alexander</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user5-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Sarah</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user4-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Nora</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user3-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Nadia</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                  </ul>
+                    <ul class="users-list clearfix">
+                      @foreach($followers as $follower)
+                        <li>
+                          <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
+                          {{ empty($follower->name) ? "empty is the ga" : $follower->name }}
+                          <span class="users-list-name" >{{ $follower->email }}</span>
+                        </li>
+                      @endforeach
+                    </ul>
                   <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
@@ -391,6 +438,16 @@
                   <a href="javascript:void(0)" class="uppercase">View All</a>
                 </div>
                 <!-- /.box-footer -->
+                @else
+                <div class="box-body no-padding">
+                    <p style = "margin-left: 30%">You have no followers!</p>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to follow you on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
+                </div>
+                <!-- /.box-footer -->
+                @endif
               </div>
               <!--/.box -->
             </div>

@@ -9,7 +9,7 @@
         #country {
             width: 319px;
         }
-        @media(max-width: 767px) {
+        @media (max-width: 767px) {
             #country {
                 width: 183px;
             }
@@ -70,8 +70,6 @@
       </div>
       <div class="form-group has-feedback">
           <input type="text" id = "country" name="country" class="form-control" placeholder="country">
-          <input type="hidden" name="country_code">
-
           <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
           <script src="<?php echo e(asset('js/countrylist/build/js/countrySelect.js')); ?>"></script>
           <script type="text/javascript">
@@ -93,7 +91,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
         </div>
         <!-- /.col -->
       </div>
@@ -101,9 +99,9 @@
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+      <a href="#" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign up using
         Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+      <a href="#" class="btn btn-block btn-social btn-google"><i class="fa fa-google-plus"></i> Sign up using
         Google+</a>
     </div>
 

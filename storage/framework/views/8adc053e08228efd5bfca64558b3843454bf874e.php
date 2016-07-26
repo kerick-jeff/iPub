@@ -72,8 +72,8 @@
 
           <!-- Messages: style can be found in dropdown.less-->
 
-               <li style="right: 120%"><a href="/pubs" >Pubs</a></li>
-                <li style="right: 120%"><a href="/about" >About Us</a></li>
+          <li style="right: 120%"><a href="/pubs" >Pubs</a></li>
+          <li style="right: 120%"><a href="/about" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -158,7 +158,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="user-image" alt="User Image">
+              <img src="<?php echo e(url('/profilePicture')); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo e(Auth::user()->name); ?></span>
             </a>
             <ul class="dropdown-menu">

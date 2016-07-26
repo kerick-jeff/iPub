@@ -22,7 +22,7 @@
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo e(url('/profilePicture')); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo e(Auth::user()->name); ?></p>
@@ -124,9 +124,9 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.5
+      <b>Version</b> 1.0.1
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; <?php echo e(date('Y')); ?> <a href="/">iPub.com</a>.</strong> All rights
     reserved.
   </footer>
 

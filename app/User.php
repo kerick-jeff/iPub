@@ -81,6 +81,6 @@ class User extends Authenticatable
      * @return App\Follower
      */
     public function followers(){
-        return $this->hasMany('App\Follower');
+        return $this->belongsToMany('App\Follower');
     }
 }
