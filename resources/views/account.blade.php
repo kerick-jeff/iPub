@@ -19,6 +19,7 @@
         {{ $errors->first('link') }}
     </div>
 @endif
+
 <!-- alert user of successfully sending an invitation -->
 @if(session('success'))
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -27,6 +28,7 @@
          {{ session('success') }}
     </div>
 @endif
+
 @if(session('failure'))
     <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -104,18 +106,20 @@
       </div>
       <!-- /.box-header -->
       <div class="box-body">
-        <strong><i class="icon fa fa-file-text"></i> Description </strong>
-        <p class="text-muted">
-          B.S. in Computer Science from the University of Tennessee at Knoxville
-        </p>
-        <a href = "/setings#description" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>Edit</a>
-        <hr>
+        @if(!empty(Auth::user()->description))
+          <strong><i class="icon fa fa-file-text"></i> Description </strong>
+          <textarea class="text-muted" rows = "8" style = "border: none; width: 100%; margin-bottom: 5%" disabled >
+            {{ Auth::user()->description }}
+          </textarea>
+          <a href = "/setings#description" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>&nbsp;Edit</a>
+          <hr>
+        @endif
 
         <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
         <p class="text-muted">
           Malibu, California
         </p>
-        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>Set</a>
+        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>&nbsp;Set</a>
         <hr>
 
         <strong><i class="icon fa fa-envelope"></i> Email </strong>
@@ -426,7 +430,7 @@
                       @foreach($followers as $follower)
                         <li>
                           <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
-                          {{ empty($follower->name) ? "empty is the ga" : $follower->name }}
+                          {{ empty($follower->name) ? "empty is the game" : $follower->name }}
                           <span class="users-list-name" >{{ $follower->email }}</span>
                         </li>
                       @endforeach

@@ -42,6 +42,12 @@ Route::post('/settings/profile-picture', 'SettingsController@setProfilePicture')
 
 Route::post('/settings/phone-number', 'SettingsController@setPhoneNumber');
 
+Route::post('/settings/security', 'SettingsController@setSecurity');
+
+Route::post('/settings/description', 'SettingsController@setDescription');
+
+Route::post('/settings/location', 'SettingsController@setLocation');
+
 /* EmailController routes */
 Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');
 
@@ -62,3 +68,6 @@ Route::delete('/link/delete/{id}', 'LinkController@delete');
 /* FollowController routes */
 // an invited visitor or guest agrees to follow an iPub user on iPub
 Route::get('/follow/agree/{user_id}/{user_name}/{email}', 'FollowController@agree');
+
+/* PubsController routes */
+Route::get('/pubs', 'PubsController@pubs');

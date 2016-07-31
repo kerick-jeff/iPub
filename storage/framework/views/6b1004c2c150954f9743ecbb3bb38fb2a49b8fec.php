@@ -18,6 +18,7 @@
 
     </div>
 <?php endif; ?>
+
 <!-- alert user of successfully sending an invitation -->
 <?php if(session('success')): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -27,6 +28,7 @@
 
     </div>
 <?php endif; ?>
+
 <?php if(session('failure')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -106,18 +108,21 @@
       </div>
       <!-- /.box-header -->
       <div class="box-body">
-        <strong><i class="icon fa fa-file-text"></i> Description </strong>
-        <p class="text-muted">
-          B.S. in Computer Science from the University of Tennessee at Knoxville
-        </p>
-        <a href = "/setings#description" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>Edit</a>
-        <hr>
+        <?php if(!empty(Auth::user()->description)): ?>
+          <strong><i class="icon fa fa-file-text"></i> Description </strong>
+          <textarea class="text-muted" rows = "8" style = "border: none; width: 100%; margin-bottom: 5%" disabled >
+            <?php echo e(Auth::user()->description); ?>
+
+          </textarea>
+          <a href = "/setings#description" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>&nbsp;Edit</a>
+          <hr>
+        <?php endif; ?>
 
         <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
         <p class="text-muted">
           Malibu, California
         </p>
-        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>Set</a>
+        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>&nbsp;Set</a>
         <hr>
 
         <strong><i class="icon fa fa-envelope"></i> Email </strong>
@@ -437,7 +442,7 @@
                       <?php foreach($followers as $follower): ?>
                         <li>
                           <img src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="Follower Image">
-                          <?php echo e(empty($follower->name) ? "empty is the ga" : $follower->name); ?>
+                          <?php echo e(empty($follower->name) ? "empty is the game" : $follower->name); ?>
 
                           <span class="users-list-name" ><?php echo e($follower->email); ?></span>
                         </li>

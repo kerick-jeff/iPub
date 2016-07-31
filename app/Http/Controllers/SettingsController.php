@@ -51,12 +51,14 @@ class SettingsController extends Controller
                 File::Delete($old);
             }
         }
+
         return redirect('/settings');
     }
 
     public function setPhoneNumber(Request $request){
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required',
+            'dial_code' => 'required|max:6',
         ], ['phone_number.required' => 'Please enter your phone number']);
 
         if($validator->fails()){
@@ -65,7 +67,61 @@ class SettingsController extends Controller
             );
         }
 
-        return $request->phone_number;
+        User::where('id', Auth::user()->id)
+            ->update(['phone_number' => $request->phone_number, 'dial_code' => $request->dial_code]);
+
+        return redirect('/settings');
     }
 
+    public function setSecurity(Request $request){
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if($validator->fails()){
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        User::where('id', Auth::user()->id)
+            ->update(['password' => bcrypt($request->password)]);
+
+        return redirect('/settings');
+    }
+
+    public function setDescription(Request $request){
+        $validator = Validator::make($request->all(), [
+            'description' => 'required',
+        ], ['description.required' => 'Please provide a brief description']);
+
+        if($validator->fails()){
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        User::where('id', Auth::user()->id)
+            ->update(['description' => $request->description]);
+
+        return redirect('/settings');
+    }
+
+    public function setLocation(Request $request){
+        $validator = Validator::make($request->all(), [
+            'geo_longitude' => 'required|max:3',
+            'geo_latitude' => 'required|max:3',
+        ], ['required.geo_longitude' => 'Please set the longitude of your location', 'geo_latitude.required' => 'Please set the latitude of your location']);
+
+        if($validator->fails()){
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        User::where('id', Auth::user()->id)
+            ->update(['geo_longitude' => $request->geo_longitude, 'geo_latitude' => $request->geo_latitude]);
+
+        return redirect('/settings');
+    }
 }

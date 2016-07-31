@@ -26,8 +26,8 @@ class AccountController extends Controller
         $links = Auth::user()->links;
 
         // get an authenticated user's followers
-        $followers = Auth::user()->followers()->get();
-        
+        $followers = Auth::user()->followers()->get(); 
+
         return view('account', ['links' => $links, 'followers' => $followers]);
     }
 }

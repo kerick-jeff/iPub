@@ -84,7 +84,7 @@
           <div class="checkbox icheck">
               <input type="checkbox" name = "terms"> I agree to the <a href="#">terms and conditions</a>
               @if ($errors->has('terms'))
-                  <span class="help-block" style = "color: #DD4B39 !important;;">
+                  <span class="help-block" style = "color: #DD4B39 !important;">
                       <strong>{{ $errors->first('terms') }}</strong>
                   </span>
               @endif

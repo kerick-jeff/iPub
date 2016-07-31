@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
              $table->string('profile_picture', 255);
              $table->text('description');
              $table->string('country');
-             $table->char('country_code', 6);
-             $table->string('geo_longitude', 3);
-             $table->string('geo_latitude', 3);
-             $table->enum('stars', [1, 2, 3, 4, 5])->default(1);
+             $table->char('dial_code', 6);
+             $table->char('geo_longitude', 3);
+             $table->char('geo_latitude', 3);
+             $table->enum('stars', [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5])->default(0);
              $table->integer('invited')->default(0);
              $table->integer('followers')->default(0);
              $table->boolean('confirmed')->default(0); // unconfirmed user account(false), confirmed user account(true)
