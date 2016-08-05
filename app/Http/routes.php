@@ -35,6 +35,18 @@ Route::get('/profilePicture', function(){
     return Image::make($path."prayer.jpg")->response("jpg");
 });
 
+/* UploadController routes*/
+Route::get('/upload/photo', 'UploadController@showPhoto');
+Route::get('/upload/video', function(){
+    return view('upload.video');
+});
+Route::put('/photo/store', 'UploadController@storePhoto');
+Route::put('/video/store', 'UploadController@storeVideo');
+Route::patch('/photo/edit', 'UploadController@editPhoto');
+Route::patch('/video/edit', 'UploadController@editVideo');
+Route::delete('/photo/delete', 'UploadController@deletePhoto');
+Route::delete('/video/delete', 'UploadController@deleteVideo');
+
 /* SettingsController routes */
 Route::get('/settings', 'SettingsController@settings');
 

@@ -16,10 +16,10 @@ class ComposerStaticInit504a5d3afc0b9ee1c4413fd3b6da96b6
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'c78728b4802e1a9e0e9e89908b46d100' => __DIR__ . '/..' . '/captcha-com/laravel-captcha/src/Support/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'c78728b4802e1a9e0e9e89908b46d100' => __DIR__ . '/..' . '/captcha-com/laravel-captcha/src/Support/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -322,7 +322,6 @@ class ComposerStaticInit504a5d3afc0b9ee1c4413fd3b6da96b6
         'CreateLinksTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160840_create_links_table.php',
         'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160606_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160539_create_password_resets_table.php',
-        'CreateProfilePicturesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_24_123720_create_profile_pictures_table.php',
         'CreatePubFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_24_123701_create_pub_files_table.php',
         'CreatePubsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160644_create_pubs_table.php',
         'CreateSubscriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160628_create_subscriptions_table.php',

@@ -64,13 +64,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/uploads/photo') }}"><i class="fa fa-photo"></i> Photo
+            <li><a href="{{ url('/upload/photo') }}"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
                 </a>
             </li>
-            <li><a href="{{ url('/uploads/video') }}"><i class="fa fa-video-camera"></i> Video
+            <li><a href="{{ url('/upload/video') }}"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>

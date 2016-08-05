@@ -62,13 +62,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo e(url('/uploads/photo')); ?>"><i class="fa fa-photo"></i> Photo
+            <li><a href="<?php echo e(url('/upload/photo')); ?>"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
                 </a>
             </li>
-            <li><a href="<?php echo e(url('/uploads/video')); ?>"><i class="fa fa-video-camera"></i> Video
+            <li><a href="<?php echo e(url('/upload/video')); ?>"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>

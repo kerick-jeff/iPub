@@ -10,7 +10,6 @@ return array(
     'CreateLinksTable' => $baseDir . '/database/migrations/2016_07_16_160840_create_links_table.php',
     'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_07_16_160606_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_07_16_160539_create_password_resets_table.php',
-    'CreateProfilePicturesTable' => $baseDir . '/database/migrations/2016_07_24_123720_create_profile_pictures_table.php',
     'CreatePubFilesTable' => $baseDir . '/database/migrations/2016_07_24_123701_create_pub_files_table.php',
     'CreatePubsTable' => $baseDir . '/database/migrations/2016_07_16_160644_create_pubs_table.php',
     'CreateSubscriptionsTable' => $baseDir . '/database/migrations/2016_07_16_160628_create_subscriptions_table.php',
