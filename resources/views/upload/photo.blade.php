@@ -178,8 +178,8 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src="{{ $storage }}{{ $pub_files[$i + $j]->filename }}" alt="Photo">
-                                    {{ $storage }}{{ $pub_files[$i + $j]->filename }}
+                                    <img class="img-responsive pad" src="{{ $storage }}{{ $pub_files[$i] }}" alt="Photo">
+                                    {{ $storage }}{{ $pub_files[$i] }}
                                     <p style="margin-left:10px">{{ $photos[$i+$j]->description }}</p>
                                     <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="{{ url('/photo/edit/'.$photos[$i+$j]->id) }}" style="color:#fff">Edit</a></button>
                                     <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="{{ url('/photo/delete'.$photos[$i+$j]->id) }}" style="color:#fff">Delete</a></button>

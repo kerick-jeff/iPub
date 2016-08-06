@@ -22,7 +22,7 @@
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo e(url('/profilePicture')); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo e(asset('ipub/dist/img/avatar.png')); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo e(Auth::user()->name); ?></p>

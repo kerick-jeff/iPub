@@ -41,7 +41,7 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ url('/profilePicture') }}" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="{{ asset('ipub/dist/img/avatar.png') }}" alt="User profile picture">
         <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
         <p class="text-muted text-center">{{ Auth::user()->type }}</p>
         <ul class="list-group list-group-unbordered">
@@ -425,7 +425,7 @@
                     <ul class="users-list clearfix">
                       @foreach($followers as $follower)
                         <li>
-                          <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
+                          <img src="{{ asset('ipub/dist/img/avatar.png') }}" alt="Follower Image">
                           {{ empty($follower->name) ? "empty is the ga" : $follower->name }}
                           <span class="users-list-name" >{{ $follower->email }}</span>
                         </li>
@@ -470,7 +470,7 @@
                 <ul class="products-list product-list-in-box">
                   <li class="item">
                     <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                      <img src="{{ asset('ipub/dist/img/avatar.png') }}" alt="Product Image">
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title">Samsung TV

@@ -14,7 +14,7 @@ Route::get('/photos', function(){
     return view('photos', ['photos' => $photos]);
 });
 Route::get('/photo/{name}', function($name){
-  $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+  $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
   return Image::make($path."/".$name)->response("jpg");
 });
 

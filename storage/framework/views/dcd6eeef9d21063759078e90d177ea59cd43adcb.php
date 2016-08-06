@@ -183,8 +183,8 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src="<?php echo e($storage); ?><?php echo e($pub_files[$i + $j]->filename); ?>" alt="Photo">
-                                    <?php echo e($storage); ?><?php echo e($pub_files[$i + $j]->filename); ?>
+                                    <img class="img-responsive pad" src="<?php echo e($storage); ?><?php echo e($pub_files[$i]); ?>" alt="Photo">
+                                    <?php echo e($storage); ?><?php echo e($pub_files[$i]); ?>
 
                                     <p style="margin-left:10px"><?php echo e($photos[$i+$j]->description); ?></p>
                                     <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="<?php echo e(url('/photo/edit/'.$photos[$i+$j]->id)); ?>" style="color:#fff">Edit</a></button>

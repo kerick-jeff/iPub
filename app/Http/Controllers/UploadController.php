@@ -80,32 +80,38 @@ class UploadController extends Controller
 	public function showPhoto()
 	{
         $i = $j = 0;
-        $pubs = User::find(Auth::user()->id)->pubs();
-        //$pub_files = Pub::where('pub_id', $photos[$i + $j]->id)->value('filename');
-        //$pub_files = new PubFile();
+        $photos = User::find(Auth::user()->id)->pubs();
+
         $pub_files = [];
-        $i = 0;
-        foreach ($pubs as $pub) {
-        	$pub_files[i] = PubFile::find($pub->id)->value('filename');
+        foreach ($photos as $photo) {
+        	$pub_files[$i] = Pub::find($photo->id)->pubFiles()->paginate(6);
         	$i++;
         }
 
-        $photos = $pubs->paginate(6);
-
-
-
         $storage = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".User::find(Auth::user()->id)->value('name').'/photo/';
-        var_dump($pub_files);
 
-		return view('upload.photo', [
+        $tests = Image::make($storage.'login.jpg')->response("jpg");
+
+        $image = [];
+        foreach ($pub_files as $pub_file) {
+        	$image[$j] = Image::make($storage.$pub_file->filename)->response("jpg");
+	        echo '<br>';
+	        echo '<br>';
+	        $j++;
+        }
+
+	       var_dump($image);
+	        //var_dump($tests);
+        return view('upload.test');
+
+		/*return view('upload.photo', [
             'i' => $i,
             'j' => $j,
             'photos' => $photos,
             'pub_files' => $pub_files,
             'storage' => $storage,
-            'user_id' => Auth::user()->id,
-            'user_name' => Auth::user()->name,
-        ]);
+            'user' => Auth::user()->id."-".User::find(Auth::user()->id),
+        ]); */
 	}
 
 }
