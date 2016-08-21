@@ -9,14 +9,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*test routes*/
 Route::get('/photos', function(){
     $photos = ['8577innovation-is-great-British-Embassy.jpg', 'AZ-home-rebrand_02.jpg', 'IMAG0787.jpg', 'rain.jpeg'];
     return view('photos', ['photos' => $photos]);
 });
 Route::get('/photo/{name}', function($name){
-  $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
-  return Image::make($path."/".$name)->response("jpg");
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+    return Image::make($path."/".$name)->response("jpg");
 });
+Route::get('/geo', function(){
+    return view('geo');
+});
+// end test routes
 
 Route::get('/', function () {
     return view('welcome');

@@ -131,7 +131,7 @@
         @if(!empty(Auth::user()->phone_number))
           <strong><i class="icon fa fa-phone"></i> Phone </strong>
           <p class="text-muted">
-            ( {{ Auth::user()->country_code}} ) {{ chunk_split(Auth::user()->phone_number, 3) }}
+            ( +{{ Auth::user()->dial_code}} ) {{ chunk_split(Auth::user()->phone_number, 3) }}
           </p>
           <hr>
         @endif

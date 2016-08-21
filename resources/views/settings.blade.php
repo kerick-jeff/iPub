@@ -67,7 +67,7 @@
                 {{ csrf_field() }}
                 <strong><i class = "fa fa-phone"></i>&nbsp; Phone Contact </strong>
                 <div class="form-group has-feedback">
-                  <input type="tel" id = "phone" class="form-control" name="phone_number" placeholder = "{{ Auth::user()->phone_number }}">
+                  <input type="tel" id = "phone" class="form-control" name="phone_number" >
                   @if ($errors->has('phone_number'))
                       <span class="help-block" style = "color: #DD4B39 !important;">
                           <strong>{{ $errors->first('phone_number') }}</strong>
@@ -114,10 +114,15 @@
               <!-- location form -->
               <form action="/settings/location" method="POST">
                 {{ csrf_field() }}
+                <div class="hidden">
+                    <input type="hidden" id = "latitude" name="latitude" value="{{ Auth::user()->geo_latitude }}">
+                    <input type="hidden" id = "longitude" name="longitude" value="{{ Auth::user()->geo_longitude }}">
+                </div>
+
                 <div class="form-group has-feedback">
                   <strong><i class = "fa fa-map-marker"></i> Location </strong>
                   <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
-                  <textarea class="form-control" rows="8" placeholder="Map"></textarea>
+                  <div id = "map"> </div>
                 </div>
                 <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
                   <strong>Longitude</strong>
@@ -166,6 +171,27 @@
 
 <script src="js/countrytel/build/js/intlTelInput.js"></script>
 <script type="text/javascript">
+    //map
+    var latitude = $("#latitude").val();
+    var longitude = $("#longitude").val();
+
+    if(latitude != "" && longitude != ""){
+        displayMap(latitude, longitude);
+    } else {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function(position){
+                displayMap(position.coords.latitude, position.coords.longitude);
+            });
+        } else {
+            document.getElementById("map").innerHTML = "Sorry, geolocation services are not supported by your browser";
+        }
+    }
+
+    function displayMap(latitude, longitude){
+        document.getElementById("map").innerHTML = "<iframe style = \"width: 100%; height: 300px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"https://maps.google.com/?ll=" + latitude + "," + longitude + "&z=16&output=embed\"></iframe>";
+    }
+
+    //phoneNumber
     $("#phone").intlTelInput({
         geoIpLookup: function(callback) {
             $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
@@ -181,7 +207,9 @@
         utilsScript: "js/countrytel/build/js/utils.js",
     });
 
-    $("#phone").intlTelInput("setNumber", "+{{ Auth::user()->dial_code }} {{ Auth::user()->phone_number }}");
+    if("{{ Auth::user()->dial_code }} {{ Auth::user()->phone_number }}" != " "){
+        $("#phone").intlTelInput("setNumber", "+{{ Auth::user()->dial_code }} {{ Auth::user()->phone_number }}");
+    }
 
     $("#contactForm").submit(function(){
         var countryData = $("#phone").intlTelInput("getSelectedCountryData");
