@@ -109,8 +109,8 @@ class SettingsController extends Controller
 
     public function setLocation(Request $request){
         $validator = Validator::make($request->all(), [
-            'geo_longitude' => 'required|max:3',
-            'geo_latitude' => 'required|max:3',
+            'geo_longitude' => 'required',
+            'geo_latitude' => 'required',
         ], ['required.geo_longitude' => 'Please set the longitude of your location', 'geo_latitude.required' => 'Please set the latitude of your location']);
 
         if($validator->fails()){
@@ -120,7 +120,7 @@ class SettingsController extends Controller
         }
 
         User::where('id', Auth::user()->id)
-            ->update(['geo_longitude' => $request->geo_longitude, 'geo_latitude' => $request->geo_latitude]);
+            ->update(['geo_latitude' => $request->geo_latitude, 'geo_longitude' => $request->geo_longitude]);
 
         return redirect('/settings');
     }

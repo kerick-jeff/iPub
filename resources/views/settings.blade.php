@@ -124,13 +124,23 @@
                   <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
                   <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
                 </div>
-                <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
-                  <strong>Longitude</strong>
-                  <input type="number" step = "0.00001" class = "form-control" name="geo_longitude" value = "{{ empty(Auth::user()->geo_longitude) ? 180 : Auth::user()->geo_longitude }}" min = "1" max = "360">
-                </div>
                 <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
                   <strong>Latitude</strong>
-                  <input type="number" step = "0.00001" class = "form-control" name="geo_latitude" value="{{ empty(Auth::user()->geo_latitude) ? 180 : Auth::user()->geo_latitude  }}" min = "1" max = "360">
+                  <input type="number" step = "0.00001" class = "form-control" name="geo_latitude" value="{{ empty(Auth::user()->geo_latitude) ? '' : Auth::user()->geo_latitude  }}" min = "1" max = "360">
+                  @if ($errors->has('geo_latitude'))
+                      <span class="help-block" style = "color: #DD4B39 !important;">
+                          <strong>{{ $errors->first('geo_latitude') }}</strong>
+                      </span>
+                  @endif
+                </div>
+                <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
+                  <strong>Longitude</strong>
+                  <input type="number" step = "0.00001" class = "form-control" name="geo_longitude" value = "{{ empty(Auth::user()->geo_longitude) ? '' : Auth::user()->geo_longitude }}" min = "1" max = "360">
+                  @if ($errors->has('geo_longitude'))
+                      <span class="help-block" style = "color: #DD4B39 !important;">
+                          <strong>{{ $errors->first('geo_longitude') }}</strong>
+                      </span>
+                  @endif
                 </div>
                 <div class="form-group has-feedback">
                   <input type="submit" class = "btn btn-primary" value="Set">
@@ -180,9 +190,10 @@
         if(latitude != "" && longitude != ""){
             displayMap(latitude, longitude);
         } else {
-          $.getJSON("http://ipinfo.io", function(data) {
-              var latitude = data.latitude;
-              var longitude = data.longitude;
+          $.getJSON("http://www.geoplugin.net/json.gp?jsoncallback=?", function(data) {
+              var latitude = data.geoplugin_latitude;
+              var longitude = data.geoplugin_longitude;
+            //  alert(latitude + " - " + longitude);
               displayMap(latitude, longitude);
           });
             /*if(navigator.geolocation){
