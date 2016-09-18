@@ -96,7 +96,7 @@
                   <?php endif; ?>
                 </div>
                 <div class="form-group has-feedback">
-                  <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type new password">
+                  <input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter password">
                   <span class="glyphicon glyphicon-repeat form-control-feedback"></span>
                   <?php if($errors->has('password_confirmation')): ?>
                       <span class="help-block" style = "color: #DD4B39 !important;">
@@ -124,15 +124,15 @@
                 <div class="form-group has-feedback">
                   <strong><i class = "fa fa-map-marker"></i> Location </strong>
                   <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
-                  <div id = "map"> </div>
+                  <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
                 </div>
                 <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
                   <strong>Longitude</strong>
-                  <input type="number" class = "form-control" name="geo_longitude" value = "<?php echo e(empty(Auth::user()->geo_longitude) ? 180 : Auth::user()->geo_longitude); ?>" min = "1" max = "360">
+                  <input type="number" step = "0.00001" class = "form-control" name="geo_longitude" value = "<?php echo e(empty(Auth::user()->geo_longitude) ? 180 : Auth::user()->geo_longitude); ?>" min = "1" max = "360">
                 </div>
                 <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
                   <strong>Latitude</strong>
-                  <input type="number" class = "form-control" name="geo_latitude" value="<?php echo e(empty(Auth::user()->geo_latitude) ? 180 : Auth::user()->geo_latitude); ?>" min = "1" max = "360">
+                  <input type="number" step = "0.00001" class = "form-control" name="geo_latitude" value="<?php echo e(empty(Auth::user()->geo_latitude) ? 180 : Auth::user()->geo_latitude); ?>" min = "1" max = "360">
                 </div>
                 <div class="form-group has-feedback">
                   <input type="submit" class = "btn btn-primary" value="Set">
@@ -172,26 +172,76 @@
 
 <?php $__env->startSection('javascript'); ?>
 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="js/countrytel/build/js/intlTelInput.js"></script>
 <script type="text/javascript">
     //map
-    var latitude = $("#latitude").val();
-    var longitude = $("#longitude").val();
+    $(document).ready(function(){
+        var latitude = $("#latitude").val();
+        var longitude = $("#longitude").val();
 
-    if(latitude != "" && longitude != ""){
-        displayMap(latitude, longitude);
-    } else {
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(function(position){
-                displayMap(position.coords.latitude, position.coords.longitude);
-            });
+        if(latitude != "" && longitude != ""){
+            displayMap(latitude, longitude);
         } else {
-            document.getElementById("map").innerHTML = "Sorry, geolocation services are not supported by your browser";
+          $.getJSON("http://ipinfo.io", function(data) {
+              var latitude = data.latitude;
+              var longitude = data.longitude;
+              displayMap(latitude, longitude);
+          });
+            /*if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position){
+                  alert(position.coords.latitude);
+                    //displayMap(position.coords.latitude, position.coords.longitude);
+                });
+            } else {
+              //  document.getElementById("map_canvas").innerHTML = "Sorry, geolocation services are not supported by your browser";
+            }*/
         }
-    }
+    });
 
-    function displayMap(latitude, longitude){
-        document.getElementById("map").innerHTML = "<iframe style = \"width: 100%; height: 300px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"https://maps.google.com/?ll=" + latitude + "," + longitude + "&z=16&output=embed\"></iframe>";
+    function displayMap(lat, lon){
+        //document.getElementById("iPubmap").innerHTML = "<iframe style = \"width: 100%; height: 300px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"https://maps.google.com/?ll=" + latitude + "," + longitude + "&z=16&output=embed\"></iframe>";
+
+        var position = new google.maps.LatLng(lat, lon);
+		    var myOptions = {
+  		      zoom: 10,
+  		      minZoom: 3,
+  		      maxZoom: 18,
+  		      zoomControl: true,
+    			  zoomControlOptions: {
+    				    style: google.maps.ZoomControlStyle.DEFAULT
+    			  },
+    		    center: position,
+    		    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    			  scrollwheel: false,
+    			  //all of the below are set to to true by default
+    			  panControl: false,
+    			  mapTypeControl: false,
+    			  scaleControl: false,
+    			  streetViewControl: false,
+    			  overviewMapControl: false,
+    			  rotateControl: false
+		    };
+
+		    var map = new google.maps.Map(
+		        document.getElementById("map_canvas"),
+		        myOptions
+        );
+
+		    var marker = new google.maps.Marker({
+		        position: position,
+		        map: map,
+		        title:"This is an iPub account."
+		    });
+
+		    var contentString = 'iPub: we did it #aftloc';
+		    var infowindow = new google.maps.InfoWindow({
+		        content: contentString
+		    });
+
+		    google.maps.event.addListener(marker, 'click', function() {
+		      infowindow.open(map,marker);
+		    });
     }
 
     //phoneNumber
