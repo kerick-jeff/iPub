@@ -190,9 +190,9 @@
         if(latitude != "" && longitude != ""){
             displayMap(latitude, longitude);
         } else {
-          $.getJSON("http://www.geoplugin.net/json.gp?jsoncallback=?", function(data) {
-              var latitude = data.geoplugin_latitude;
-              var longitude = data.geoplugin_longitude;
+          $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+              var latitude = data.lat;
+              var longitude = data.lon;
             //  alert(latitude + " - " + longitude);
               displayMap(latitude, longitude);
           });
