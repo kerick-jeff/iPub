@@ -26,8 +26,20 @@ class AccountController extends Controller
         $links = Auth::user()->links;
 
         // get an authenticated user's followers
-        $followers = Auth::user()->followers()->get(); 
+        $followers = Auth::user()->followers()->get();
 
-        return view('account', ['links' => $links, 'followers' => $followers]);
+        //determine account status
+        $status = 40;
+        if(Auth::user()->profile_picture){
+            $status += 15;
+        } if(Auth::user()->geo_longitude && Auth::user()->geo_latitude) {
+            $status += 15;
+        } if(Auth::user()->description) {
+            $status += 15;
+        } if(Auth::user()->phone_number){
+            $status += 15;
+        }
+
+        return view('account', ['links' => $links, 'followers' => $followers, 'status' => $status]);
     }
 }

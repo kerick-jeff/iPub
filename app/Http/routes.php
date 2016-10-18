@@ -37,7 +37,7 @@ Route::get('/profilePicture', function(){
     }
 
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
-    return Image::make($path."prayer.jpg")->response("jpg");
+    return Image::make($path."anonymous.jpg")->response("jpg");
 });
 
 /* SettingsController routes */

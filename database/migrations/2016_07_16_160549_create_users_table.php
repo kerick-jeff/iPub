@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
              $table->text('description');
              $table->string('country');
              $table->char('dial_code', 6);
-             $table->char('geo_longitude', 3);
-             $table->char('geo_latitude', 3);
+             $table->decimal('geo_longitude', 11, 8);
+             $table->decimal('geo_latitude', 10, 8);
              $table->enum('stars', [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5])->default(0);
              $table->integer('invited')->default(0);
              $table->integer('followers')->default(0);

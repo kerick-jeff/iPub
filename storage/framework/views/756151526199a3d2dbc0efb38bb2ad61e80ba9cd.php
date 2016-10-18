@@ -126,9 +126,10 @@
                   <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
                   <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
                 </div>
+
                 <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
-                  <strong>Latitude</strong>
-                  <input type="number" step = "0.00001" class = "form-control" name="geo_latitude" value="<?php echo e(empty(Auth::user()->geo_latitude) ? '' : Auth::user()->geo_latitude); ?>" min = "1" max = "360">
+                  <strong>Latitude (<?php echo e(Auth::user()->geo_latitude); ?>)</strong>
+                  <input type="number" step = "0.00000001" class = "form-control" name="geo_latitude" id = "geo_latitude" value="<?php echo e(empty(Auth::user()->geo_latitude) ? '' : Auth::user()->geo_latitude); ?>" min = "-90" max = "90">
                   <?php if($errors->has('geo_latitude')): ?>
                       <span class="help-block" style = "color: #DD4B39 !important;">
                           <strong><?php echo e($errors->first('geo_latitude')); ?></strong>
@@ -136,8 +137,8 @@
                   <?php endif; ?>
                 </div>
                 <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
-                  <strong>Longitude</strong>
-                  <input type="number" step = "0.00001" class = "form-control" name="geo_longitude" value = "<?php echo e(empty(Auth::user()->geo_longitude) ? '' : Auth::user()->geo_longitude); ?>" min = "1" max = "360">
+                  <strong>Longitude (<?php echo e(Auth::user()->geo_longitude); ?>)</strong>
+                  <input type="number" step = "0.00000001" class = "form-control" name="geo_longitude" id = "geo_longitude" value = "<?php echo e(empty(Auth::user()->geo_longitude) ? '' : Auth::user()->geo_longitude); ?>" min = "-180" max = "180">
                   <?php if($errors->has('geo_longitude')): ?>
                       <span class="help-block" style = "color: #DD4B39 !important;">
                           <strong><?php echo e($errors->first('geo_longitude')); ?></strong>
@@ -187,32 +188,26 @@
 <script type="text/javascript">
     //map
     $(document).ready(function(){
-        var latitude = $("#latitude").val();
-        var longitude = $("#longitude").val();
-
-        if(latitude != "" && longitude != ""){
+        /*$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+            var latitude = data.lat;
+            var longitude = data.lon;
+          //  alert(latitude + " - " + longitude);
             displayMap(latitude, longitude);
+          });*/
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function(position){
+                $("#geo_latitude").val(position.coords.latitude);
+                $("#geo_longitude").val(position.coords.longitude);
+                displayMap(position.coords.latitude, position.coords.longitude);
+            }, function(error){
+                alert(error.code + " - " + error.message);
+            });
         } else {
-          $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-              var latitude = data.lat;
-              var longitude = data.lon;
-            //  alert(latitude + " - " + longitude);
-              displayMap(latitude, longitude);
-          });
-            /*if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(function(position){
-                  alert(position.coords.latitude);
-                    //displayMap(position.coords.latitude, position.coords.longitude);
-                });
-            } else {
-              //  document.getElementById("map_canvas").innerHTML = "Sorry, geolocation services are not supported by your browser";
-            }*/
+            document.getElementById("map_canvas").innerHTML = "Sorry, geolocation services are not supported by your browser";
         }
     });
 
     function displayMap(lat, lon){
-        //document.getElementById("iPubmap").innerHTML = "<iframe style = \"width: 100%; height: 300px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"https://maps.google.com/?ll=" + latitude + "," + longitude + "&z=16&output=embed\"></iframe>";
-
         var position = new google.maps.LatLng(lat, lon);
 		    var myOptions = {
   		      zoom: 10,
@@ -242,10 +237,10 @@
 		    var marker = new google.maps.Marker({
 		        position: position,
 		        map: map,
-		        title:"This is an iPub account."
+		        title: "<?php echo e(Auth::user()->name); ?>"
 		    });
 
-		    var contentString = 'iPub: we did it #aftloc';
+		    var contentString = 'Set your location';
 		    var infowindow = new google.maps.InfoWindow({
 		        content: contentString
 		    });
