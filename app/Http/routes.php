@@ -1,4 +1,8 @@
 <?php
+
+use App\User;
+use App\Pub;
+use App\PubFile;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,6 +17,7 @@ Route::get('/photos', function(){
     $photos = ['8577innovation-is-great-British-Embassy.jpg', 'AZ-home-rebrand_02.jpg', 'IMAG0787.jpg', 'rain.jpeg'];
     return view('photos', ['photos' => $photos]);
 });
+
 Route::get('/photo/{name}', function($name){
   $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
   return Image::make($path."/".$name)->response("jpg");
@@ -36,16 +41,44 @@ Route::get('/profilePicture', function(){
 });
 
 /* UploadController routes*/
-Route::get('/upload/photo', 'UploadController@showPhoto');
+//Route::get('/upload/photo', 'UploadController@showPhoto');
+
+
+Route::get('/upload/photo', function(){
+   // $i = $j = 0;
+    /*
+    $pubs = User::find(Auth::user()->id)->pubs()->paginate(2);
+
+    $pub_files = [];
+        foreach ($pubs as $pub) {
+            $pub_files[$i] = Pub::find($pub->id)->pubFiles()->first();
+            $i++;
+        } */
+
+    $pubs = Auth::user()->pubs()->paginate(2);
+
+    return view('upload.photo', ['pubs' => $pubs]);
+});
+
+Route::get('/photo/{filename}', function( $filename ){
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
+    return Image::make($path."/".$filename)->response("jpg");
+});
+
 Route::get('/upload/video', function(){
     return view('upload.video');
 });
+
 Route::put('/photo/store', 'UploadController@storePhoto');
+
+Route::get('/photo/{id}/destroy', 'UploadController@destroyPhoto');
+
+/*
 Route::put('/video/store', 'UploadController@storeVideo');
-Route::patch('/photo/edit', 'UploadController@editPhoto');
-Route::patch('/video/edit', 'UploadController@editVideo');
-Route::delete('/photo/delete', 'UploadController@deletePhoto');
-Route::delete('/video/delete', 'UploadController@deleteVideo');
+Route::patch('/photo/{id}/edit', 'UploadController@editPhoto');
+Route::patch('/video/{id}/edit', 'UploadController@editVideo');
+Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
+*/
 
 /* SettingsController routes */
 Route::get('/settings', 'SettingsController@settings');

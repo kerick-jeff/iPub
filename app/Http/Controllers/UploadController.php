@@ -38,19 +38,27 @@ class UploadController extends Controller
         $user_id = $request->input('user_id');
         $image = Image::make($request->file('photo'));
         $name = $request->file('photo')->getClientOriginalName();
+        $width = $image->width();
+        $height = $image->height();
 
 		if($request->hasFile('photo') && $request->file('photo')->isValid() &&
 		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and mime type
-		    if($image->filesize() < 10485760){  // check file size
-		        if($image->width() > 510.5){ //check file dimensions
+		    if($image->filesize() < 5242880){  // check file size
+		        if( $width >= 200 && $height >= 200 ){ //check file dimensions
 					$path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/photo/';
 
 		            if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/photo/')){
 		            	Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/photo/');
 		            }
 
-		            $photo = $image->resize(510,800); 
-		            $photo->save($path.$name, 70);
+                if($width > 450 && $height > 500) { 
+                  $photo = $image->resize(450,500);
+                  $photo->save($path.$name, 70);
+                }
+                else{ 
+                  $image->save($path.$name, 70);
+                }
+
 		            $pub = Pub::create([
 		                    'user_id' => $user_id,
 		                    'title' => $request->input('title'),
@@ -69,7 +77,7 @@ class UploadController extends Controller
 
 		            return back()->with('success', 'Your image was successfully uploaded');
 		        } // dimensions check ends
-		          else{ return redirect('/upload/photo')->with('widthError', 'The file you uploaded is too small. Please get a larger one. ');}
+		          else{ return redirect('/upload/photo')->with('widthError' , 'The file you uploaded is too small. Please get a larger one. ');}
 		    } // file size check ends
 		      else{ return redirect('/upload/photo')->with('sizeError', 'The file you uploaded is more than the required size. Your images must be less than 10MB.');}
 		} // file exists and valid end
@@ -112,6 +120,22 @@ class UploadController extends Controller
             'storage' => $storage,
             'user' => Auth::user()->id."-".User::find(Auth::user()->id),
         ]); */
+	}
+
+
+	public function destroyPhoto($id)
+	{
+        $photo = Pub::whereId($id);
+        $pub_files = PubFile::where('pub_id', $id);
+
+       if($photo->delete() && $pub_files->delete()){
+       		return redirect('/upload/photo')->with('successDelete', 'Successfully deleted image');
+       }
+
+      else{
+      	return redirect('/upload/photo')->with('failDelete', 'Failed to delete image');
+      }
+      
 	}
 
 }

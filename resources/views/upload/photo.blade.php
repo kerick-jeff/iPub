@@ -40,16 +40,8 @@
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</p>
     </div>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Click me to upload a new photo
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+
+
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -80,6 +72,20 @@
                          {{ session('fileError') }}
                     </div>
                 @endif
+
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default" id="panel2">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Click me to upload a new photo
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
@@ -139,34 +145,49 @@
                                      <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
                                  </div>
                              </div>
-                             &nbsp
+                             &nbsp;
                          </form>
                      </div>
                  </div>
               </div>
             </div>
         </div>
-        <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+
+        <div class="row">
+            @if(session('successDelete'))
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('successDelete') }}
+                </div>
+            @endif
+            @if(session('failDelete'))
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('failDelete') }}
+                </div>
+            @endif
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                  See all photos
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><!-- /.collapsible start -->
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
-                        <div class="timeline-item">  <!-- timeline-item start -->
-                            <!-- CREATE ROWS FOR PHOTOS> EACH ROW HAS TWO PHOTOS -->
-                            @for($i = 0; $i < 3; $i++)
-                            <div class="row" style="margin-left:-7.5%"><!-- row start -->
-                                @for($j = 0; $j < 2; $j++)
-                              <div class="col-md-6"><!-- COL _1 start -->
-                                <div class="box box-widget">
+                <div class="timeline-item">  <!-- timeline-item start -->
+                <div class="col-md-12" style="margin-left: -35px">
+                    @foreach( $pubs as $pub )
+                        <div class="col-md-6">
+                           <!--  <li>{{ $pub->pubFiles->first()->filename }}</li> -->
+                            <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
-                                      <span class="username">{{ $photos[$i+$j]->title }}</span>
-                                      <span class="description">Shared publicly - {{ $photos[$i+$j]->created_at}}</span> 
+                                      <span class="username"> {{ $pub->title }}</span>
+                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span> 
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -178,22 +199,42 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src="{{ $storage }}{{ $pub_files[$i] }}" alt="Photo">
-                                    {{ $storage }}{{ $pub_files[$i] }}
-                                    <p style="margin-left:10px">{{ $photos[$i+$j]->description }}</p>
-                                    <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o"></i><a href="{{ url('/photo/edit/'.$photos[$i+$j]->id) }}" style="color:#fff">Edit</a></button>
-                                    <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px"><i class="fa fa-trash-o"></i><a href="{{ url('/photo/delete'.$photos[$i+$j]->id) }}" style="color:#fff">Delete</a></button>
-                                    <span class="pull-right text-muted">{{ $photos[$i+$j]->views }} views - {{ $photos[$i+$j]->ratings }} ratings</span>
+                                    <img class="img-responsive pad" src=" {{ url('/photo/' . $pub->pubFiles->first()->filename) }}" alt="Photo"  style="max-height:400px; margin:0.1px auto"> 
+                                    <p style="margin-left:10px">{{$pub->description}} </p>
+                                    <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o" ></i><a href="{{ url('photo/'.$pub->id.'/edit') }}" style="color:#fff">Edit</a></button>
+                                    <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alert"><i class="fa fa-trash-o">Delete</i></button>
+
+
+                                    <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                                                        <h4 class="modal-title"><i class="fa fa-warning"></i>&nbspAlert</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p> Do you really want to delete this pub?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-success"><a href="{{ url('photo/'.$pub->id.'/destroy') }}" style="color:#fff; ">Yes</a></button>
+
+                                                        <button type="button" class="btn btn-danger"><a href="{{ url('upload/photo') }}" style="color:#fff; ">No</a></button>
+                                                    </div>
+                                                </div> <!-- modal-content -->
+                                            </div> <!-- modal-dialog -->
+                                    </div> <!-- example-modal -->
+
+
+                                    <span class="pull-right text-muted">{{ $pub->views }} views - {{ $pub->ratings }} ratings</span>
                                   </div>
-                                </div>
-                              </div> <!-- COL _1 end-->
-                              @endfor
-                            </div> <!-- row end -->
-                            @endfor
-                            {{ $photos->links() }}
-                        </div><!-- timeline-item end -->
-                    </div><!-- panel-body start -->
-                </div><!-- /.collapsible end -->
+                            </div>
+                        </div> 
+                    @endforeach
+                </div>
+                {{ $pubs->links() }}
+                </div><!-- timeline-item end -->
+                </div><!-- panel-body start -->
+            </div><!-- /.collapsible end -->
         </div>
     </div>
     <script>
