@@ -69,7 +69,7 @@ class User extends Authenticatable
     }
 
     /**
-     * a user makes 0 or more subscriptions i.e video_pub_subscription, continous_pub_subscription, priorit_zone_subscription
+     * a user makes 0 or more subscriptions i.e video_pub_subscription, continous_pub_subscription, priority_zone_subscription
      * @return \App\Subscription
      */
     public function subscriptions(){
@@ -78,9 +78,17 @@ class User extends Authenticatable
 
     /**
      * a user has 0 or more followers
-     * @return App\Follower
+     * @return \App\Follower
      */
     public function followers(){
         return $this->belongsToMany('App\Follower');
     }
+
+    /**
+     * a user has 0 or more mails
+     * @return \App\Mail
+     */
+     public function mailitems(){
+        return $this->hasMany('App\Mail');
+     }
 }

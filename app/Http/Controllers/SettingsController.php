@@ -30,8 +30,8 @@ class SettingsController extends Controller
     // set or update an authenticated user's profile picture
     public function setProfilePicture(Request $request){
         $validator = Validator::make($request->all(), [
-            'profile_picture' => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg|max:2000',
-        ], ['profile_picture.required' => 'No picture was selected']);
+            'profile_picture' => 'required|image|max:255',
+        ], ['profile_picture.required' => 'No picture was selected', 'profile_picture.image' => 'Please select a picture', 'profile_picture.size' => 'The picture size must not be greater than 5 MB', 'profile_picture.max' => 'The caption of the selected picture should not be more than 255 characters']);
 
         if($validator->fails()){
             $this->throwValidationException(

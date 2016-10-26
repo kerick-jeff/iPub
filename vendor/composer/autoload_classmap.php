@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateFollowersTable' => $baseDir . '/database/migrations/2016_07_22_165318_create_followers_table.php',
+    'CreateFollowerUserTable' => $baseDir . '/database/migrations/2016_10_25_025916_create_follower_user_table.php',
+    'CreateFollowersTable' => $baseDir . '/database/migrations/2016_07_26_161224_create_followers_table.php',
     'CreateLinksTable' => $baseDir . '/database/migrations/2016_07_16_160840_create_links_table.php',
+    'CreateMailsTable' => $baseDir . '/database/migrations/2016_10_19_102819_create_mails_table.php',
     'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_07_16_160606_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_07_16_160539_create_password_resets_table.php',
     'CreatePubFilesTable' => $baseDir . '/database/migrations/2016_07_24_123701_create_pub_files_table.php',
@@ -18,7 +20,6 @@ return array(
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
-    'FollowerUser' => $baseDir . '/database/migrations/2016_07_24_165425_follower_user.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
     'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

@@ -48,7 +48,7 @@ class EmailController extends Controller
       // resend verification email
       $confirmation_code = str_random(30);
 
-      Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $email], function($message) use ($name, $email) {
+      @Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $email], function($message) use ($name, $email) {
           $message->from('frukerickjeff@gmail.com', 'iPub');
           $message->to($email, $name)
                   ->subject('iPub. Verify your email address');
@@ -61,7 +61,7 @@ class EmailController extends Controller
      */
     public function invite(Request $request){
         $email = $request->email;
-        $send = Mail::send('emails.invite', ['user' => Auth::user(), 'email' => $email], function($message) use ($email){
+        $send = @Mail::send('emails.invite', ['user' => Auth::user(), 'email' => $email], function($message) use ($email){
             $message->from('frukerickjeff@gmail.com', 'iPub');
             $message->to($email)
                     ->subject('iPub. Invitation to follow');

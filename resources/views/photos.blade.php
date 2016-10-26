@@ -3,3 +3,4 @@
       <li> <img src="{{ url('photo/'.$photo) }}" alt="" /> </li>
   @endforeach
 </ul>
+ 

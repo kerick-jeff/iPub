@@ -318,8 +318,10 @@ class ComposerStaticInit504a5d3afc0b9ee1c4413fd3b6da96b6
     );
 
     public static $classMap = array (
-        'CreateFollowersTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_22_165318_create_followers_table.php',
+        'CreateFollowerUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_25_025916_create_follower_user_table.php',
+        'CreateFollowersTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_26_161224_create_followers_table.php',
         'CreateLinksTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160840_create_links_table.php',
+        'CreateMailsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_19_102819_create_mails_table.php',
         'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160606_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_16_160539_create_password_resets_table.php',
         'CreatePubFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_24_123701_create_pub_files_table.php',
@@ -330,7 +332,6 @@ class ComposerStaticInit504a5d3afc0b9ee1c4413fd3b6da96b6
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
-        'FollowerUser' => __DIR__ . '/../..' . '/database/migrations/2016_07_24_165425_follower_user.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

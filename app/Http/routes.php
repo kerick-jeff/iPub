@@ -15,7 +15,7 @@ use App\PubFile;
 */
 /*test routes*/
 Route::get('/photos', function(){
-    $photos = ['8577innovation-is-great-British-Embassy.jpg', 'AZ-home-rebrand_02.jpg', 'IMAG0787.jpg', 'rain.jpeg'];
+    $photos = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg'];
     return view('photos', ['photos' => $photos]);
 });
 
@@ -25,6 +25,10 @@ Route::get('/photo/{name}', function($name){
 });
 Route::get('/geo', function(){
     return view('geo');
+});
+Route::get('/paginate', function(){
+    $links = DB::table('links')->paginate(2);
+    return view('paginate', ['links' => $links]);
 });
 // end test routes
 
@@ -121,3 +125,16 @@ Route::get('/follow/agree/{user_id}/{user_name}/{email}', 'FollowController@agre
 
 /* PubsController routes */
 Route::get('/pubs', 'PubsController@pubs');
+
+/* MailboxController */
+Route::get('/mailbox/compose', 'MailboxController@getCompose');
+
+Route::post('/mailbox/compose', 'MailboxController@postCompose');
+
+Route::get('/mailbox/inbox', 'MailboxController@inbox');
+
+Route::get('/mailbox/sent', 'MailboxController@sent');
+
+Route::get('/mailbox/drafts', 'MailboxController@drafts');
+
+Route::get('/mailbox/readmail/{category}/{id}', 'MailboxController@readMail');
