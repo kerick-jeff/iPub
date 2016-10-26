@@ -40,6 +40,8 @@ class FollowController extends Controller
         $notification->on_board = 0;
         $notification->save();
 
+        // add on board notification for the iPub user account
+
         return redirect('/')->with(['follow' => 'You are now following '.$user_name.' on iPub', 'followHeader' => 'Follow Status Confirmed']);
     }
 }

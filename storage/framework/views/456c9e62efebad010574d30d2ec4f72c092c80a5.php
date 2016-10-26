@@ -22,7 +22,7 @@
           </div>
         <?php endif; ?>
     </div>
-    <img src="<?php echo e(asset('images/land2.jpg')); ?>" alt="landing_page" style="max-width: 100%; height: auto" />
+    <img src="<?php echo e(asset('images/land2.jpg')); ?>" alt="landing_page" style="max-width: 100%;" />
     </div>
 </div>
 <?php $__env->stopSection(); ?>

@@ -18,7 +18,7 @@ class User extends Authenticatable
         'password',
         'description',
         'country',
-        'country_code',
+        'dial_code',
         'geo_longitude',
         'geo_latitude',
         'stars',
