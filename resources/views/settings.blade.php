@@ -156,7 +156,7 @@
                   <strong><i class = "fa fa-file-text"></i> Description </strong>
                   <textarea class="form-control" id = "description" name = "description" rows="8" placeholder="Hint: Provide accurate description about what you (organisation, company, individual, NGO or business) do, how you operate, products you sell or give out and the services you offer." disabled > {{ Auth::user()->description }} </textarea>
                   @if ($errors->has('description'))
-                      <span class="help-block" style = "color: #DD4B39 !important;;">
+                      <span class="help-block" style = "color: #DD4B39 !important;">
                           <strong>{{ $errors->first('description') }}</strong>
                       </span>
                   @endif

@@ -19,6 +19,9 @@ class CreateFollowersTable extends Migration
             $table->String('email', 255);
             $table->String('picture', 255)->nullable();
             $table->timestamps();
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

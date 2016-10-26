@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLinksTable extends Migration
+class CreateMailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,15 @@ class CreateLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('mails', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('link', 255);
-            $table->string('caption', 255);
+            $table->string('sender', 255);
+            $table->string('recipient', 255);
+            $table->text('body');
+            $table->string('attachment', 255)->nullable();
+            $table->boolean('status');
+            $table->boolean('is_draft');
             $table->timestamps();
             $table->foreign('user_id')
                   ->references('id')->on('users')
@@ -31,6 +35,6 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('links');
+        Schema::drop('mails');
     }
 }

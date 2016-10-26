@@ -39,18 +39,41 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="{{ url('/inbox') }}">
-            <i class="fa fa-inbox"></i> <span>Inbox</span>
-            <span class="pull-right-container">
-              <span class="label label-success pull-right">10</span>
-            </span>
+          <a href="{{ url('/mailbox') }}">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('/mailbox/compose') }}"><i class="fa fa-edit"></i> Compose
+                    <span class="pull-right-container">
+                      <small class="label label-primary pull-right">new</small>
+                    </span>
+                </a>
+            </li>
+            <li><a href="{{ url('/mailbox/inbox') }}"><i class="fa fa-inbox"></i> Inbox
+                    <span class="pull-right-container">
+                      <small class="label label-info pull-right">16</small>
+                    </span>
+                </a>
+            </li>
+            <li><a href="{{ url('/mailbox/sent') }}"><i class="fa fa-send"></i> Sent
+                    <span class="pull-right-container">
+                      <small class="label pull-right bg-green">4</small>
+                    </span>
+                </a>
+            </li>
+            <li><a href="{{ url('/mailbox/drafts') }}"><i class="fa fa-file-text-o"></i> Drafts
+                    <span class="pull-right-container">
+                      <small class="label label-warning pull-right">10</small>
+                    </span>
+                </a>
+            </li>
+          </ul>
         </li>
         <li class="treeview">
           <a href="{{ url('/notifications') }}">
             <i class="fa fa-bell"></i> <span>Notifications</span>
             <span class="pull-right-container">
-              <span class="label label-warning pull-right">20</span>
+              <span class="label label-info pull-right">20</span>
             </span>
           </a>
         </li>
@@ -62,13 +85,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/uploads/photo') }}"><i class="fa fa-photo"></i> Photo
+            <li><a href="{{ url('/upload/photo') }}"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
                 </a>
             </li>
-            <li><a href="{{ url('/uploads/video') }}"><i class="fa fa-video-camera"></i> Video
+            <li><a href="{{ url('/upload/video') }}"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
