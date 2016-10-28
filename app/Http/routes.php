@@ -13,16 +13,19 @@ use App\PubFile;
 | and give it the controller to call when that URI is requested.
 |
 */
-/*test routes*/
+/*test routes
+
 Route::get('/photos', function(){
-    $photos = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg'];
+    $photos = ['ttt.png', 'dullman.jpg', 'land1.jpg', 'pig.jpg'];
     return view('photos', ['photos' => $photos]);
 });
 
-Route::get('/photo/{name}', function($name){
+Route::get('/photo/{session_name()}', function($name){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
     return Image::make($path."/".$name)->response("jpg");
 });
+
+*/
 
 Route::get('/geo', function(){
     return view('geo');
@@ -51,44 +54,36 @@ Route::get('/profilePicture', function(){
 });
 
 /* UploadController routes*/
-//Route::get('/upload/photo', 'UploadController@showPhoto');
 
-
+Route::put('/photo/store', 'UploadController@storePhoto');
 Route::get('/upload/photo', function(){
-   // $i = $j = 0;
-    /*
-    $pubs = User::find(Auth::user()->id)->pubs()->paginate(2);
-    $pub_files = [];
-        foreach ($pubs as $pub) {
-            $pub_files[$i] = Pub::find($pub->id)->pubFiles()->first();
-            $i++;
-        } */
-
-    $pubs = Auth::user()->pubs()->paginate(2);
+    $pubs = Auth::user()->pubs()->orderBy('created_at', 'desc')->paginate(6);
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
 
     return view('upload.photo', ['pubs' => $pubs]);
 });
-
-Route::get('/photo/{filename}', function( $filename ){
+Route::get('photo/{filename}', function( $filename ){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
     return Image::make($path."/".$filename)->response("jpg");
 });
+Route::patch('/photo/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editPhoto');
+Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
+
+
+
+
+
+
+
+
 
 Route::get('/upload/video', function(){
     return view('upload.video');
 });
 
-Route::put('/photo/store', 'UploadController@storePhoto');
-
-Route::get('/photo/{id}/destroy', 'UploadController@destroyPhoto');
-
-/*
 Route::put('/video/store', 'UploadController@storeVideo');
-Route::patch('/photo/{id}/edit', 'UploadController@editPhoto');
 Route::patch('/video/{id}/edit', 'UploadController@editVideo');
 Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
-*/
 
 /* SettingsController routes */
 Route::get('/settings', 'SettingsController@settings');

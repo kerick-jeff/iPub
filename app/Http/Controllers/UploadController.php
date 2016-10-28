@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
+use File;
 use Auth;
 use Image;
 use App\Pub;
@@ -85,6 +85,8 @@ class UploadController extends Controller
 
 	}
 
+
+/*
 	public function showPhoto()
 	{
         $i = $j = 0;
@@ -112,35 +114,50 @@ class UploadController extends Controller
 	        //var_dump($tests);
         return view('upload.test');
 
-		/*return view('upload.photo', [
+		return view('upload.photo', [
             'i' => $i,
             'j' => $j,
             'photos' => $photos,
             'pub_files' => $pub_files,
             'storage' => $storage,
             'user' => Auth::user()->id."-".User::find(Auth::user()->id),
-        ]); */
+        ]); 
 	}
 
+*/
+  public function editPhoto($id, $title, $description, $category, $sub_category)
+  {
+      Pub::where('id', $id)
+          ->update(['title' => $title, 'description' => $description, 'category' => $category, 'sub_category' => $sub_category]);
+         return redirect('/upload/photo');
+       //  var_dump([$id, $title, $description, $category, $sub_category]);
+
+       /*   $pub = Pub::find($id);
+          $pub->title = $title;
+          $pub->description = $description;
+          $pub->category = $category;
+          $pub->sub_category = $sub_category;
+          $pub->save();
+          return redirect('/upload/photo');
+          */
+  }
 
 	public function destroyPhoto($id)
 	{
-        $photo = Pub::whereId($id);
-        $pub_files = PubFile::where('pub_id', $id)->first();
+        $photo = Pub::find($id);
+        $pub_files = PubFile::where('pub_id', $photo->id)->first();
 
         $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
-        $image = Image::make($path."/".$pub_files->filename);
-        $image->destroy();
-        Storage::delete($image);
+        //$image = Image::make($path."/".$pub_files->filename);
+        //$image->destroy();
+        File::Delete($path . '/' . $pub_files->filename );
 
        if($photo->delete() && $pub_files->delete() ){
        		return redirect('/upload/photo')->with('successDelete', 'Successfully deleted image');
        }
-
       else{
       	return redirect('/upload/photo')->with('failDelete', 'Failed to delete image');
-      }
-      
+      }  
 	}
 
 }
