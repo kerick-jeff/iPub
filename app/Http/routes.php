@@ -23,9 +23,11 @@ Route::get('/photo/{name}', function($name){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
     return Image::make($path."/".$name)->response("jpg");
 });
+
 Route::get('/geo', function(){
     return view('geo');
 });
+
 Route::get('/paginate', function(){
     $links = DB::table('links')->paginate(2);
     return view('paginate', ['links' => $links]);
@@ -44,7 +46,6 @@ Route::get('/profilePicture', function(){
     if(!empty(Auth::user()->profile_picture)){
         return Image::make($path."/".Auth::user()->profile_picture)->response("jpg");
     }
-
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
     return Image::make($path."anonymous.jpg")->response("jpg");
 });
@@ -57,7 +58,6 @@ Route::get('/upload/photo', function(){
    // $i = $j = 0;
     /*
     $pubs = User::find(Auth::user()->id)->pubs()->paginate(2);
-
     $pub_files = [];
         foreach ($pubs as $pub) {
             $pub_files[$i] = Pub::find($pub->id)->pubFiles()->first();
@@ -65,6 +65,7 @@ Route::get('/upload/photo', function(){
         } */
 
     $pubs = Auth::user()->pubs()->paginate(2);
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
 
     return view('upload.photo', ['pubs' => $pubs]);
 });

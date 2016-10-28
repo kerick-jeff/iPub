@@ -160,14 +160,14 @@
 
         <div class="row">
             <?php if(session('successDelete')): ?>
-                <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <?php echo e(session('successDelete')); ?>
 
                 </div>
             <?php endif; ?>
             <?php if(session('failDelete')): ?>
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <?php echo e(session('failDelete')); ?>
 
@@ -206,7 +206,7 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src=" <?php echo e(url('/photo/' . $pub->pubFiles->first()->filename)); ?>" alt="Photo"  style="max-height:400px; margin:0.1px auto"> 
+                                    <img class="img-responsive pad" src=" <?php echo e(url('/photo/' . $pub->pubFiles->first()->filename)); ?>" alt="Photo"  style="max-height:400px; margin:0.1px auto">
                                     <p style="margin-left:10px"><?php echo e($pub->description); ?> </p>
                                     <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o" ></i><a href="<?php echo e(url('photo/'.$pub->id.'/edit')); ?>" style="color:#fff">Edit</a></button>
                                     <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alert"><i class="fa fa-trash-o">Delete</i></button>

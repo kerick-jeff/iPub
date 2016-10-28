@@ -126,9 +126,14 @@ class UploadController extends Controller
 	public function destroyPhoto($id)
 	{
         $photo = Pub::whereId($id);
-        $pub_files = PubFile::where('pub_id', $id);
+        $pub_files = PubFile::where('pub_id', $id)->first();
 
-       if($photo->delete() && $pub_files->delete()){
+        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
+        $image = Image::make($path."/".$pub_files->filename);
+        $image->destroy();
+        Storage::delete($image);
+
+       if($photo->delete() && $pub_files->delete() ){
        		return redirect('/upload/photo')->with('successDelete', 'Successfully deleted image');
        }
 

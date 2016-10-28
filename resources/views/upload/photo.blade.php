@@ -155,13 +155,13 @@
 
         <div class="row">
             @if(session('successDelete'))
-                <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {{ session('successDelete') }}
                 </div>
             @endif
             @if(session('failDelete'))
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {{ session('failDelete') }}
                 </div>
@@ -175,6 +175,14 @@
                  See all photos
                 </a>
               </h4>
+            </div>
+            <div>
+                 @if( count($pubs) == 0 )
+                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p style="text-align:centre; margin-left: 15px"><b>You have no photos. Upload a photo to get going.<b></p>
+                </div>
+                 @elseif( count($pubs) > 0)
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
@@ -199,7 +207,7 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body">
-                                    <img class="img-responsive pad" src=" {{ url('/photo/' . $pub->pubFiles->first()->filename) }}" alt="Photo"  style="max-height:400px; margin:0.1px auto"> 
+                                    <img class="img-responsive pad" src=" {{ url('/photo/' . $pub->pubFiles->first()->filename) }}" alt="Photo"  style="max-height:400px; margin:0.1px auto">
                                     <p style="margin-left:10px">{{$pub->description}} </p>
                                     <button type="button" class="btn btn-primary btn-xs" style="margin-left:10px"><i class="fa fa-pencil-square-o" ></i><a href="{{ url('photo/'.$pub->id.'/edit') }}" style="color:#fff">Edit</a></button>
                                     <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alert"><i class="fa fa-trash-o">Delete</i></button>
@@ -230,6 +238,7 @@
                             </div>
                         </div> 
                     @endforeach
+                    @endif
                 </div>
                 {{ $pubs->links() }}
                 </div><!-- timeline-item end -->

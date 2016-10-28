@@ -441,13 +441,8 @@
                     <ul class="users-list clearfix">
                       <?php foreach($followers as $follower): ?>
                         <li>
-<<<<<<< HEAD:storage/framework/views/50440f63a9c92ebfa125fdceb29c811a686cdbaf.php
-                          <img src="<?php echo e(asset('ipub/dist/img/avatar.png')); ?>" alt="Follower Image">
-                          <?php echo e(empty($follower->name) ? "empty is the ga" : $follower->name); ?>
-=======
                           <img src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="Follower Image">
                           <?php echo e(empty($follower->name) ? "empty is the game" : $follower->name); ?>
->>>>>>> 9bdda7923428ecf6295beb78622c6c263d702572:storage/framework/views/6b1004c2c150954f9743ecbb3bb38fb2a49b8fec.php
 
                           <span class="users-list-name" ><?php echo e($follower->email); ?></span>
                         </li>

@@ -16,7 +16,6 @@ end
 
 def validate_tests()
    CommandProcessor.command("vendor/bin/phpunit", live_output=true)
-   CommandProcessor.command("vendor/bin/phpunit -c phpunit.integration.xml", live_output=true)
 end
 
 configatron.custom_validation_methods = [
@@ -65,7 +64,7 @@ configatron.wait_for_package_manager_method = method(:wait_for_package_manager)
 configatron.release_to_github = true
 
 def constant_version()
-  f=File.open("lib/PayPal/Core/PayPalConstants.php", 'r') do |f|
+  File.open("lib/PayPal/Core/PayPalConstants.php", 'r') do |f|
     f.each_line do |line|
       if line.match (/SDK_VERSION = \'\d+\.\d+\.\d+\'/)
         return line.strip.split('= ')[1].strip.split('\'')[1]
