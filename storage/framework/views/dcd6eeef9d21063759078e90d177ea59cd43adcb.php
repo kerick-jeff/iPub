@@ -204,7 +204,6 @@
                 <div class="col-md-12" style="margin-left: -35px">
                     <?php foreach( $pubs as $pub ): ?>
                         <div class="col-md-6" style="height: 600px">
-                           <!--  <li><?php echo e($pub->pubFiles->first()->filename); ?></li> -->
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
@@ -220,11 +219,11 @@
                                     <!-- /.box-tools -->
                                   </div>
                                   <!-- /.box-header -->
-                                  <div class="box-body">
-                                    <img class="img-responsive pad" src=" <?php echo e(url('/photo/' . $pub->pubFiles->first()->filename)); ?>" alt="Photo"  style="max-height: 400px; margin:0.1px auto">
+                                  <div class="box-body" id="box">
+                                    <img class="img-responsive pad" src="<?php echo e(url('/photo/' . $pub->pubFiles()->first())); ?>" alt="Photo"  style="max-height: 400px; margin:0.1px auto">
                                     <p class="description" style="margin-left:10px"><?php echo e($pub->description); ?> </p>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="<?php echo e($pub->id); ?>" data-title="<?php echo e($pub->title); ?>" data-description="<?php echo e($pub->description); ?>" data-category="<?php echo e($pub->category); ?>" data-subCategory="<?php echo e($pub->sub_category); ?>"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
-                                    <button type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
+                                    <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="<?php echo e($pub->id); ?>"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
                                     <span class="pull-right text-muted"><?php echo e($pub->views); ?> views - <?php echo e($pub->ratings); ?> ratings</span>
                                   </div>
                             </div>
@@ -241,7 +240,6 @@
     </div>
 
 <!-- Delete photo modal. pops up onclick of delete button -->
-<?php foreach( $pubs as $pub): ?>
  <div class="modal fade" id="alertDelete" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -253,11 +251,13 @@
                 <p> Do you really want to delete this pub?</p>
             </div>
             <div class="modal-footer">
-            <form action="<?php echo e(url('photo/'.$pub->id.'/destroy')); ?>" method="POST">
+            <form id="deleteForm" action="" method="POST">
+            <!-- <form id="deleteForm" action="<?php echo e(url('photo/'.$pub->id.'/destroy')); ?>" method="POST"> -->
                 <?php echo e(csrf_field()); ?>
 
                 <?php echo e(method_field('DELETE')); ?>
 
+                 <div class="form-group"><input type="hidden" name="id" id = "id"></div>
                 <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-danger"><a href="<?php echo e(url('upload/photo')); ?>" style="color:#fff; ">No</a></button>
             </form>
@@ -266,7 +266,6 @@
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
 </div> <!-- example-modal -->
-<?php endforeach; ?>
 <!-- Delete modal end -->
 
 <!-- Edit modal for photos-->
@@ -352,6 +351,7 @@
 
 <?php $__env->startSection('javascript'); ?>
     <script type="text/javascript">
+
         $('#alertEdit').on('show.bs.modal', function(e){
             $('#alertEdit #title').val($(e.relatedTarget).data('title'));
             $('#alertEdit #description').val($(e.relatedTarget).data('description'));
@@ -362,10 +362,18 @@
                 var newTitle = $('#alertEdit #title').val();
                 var newDescription = $('#alertEdit #description').val();
                 var newCategory = $('#alertEdit #category').val();
-                var newSubcategory = $('#alertEdit #subCategory').val();
-                $("#editForm").attr("action", "/photo/edit/" + id + "/" + newTitle + "/" + newDescription + "/" + newCategory + "/" + newSubcategory);
+                var newSubCategory = $('#alertEdit #subCategory').val();
+                $("#editForm").attr("action", "/photo/edit/" + id + "/" + newTitle + "/" + newDescription + "/" + newCategory + "/" + newSubCategory);
             });
         });
+
+        $('#alertDelete').on('show.bs.modal', function(e){
+            $('#alertDelete #id').val($(e.relatedTarget).data('id'));
+           // var id = $('#alertDelete #id').val($(e.relatedTarget).data('id'));
+            var id = $(e.relatedTarget).data('id');
+            $('#deleteForm').attr("action", "photo/" + id + "/destroy" );
+        });
+
     </script>
 <?php $__env->stopSection(); ?>
 

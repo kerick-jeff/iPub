@@ -27,6 +27,9 @@ Route::get('/photo/{session_name()}', function($name){
 
 */
 
+
+Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
+
 Route::get('/geo', function(){
     return view('geo');
 });
@@ -67,7 +70,6 @@ Route::get('photo/{filename}', function( $filename ){
     return Image::make($path."/".$filename)->response("jpg");
 });
 Route::patch('/photo/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editPhoto');
-Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
 
 

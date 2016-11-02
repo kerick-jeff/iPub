@@ -125,21 +125,18 @@ class UploadController extends Controller
 	}
 
 */
-  public function editPhoto($id, $title, $description, $category, $sub_category)
+  public function editPhoto(Request $request)
   {
-      Pub::where('id', $id)
-          ->update(['title' => $title, 'description' => $description, 'category' => $category, 'sub_category' => $sub_category]);
+      Pub::where('id', $request->id)
+          ->update([
+            'title' => $request->title, 
+            'description' => $request->description, 
+            'category' => $request->category, 
+            'sub_category' => $request->sub_category
+          ]);
+          
          return redirect('/upload/photo');
-       //  var_dump([$id, $title, $description, $category, $sub_category]);
-
-       /*   $pub = Pub::find($id);
-          $pub->title = $title;
-          $pub->description = $description;
-          $pub->category = $category;
-          $pub->sub_category = $sub_category;
-          $pub->save();
-          return redirect('/upload/photo');
-          */
+        //var_dump([$id, $title, $description, $category, $sub_category]);
   }
 
 	public function destroyPhoto($id)
@@ -149,7 +146,7 @@ class UploadController extends Controller
 
         $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
         //$image = Image::make($path."/".$pub_files->filename);
-        //$image->destroy();
+        //$image->destroy()
         File::Delete($path . '/' . $pub_files->filename );
 
        if($photo->delete() && $pub_files->delete() ){
