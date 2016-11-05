@@ -100,7 +100,7 @@
                              {{ method_field('PUT') }}
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
                                  <span> CLICK HERE TO CHOOSE</span>
-                                 <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px">
+                                 <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
                                  <input id="uploadFile" placeholder="Choose File" name="photo" disabled="disabled" style="width:100%; border-radius:3px"/>
@@ -211,12 +211,16 @@
                                     <!-- /.box-tools -->
                                   </div>
                                   <!-- /.box-header -->
-                                  <div class="box-body" id="box">
-                                    <img class="img-responsive pad" src="{{ url('/photo/' . $pub->pubFiles()->first()) }}" alt="Photo"  style="max-height: 400px; margin:0.1px auto">
+                                  <div class="box-body" id="box" style="height:500px">
+                                   <div style="padding-left: 5%; height:400px"> 
+                                    <img class="img-responsive pad" src="{{ url('/photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style=" max-height: 400px" />
+                                   </div>
+                                   <div style=" height:100px">
                                     <p class="description" style="margin-left:10px">{{$pub->description}} </p>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="{{ $pub->id }}" data-title="{{ $pub->title }}" data-description="{{ $pub->description }}" data-category="{{ $pub->category }}" data-subCategory="{{ $pub->sub_category }}"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
                                     <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="{{ $pub->id }}"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
                                     <span class="pull-right text-muted">{{ $pub->views }} views - {{ $pub->ratings }} ratings</span>
+                                    </div>
                                   </div>
                             </div>
                         </div> 
@@ -358,7 +362,7 @@
             $('#alertDelete #id').val($(e.relatedTarget).data('id'));
            // var id = $('#alertDelete #id').val($(e.relatedTarget).data('id'));
             var id = $(e.relatedTarget).data('id');
-            $('#deleteForm').attr("action", "photo/" + id + "/destroy" );
+            $('#deleteForm').attr("action", "/photo/" + id + "/destroy" );
         });
 
     </script>

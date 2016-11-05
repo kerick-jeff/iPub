@@ -85,57 +85,17 @@ class UploadController extends Controller
 
 	}
 
-
-/*
-	public function showPhoto()
-	{
-        $i = $j = 0;
-        $photos = User::find(Auth::user()->id)->pubs();
-
-        $pub_files = [];
-        foreach ($photos as $photo) {
-        	$pub_files[$i] = Pub::find($photo->id)->pubFiles()->paginate(6);
-        	$i++;
-        }
-
-        $storage = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".User::find(Auth::user()->id)->value('name').'/photo/';
-
-        $tests = Image::make($storage.'login.jpg')->response("jpg");
-
-        $image = [];
-        foreach ($pub_files as $pub_file) {
-        	$image[$j] = Image::make($storage.$pub_file->filename)->response("jpg");
-	        echo '<br>';
-	        echo '<br>';
-	        $j++;
-        }
-
-	       var_dump($image);
-	        //var_dump($tests);
-        return view('upload.test');
-
-		return view('upload.photo', [
-            'i' => $i,
-            'j' => $j,
-            'photos' => $photos,
-            'pub_files' => $pub_files,
-            'storage' => $storage,
-            'user' => Auth::user()->id."-".User::find(Auth::user()->id),
-        ]); 
-	}
-
-*/
   public function editPhoto(Request $request)
   {
-      Pub::where('id', $request->id)
-          ->update([
-            'title' => $request->title, 
-            'description' => $request->description, 
-            'category' => $request->category, 
-            'sub_category' => $request->sub_category
-          ]);
+    Pub::where('id', $request->id)
+        ->update([
+          'title' => $request->title, 
+          'description' => $request->description, 
+          'category' => $request->category, 
+          'sub_category' => $request->sub_category
+        ]);
           
-         return redirect('/upload/photo');
+    return redirect('/upload/photo');
         //var_dump([$id, $title, $description, $category, $sub_category]);
   }
 
@@ -156,5 +116,76 @@ class UploadController extends Controller
       	return redirect('/upload/photo')->with('failDelete', 'Failed to delete image');
       }  
 	}
+
+  public function storeVideo(Request $request){
+      // validate the inputs
+      $validate = Validator::make($request->all(), [
+                    'title' => 'required|max:255',
+                    'description' => 'required',
+                    'video' => 'required'
+                  ]);
+
+      // validation ends
+      if($validate->fails()){
+        return redirect('/upload/video')->withErrors($validate)->withInput();
+      }
+
+      $type = 'video';
+      $user_id = $request->input('user_id');
+      $videoFile = $request->file('video');
+      $name = $request->file('video')->getClientOriginalName();
+
+      if($request->hasFile('video') && $request->file('video')->isValid() && substr($videoFile->mime(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
+        if($videoFile->getClientSize() < 524288000){  // check video size
+          $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/video/';
+
+                if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/video/')){
+                  Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/video/');
+                }
+
+                $pub = Pub::create([
+                        'user_id' => $user_id,
+                        'title' => $request->input('title'),
+                        'description' => $request->input('description'),
+                        'category' => $request->input('category'),
+                        'sub_category' => $request->input('sub_category'),
+                       ]);
+
+                Pubvideo::create([
+                    'pub_id' => $pub->id,
+                    'filename' => $request->file('video')->getClientOriginalName(),
+                    'type' => $type,
+                    'size' => $videoFile->filesize(),
+                    'extension' => $request->file('video')->getClientOriginalExtension(),
+                ]);
+
+                return back()->with('success', 'Your videoFile was successfully uploaded');
+        } // video size check ends
+          else{ return redirect('/upload/video')->with('sizeError', 'The video you uploaded is more than the required size. Your videoFile must be less than 10MB.');}
+    } // video exists and valid end
+      else{ return redirect('/upload/video')->with('fileError', 'No valid video has been uploaded.');}
+
+  }
+
+  public function destroyVideo($id)
+  {
+    $video = Pub::find($id);
+    $pub_files = PubFile::where('pub_id', $video->id)->first();
+
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video';
+    File::Delete($path . '/' . $pub_files->filename );
+
+    if($video->delete() && $pub_files->delete() ){
+      return redirect('/upload/video')->with('successDelete', 'Successfully deleted video');
+    }
+    else{
+      return redirect('/upload/video')->with('failDelete', 'Failed to delete video');
+    }  
+  }
+
+
+
+
+
 
 }

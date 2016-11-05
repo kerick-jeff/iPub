@@ -27,9 +27,6 @@ Route::get('/photo/{session_name()}', function($name){
 
 */
 
-
-Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
-
 Route::get('/geo', function(){
     return view('geo');
 });
@@ -70,22 +67,31 @@ Route::get('photo/{filename}', function( $filename ){
     return Image::make($path."/".$filename)->response("jpg");
 });
 Route::patch('/photo/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editPhoto');
+Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
 
 
 
 
+Route::get('/video/store', function(){
+    $request = ['man', 'woman'];
+    var_dump($request);
+});
 
 
-
-
+//Route::put('/video/store', 'UploadController@storeVideo');
 Route::get('/upload/video', function(){
     return view('upload.video');
 });
 
-Route::put('/video/store', 'UploadController@storeVideo');
-Route::patch('/video/{id}/edit', 'UploadController@editVideo');
+Route::patch('/video/edit/{id}', 'UploadController@editVideo');
 Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
+
+
+
+
+
+
 
 /* SettingsController routes */
 Route::get('/settings', 'SettingsController@settings');

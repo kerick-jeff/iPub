@@ -38,16 +38,17 @@
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p>Your video should be less <b>120secs</b>.  Click 'SEE ALL VIDEOS' to see older videos</p>
     </div>
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+        <div class="panel panel-default">         
+            <div class="panel-heading" role="tab" id="headingTwo">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Click me to upload a new video
                 </a>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
                 <?php if(session('success')): ?>
                     <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -78,15 +79,13 @@
                 <?php endif; ?>
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
-                      <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
-                          <form action="<?php echo e(url('/video/store')); ?>" method="POST" style="width:101%;" enctype="multipart/form-data">
+                      <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp;
+                          <form action="<?php echo e(url('/video/store')); ?>" method="GET" style="width:101%;" enctype="multipart/form-data">
                              <?php echo e(csrf_field()); ?>
-
-                             <?php echo e(method_field('PUT')); ?>
 
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
                                  <span> CLICK HERE TO CHOOSE</span>
-                                 <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px">
+                                 <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required=>
                              </div>
                              <span style="margin-left:2px;">
                                  <input id="uploadFile" placeholder="Choose File" name="video" disabled="disabled" style="width:100%;border-radius:3px"; border-radius:3px"/>
@@ -145,14 +144,15 @@
             </div>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  See all videos
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 See all videos
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><!-- /.collapsible start -->
+
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                         <div class="timeline-item">  <!-- timeline-item start -->
                             <!---- CREATE ROWS FOR VIDEOS> EACH ROW HAS TW VIDEOS --->
