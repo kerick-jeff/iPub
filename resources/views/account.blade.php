@@ -185,7 +185,7 @@
             </div>
             <div class="box-body">
               <p>
-                Your account is {{ $status }}% complete
+                Your account status is {{ $status }}% complete
               </p>
               <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $status }}%">
@@ -347,7 +347,7 @@
                         <h4 class="modal-title" id="deletelinkLabel">Delete Link/Contact</h4>
                       </div>
                       <div class="modal-body">
-                          <p> Are you sure you want to delete this? </p>
+                          <p> Are you sure you want to delete this link/contact? </p>
                       </div>
                       <div class="modal-footer">
                         <form id="deleteform" method="POST">

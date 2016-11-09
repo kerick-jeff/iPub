@@ -2,6 +2,12 @@
 
 @section('title', 'Login')
 
+<!-- provide author and page desc -->
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
+@endsection
+
 @section('content')
     <p class="login-box-msg">Login</p>
 
@@ -58,7 +64,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" id = "login" class="btn btn-primary btn-block btn-flat">Login</button>
         </div>
         <!-- /.col -->
       </div>
@@ -66,9 +72,9 @@
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Login using
         Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Login using
         Google+</a>
     </div>
     <!-- /.social-auth-links -->
@@ -76,4 +82,22 @@
     <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
     <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
 
+ @endsection
+
+ @section('javascript')
+ <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+ <script type="text/javascript">
+ $("#login").click(function(){
+     $("#body").waitMe({
+         effect: 'roundBounce',
+         text: 'Signing you in',
+         bg: 'rgba(255,255,255,0.7)',
+         color: '#3c8dbc',
+         sizeW: '',
+         sizeH: '',
+         source: '',
+         onClose: function(){}
+     });
+ });
+ </script>
  @endsection

@@ -14,10 +14,12 @@ class MailItem extends Model
           'user_id',
           'sender',
           'recipient',
+          'subject',
           'body',
           'attachment',
-          'status', // determines whether an incoming message has been read by the iPub account user
-          'is_draft' // determines whether a message has been saved as a draft
+          'status', // indicates that an incoming message has been read by the iPub account user
+          'is_sent', // indicates that the iPub account user's mail has been sent
+          'is_draft' // indicates that a mail has been saved as a draft
      ];
 
      /**

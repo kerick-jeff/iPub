@@ -20,6 +20,16 @@
 
 <?php $__env->startSection('content'); ?>
 
+<!-- alert user that mail has been successfully deleted -->
+<?php if(session('deleted')): ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-check"></i> <br />
+         <?php echo e(session('deleted')); ?>
+
+    </div>
+<?php endif; ?>
+
 <div class="row">
     <div class="col-md-3">
       <a href="<?php echo e(url('mailbox/compose')); ?>" class="btn btn-primary btn-block margin-bottom">Compose</a>
@@ -77,79 +87,66 @@
           <div class="mailbox-controls">
             <!-- Check all button -->
             <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All"><i class="fa fa-square-o"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle = "tooltip" title = "Delete"><i class="fa fa-trash"></i></button>
-            <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
-            </div>
-            <!-- /.pull-right -->
+            <button type="button" id = "deleteBtn" class="btn btn-danger btn-sm" data-toggle = "modal" data-target = "#deletemail" title = "Delete" ><i class="fa fa-trash"></i></button>
           </div>
           <div class="table-responsive mailbox-messages">
             <table class="table table-hover table-striped">
               <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/1')); ?>">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">4 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/2')); ?>">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"></td>
-                <td class="mailbox-date">12 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/3')); ?>">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">12 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/4')); ?>">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">14 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/5')); ?>">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">15 days ago</td>
-              </tr>
+                <form id = "checkboxes">
+                  <?php foreach($sent_mails as $sent_mail): ?>
+                    <tr>
+                      <td><input type="checkbox" id = "<?php echo e($sent_mail->id); ?>" ></td>
+                      <td class="mailbox-name"><a href="<?php echo e(url('/mailbox/readmail/Sent/'.$sent_mail->id)); ?>"><?php echo e($sent_mail->recipient); ?></a></td>
+                      <td class="mailbox-subject"><b>iPub</b> - <?php echo e($sent_mail->subject); ?> </td>
+                      <?php if($sent_mail->attachment != ""): ?>
+                        <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                      <?php else: ?>
+                        <td></td>
+                      <?php endif; ?>
+                      <td class="mailbox-date"><?php echo e($sent_mail->created_at); ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </form>
+
               </tbody>
             </table>
             <!-- /.table -->
           </div>
           <!-- /.mail-box-messages -->
+
+          <!-- delete mail modal -->
+            <div class="modal fade" id="deletemail" tabindex="-1" role="dialog" aria-labelledby="Mail" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                    <h4 class="modal-title" id="deletemailLabel">Delete Mail</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p> Are you sure you want to delete this mail(s)? </p>
+                  </div>
+                  <div class="modal-footer">
+                    <form id="deleteform" method="POST">
+                        <?php echo e(csrf_field()); ?>
+
+                        <?php echo e(method_field('DELETE')); ?>
+
+                        <button type="submit" id = "delete" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- delete mail modal -->
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer no-padding">
           <div class="mailbox-controls">
-            <!-- Check all button -->
-            <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All"><i class="fa fa-square-o"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle = "tooltip" title = "Delete"><i class="fa fa-trash"></i></button>
             <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
+              <?php echo e($sent_mails->render()); ?>
+
             </div>
             <!-- /.pull-right -->
           </div>
@@ -191,6 +188,17 @@ $(document).ready(function() {
       }
       $(this).data("clicks", !clicks);
     });
+});
+
+$("#delete").click(function(){
+    var ids = [];
+
+    $("input:checkbox:checked").each(function () {
+        if($(this).attr("id") != null)
+            ids.push($(this).attr("id"));
+    });
+
+    $("#deleteform").attr("action", "/mailbox/deletemails/Sent/" + JSON.stringify(ids));
 });
 </script>
 

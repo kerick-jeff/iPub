@@ -11,7 +11,7 @@
 */
 /*test routes*/
 Route::get('/photos', function(){
-    $photos = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg'];
+    $photos = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.png'];
     return view('photos', ['photos' => $photos]);
 });
 Route::get('/photo/{name}', function($name){
@@ -86,6 +86,8 @@ Route::get('/mailbox/compose', 'MailboxController@getCompose');
 
 Route::post('/mailbox/compose', 'MailboxController@postCompose');
 
+Route::post('/mailbox/send/sendSaved/{category}', 'MailboxController@sendSaved');
+
 Route::get('/mailbox/inbox', 'MailboxController@inbox');
 
 Route::get('/mailbox/sent', 'MailboxController@sent');
@@ -93,3 +95,11 @@ Route::get('/mailbox/sent', 'MailboxController@sent');
 Route::get('/mailbox/drafts', 'MailboxController@drafts');
 
 Route::get('/mailbox/readmail/{category}/{id}', 'MailboxController@readMail');
+
+//delete one or more mails when checked by the checkbox html element
+Route::delete('/mailbox/deletemails/{category}/{ids}', 'MailboxController@deleteMails');
+
+//delete a single readmail
+Route::delete('/mailbox/delete/{category}/{id}', 'MailboxController@delete');
+
+Route::post('/mailbox/forward/{category}/{id}', 'MailboxController@forward');

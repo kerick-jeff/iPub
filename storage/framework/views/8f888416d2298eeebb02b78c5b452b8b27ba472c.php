@@ -2,6 +2,10 @@
 
 <!-- provide author and page description -->
 
+<?php $__env->startSection('css'); ?>
+  <link rel="stylesheet" href="<?php echo e(asset('js/loading/waitMe.css')); ?>" media="screen" title="no title">
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('breadcrumb'); ?>
 <h1>
   Mailbox
@@ -83,8 +87,8 @@
 
           <input type="hidden" name="user_id" value = "<?php echo e(Auth::user()->id); ?>">
           <input type="hidden" name="sender" value = "<?php echo e(Auth::user()->email); ?>">
+          <input type="hidden" name="is_sent" value="0">
           <input type="hidden" name="is_draft" value="0">
-
 
           <div class="box-body">
             <div class="form-group">
@@ -125,8 +129,8 @@
           <!-- /.box-body -->
           <div class="box-footer">
             <div class="pull-right">
-              <button type="submit" name = "save" class="btn btn-warning"><i class="fa fa-save"></i> Save as draft</button>
-              <button type="submit" name = "send" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
+              <button type="submit" name = "save" id = "save" class="btn btn-warning"><i class="fa fa-save"></i> Save as draft</button>
+              <button type="submit" name = "send" id = "send" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
             </div>
             <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
           </div>
@@ -142,7 +146,34 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascript'); ?>
+<script type="text/javascript" src = "<?php echo e(asset('js/loading/waitMe.js')); ?>"></script>
+<script type="text/javascript">
+$("#save").click(function(){
+    $("#body").waitMe({
+        effect: 'roundBounce',
+        text: 'Saving as draft',
+        bg: 'rgba(255,255,255,0.7)',
+        color: '#3c8dbc',
+        sizeW: '',
+        sizeH: '',
+        source: '',
+        onClose: function(){}
+    });
+});
 
+$("#send").click(function(){
+    $("#body").waitMe({
+        effect: 'roundBounce',
+        text: 'Sending...',
+        bg: 'rgba(255,255,255,0.7)',
+        color: '#3c8dbc',
+        sizeW: '',
+        sizeH: '',
+        source: '',
+        onClose: function(){}
+    });
+});
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
