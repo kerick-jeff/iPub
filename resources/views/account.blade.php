@@ -43,7 +43,7 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ asset('ipub/dist/img/avatar.png') }}" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="{{ url('/profilePicture') }}" alt="User profile picture">
         <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
         <p class="text-muted text-center">{{ Auth::user()->type }}</p>
         <ul class="list-group list-group-unbordered">

@@ -123,8 +123,17 @@
               <h3 class="box-title">Read Mail</h3>
 
               <div class="box-tools pull-right">
-                <a href="/mailbox/readmail/Drafts/" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
-                <a href="/mailbox/readmail/Drafts/" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
+                @if($hasPrevious == true)
+                  <a href="/mailbox/readmail/{{ $category }}/{{ $previous }}" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
+                @else
+                  <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-left"></i></a>
+                @endif
+
+                @if($hasNext == true)
+                  <a href="/mailbox/readmail/{{ $category }}/{{ $next }}" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
+                @else
+                  <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-right"></i></a>
+                @endif
               </div>
             </div>
             <!-- /.box-header -->

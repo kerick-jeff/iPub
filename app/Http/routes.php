@@ -3,6 +3,7 @@
 use App\User;
 use App\Pub;
 use App\PubFile;
+use App\MailItem;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -86,7 +87,7 @@ Route::get('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 Route::put('/video/store', 'UploadController@storeVideo');
 Route::patch('/photo/{id}/edit', 'UploadController@editPhoto');
 Route::patch('/video/{id}/edit', 'UploadController@editVideo');
-Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
+Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo');
 */
 
 /* SettingsController routes */

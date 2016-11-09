@@ -75,7 +75,65 @@ class MailboxController extends Controller
     public function readmail($category, $id){
         $readmail = Auth::user()->mailitems()->where('id', $id)->first();
 
-        return view('readmail', ['category' => $category, 'readmail' => $readmail]);
+        $first = $last = null;
+
+        if($category == "Inbox"){
+
+        } else if($category == "Sent"){
+            $first = Auth::user()->mailitems()->where('is_sent', 1)->first();
+            $last = Auth::user()->mailitems()->where('is_sent', 1)->orderBy('id', 'desc')->first();
+        } else {
+            $first = Auth::user()->mailitems()->where('is_draft', 1)->first();
+            $last = Auth::user()->mailitems()->where('is_draft', 1)->orderBy('id', 'desc')->first();
+        }
+
+        $next = $previous = null;
+
+        $hasNext = $this->hasNext($readmail->id, $last->id);
+        if($hasNext){
+            if($category == "Inbox"){
+
+            } else if($category == "Sent"){
+                $next = Auth::user()->mailitems()
+                                  ->where('is_sent', 1)
+                                  ->where('id', '>', $readmail->id)
+                                  ->first()->id;
+            } else {
+                $next = Auth::user()->mailitems()
+                                    ->where('is_draft', 1)
+                                    ->where('id', '>', $readmail->id)
+                                    ->first()->id;
+            }
+        }
+
+        $hasPrevious = $this->hasPrevious($readmail->id, $first->id);
+        if($hasPrevious){
+            if($category == "Inbox"){
+
+            } else if($category == "Sent"){
+                $previous = Auth::user()->mailitems()
+                                  ->where('is_sent', 1)
+                                  ->where('id', '<', $readmail->id)
+                                  ->orderBy('id', 'desc')
+                                  ->first()->id;
+            } else {
+                $previous = Auth::user()->mailitems()
+                                    ->where('is_draft', 1)
+                                    ->where('id', '<', $readmail->id)
+                                    ->orderBy('id', 'desc')
+                                    ->first()->id;
+            }
+        }
+
+        return view('readmail', ['category' => $category, 'readmail' => $readmail, 'next' => $next, 'previous' => $previous, 'hasNext' => $hasNext, 'hasPrevious' => $hasPrevious]);
+    }
+
+    private function hasNext($current, $last){
+        return ($current == $last) ? false : true;
+    }
+
+    private function hasPrevious($current, $first){
+        return ($current == $first) ? false : true;
     }
 
     /**

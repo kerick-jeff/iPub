@@ -18,7 +18,7 @@
     <li>Mailbox</li>
     <li class="active">Sent</li>
 </ol>
-@endsection
+@endsection 
 
 @section('content')
 

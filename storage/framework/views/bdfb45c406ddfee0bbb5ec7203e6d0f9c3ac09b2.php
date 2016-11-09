@@ -16,7 +16,7 @@
     <li>Mailbox</li>
     <li class="active">Sent</li>
 </ol>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> 
 
 <?php $__env->startSection('content'); ?>
 
@@ -26,6 +26,16 @@
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <i class = "icon fa fa-check"></i> <br />
          <?php echo e(session('deleted')); ?>
+
+    </div>
+<?php endif; ?>
+
+<!-- alert user that mail has not been deleted -->
+<?php if(session('notDeleted')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Failed <br />
+         <?php echo e(session('notDeleted')); ?>
 
     </div>
 <?php endif; ?>

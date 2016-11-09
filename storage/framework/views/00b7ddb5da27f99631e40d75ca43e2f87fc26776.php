@@ -9,7 +9,7 @@
 
 <?php $__env->startSection('breadcrumb'); ?>
 <h1>
-  Mailbox
+  Mailbox 
 </h1>
 <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
