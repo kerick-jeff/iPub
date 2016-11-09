@@ -72,19 +72,23 @@ class MailboxController extends Controller
         return view('drafts', ['drafts' => $drafts]);
     }
 
+    /**
+     * read a MailItem depending on its category specified by the id
+     * @var String, Integer
+     */
     public function readmail($category, $id){
         $readmail = Auth::user()->mailitems()->where('id', $id)->first();
 
-        $first = $last = null;
+        $first = $last = null; // will hold instances of the first and last MailItem instances in the database respectively depending on the criteria specified
 
         if($category == "Inbox"){
 
         } else if($category == "Sent"){
             $first = Auth::user()->mailitems()->where('is_sent', 1)->first();
-            $last = Auth::user()->mailitems()->where('is_sent', 1)->orderBy('id', 'desc')->first();
+            $last = Auth::user()->mailitems()->where('is_sent', 1)->orderBy('id', 'desc')->first(); // returns last sent MailItem in the database
         } else {
             $first = Auth::user()->mailitems()->where('is_draft', 1)->first();
-            $last = Auth::user()->mailitems()->where('is_draft', 1)->orderBy('id', 'desc')->first();
+            $last = Auth::user()->mailitems()->where('is_draft', 1)->orderBy('id', 'desc')->first();  // returns last draft MailItem in the database
         }
 
         $next = $previous = null;
@@ -94,11 +98,13 @@ class MailboxController extends Controller
             if($category == "Inbox"){
 
             } else if($category == "Sent"){
+                // set the id of the next MailItem
                 $next = Auth::user()->mailitems()
                                   ->where('is_sent', 1)
                                   ->where('id', '>', $readmail->id)
                                   ->first()->id;
             } else {
+                // set the id of the previous MailItem
                 $next = Auth::user()->mailitems()
                                     ->where('is_draft', 1)
                                     ->where('id', '>', $readmail->id)
@@ -111,12 +117,14 @@ class MailboxController extends Controller
             if($category == "Inbox"){
 
             } else if($category == "Sent"){
+                // set the id of the next MailItem
                 $previous = Auth::user()->mailitems()
                                   ->where('is_sent', 1)
                                   ->where('id', '<', $readmail->id)
                                   ->orderBy('id', 'desc')
                                   ->first()->id;
             } else {
+                // set the id of the previous MailItem
                 $previous = Auth::user()->mailitems()
                                     ->where('is_draft', 1)
                                     ->where('id', '<', $readmail->id)
@@ -128,10 +136,20 @@ class MailboxController extends Controller
         return view('readmail', ['category' => $category, 'readmail' => $readmail, 'next' => $next, 'previous' => $previous, 'hasNext' => $hasNext, 'hasPrevious' => $hasPrevious]);
     }
 
+    /**
+     * checks if there is a nextable MailItem instance in the database
+     * @var Integer, is_integer
+     * @return Boolean
+     */
     private function hasNext($current, $last){
         return ($current == $last) ? false : true;
     }
 
+    /**
+     * checks if there is a previousable MailItem instance in the database
+     * @var Integer, is_integer
+     * @return Boolean
+     */
     private function hasPrevious($current, $first){
         return ($current == $first) ? false : true;
     }
