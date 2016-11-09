@@ -128,7 +128,7 @@
                 @else
                   <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-left"></i></a>
                 @endif
-
+                
                 @if($hasNext == true)
                   <a href="/mailbox/readmail/{{ $category }}/{{ $next }}" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
                 @else

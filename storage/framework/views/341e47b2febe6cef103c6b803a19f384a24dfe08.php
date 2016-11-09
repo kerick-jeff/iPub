@@ -129,7 +129,7 @@
                 <?php else: ?>
                   <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-left"></i></a>
                 <?php endif; ?>
-
+                
                 <?php if($hasNext == true): ?>
                   <a href="/mailbox/readmail/<?php echo e($category); ?>/<?php echo e($next); ?>" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
                 <?php else: ?>
