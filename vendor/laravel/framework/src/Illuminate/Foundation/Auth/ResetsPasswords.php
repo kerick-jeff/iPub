@@ -120,7 +120,6 @@ trait ResetsPasswords
     {
         return function (Message $message) {
             $message->subject($this->getEmailSubject());
-            $message->from('tigrodrige@gmail.com', 'iPub');
         };
     }
 

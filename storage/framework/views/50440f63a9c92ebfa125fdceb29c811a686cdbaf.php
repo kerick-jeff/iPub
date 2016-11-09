@@ -44,7 +44,7 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="<?php echo e(url('/profilePicture')); ?>" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="<?php echo e(asset('ipub/dist/img/avatar.png')); ?>" alt="User profile picture">
         <h3 class="profile-username text-center"><?php echo e(Auth::user()->name); ?></h3>
         <p class="text-muted text-center"><?php echo e(Auth::user()->type); ?></p>
         <ul class="list-group list-group-unbordered">
@@ -441,8 +441,13 @@
                     <ul class="users-list clearfix">
                       <?php foreach($followers as $follower): ?>
                         <li>
+<<<<<<< HEAD:storage/framework/views/50440f63a9c92ebfa125fdceb29c811a686cdbaf.php
+                          <img src="<?php echo e(asset('ipub/dist/img/avatar.png')); ?>" alt="Follower Image">
+                          <?php echo e(empty($follower->name) ? "empty is the ga" : $follower->name); ?>
+=======
                           <img src="<?php echo e(asset('ipub/dist/img/user1-128x128.jpg')); ?>" alt="Follower Image">
                           <?php echo e(empty($follower->name) ? "empty is the game" : $follower->name); ?>
+>>>>>>> 9bdda7923428ecf6295beb78622c6c263d702572:storage/framework/views/6b1004c2c150954f9743ecbb3bb38fb2a49b8fec.php
 
                           <span class="users-list-name" ><?php echo e($follower->email); ?></span>
                         </li>
@@ -487,7 +492,7 @@
                 <ul class="products-list product-list-in-box">
                   <li class="item">
                     <div class="product-img">
-                      <img src="<?php echo e(asset('ipub/dist/img/default-50x50.gif')); ?>" alt="Product Image">
+                      <img src="<?php echo e(asset('ipub/dist/img/avatar.png')); ?>" alt="Product Image">
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title">Samsung TV

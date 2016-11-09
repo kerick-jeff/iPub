@@ -11,7 +11,7 @@ class PubFile extends Model
     * @var array
     */
     protected $fillable = [
-        'user_id',
+        'pub_id',
         'filename',
         'type',
         'size',
