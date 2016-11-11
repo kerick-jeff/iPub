@@ -75,7 +75,7 @@ Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
 
 
-Route::get('/video/store', 'UploadController@storeVideo');
+Route::put('/video/store', 'UploadController@storeVideo');
 Route::get('/upload/video', function(){
     return view('upload.video');
 });

@@ -37,11 +37,11 @@ class UploadController extends Controller
         $type = 'image';
         $user_id = $request->input('user_id');
         $image = Image::make($request->file('photo'));
-        $name = $request->file('photo')->getClientOriginalName();
+        $name = $image->getClientOriginalName();
         $width = $image->width();
         $height = $image->height();
 
-		if($request->hasFile('photo') && $request->file('photo')->isValid() &&
+		if($request->hasFile('photo') && $image->isValid() &&
 		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and mime type
 		    if($image->filesize() < 5242880){  // check file size
 		        if( $width >= 200 && $height >= 200 ){ //check file dimensions
@@ -69,10 +69,10 @@ class UploadController extends Controller
 
 		            PubFile::create([
 		                'pub_id' => $pub->id,
-		                'filename' => $request->file('photo')->getClientOriginalName(),
+		                'filename' => $image->getClientOriginalName(),
 		                'type' => $type,
 		                'size' => $image->filesize(),
-		                'extension' => $request->file('photo')->getClientOriginalExtension(),
+		                'extension' => $image->getClientOriginalExtension(),
 		            ]);
 
 		            return back()->with('success', 'Your image was successfully uploaded');
@@ -129,19 +129,23 @@ class UploadController extends Controller
       if($validate->fails()){
         return redirect('/upload/video')->withErrors($validate)->withInput();
       }
+     // phpinfo();
 
-      $type = 'video';
+      $type = 'video/mp4';
       $user_id = $request->input('user_id');
       $videoFile = $request->file('video');
-      $name = $request->file('video')->getClientOriginalName();
+      $mime = $videoFile->getClientMimeType();
+      $name = $videoFile->getClientOriginalName();
 
-      if($request->hasFile('video') && $request->file('video')->isValid() && substr($videoFile->mime(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
+      if($request->hasFile('video') && $videoFile->isValid() && substr($videoFile->getClientMimeType(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
         if($videoFile->getClientSize() < 524288000){  // check video size
           $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/video/';
 
                 if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/video/')){
                   Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/video/');
                 }
+
+                $path->put($name, file_get_contents($videoFile->getRealPath()));
 
                 $pub = Pub::create([
                         'user_id' => $user_id,
@@ -151,12 +155,12 @@ class UploadController extends Controller
                         'sub_category' => $request->input('sub_category'),
                        ]);
 
-                Pubvideo::create([
+                PubFile::create([
                     'pub_id' => $pub->id,
-                    'filename' => $request->file('video')->getClientOriginalName(),
+                    'filename' => $videoFile->getClientOriginalName(),
                     'type' => $type,
-                    'size' => $videoFile->filesize(),
-                    'extension' => $request->file('video')->getClientOriginalExtension(),
+                    'size' => $videoFile->getClientSize(),
+                    'extension' => $videoFile->getClientOriginalExtension(),
                 ]);
 
                 return back()->with('success', 'Your videoFile was successfully uploaded');

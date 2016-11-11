@@ -78,11 +78,12 @@
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp;
-                          <form action="{{ url('/video/store') }}" method="GET" style="width:101%;" enctype="multipart/form-data">
+                          <form action="{{ url('/video/store') }}" method="POST" style="width:101%;" enctype="multipart/form-data">
                              {{ csrf_field() }}
+                             {{ method_field('PUT') }}
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
                                  <span> CLICK HERE TO CHOOSE</span>
-                                 <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required=>
+                                 <input accept="video/*" type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
                                  <input id="uploadFile" placeholder="Choose File" name="video" disabled="disabled" style="width:100%;border-radius:3px"; border-radius:3px"/>
@@ -126,7 +127,7 @@
                                  </select>
                              </div>
                              @if(Auth::check())
-                                <input type="hidden" name="userId" value="{{Auth::user()->id}}">
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                              @endif
                              <div class="row">
                                  <div class="col-xs-12">
