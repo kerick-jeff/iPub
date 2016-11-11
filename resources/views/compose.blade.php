@@ -24,7 +24,7 @@
 @if(session('saved'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Saved <br />
          {{ session('saved') }}
     </div>
 @endif
@@ -32,8 +32,16 @@
 @if(session('sent'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Sent <br />
          {{ session('sent') }}
+    </div>
+@endif
+
+@if(session('notSent'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Not Sent <br />
+         {{ session('notSent') }}
     </div>
 @endif
 
@@ -52,19 +60,19 @@
               <li>
                 <a href="{{ url('/mailbox/inbox') }}">
                   <i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-info pull-right">16</span>
+                  <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
                 </a>
               </li>
               <li>
                 <a href="{{ url('/mailbox/sent') }}">
                   <i class="fa fa-send"></i> Sent
-                  <span class="label pull-right bg-green">4</span>
+                  <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
                 </a>
               </li>
               <li>
                 <a href="{{ url('/mailbox/drafts') }}">
                   <i class="fa fa-file-text"></i> Drafts
-                  <span class="label label-warning pull-right">5</span>
+                  <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
                 </a>
               </li>
             </ul>
@@ -147,30 +155,46 @@
 @section('javascript')
 <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
 <script type="text/javascript">
-$("#save").click(function(){
-    $("#body").waitMe({
-        effect: 'roundBounce',
-        text: 'Saving as draft',
-        bg: 'rgba(255,255,255,0.7)',
-        color: '#3c8dbc',
-        sizeW: '',
-        sizeH: '',
-        source: '',
-        onClose: function(){}
-    });
-});
+    $(document).ready(function(){
+        // check number of inbox, sent and drafts mailItems after every 10s
+        setInterval(function(){
+          $.ajax({
+              type: 'POST',
+              url: '/mailbox/check',
+              data: '_token={{ csrf_token() }}',
+              success: function(data){
+                  $("#numInbox").html(data.numInbox);
+                  $("#numSent").html(data.numSent);
+                  $("#numDrafts").html(data.numDrafts);
+              }
+          });
+        }, 10{{ session('') }}000);
 
-$("#send").click(function(){
-    $("#body").waitMe({
-        effect: 'roundBounce',
-        text: 'Sending...',
-        bg: 'rgba(255,255,255,0.7)',
-        color: '#3c8dbc',
-        sizeW: '',
-        sizeH: '',
-        source: '',
-        onClose: function(){}
+        $("#save").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Saving as draft',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#send").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Sending...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
     });
-});
 </script>
 @endsection

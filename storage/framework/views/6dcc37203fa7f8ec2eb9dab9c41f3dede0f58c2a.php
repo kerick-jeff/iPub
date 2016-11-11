@@ -44,19 +44,19 @@
             </li>
             <li><a href="<?php echo e(url('/mailbox/inbox')); ?>"><i class="fa fa-inbox"></i> Inbox
                     <span class="pull-right-container">
-                      <small class="label label-info pull-right">16</small>
+                      <small class="label label-info pull-right"><b id = "noInbox"><?php echo e(session('noInbox')); ?></b></small>
                     </span>
                 </a>
             </li>
             <li><a href="<?php echo e(url('/mailbox/sent')); ?>"><i class="fa fa-send"></i> Sent
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">4</small>
+                      <small class="label pull-right bg-green"><b id = "noSent"><?php echo e(session('noSent')); ?></b></small>
                     </span>
                 </a>
             </li>
             <li><a href="<?php echo e(url('/mailbox/drafts')); ?>"><i class="fa fa-file-text-o"></i> Drafts
                     <span class="pull-right-container">
-                      <small class="label label-warning pull-right">10</small>
+                      <small class="label label-warning pull-right"><b id = "noDrafts"><?php echo e(session('noDrafts')); ?></b></small>
                     </span>
                 </a>
             </li>

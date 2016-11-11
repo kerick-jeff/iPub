@@ -23,10 +23,35 @@ class MailboxController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * checks the total number of corresponding MailItem types and updates in the view asynchronously
+     * this call is initialized from an ajax function block
+     */
+    public function check(){
+        $numInbox = $numSent = $numDrafts = 0;
+
+        $numInbox = count(Auth::user()->mailitems()
+                                   ->where('is_sent', 0)
+                                   ->where('is_draft', 0)
+                                   ->where('status', 0)
+                                   ->get());
+        $numSent = count(Auth::user()->mailitems()->where('is_sent', 1)->get());
+        $numDrafts = count(Auth::user()->mailitems()->where('is_draft', 1)->get());
+
+        session(['noInbox' => $numInbox, 'noSent' => $numSent, 'noDrafts' => $numDrafts]);
+
+        return response()->json(['numInbox' => $numInbox, 'numSent' => $numSent, 'numDrafts' => $numDrafts], 200);
+    }
+
     public function getCompose(){
         return view('compose');
     }
 
+    /**
+     * handles composed mails
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector
+     */
     public function postCompose(Request $request){
         $validator = Validator::make($request->all(), [
             'recipient' => 'required|email|max:255',
@@ -49,7 +74,7 @@ class MailboxController extends Controller
 
             if(!$sent){
                 $this->save($request, true, false);
-                return redirect('/mailbox/compose')->with(['saved' => 'Unable to send mail. Saved as draft.']);
+                return redirect('/mailbox/compose')->with(['notSent' => 'Unable to send mail. Saved as draft.']);
             }
 
             return redirect('/mailbox/compose')->with(['sent' => 'Your mail has been sent.']);
@@ -61,23 +86,31 @@ class MailboxController extends Controller
     }
 
     public function sent(){
-        $sent_mails = Auth::user()->mailitems()->where('is_sent', 1)->paginate(5);
+        $sent_mails = Auth::user()->mailitems()->where('is_sent', 1)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('sent', ['sent_mails' => $sent_mails]);
     }
 
     public function drafts(){
-        $drafts = Auth::user()->mailitems()->where('is_draft', 1)->paginate(5);
+        $drafts = Auth::user()->mailitems()->where('is_draft', 1)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('drafts', ['drafts' => $drafts]);
     }
 
     /**
      * read a MailItem depending on its category specified by the id
-     * @var String, Integer
+     * @param String $category
+     * @param Integer $id
      */
     public function readmail($category, $id){
         $readmail = Auth::user()->mailitems()->where('id', $id)->first();
+
+        $attachmentSize = null;
+
+        if($readmail->attachment != ""){
+            $path = Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+            $attachmentSize = Storage::disk('public')->size($path.$readmail->attachment);
+        }
 
         $first = $last = null; // will hold instances of the first and last MailItem instances in the database respectively depending on the criteria specified
 
@@ -133,12 +166,13 @@ class MailboxController extends Controller
             }
         }
 
-        return view('readmail', ['category' => $category, 'readmail' => $readmail, 'next' => $next, 'previous' => $previous, 'hasNext' => $hasNext, 'hasPrevious' => $hasPrevious]);
+        return view('readmail', ['category' => $category, 'readmail' => $readmail, 'attachmentSize' => $attachmentSize, 'next' => $next, 'previous' => $previous, 'hasNext' => $hasNext, 'hasPrevious' => $hasPrevious]);
     }
 
     /**
      * checks if there is a nextable MailItem instance in the database
-     * @var Integer, is_integer
+     * @param Integer $current
+     * @param Integer $last
      * @return Boolean
      */
     private function hasNext($current, $last){
@@ -147,7 +181,8 @@ class MailboxController extends Controller
 
     /**
      * checks if there is a previousable MailItem instance in the database
-     * @var Integer, is_integer
+     * @param Integer $current
+     * @param invite $first
      * @return Boolean
      */
     private function hasPrevious($current, $first){
@@ -156,8 +191,10 @@ class MailboxController extends Controller
 
     /**
      * stores a mail in the database
-     * @var Request, boolean, boolean
-     * @return boolean
+     * @param Request $request
+     * @param Boolean $asDraft
+     * @param Boolean $asSent
+     * @return Boolean
      */
     private function save(Request $request, $asDraft = true, $asSent = true){
         if($request->hasFile('attachment')){
@@ -194,8 +231,8 @@ class MailboxController extends Controller
 
     /**
      * sends a mail to the specified recipient
-     * @var Request
-     * @return boolean
+     * @param Request $request
+     * @return Boolean
      */
     private function send(Request $request){
         $sent = false;
@@ -226,7 +263,8 @@ class MailboxController extends Controller
 
     /**
      * sends a draft or already stored message
-     * @var Request, String
+     * @param Request $request
+     * @param String $category
      */
     public function sendSaved(Request $request, $category){
         $sent = false;
@@ -244,7 +282,9 @@ class MailboxController extends Controller
             @Mail::send('emails.mail', ['subject' => $request->subject, 'body' => $request->body], function($message) use ($request){
                 $message->from($request->sender, Auth::user()->name);
                 $message->to($request->recipient);
-                $message->attach($path.$request->attachment);
+                $path = Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+                $file = Storage::disk('public')->get($path.$request->attachment);
+                $message->attachData($file, "iPub - ".$request->attachment);
                 $message->subject('iPub, a mail from an iPub account user');
             });
 
@@ -252,18 +292,20 @@ class MailboxController extends Controller
         }
 
         if($sent){
-            $mail_item->update(['is_sent' => 1]);
+            MailItem::find($request->id)->update(['is_sent' => 1]);
             return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['sent' => 'Your mail has been sent.']);
         } else {
-            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['sent' => 'Unable to send mail. Please try again.']);
+            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['notSent' => 'Unable to send mail. Please try again.']);
         }
     }
 
     /**
      * responsible for forwarding a mail
-     * @var String, array
+     * @param Request $request
+     * @param String $category
+     * @param Integer $id
      */
-    public function forward(Request $request, $category, $id){
+    public function forward(Request $request, $category){
         $validator = Validator::make($request->all(), [
             'recipient' => 'required|email|max:255',
         ], ['recipient.required' => 'Please enter the email of the recipient.']);
@@ -276,7 +318,7 @@ class MailboxController extends Controller
 
         $forwarded = false;
 
-        /*if($request->attachment == ""){
+        if($request->attachment == ""){
             @Mail::send('emails.mail', ['subject' => $request->subject, 'body' => $request->body], function($message) use ($request){
                 $message->from($request->sender, Auth::user()->name);
                 $message->to($request->recipient);
@@ -289,23 +331,26 @@ class MailboxController extends Controller
             @Mail::send('emails.mail', ['subject' => $request->subject, 'body' => $request->body], function($message) use ($request){
                 $message->from($request->sender, Auth::user()->name);
                 $message->to($request->recipient);
-                $message->attach($path.$request->attachment);
+                $path = Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+                $file = Storage::disk('public')->get($path.$request->attachment);
+                $message->attachData($file, "iPub - ".$request->attachment);
                 $message->subject('iPub, a mail from an iPub account user');
             });
 
             $forwarded = true;
-        }*/
+        }
 
         if($forwarded){
-            return redirect('/mailbox/readmail/'.$category.'/'.$id)->with(['forwarded' => 'Your mail has been forwarded.']);
+            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['sent' => 'Your mail has been forwarded.']);
         } else {
-            return redirect('/mailbox/readmail/'.$category.'/'.$id)->with(['notForwarded' => 'Unable to forward mail. Please try again.']);
+            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['notSent' => 'Unable to forward mail. Please try again.']);
         }
     }
 
     /**
      * deletes a mail
-     * @var String, array
+     * @param String $category
+     * @param Integer $id
      */
     public function delete($category, $id){
         $deleted = false;
@@ -333,7 +378,8 @@ class MailboxController extends Controller
 
     /**
      * deletes one or more mails checked by the checkbox html element
-     * @var String, array
+     * @param String $category
+     * @param Array $ids
      */
     public function deleteMails($category, $ids){
         $ids = json_decode($ids);
@@ -369,8 +415,9 @@ class MailboxController extends Controller
 
     /**
      * deletes a mail from the database
-     * @var String, int
-     * @return boolean
+     * @param String $category
+     * @param Integer $id
+     * @return Boolean
      */
     private function remove($category, $id){
         $mail_item = Auth::user()->mailitems()->where('id', $id)->first();

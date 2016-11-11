@@ -27,7 +27,10 @@ class SettingsController extends Controller
         return view('settings');
     }
 
-    // set or update an authenticated user's profile picture
+    /**
+     * set or update an authenticated user's profile picture
+     * @param Request $request
+     */
     public function setProfilePicture(Request $request){
         $validator = Validator::make($request->all(), [
             'profile_picture' => 'required|image|max:255',
@@ -55,6 +58,10 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
+    /**
+     * sets iPub account user's phone number
+     * @param Request $request
+     */
     public function setPhoneNumber(Request $request){
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required',
@@ -73,6 +80,10 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
+    /**
+     * sets a new password for the iPub account user
+     * @param Request $request
+     */
     public function setSecurity(Request $request){
         $validator = Validator::make($request->all(), [
             'password' => 'required|min:8|confirmed',
@@ -90,6 +101,10 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
+    /**
+     * set iPub account user's description
+     * @param Request $request
+     */
     public function setDescription(Request $request){
         $validator = Validator::make($request->all(), [
             'description' => 'required',
@@ -107,6 +122,10 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
+    /**
+     * set iPub account user's geolocation
+     * @param Request $request
+     */
     public function setLocation(Request $request){
         $validator = Validator::make($request->all(), [
             'geo_longitude' => 'required',

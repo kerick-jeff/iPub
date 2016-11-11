@@ -39,6 +39,12 @@ Route::get('/', function () {
 
 Route::auth();
 
+/* Download a file */
+Route::get('/download/{filename}', function($filename){
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+    return response()->download($path.$filename, 'iPub - '.$filename);
+});
+
 /* Profile Picture route */
 Route::get('/profilePicture', function(){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
@@ -148,4 +154,6 @@ Route::delete('/mailbox/deletemails/{category}/{ids}', 'MailboxController@delete
 //delete a single readmail
 Route::delete('/mailbox/delete/{category}/{id}', 'MailboxController@delete');
 
-Route::post('/mailbox/forward/{category}/{id}', 'MailboxController@forward');
+Route::post('/mailbox/forward/{category}', 'MailboxController@forward');
+
+Route::post('/mailbox/check', 'MailboxController@check');

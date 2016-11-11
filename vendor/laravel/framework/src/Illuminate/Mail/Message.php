@@ -185,7 +185,7 @@ class Message
      *
      * @param  string  $file
      * @return \Swift_Attachment
-     */
+     */ 
     protected function createAttachmentFromPath($file)
     {
         return Swift_Attachment::fromPath($file);

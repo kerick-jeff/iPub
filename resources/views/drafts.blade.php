@@ -11,7 +11,7 @@
 
 @section('breadcrumb')
 <h1>
-  Mailbox 
+  Mailbox
 </h1>
 <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
@@ -58,19 +58,19 @@
             <li>
               <a href="{{ url('/mailbox/inbox') }}">
                 <i class="fa fa-inbox"></i> Inbox
-                <span class="label label-info pull-right">16</span>
+                <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
               </a>
             </li>
             <li>
               <a href="{{ url('/mailbox/sent') }}">
                 <i class="fa fa-send"></i> Sent
-                <span class="label pull-right bg-green">4</span>
+                <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
               </a>
             </li>
             <li class="active">
               <a href="{{ url('/mailbox/drafts') }}">
                 <i class="fa fa-file-text"></i> Drafts
-                <span class="label label-warning pull-right">5</span>
+                <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
               </a>
             </li>
           </ul>
@@ -203,6 +203,20 @@ $(document).ready(function() {
 
       $("#deleteform").attr("action", "/mailbox/deletemails/Drafts/" + JSON.stringify(ids));
     });
+
+    // check number of inbox, sent and drafts mailItems after every 10s
+    setInterval(function(){
+      $.ajax({
+          type: 'POST',
+          url: '/mailbox/check',
+          data: '_token={{ csrf_token() }}',
+          success: function(data){
+              $("#numInbox").html(data.numInbox);
+              $("#numSent").html(data.numSent);
+              $("#numDrafts").html(data.numDrafts);
+          }
+      });
+    }, 10000);
 });
 </script>
 

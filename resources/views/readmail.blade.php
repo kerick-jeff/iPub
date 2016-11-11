@@ -22,6 +22,14 @@
 
 @section('content')
 
+@if($errors->has('recipient'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Failed <br />
+         {{ $errors->first('recipient') }}
+    </div>
+@endif
+
 @if(session('sent'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -30,19 +38,11 @@
     </div>
 @endif
 
-@if(session('forwarded'))
-    <div class="alert alert-success alert-dismissible" role="alert">
-         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
-         {{ session('forwarded') }}
-    </div>
-@endif
-
-@if(session('notForwarded'))
+@if(session('notSent'))
     <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <i class = "icon fa fa-close"></i> Failed <br />
-         {{ session('notForwarded') }}
+         {{ session('notSent') }}
     </div>
 @endif
 
@@ -65,14 +65,14 @@
                   <li class="active">
                     <a href="{{ url('/mailbox/inbox') }}">
                       <i class="fa fa-inbox"></i> Inbox
-                      <span class="label label-info pull-right">16</span>
+                      <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
                     </a>
                   </li>
                 @else
                   <li>
                     <a href="{{ url('/mailbox/inbox') }}">
                       <i class="fa fa-inbox"></i> Inbox
-                      <span class="label label-info pull-right">16</span>
+                      <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
                     </a>
                   </li>
                 @endif
@@ -81,14 +81,14 @@
                   <li class = "active">
                     <a href="{{ url('/mailbox/sent') }}">
                       <i class="fa fa-send"></i> Sent
-                      <span class="label pull-right bg-green">4</span>
+                      <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
                     </a>
                   </li>
                 @else
                   <li>
                     <a href="{{ url('/mailbox/sent') }}">
                       <i class="fa fa-send"></i> Sent
-                      <span class="label pull-right bg-green">4</span>
+                      <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
                     </a>
                   </li>
                 @endif
@@ -97,14 +97,14 @@
                   <li class = "active">
                     <a href="{{ url('/mailbox/drafts') }}">
                       <i class="fa fa-file-text"></i> Drafts
-                      <span class="label label-warning pull-right">5</span>
+                      <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
                     </a>
                   </li>
                 @else
                   <li>
                     <a href="{{ url('/mailbox/drafts') }}">
                       <i class="fa fa-file-text"></i> Drafts
-                      <span class="label label-warning pull-right">5</span>
+                      <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
                     </a>
                   </li>
                 @endif
@@ -128,7 +128,7 @@
                 @else
                   <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-left"></i></a>
                 @endif
-                
+
                 @if($hasNext == true)
                   <a href="/mailbox/readmail/{{ $category }}/{{ $next }}" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
                 @else
@@ -165,10 +165,10 @@
                 <ul class="mailbox-attachments clearfix">
                   <li>
                     <div class="mailbox-attachment-info">
-                      <a href="#" class="mailbox-attachment-name"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
+                      <a href="{{ url('/download/'.$readmail->attachment) }}" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
                           <span class="mailbox-attachment-size">
-                            1.9 MB
-                            <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                            {{ $attachmentSize }}
+                            <a href="{{ url('/download/'.$readmail->attachment) }}" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                           </span>
                     </div>
                   </li>
@@ -235,7 +235,7 @@
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
                       <h4 class="modal-title" id="deleteMailLabel">Forward Mail</h4>
                     </div>
-                    <form id="forwardform" action = "/mailbox/forward/{{ $category }}/{{ $readmail->id }}" method="POST">
+                    <form id="forwardform" action = "/mailbox/forward/{{ $category }}" method="POST">
                       {{ csrf_field() }}
 
                       <input type="hidden" name="id" value="{{ $readmail->id }}">
@@ -264,10 +264,10 @@
                           <ul class="mailbox-attachments clearfix">
                             <li>
                               <div class="mailbox-attachment-info">
-                                <a href="#" class="mailbox-attachment-name"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
+                                <a href="{{ url('/download/'.$readmail->attachment) }}" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
                                     <span class="mailbox-attachment-size">
-                                      1.9 MB
-                                      <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                      1.5 MB
+                                      <a href="{{ url('/download/'.$readmail->attachment) }}" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                                     </span>
                               </div>
                             </li>
@@ -275,7 +275,7 @@
                         @endif
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
+                        <button type="submit" name = "forward" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
                       </div>
                     </form>
                   </div>
@@ -288,12 +288,25 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
 @endsection
 
 @section('javascript')
 <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
 <script type="text/javascript">
-
+    $(document).ready(function(){
+        // check number of inbox, sent and drafts mailItems after every 10s
+        setInterval(function(){
+          $.ajax({
+              type: 'POST',
+              url: '/mailbox/check',
+              data: '_token={{ csrf_token() }}',
+              success: function(data){
+                  $("#numInbox").html(data.numInbox);
+                  $("#numSent").html(data.numSent);
+                  $("#numDrafts").html(data.numDrafts);
+              }
+          });
+        }, 10000);
+    });
 </script>
 @endsection

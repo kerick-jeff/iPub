@@ -20,6 +20,15 @@
 
 <?php $__env->startSection('content'); ?>
 
+<?php if($errors->has('recipient')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Failed <br />
+         <?php echo e($errors->first('recipient')); ?>
+
+    </div>
+<?php endif; ?>
+
 <?php if(session('sent')): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -29,20 +38,11 @@
     </div>
 <?php endif; ?>
 
-<?php if(session('forwarded')): ?>
-    <div class="alert alert-success alert-dismissible" role="alert">
-         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
-         <?php echo e(session('forwarded')); ?>
-
-    </div>
-<?php endif; ?>
-
-<?php if(session('notForwarded')): ?>
+<?php if(session('notSent')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <i class = "icon fa fa-close"></i> Failed <br />
-         <?php echo e(session('notForwarded')); ?>
+         <?php echo e(session('notSent')); ?>
 
     </div>
 <?php endif; ?>
@@ -66,14 +66,14 @@
                   <li class="active">
                     <a href="<?php echo e(url('/mailbox/inbox')); ?>">
                       <i class="fa fa-inbox"></i> Inbox
-                      <span class="label label-info pull-right">16</span>
+                      <span class="label label-info pull-right"><b id = "numInbox"><?php echo e(session('noInbox')); ?></b></span>
                     </a>
                   </li>
                 <?php else: ?>
                   <li>
                     <a href="<?php echo e(url('/mailbox/inbox')); ?>">
                       <i class="fa fa-inbox"></i> Inbox
-                      <span class="label label-info pull-right">16</span>
+                      <span class="label label-info pull-right"><b id = "numInbox"><?php echo e(session('noInbox')); ?></b></span>
                     </a>
                   </li>
                 <?php endif; ?>
@@ -82,14 +82,14 @@
                   <li class = "active">
                     <a href="<?php echo e(url('/mailbox/sent')); ?>">
                       <i class="fa fa-send"></i> Sent
-                      <span class="label pull-right bg-green">4</span>
+                      <span class="label pull-right bg-green"><b id = "numSent"><?php echo e(session('noSent')); ?></b></span>
                     </a>
                   </li>
                 <?php else: ?>
                   <li>
                     <a href="<?php echo e(url('/mailbox/sent')); ?>">
                       <i class="fa fa-send"></i> Sent
-                      <span class="label pull-right bg-green">4</span>
+                      <span class="label pull-right bg-green"><b id = "numSent"><?php echo e(session('noSent')); ?></b></span>
                     </a>
                   </li>
                 <?php endif; ?>
@@ -98,14 +98,14 @@
                   <li class = "active">
                     <a href="<?php echo e(url('/mailbox/drafts')); ?>">
                       <i class="fa fa-file-text"></i> Drafts
-                      <span class="label label-warning pull-right">5</span>
+                      <span class="label label-warning pull-right"><b id = "numDrafts"><?php echo e(session('noDrafts')); ?></b></span>
                     </a>
                   </li>
                 <?php else: ?>
                   <li>
                     <a href="<?php echo e(url('/mailbox/drafts')); ?>">
                       <i class="fa fa-file-text"></i> Drafts
-                      <span class="label label-warning pull-right">5</span>
+                      <span class="label label-warning pull-right"><b id = "numDrafts"><?php echo e(session('noDrafts')); ?></b></span>
                     </a>
                   </li>
                 <?php endif; ?>
@@ -129,7 +129,7 @@
                 <?php else: ?>
                   <a class="btn btn-box-tool" disabled ><i class="fa fa-chevron-left"></i></a>
                 <?php endif; ?>
-                
+
                 <?php if($hasNext == true): ?>
                   <a href="/mailbox/readmail/<?php echo e($category); ?>/<?php echo e($next); ?>" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
                 <?php else: ?>
@@ -169,10 +169,11 @@
                 <ul class="mailbox-attachments clearfix">
                   <li>
                     <div class="mailbox-attachment-info">
-                      <a href="#" class="mailbox-attachment-name"><i class="fa fa-file"></i> <?php echo e($readmail->attachment); ?></a>
+                      <a href="<?php echo e(url('/download/'.$readmail->attachment)); ?>" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> <?php echo e($readmail->attachment); ?></a>
                           <span class="mailbox-attachment-size">
-                            1.9 MB
-                            <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                            <?php echo e($attachmentSize); ?>
+
+                            <a href="<?php echo e(url('/download/'.$readmail->attachment)); ?>" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                           </span>
                     </div>
                   </li>
@@ -242,7 +243,7 @@
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
                       <h4 class="modal-title" id="deleteMailLabel">Forward Mail</h4>
                     </div>
-                    <form id="forwardform" action = "/mailbox/forward/<?php echo e($category); ?>/<?php echo e($readmail->id); ?>" method="POST">
+                    <form id="forwardform" action = "/mailbox/forward/<?php echo e($category); ?>" method="POST">
                       <?php echo e(csrf_field()); ?>
 
 
@@ -272,10 +273,10 @@
                           <ul class="mailbox-attachments clearfix">
                             <li>
                               <div class="mailbox-attachment-info">
-                                <a href="#" class="mailbox-attachment-name"><i class="fa fa-file"></i> <?php echo e($readmail->attachment); ?></a>
+                                <a href="<?php echo e(url('/download/'.$readmail->attachment)); ?>" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> <?php echo e($readmail->attachment); ?></a>
                                     <span class="mailbox-attachment-size">
-                                      1.9 MB
-                                      <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                                      1.5 MB
+                                      <a href="<?php echo e(url('/download/'.$readmail->attachment)); ?>" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                                     </span>
                               </div>
                             </li>
@@ -283,7 +284,7 @@
                         <?php endif; ?>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
+                        <button type="submit" name = "forward" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
                       </div>
                     </form>
                   </div>
@@ -296,13 +297,26 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascript'); ?>
 <script type="text/javascript" src = "<?php echo e(asset('js/loading/waitMe.js')); ?>"></script>
 <script type="text/javascript">
-
+    $(document).ready(function(){
+        // check number of inbox, sent and drafts mailItems after every 10s
+        setInterval(function(){
+          $.ajax({
+              type: 'POST',
+              url: '/mailbox/check',
+              data: '_token=<?php echo e(csrf_token()); ?>',
+              success: function(data){
+                  $("#numInbox").html(data.numInbox);
+                  $("#numSent").html(data.numSent);
+                  $("#numDrafts").html(data.numDrafts);
+              }
+          });
+        }, 10000);
+    });
 </script>
 <?php $__env->stopSection(); ?>
 

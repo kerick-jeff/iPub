@@ -420,6 +420,26 @@
 <!--        <script src="../../dist/js/demo.js"></script>     -->
 <script src="<?php echo e(asset('ipub/dist/js/demo.js')); ?>"></script>
 
+<script type = "text/javascript">
+
+$(document).ready(function(){
+  // check number of inbox, sent and drafts mailItems after every 10s
+  setInterval(function(){
+    $.ajax({
+        type: 'POST',
+        url: '/mailbox/check',
+        data: '_token=<?php echo e(csrf_token()); ?>',
+        success: function(data){
+            $("#noInbox").html(data.numInbox);
+            $("#noSent").html(data.numSent);
+            $("#noDrafts").html(data.numDrafts);
+        }
+    });
+  }, 10000);
+});
+
+</script>
+
 <?php echo $__env->yieldContent('javascript'); ?>
 
 </body>

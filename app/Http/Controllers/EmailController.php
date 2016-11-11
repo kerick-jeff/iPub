@@ -55,9 +55,10 @@ class EmailController extends Controller
       });
       return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
     }
+    
     /**
      * an authenticated user can invite someone through email to follow his pubs on iPub
-     * @param String $email
+     * @param Request $request
      */
     public function invite(Request $request){
         $email = $request->email;

@@ -22,7 +22,7 @@
 <?php if(session('saved')): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Saved <br />
          <?php echo e(session('saved')); ?>
 
     </div>
@@ -31,8 +31,17 @@
 <?php if(session('sent')): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Sent <br />
          <?php echo e(session('sent')); ?>
+
+    </div>
+<?php endif; ?>
+
+<?php if(session('notSent')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Not Sent <br />
+         <?php echo e(session('notSent')); ?>
 
     </div>
 <?php endif; ?>
@@ -52,19 +61,19 @@
               <li>
                 <a href="<?php echo e(url('/mailbox/inbox')); ?>">
                   <i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-info pull-right">16</span>
+                  <span class="label label-info pull-right"><b id = "numInbox"><?php echo e(session('noInbox')); ?></b></span>
                 </a>
               </li>
               <li>
                 <a href="<?php echo e(url('/mailbox/sent')); ?>">
                   <i class="fa fa-send"></i> Sent
-                  <span class="label pull-right bg-green">4</span>
+                  <span class="label pull-right bg-green"><b id = "numSent"><?php echo e(session('noSent')); ?></b></span>
                 </a>
               </li>
               <li>
                 <a href="<?php echo e(url('/mailbox/drafts')); ?>">
                   <i class="fa fa-file-text"></i> Drafts
-                  <span class="label label-warning pull-right">5</span>
+                  <span class="label label-warning pull-right"><b id = "numDrafts"><?php echo e(session('noDrafts')); ?></b></span>
                 </a>
               </li>
             </ul>
@@ -148,31 +157,47 @@
 <?php $__env->startSection('javascript'); ?>
 <script type="text/javascript" src = "<?php echo e(asset('js/loading/waitMe.js')); ?>"></script>
 <script type="text/javascript">
-$("#save").click(function(){
-    $("#body").waitMe({
-        effect: 'roundBounce',
-        text: 'Saving as draft',
-        bg: 'rgba(255,255,255,0.7)',
-        color: '#3c8dbc',
-        sizeW: '',
-        sizeH: '',
-        source: '',
-        onClose: function(){}
-    });
-});
+    $(document).ready(function(){
+        // check number of inbox, sent and drafts mailItems after every 10s
+        setInterval(function(){
+          $.ajax({
+              type: 'POST',
+              url: '/mailbox/check',
+              data: '_token=<?php echo e(csrf_token()); ?>',
+              success: function(data){
+                  $("#numInbox").html(data.numInbox);
+                  $("#numSent").html(data.numSent);
+                  $("#numDrafts").html(data.numDrafts);
+              }
+          });
+        }, 10<?php echo e(session('')); ?>000);
 
-$("#send").click(function(){
-    $("#body").waitMe({
-        effect: 'roundBounce',
-        text: 'Sending...',
-        bg: 'rgba(255,255,255,0.7)',
-        color: '#3c8dbc',
-        sizeW: '',
-        sizeH: '',
-        source: '',
-        onClose: function(){}
+        $("#save").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Saving as draft',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#send").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Sending...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
     });
-});
 </script>
 <?php $__env->stopSection(); ?>
 
