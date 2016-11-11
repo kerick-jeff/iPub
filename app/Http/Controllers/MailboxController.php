@@ -38,8 +38,6 @@ class MailboxController extends Controller
         $numSent = count(Auth::user()->mailitems()->where('is_sent', 1)->get());
         $numDrafts = count(Auth::user()->mailitems()->where('is_draft', 1)->get());
 
-        session(['noInbox' => $numInbox, 'noSent' => $numSent, 'noDrafts' => $numDrafts]);
-
         return response()->json(['numInbox' => $numInbox, 'numSent' => $numSent, 'numDrafts' => $numDrafts], 200);
     }
 
