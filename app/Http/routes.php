@@ -3,6 +3,7 @@
 use App\User;
 use App\Pub;
 use App\PubFile;
+use App\MailItem;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,7 +17,7 @@ use App\PubFile;
 /*test routes
 
 Route::get('/photos', function(){
-    $photos = ['ttt.png', 'dullman.jpg', 'land1.jpg', 'pig.jpg'];
+    $photos = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.png'];
     return view('photos', ['photos' => $photos]);
 });
 
@@ -43,6 +44,12 @@ Route::get('/', function () {
 
 Route::auth();
 
+/* Download a file */
+Route::get('/download/{filename}', function($filename){
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+    return response()->download($path.$filename, 'iPub - '.$filename);
+});
+
 /* Profile Picture route */
 Route::get('/profilePicture', function(){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
@@ -57,12 +64,12 @@ Route::get('/profilePicture', function(){
 
 Route::put('/photo/store', 'UploadController@storePhoto');
 Route::get('/upload/photo', function(){
-    $pubs = Auth::user()->pubs()->orderBy('created_at', 'desc')->paginate(6);
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
+    $pubs = Auth::user()->pubs()->where('type', 0)->orderBy('created_at', 'desc')->paginate(6);
+   // $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
 
     return view('upload.photo', ['pubs' => $pubs]);
 });
-Route::get('photo/{filename}', function( $filename ){
+Route::get('/photo/{filename}', function( $filename ){
     $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
     return Image::make($path."/".$filename)->response("jpg");
 });
@@ -75,18 +82,22 @@ Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
 
 
-Route::put('/video/store', 'UploadController@storeVideo');
+Route::post('/video/store', 'UploadController@storeVideo');
 Route::get('/upload/video', function(){
-    return view('upload.video');
+    $pubs = Auth::user()->pubs()->where('type', 1)->orderBy('created_at', 'desc')->paginate(6);
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video';
+
+    return view('upload.video', ['pubs' => $pubs]);
 });
-
-Route::patch('/video/edit/{id}', 'UploadController@editVideo');
+Route::get('video/{filename}', function( $filename ){
+    $path = Auth::user()->id."-".Auth::user()->name.'/video/';
+    $fileContents =  Storage::disk('public')->get($path.$filename);
+    $response = Response::make($fileContents, 200);
+    $response->header('Content-Type', "video/mp4");
+    return $response;
+});
+Route::patch('/video/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editVideo');
 Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
-
-
-
-
-
 
 
 /* SettingsController routes */
@@ -131,6 +142,8 @@ Route::get('/mailbox/compose', 'MailboxController@getCompose');
 
 Route::post('/mailbox/compose', 'MailboxController@postCompose');
 
+Route::post('/mailbox/send/sendSaved/{category}', 'MailboxController@sendSaved');
+
 Route::get('/mailbox/inbox', 'MailboxController@inbox');
 
 Route::get('/mailbox/sent', 'MailboxController@sent');
@@ -138,3 +151,13 @@ Route::get('/mailbox/sent', 'MailboxController@sent');
 Route::get('/mailbox/drafts', 'MailboxController@drafts');
 
 Route::get('/mailbox/readmail/{category}/{id}', 'MailboxController@readMail');
+
+//delete one or more mails when checked by the checkbox html element
+Route::delete('/mailbox/deletemails/{category}/{ids}', 'MailboxController@deleteMails');
+
+//delete a single readmail
+Route::delete('/mailbox/delete/{category}/{id}', 'MailboxController@delete');
+
+Route::post('/mailbox/forward/{category}', 'MailboxController@forward');
+
+Route::post('/mailbox/check', 'MailboxController@check');

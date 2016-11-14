@@ -23,8 +23,9 @@
               </div>
           </div>
         @endif
+
+        <img src="{{ asset('land2.jpg') }}" alt="welcome to iPub" style="max-width: 100%;" />
     </div>
-    <img src="{{ asset('images/land2.jpg') }}" alt="landing_page" style="max-width: 100%;" />
     </div>
 </div>
 @endsection

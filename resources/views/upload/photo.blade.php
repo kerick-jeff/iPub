@@ -85,12 +85,13 @@
         <div class="panel panel-default" id="panel2">
             <div class="panel-heading" role="tab" id="headingTwo">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                   Click me to upload a new photo
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+            <!-- It is the 'in' in the class attribute that makes this panel to be hidden by default -->
+            <div id="collapseTwo" class="panel-collapse collapse {{ session('aria') ? session('aria') : '' }}" role="tabpanel" aria-labelledby="headingTwo">
                 
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
@@ -177,7 +178,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                  See all photos
                 </a>
               </h4>
@@ -190,12 +191,12 @@
                     </div>
                  @elseif( count($pubs) > 0)
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
+            <div id="collapseOne" class="panel-collapse collapse {{ session('aria') ? '' : 'in'}}" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                 <div class="timeline-item">  <!-- timeline-item start -->
                 <div class="col-md-12" style="margin-left: -35px">
                     @foreach( $pubs as $pub )
-                        <div class="col-md-6" style="height: 600px">
+                        <div class="col-md-6" style="height: 650px;margin-top: 10px;">
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
@@ -211,12 +212,23 @@
                                     <!-- /.box-tools -->
                                   </div>
                                   <!-- /.box-header -->
-                                  <div class="box-body" id="box" style="height:500px">
-                                   <div style="padding-left: 5%; height:400px"> 
-                                    <img class="img-responsive pad" src="{{ url('/photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style=" max-height: 400px" />
+                                  <div class="box-body" style="min-height:500px">
+                                   <div style="padding-left: 5%; min-height:400px;"> 
+                                    <img class="img-responsive pad" src="{{ url('photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style=" 
+                                        max-height: 400px; 
+                                        object-fit: fill; position: absolute;
+                                        margin: auto;
+                                        top: 0;
+                                        left: 0;
+                                        right: 0;
+                                        bottom: 0;" />
                                    </div>
                                    <div style=" height:100px">
-                                    <p class="description" style="margin-left:10px">{{$pub->description}} </p>
+                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px; margin-top:10%;white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;">{{$pub->description}} </span> </div>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="{{ $pub->id }}" data-title="{{ $pub->title }}" data-description="{{ $pub->description }}" data-category="{{ $pub->category }}" data-subCategory="{{ $pub->sub_category }}"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
                                     <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="{{ $pub->id }}"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
                                     <span class="pull-right text-muted">{{ $pub->views }} views - {{ $pub->ratings }} ratings</span>

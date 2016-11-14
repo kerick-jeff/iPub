@@ -36,7 +36,7 @@
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini" id = "body">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -78,7 +78,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="{{ asset('ipub/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+                        <img src="{{ url('/profilePicture') }}" class="img-circle" alt="User profile picture">
                       </div>
                       <h4>
                         Support Team
@@ -149,13 +149,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('ipub/dist/img/avatar.png') }}" class="user-image" alt="User Image">
+              <img src="{{ url('/profilePicture') }}" class="user-image" alt="User profile picture">
               <span class="hidden-xs">{{ Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('ipub/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+                <img src="{{ url('/profilePicture') }}" class="img-circle" alt="User profile picture">
 
                 <p>
                  {{ Auth::user()->name}} - Web Developer
@@ -419,6 +419,26 @@
 <!-- AdminLTE for demo purposes -->
 <!--        <script src="../../dist/js/demo.js"></script>     -->
 <script src="{{ asset('ipub/dist/js/demo.js') }}"></script>
+
+<script type = "text/javascript">
+
+$(document).ready(function(){
+  // check number of inbox, sent and drafts mailItems after every 10s
+  setInterval(function(){
+    $.ajax({
+        type: 'POST',
+        url: '/mailbox/check',
+        data: '_token={{ csrf_token() }}',
+        success: function(data){
+            $("#noInbox").html(data.numInbox);
+            $("#noSent").html(data.numSent);
+            $("#noDrafts").html(data.numDrafts);
+        }
+    });
+  }, 10000);
+});
+
+</script>
 
 @yield('javascript')
 

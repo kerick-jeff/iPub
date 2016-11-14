@@ -13,6 +13,8 @@ class FollowController extends Controller
 {
     /**
      * registers a new follower on acceptance of invitation request
+     * @param Integer $user_id
+     * @param String $user_name
      * @param String $email
      */
     public function agree($user_id, $user_name, $email){

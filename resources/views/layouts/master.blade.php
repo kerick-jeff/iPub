@@ -13,18 +13,16 @@
 @section('extendable_content')
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-
+  @if (Auth::check())
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
 
-@if (Auth::check())
-
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('ipub/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+          <img src="{{ url('/profilePicture') }}" class="img-circle" alt="User profile picture">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name}}</p>
@@ -32,12 +30,9 @@
         </div>
       </div>
 
-      <!-- search form -->
-
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header" style = "text-align: center">WELCOME</li>
         <li class="treeview">
           <a href="{{ url('/mailbox') }}">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
@@ -51,19 +46,19 @@
             </li>
             <li><a href="{{ url('/mailbox/inbox') }}"><i class="fa fa-inbox"></i> Inbox
                     <span class="pull-right-container">
-                      <small class="label label-info pull-right">16</small>
+                      <small class="label label-info pull-right"><b id = "noInbox">{{ session('noInbox') }}</b></small>
                     </span>
                 </a>
             </li>
             <li><a href="{{ url('/mailbox/sent') }}"><i class="fa fa-send"></i> Sent
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">4</small>
+                      <small class="label pull-right bg-green"><b id = "noSent">{{ session('noSent') }}</b></small>
                     </span>
                 </a>
             </li>
             <li><a href="{{ url('/mailbox/drafts') }}"><i class="fa fa-file-text-o"></i> Drafts
                     <span class="pull-right-container">
-                      <small class="label label-warning pull-right">10</small>
+                      <small class="label label-warning pull-right"><b id = "noDrafts">{{ session('noDrafts') }}</b></small>
                     </span>
                 </a>
             </li>

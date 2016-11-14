@@ -22,6 +22,24 @@
 
 @section('content')
 
+<!-- alert user that mail has been successfully deleted -->
+@if(session('deleted'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-check"></i> <br />
+         {{ session('deleted') }}
+    </div>
+@endif
+
+<!-- alert user that mail has not been deleted -->
+@if(session('notDeleted'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Failed <br />
+         {{ session('notDeleted') }}
+    </div>
+@endif
+
 <div class="row">
     <div class="col-md-3">
       <a href="{{ url('mailbox/compose') }}" class="btn btn-primary btn-block margin-bottom">Compose</a>
@@ -40,19 +58,19 @@
             <li>
               <a href="{{ url('/mailbox/inbox') }}">
                 <i class="fa fa-inbox"></i> Inbox
-                <span class="label label-info pull-right">16</span>
+                <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
               </a>
             </li>
             <li class="active">
               <a href="{{ url('/mailbox/sent') }}">
                 <i class="fa fa-send"></i> Sent
-                <span class="label pull-right bg-green">4</span>
+                <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
               </a>
             </li>
             <li>
               <a href="{{ url('/mailbox/drafts') }}">
                 <i class="fa fa-file-text"></i> Drafts
-                <span class="label label-warning pull-right">5</span>
+                <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
               </a>
             </li>
           </ul>
@@ -79,79 +97,63 @@
           <div class="mailbox-controls">
             <!-- Check all button -->
             <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All"><i class="fa fa-square-o"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle = "tooltip" title = "Delete"><i class="fa fa-trash"></i></button>
-            <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
-            </div>
-            <!-- /.pull-right -->
+            <button type="button" id = "deleteBtn" class="btn btn-danger btn-sm" data-toggle = "modal" data-target = "#deletemail" title = "Delete" ><i class="fa fa-trash"></i></button>
           </div>
           <div class="table-responsive mailbox-messages">
             <table class="table table-hover table-striped">
               <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/1') }}">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">4 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/2') }}">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"></td>
-                <td class="mailbox-date">12 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/3') }}">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">12 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/4') }}">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">14 days ago</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/5') }}">Alexander Pierce</a></td>
-                <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                <td class="mailbox-date">15 days ago</td>
-              </tr>
+                <form id = "checkboxes">
+                  @foreach($sent_mails as $sent_mail)
+                    <tr>
+                      <td><input type="checkbox" id = "{{ $sent_mail->id }}" ></td>
+                      <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/'.$sent_mail->id) }}">{{ $sent_mail->recipient }}</a></td>
+                      <td class="mailbox-subject"><b>iPub</b> - {{ $sent_mail->subject }} </td>
+                      @if($sent_mail->attachment != "")
+                        <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                      @else
+                        <td></td>
+                      @endif
+                      <td class="mailbox-date">{{ $sent_mail->created_at }}</td>
+                    </tr>
+                  @endforeach
+                </form>
+
               </tbody>
             </table>
             <!-- /.table -->
           </div>
           <!-- /.mail-box-messages -->
+
+          <!-- delete mail modal -->
+            <div class="modal fade" id="deletemail" tabindex="-1" role="dialog" aria-labelledby="Mail" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                    <h4 class="modal-title" id="deletemailLabel">Delete Mail</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p> Are you sure you want to delete this mail(s)? </p>
+                  </div>
+                  <div class="modal-footer">
+                    <form id="deleteform" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit" id = "delete" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- delete mail modal -->
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer no-padding">
           <div class="mailbox-controls">
-            <!-- Check all button -->
-            <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All"><i class="fa fa-square-o"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle = "tooltip" title = "Delete"><i class="fa fa-trash"></i></button>
             <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
+              {{ $sent_mails->render() }}
             </div>
             <!-- /.pull-right -->
           </div>
@@ -193,6 +195,31 @@ $(document).ready(function() {
       }
       $(this).data("clicks", !clicks);
     });
+
+    // check number of inbox, sent and drafts mailItems after every 10s
+    setInterval(function(){
+      $.ajax({
+          type: 'POST',
+          url: '/mailbox/check',
+          data: '_token={{ csrf_token() }}',
+          success: function(data){
+              $("#numInbox").html(data.numInbox);
+              $("#numSent").html(data.numSent);
+              $("#numDrafts").html(data.numDrafts);
+          }
+      });
+    }, 10000);
+});
+
+$("#delete").click(function(){
+    var ids = [];
+
+    $("input:checkbox:checked").each(function () {
+        if($(this).attr("id") != null)
+            ids.push($(this).attr("id"));
+    });
+
+    $("#deleteform").attr("action", "/mailbox/deletemails/Sent/" + JSON.stringify(ids));
 });
 </script>
 

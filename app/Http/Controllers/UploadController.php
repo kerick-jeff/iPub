@@ -25,24 +25,24 @@ class UploadController extends Controller
     	// validate the inputs
         $validate = Validator::make($request->all(), [
             'title' => 'required|max:255',
-            'description' => 'required',
+            'description' => 'required|max:255',
             'photo' => 'required'
         ]);
 
          // validation ends
          if($validate->fails()){
-             return redirect('/upload/photo')->withErrors($validate)->withInput();
+             return redirect('/upload/photo')->withErrors($validate)->withInput()->with('aria', 'in');
          }
 
         $type = 'image';
         $user_id = $request->input('user_id');
         $image = Image::make($request->file('photo'));
-        $name = $image->getClientOriginalName();
+        $name = $request->file('photo')->getClientOriginalName();
         $width = $image->width();
         $height = $image->height();
 
-		if($request->hasFile('photo') && $image->isValid() &&
-		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and mime type
+		if($request->hasFile('photo') && $request->file('photo')->isValid() &&
+		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and type type
 		    if($image->filesize() < 5242880){  // check file size
 		        if( $width >= 200 && $height >= 200 ){ //check file dimensions
 					$path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/photo/';
@@ -69,10 +69,10 @@ class UploadController extends Controller
 
 		            PubFile::create([
 		                'pub_id' => $pub->id,
-		                'filename' => $image->getClientOriginalName(),
-		                'type' => $type,
+		                'filename' => $request->file('photo')->getClientOriginalName(),
+		                'type' => 'image',
 		                'size' => $image->filesize(),
-		                'extension' => $image->getClientOriginalExtension(),
+		                'extension' => $request->file('photo')->getClientOriginalExtension(),
 		            ]);
 
 		            return back()->with('success', 'Your image was successfully uploaded');
@@ -87,6 +87,17 @@ class UploadController extends Controller
 
   public function editPhoto(Request $request)
   {
+    // validate the inputs
+    $validate = Validator::make($request->all(), [
+        'title' => 'required|max:255',
+        'description' => 'required|max:255'
+    ]);
+
+    // validation ends
+    if($validate->fails()){
+      return redirect('/upload/photo')->withErrors($validate)->withInput();
+    }
+
     Pub::where('id', $request->id)
         ->update([
           'title' => $request->title, 
@@ -96,22 +107,19 @@ class UploadController extends Controller
         ]);
           
     return redirect('/upload/photo');
-        //var_dump([$id, $title, $description, $category, $sub_category]);
   }
 
 	public function destroyPhoto($id)
 	{
-        $photo = Pub::find($id);
-        $pub_files = PubFile::where('pub_id', $photo->id)->first();
+      $photo = Pub::find($id);
+      $pub_files = PubFile::where('pub_id', $photo->id)->first();
 
-        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
-        //$image = Image::make($path."/".$pub_files->filename);
-        //$image->destroy()
-        File::Delete($path . '/' . $pub_files->filename );
+      $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
+      File::Delete($path . '/' . $pub_files->filename );
 
-       if($photo->delete() && $pub_files->delete() ){
-       		return redirect('/upload/photo')->with('successDelete', 'Successfully deleted image');
-       }
+      if($photo->delete() && $pub_files->delete() ){
+       	return redirect('/upload/photo')->with('successDelete', 'Successfully deleted image');
+      }
       else{
       	return redirect('/upload/photo')->with('failDelete', 'Failed to delete image');
       }  
@@ -121,50 +129,49 @@ class UploadController extends Controller
       // validate the inputs
       $validate = Validator::make($request->all(), [
                     'title' => 'required|max:255',
-                    'description' => 'required',
+                    'description' => 'required|255',
                     'video' => 'required'
                   ]);
 
       // validation ends
       if($validate->fails()){
-        return redirect('/upload/video')->withErrors($validate)->withInput();
+        return redirect('/upload/video')->withErrors($validate)->withInput()->with('aria', 'in');
       }
-     // phpinfo();
 
       $type = 'video/mp4';
       $user_id = $request->input('user_id');
-      $videoFile = $request->file('video');
-      var_dump($videoFile);
-      $mime = $videoFile->getClientMimeType();
-      $name = $videoFile->getClientOriginalName();
+      $videoFile = File::get($request->video);
+      $mime = $request->file('video')->getClientMimeType();
+      $name = $request->file('video')->getClientOriginalName();
 
-      if($request->hasFile('video') && $videoFile->isValid() && substr($videoFile->getClientMimeType(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
-        if($videoFile->getClientSize() < 524288000){  // check video size
-          $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/video/';
+      if($request->hasFile('video') && $request->file('video')->isValid() && substr($request->file('video')->getClientMimeType(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
+        if($request->file('video')->getClientSize() < 524288000){  // check video size
+          $path = Auth::user()->id."-".Auth::user()->name."/video/";
 
                 if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/video/')){
                   Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/video/');
                 }
 
-                $path->put($name, file_get_contents($videoFile->getRealPath()));
+                Storage::disk('public')->put($path.$name, File::get($request->video));
 
                 $pub = Pub::create([
                         'user_id' => $user_id,
                         'title' => $request->input('title'),
                         'description' => $request->input('description'),
+                        'type' => 1,
                         'category' => $request->input('category'),
                         'sub_category' => $request->input('sub_category'),
                        ]);
 
                 PubFile::create([
                     'pub_id' => $pub->id,
-                    'filename' => $videoFile->getClientOriginalName(),
+                    'filename' => $request->file('video')->getClientOriginalName(),
                     'type' => $type,
-                    'size' => $videoFile->getClientSize(),
-                    'extension' => $videoFile->getClientOriginalExtension(),
+                    'size' => $request->file('video')->getClientSize(),
+                    'extension' => $request->file('video')->getClientOriginalExtension(),
                 ]);
 
-                return back()->with('success', 'Your videoFile was successfully uploaded');
+                return back()->with('success', 'Your video was successfully uploaded');
         } // video size check ends
           else{ return redirect('/upload/video')->with('sizeError', 'The video you uploaded is more than the required size. Your videoFile must be less than 10MB.');}
     } // video exists and valid end
@@ -189,7 +196,29 @@ class UploadController extends Controller
   }
 
 
+ public function editVideo(Request $request)
+  {
+    // validate the inputs
+    $validate = Validator::make($request->all(), [
+        'title' => 'required|max:255',
+        'description' => 'required|max:255'
+    ]);
 
+    // validation ends
+    if($validate->fails()){
+      return redirect('/upload/video')->withErrors($validate)->withInput();
+    }
+
+    Pub::where('id', $request->id)
+        ->update([
+          'title' => $request->title, 
+          'description' => $request->description, 
+          'category' => $request->category, 
+          'sub_category' => $request->sub_category
+        ]);
+          
+    return redirect('/upload/video');
+  }
 
 
 

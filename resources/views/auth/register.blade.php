@@ -7,6 +7,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/countrylist/build/css/countrySelect.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/countrylist/build/css/demo.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
     <style media="screen">
         #country {
             width: 319px;
@@ -92,7 +93,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button type="submit" id = "register" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->
       </div>
@@ -100,11 +101,29 @@
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Register using
         Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Register using
         Google+</a>
     </div>
 
     <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
+  @endsection
+
+  @section('javascript')
+  <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+  <script type="text/javascript">
+    $("#register").click(function(){
+        $("#body").waitMe({
+            effect: 'roundBounce',
+            text: 'Processing account details',
+            bg: 'rgba(255,255,255,0.7)',
+            color: '#3c8dbc',
+            sizeW: '',
+            sizeH: '',
+            source: '',
+            onClose: function(){}
+        });
+    });
+  </script>
   @endsection

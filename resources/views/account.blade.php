@@ -43,7 +43,7 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ asset('ipub/dist/img/avatar.png') }}" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="{{ url('/profilePicture') }}" alt="User profile picture">
         <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
         <p class="text-muted text-center">{{ Auth::user()->type }}</p>
         <ul class="list-group list-group-unbordered">
@@ -185,7 +185,7 @@
             </div>
             <div class="box-body">
               <p>
-                Your account is {{ $status }}% complete
+                Your account status is {{ $status }}% complete
               </p>
               <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $status }}%">
@@ -347,7 +347,7 @@
                         <h4 class="modal-title" id="deletelinkLabel">Delete Link/Contact</h4>
                       </div>
                       <div class="modal-body">
-                          <p> Are you sure you want to delete this? </p>
+                          <p> Are you sure you want to delete this link/contact? </p>
                       </div>
                       <div class="modal-footer">
                         <form id="deleteform" method="POST">

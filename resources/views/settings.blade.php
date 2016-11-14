@@ -5,7 +5,9 @@
 <!-- provide author and page desc -->
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('js/countrytel/build/css/intlTelInput.css') }}" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="{{ asset('js/countrytel/build/css/intlTelInput.css') }}" media="screen" title="no title" charset="utf-8" >
+<link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
+
 <style media="screen">
   #profile {
     width: 100%;
@@ -32,7 +34,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row" id = "container">
   <div class="col-md-12">
     <!-- settings/pin -->
     <div class="box box-primary">
@@ -57,7 +59,7 @@
                    @endif
                 </div>
                 <div class="form-group has-feedback">
-                  <button type="submit" class = "btn btn-primary btn-block" title = "Click to change your profile picture">Change profile picture</button>
+                  <button type="submit" id = "change_profile_picture" class = "btn btn-primary btn-block" title = "Click to change your profile picture">Change profile picture</button>
                 </div>
               </form>
               <hr />
@@ -76,7 +78,7 @@
                   <input type="hidden" name="dial_code" id = "dialCode">
                 </div>
                 <div class="form-group has-feedback">
-                  <button type="submit" class = "btn btn-primary btn-block" title = "Set your phone number">Set phone number</button>
+                  <button type="submit" id = "set_phone_number" class = "btn btn-primary btn-block" title = "Set your phone number">Set phone number</button>
                 </div>
               </form>
               <hr />
@@ -104,7 +106,7 @@
                   @endif
                 </div>
                 <div class="form-group has-feedback">
-                  <button type="submit" class = "btn btn-primary btn-block" title = "Change your password">Change your password</button>
+                  <button type="submit" id = "change_password" class = "btn btn-primary btn-block" title = "Change your password">Change your password</button>
                 </div>
               </form>
               <hr />
@@ -144,7 +146,7 @@
                   @endif
                 </div>
                 <div class="form-group has-feedback">
-                  <input type="submit" class = "btn btn-primary" value="Set">
+                  <button type="submit" id = "set_location" class = "btn btn-primary" title = "Set geolocation">Set</button>
                 </div>
               </form>
               <hr />
@@ -162,8 +164,7 @@
                   @endif
                 </div>
                 <div class="form-group has-feedback">
-                  <input type="button" id = "editBtn" class = "btn btn-warning" name="edit" value="Edit" > &nbsp;
-                  <input type="submit" class = "btn btn-primary" name="save" value="Save">
+                  <button type="submit" id = "set_description" class = "btn btn-primary btn-block" title = "Set description">Save</button>
                 </div>
               </form>
               <hr />
@@ -181,7 +182,8 @@
 @section('javascript')
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="js/countrytel/build/js/intlTelInput.js"></script>
+<script type="text/javascript" src="js/countrytel/build/js/intlTelInput.js"></script>
+<script type="text/javascript" src="js/loading/waitMe.js"></script>
 <script type="text/javascript">
     //map
     $(document).ready(function(){
@@ -279,12 +281,25 @@
         $("#dialCode").val(dialCode);
     });
 
-    $("#editBtn").click(function(){
+    $("#description").hover(function(){
         $("#description").removeAttr("disabled");
     });
 
     $("#profile").click(function(){
         document.getElementById('file').click();
+    });
+
+    $("#change_profile_picture, #set_phone_number, #change_password, #set_location, #set_description").click(function(){
+        $("#body").waitMe({
+            effect: 'roundBounce',
+            text: 'Saving account information',
+            bg: 'rgba(255,255,255,0.7)',
+            color: '#3c8dbc',
+            sizeW: '',
+            sizeH: '',
+            source: '',
+            onClose: function(){}
+        });
     });
 </script>
 

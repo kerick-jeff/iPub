@@ -4,6 +4,10 @@
 
 <!-- provide author and page description -->
 
+@section('css')
+  <link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
+@endsection('css')
+
 @section('breadcrumb')
 <h1>
   Mailbox
@@ -20,7 +24,7 @@
 @if(session('saved'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Saved <br />
          {{ session('saved') }}
     </div>
 @endif
@@ -28,8 +32,16 @@
 @if(session('sent'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> Success <br />
+         <i class = "icon fa fa-check"></i> Sent <br />
          {{ session('sent') }}
+    </div>
+@endif
+
+@if(session('notSent'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Not Sent <br />
+         {{ session('notSent') }}
     </div>
 @endif
 
@@ -48,19 +60,19 @@
               <li>
                 <a href="{{ url('/mailbox/inbox') }}">
                   <i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-info pull-right">16</span>
+                  <span class="label label-info pull-right"><b id = "numInbox">{{ session('noInbox') }}</b></span>
                 </a>
               </li>
               <li>
                 <a href="{{ url('/mailbox/sent') }}">
                   <i class="fa fa-send"></i> Sent
-                  <span class="label pull-right bg-green">4</span>
+                  <span class="label pull-right bg-green"><b id = "numSent">{{ session('noSent') }}</b></span>
                 </a>
               </li>
               <li>
                 <a href="{{ url('/mailbox/drafts') }}">
                   <i class="fa fa-file-text"></i> Drafts
-                  <span class="label label-warning pull-right">5</span>
+                  <span class="label label-warning pull-right"><b id = "numDrafts">{{ session('noDrafts') }}</b></span>
                 </a>
               </li>
             </ul>
@@ -82,8 +94,8 @@
 
           <input type="hidden" name="user_id" value = "{{ Auth::user()->id }}">
           <input type="hidden" name="sender" value = "{{ Auth::user()->email }}">
+          <input type="hidden" name="is_sent" value="0">
           <input type="hidden" name="is_draft" value="0">
-
 
           <div class="box-body">
             <div class="form-group">
@@ -124,8 +136,8 @@
           <!-- /.box-body -->
           <div class="box-footer">
             <div class="pull-right">
-              <button type="submit" name = "save" class="btn btn-warning"><i class="fa fa-save"></i> Save as draft</button>
-              <button type="submit" name = "send" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
+              <button type="submit" name = "save" id = "save" class="btn btn-warning"><i class="fa fa-save"></i> Save as draft</button>
+              <button type="submit" name = "send" id = "send" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
             </div>
             <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
           </div>
@@ -141,5 +153,48 @@
 @endsection
 
 @section('javascript')
+<script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // check number of inbox, sent and drafts mailItems after every 10s
+        setInterval(function(){
+          $.ajax({
+              type: 'POST',
+              url: '/mailbox/check',
+              data: '_token={{ csrf_token() }}',
+              success: function(data){
+                  $("#numInbox").html(data.numInbox);
+                  $("#numSent").html(data.numSent);
+                  $("#numDrafts").html(data.numDrafts);
+              }
+          });
+        }, 10{{ session('') }}000);
 
+        $("#save").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Saving as draft',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#send").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Sending...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+    });
+</script>
 @endsection

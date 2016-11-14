@@ -89,6 +89,6 @@ class User extends Authenticatable
      * @return \App\Mail
      */
      public function mailitems(){
-        return $this->hasMany('App\Mail');
+        return $this->hasMany('App\MailItem');
      }
 }

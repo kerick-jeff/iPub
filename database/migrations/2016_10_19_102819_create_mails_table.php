@@ -17,9 +17,11 @@ class CreateMailsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('sender', 255);
             $table->string('recipient', 255);
+            $table->string('subject', 255)->nullable();
             $table->text('body');
             $table->string('attachment', 255)->nullable();
             $table->boolean('status');
+            $table->boolean('is_sent');
             $table->boolean('is_draft');
             $table->timestamps();
             $table->foreign('user_id')
