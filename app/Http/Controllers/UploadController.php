@@ -134,6 +134,7 @@ class UploadController extends Controller
       $type = 'video/mp4';
       $user_id = $request->input('user_id');
       $videoFile = $request->file('video');
+      var_dump($videoFile);
       $mime = $videoFile->getClientMimeType();
       $name = $videoFile->getClientOriginalName();
 

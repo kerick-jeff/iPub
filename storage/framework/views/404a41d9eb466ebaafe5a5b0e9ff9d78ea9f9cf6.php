@@ -87,7 +87,7 @@
 
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
                                  <span> CLICK HERE TO CHOOSE</span>
-                                 <input accept="video/*" type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
+                                 <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
                                  <input id="uploadFile" placeholder="Choose File" name="video" disabled="disabled" style="width:100%;border-radius:3px"; border-radius:3px"/>
@@ -157,7 +157,7 @@
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                         <div class="timeline-item">  <!-- timeline-item start -->
-                            <!---- CREATE ROWS FOR VIDEOS> EACH ROW HAS TW VIDEOS --->
+                            <!-- CREATE ROWS FOR VIDEOS> EACH ROW HAS TW VIDEOS -->
                             <div class="row" style="margin-left:-7.5%"><!-- row start -->
                                 <!-- DO A FOREACH HERE TO SHOW ALL THE VIDEOS -->
                                 <!-- timeline item 1 -->
@@ -226,7 +226,7 @@
                 </div><!-- /.collapsible end -->
         </div>
     </div>
-    <script>
+     <script>
         document.getElementById("uploadBtn").onchange = function () {
             document.getElementById("uploadFile").value = this.value;
         };
