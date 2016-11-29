@@ -77,11 +77,6 @@ Route::patch('/photo/edit/{id}/{title}/{description}/{category}/{subCategory}', 
 Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
 
-
-
-
-
-
 Route::post('/video/store', 'UploadController@storeVideo');
 Route::get('/upload/video', function(){
     $pubs = Auth::user()->pubs()->where('type', 1)->orderBy('created_at', 'desc')->paginate(6);
