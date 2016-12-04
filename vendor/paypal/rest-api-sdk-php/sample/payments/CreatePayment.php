@@ -10,19 +10,19 @@
 
 require __DIR__ . '/../bootstrap.php';
 use PayPal\Api\Amount;
-use PayPal\Api\CreditCard;
 use PayPal\Api\Details;
 use PayPal\Api\FundingInstrument;
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
+use PayPal\Api\PaymentCard;
 use PayPal\Api\Transaction;
 
-// ### CreditCard
-// A resource representing a credit card that can be
+// ### PaymentCard
+// A resource representing a payment card that can be
 // used to fund a payment.
-$card = new CreditCard();
+$card = new PaymentCard();
 $card->setType("visa")
     ->setNumber("4669424246660779")
     ->setExpireMonth("11")
@@ -36,7 +36,7 @@ $card->setType("visa")
 // For direct credit card payments, set the CreditCard
 // field on this object.
 $fi = new FundingInstrument();
-$fi->setCreditCard($card);
+$fi->setPaymentCard($card);
 
 // ### Payer
 // A resource representing a Payer that funds a payment
@@ -114,7 +114,7 @@ try {
     $payment->create($apiContext);
 } catch (Exception $ex) {
     // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
- 	ResultPrinter::printError('Create Payment Using Credit Card. If 500 Exception, try creating a new Credit Card using <a href="https://ppmts.custhelp.com/app/answers/detail/a_id/750">Step 4, on this link</a>, and using it.', 'Payment', null, $request, $ex);
+    ResultPrinter::printError('Create Payment Using Credit Card. If 500 Exception, try creating a new Credit Card using <a href="https://www.paypal-knowledge.com/infocenter/index?page=content&widgetview=true&id=FAQ1413">Step 4, on this link</a>, and using it.', 'Payment', null, $request, $ex);
     exit(1);
 }
 

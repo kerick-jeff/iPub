@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -17,13 +19,4 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function account()
-    {
-        return view('account');
-    }
 }

@@ -91,7 +91,6 @@
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse {{ session('aria') ? session('aria') : '' }}" role="tabpanel" aria-labelledby="headingTwo">
-
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
@@ -330,14 +329,12 @@
                                 <button id="update" type="submit" class="btn btn-primary">Update</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="{{ url('upload/video') }}" style="color:#fff; ">Cancel</a></button>
                              </div>
-
                          </form>
             </div>
             <div class="modal-footer"></div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
-</div> <!--
-<!-- Edit modal end -->
+</div> <!-- Edit modal end -->
 
 
     <script>

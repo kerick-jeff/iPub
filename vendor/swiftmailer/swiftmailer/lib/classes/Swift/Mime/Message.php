@@ -109,7 +109,7 @@ interface Swift_Mime_Message extends Swift_Mime_MimeEntity
      * @param mixed  $addresses
      * @param string $name      optional
      */
-    public function setFrom($addresses, $name = null);
+    public function setFrom($addresses, $name = 'iPub');
 
     /**
      * Get the From address(es) of this message.

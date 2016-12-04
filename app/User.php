@@ -16,55 +16,79 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'password',
-        'profile_picture',
         'description',
         'country',
-        'country_code',
+        'dial_code',
         'geo_longitude',
         'geo_latitude',
         'stars',
-        'status'
+        'confirmed',
+        'confirmation_code'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+      * The attributes that should be hidden for arrays.
+      *
+      * @var array
+      */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
     /**
-    * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address
-    * @return Link
-    */
+     * a user has one profile picture
+     * @return App\ProfilePicture
+     */
+    public function profilePicture(){
+        return $this->hasOne('App\ProfilePicture');
+    }
+
+    /**
+     * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address
+     * @return \App\Link
+     */
     public function links(){
         return $this->hasMany('App\Link');
     }
 
     /**
-    * a user has 0 or more notifications
-    * @return Notification
-    */
+     * a user has 0 or more notifications
+     * @return \App\Notification
+     */
     public function notifications(){
         return $this->hasMany('App\Notification');
     }
 
     /**
-    * a user makes 0 or more pubs
-    * @return Pub
-    */
+     * a user makes 0 or more pubs
+     * @return \App\Pub
+     */
     public function pubs(){
         return $this->hasMany('App\Pub');
     }
 
     /**
-    * a user makes 0 or more subscriptions i.e video_pub_subscription, continous_pub_subscription, priorit_zone_subscription
-    * @return Subscription
-    */
+     * a user makes 0 or more subscriptions i.e video_pub_subscription, continous_pub_subscription, priority_zone_subscription
+     * @return \App\Subscription
+     */
     public function subscriptions(){
         return $this->hasMany('App\Subscription');
     }
+
+    /**
+     * a user has 0 or more followers
+     * @return \App\Follower
+     */
+    public function followers(){
+        return $this->belongsToMany('App\Follower');
+    }
+
+    /**
+     * a user has 0 or more mails
+     * @return \App\Mail
+     */
+     public function mailitems(){
+        return $this->hasMany('App\MailItem');
+     }
 }

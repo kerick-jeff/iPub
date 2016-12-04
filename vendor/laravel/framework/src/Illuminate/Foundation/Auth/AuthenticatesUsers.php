@@ -115,6 +115,19 @@ trait AuthenticatesUsers
             return $this->authenticated($request, Auth::guard($this->getGuard())->user());
         }
 
+        // set session values for the number of corresponding mailItems
+        $noInbox = $noSent = $noDrafts = 0;
+
+        $noInbox = count(Auth::user()->mailitems()
+                                   ->where('is_sent', 0)
+                                   ->where('is_draft', 0)
+                                   ->get());
+              
+        $noSent = count(Auth::user()->mailitems()->where('is_sent', 1)->get());
+        $noDrafts = count(Auth::user()->mailitems()->where('is_draft', 1)->get());
+
+        session(['noInbox' => $noInbox, 'noSent' => $noSent, 'noDrafts' => $noDrafts]);
+
         return redirect()->intended($this->redirectPath());
     }
 

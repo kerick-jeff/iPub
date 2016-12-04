@@ -1,0 +1,43 @@
+{
+  "name": "country-select-js",
+  "version": "1.0.8",
+  "description": "A jQuery plugin for selecting a country",
+  "main": "build/js/countrySelect.js",
+  "repository": {
+    "type": "git",
+    "url": "https://mrmarkfrench@github.com/mrmarkfrench/country-select-js.git"
+  },
+  "keywords": [
+    "country",
+    "international",
+    "jQuery"
+  ],
+  "author": {
+    "name": "Mark French"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrmarkfrench/country-select-js/issues"
+  },
+  "homepage": "https://github.com/mrmarkfrench/country-select-js",
+  "_id": "country-select-js@1.0.8",
+  "_shasum": "9dc4c174a95a15c2d3d34277d7888d094d21f84f",
+  "_from": "country-select-js@*",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "mrmarkfrench",
+    "email": "mrmarkfrench@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "mrmarkfrench",
+      "email": "mrmarkfrench@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "9dc4c174a95a15c2d3d34277d7888d094d21f84f",
+    "tarball": "https://registry.npmjs.org/country-select-js/-/country-select-js-1.0.8.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/country-select-js/-/country-select-js-1.0.8.tgz"
+}

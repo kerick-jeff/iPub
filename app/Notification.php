@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model; 
 
 class Notification extends Model
 {
@@ -11,6 +11,7 @@ class Notification extends Model
     * @var array
     */
     protected $fillable = [
+        'user_id',
         'body',
         'status',
         'on_board'
