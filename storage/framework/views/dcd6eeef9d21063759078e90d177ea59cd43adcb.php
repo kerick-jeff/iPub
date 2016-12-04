@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('css')
+<?php $__env->startSection('css'); ?>
 <style>
     .fileUpload {
         position: relative;
@@ -18,23 +16,23 @@
         opacity: 0;
         filter: alpha(opacity=0);
     }
-    @@media (max-width: 767px) {
+    @media(max-width: 767px) {
         #collapseOne {
             padding-right: 35px;
         }
     }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb')
+<?php $__env->startSection('breadcrumb'); ?>
 <ol class="breadcrumb" style="margin-top:-15px">
     <li><a href="/"><i class="fa fa-dashboard">iPub</i></a></li>
     <li>Upload</li>
     <li>Photo</li>
 </ol>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="content" style="margin-top:-35px">
     <div class="callout callout-info">
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
@@ -42,42 +40,48 @@
     </div>
 
 
-                @if(session('success'))
+                <?php if(session('success')): ?>
                     <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('success') }}
+                        <?php echo e(session('success')); ?>
+
                     </div>
-                @endif
-                @if(session('typeError'))
+                <?php endif; ?>
+                <?php if(session('typeError')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('typeError') }}
+                         <?php echo e(session('typeError')); ?>
+
                     </div>
-                @endif
-                @if(session('widthError'))
+                <?php endif; ?>
+                <?php if(session('widthError')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('widthError') }}
+                         <?php echo e(session('widthError')); ?>
+
                     </div>
-                @endif
-                @if(session('sizeError'))
+                <?php endif; ?>
+                <?php if(session('sizeError')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('sizeError') }}
+                         <?php echo e(session('sizeError')); ?>
+
                     </div>
-                @endif
-                @if(session('fileError'))
+                <?php endif; ?>
+                <?php if(session('fileError')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('fileError') }}
+                         <?php echo e(session('fileError')); ?>
+
                     </div>
-                @endif
-                @if(session('editFormMessage'))
+                <?php endif; ?>
+                <?php if(session('editFormMessage')): ?>
                 <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{ session('editFormMessage') }}
+                    <?php echo e(session('editFormMessage')); ?>
+
                 </div>
-            @endif
+            <?php endif; ?>
 
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -91,14 +95,16 @@
               </h4>
             </div>
             <!-- It is the 'in' in the class attribute that makes this panel to be hidden by default -->
-            <div id="collapseTwo" class="panel-collapse collapse {{ session('aria') ? session('aria') : '' }}" role="tabpanel" aria-labelledby="headingTwo">
+            <div id="collapseTwo" class="panel-collapse collapse <?php echo e(session('aria') ? session('aria') : ''); ?>" role="tabpanel" aria-labelledby="headingTwo">
 
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
-                          <form action="{{ url('/photo/store') }}" method="POST" style="width:101%;" enctype="multipart/form-data">
-                             {{ csrf_field() }}
-                             {{ method_field('PUT') }}
+                          <form action="<?php echo e(url('/photo/store')); ?>" method="POST" style="width:101%;" enctype="multipart/form-data">
+                             <?php echo e(csrf_field()); ?>
+
+                             <?php echo e(method_field('PUT')); ?>
+
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
                                  <span> CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px" required>
@@ -106,23 +112,23 @@
                              <span style="margin-left:2px;">
                                  <input id="uploadFile" placeholder="Choose File" name="photo" disabled="disabled" style="width:100%; border-radius:3px"/>
                              </span>
-                             <div class="form-group has-feedback  {{ $errors->has('title') ? ' has-error' : '' }}" >
+                             <div class="form-group has-feedback  <?php echo e($errors->has('title') ? ' has-error' : ''); ?>" >
                                  <label for="title">Title</label>
                                  <input type="text" class="form-control" name="title" placeholder="Title" style="border-radius:3px" >
-                                 @if ($errors->has('title'))
+                                 <?php if($errors->has('title')): ?>
                                      <span class="help-block">
-                                         <strong>{{ $errors->first('title') }}</strong>
+                                         <strong><?php echo e($errors->first('title')); ?></strong>
                                      </span>
-                                 @endif
+                                 <?php endif; ?>
                              </div>
-                             <div class="form-group has-feedback  {{ $errors->has('description') ? ' has-error' : '' }}">
+                             <div class="form-group has-feedback  <?php echo e($errors->has('description') ? ' has-error' : ''); ?>">
                                  <label for="description">Brief description</label>
                                  <textarea type="text" class="form-control" name="description" rows="3" value="Brief description" placeholder="Brief description" style="border-radius:3px"></textarea>
-                                 @if ($errors->has('description'))
+                                 <?php if($errors->has('description')): ?>
                                      <span class="help-block">
-                                         <strong>{{ $errors->first('description') }}</strong>
+                                         <strong><?php echo e($errors->first('description')); ?></strong>
                                      </span>
-                                 @endif
+                                 <?php endif; ?>
                              </div>
                              <div class="form-group has-feedback">
                                  <label for="category">Category</label>
@@ -144,9 +150,9 @@
                                    <option value="ngo">NGO</option>
                                  </select>
                              </div>
-                             @if(Auth::check())
-                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                             @endif
+                             <?php if(Auth::check()): ?>
+                                <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
+                             <?php endif; ?>
                              <div class="row">
                                  <div class="col-xs-12">
                                      <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
@@ -161,18 +167,20 @@
         </div>
 
         <div class="row">
-            @if(session('successDelete'))
+            <?php if(session('successDelete')): ?>
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{ session('successDelete') }}
+                    <?php echo e(session('successDelete')); ?>
+
                 </div>
-            @endif
-            @if(session('failDelete'))
+            <?php endif; ?>
+            <?php if(session('failDelete')): ?>
                 <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{ session('failDelete') }}
+                    <?php echo e(session('failDelete')); ?>
+
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
 
         <div class="panel panel-default">
@@ -184,24 +192,24 @@
               </h4>
             </div>
             <div>
-                @if( count($pubs) === 0 )
+                <?php if( count($pubs) === 0 ): ?>
                    <div class="alert alert-info alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                        <p style="text-align:centre; margin-left: 15px"><b><i class = "icon fa fa-info"></i>You have no photo. Upload a photo to get going.<b></p>
                    </div>
-                @elseif( count($pubs) > 0)
+                <?php elseif( count($pubs) > 0): ?>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse {{ session('aria') ? '' : 'in'}}" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
+            <div id="collapseOne" class="panel-collapse collapse <?php echo e(session('aria') ? '' : 'in'); ?>" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
                 <div class="timeline-item">  <!-- timeline-item start -->
                 <div class="col-md-12" style="margin-left: -35px">
-                    @foreach( $pubs as $pub )
+                    <?php foreach( $pubs as $pub ): ?>
                         <div class="col-md-6" style="height: 650px;margin-top: 10px;">
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
-                                      <span class="username"> {{ $pub->title }}</span>
-                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span>
+                                      <span class="username"> <?php echo e($pub->title); ?></span>
+                                      <span class="description">Shared publicly - <?php echo e(substr("$pub->created_at", 0, -9)); ?></span>
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -214,7 +222,7 @@
                                   <!-- /.box-header -->
                                   <div class="box-body" style="min-height:500px">
                                    <div style="padding-left: 5%; min-height:400px;">
-                                    <img class="img-responsive pad" src="{{ url('photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style="
+                                    <img class="img-responsive pad" src="<?php echo e(url('photo/' . $pub->pubFiles()->first()->filename )); ?>" alt="Photo"  style="
                                         max-height: 400px;
                                         object-fit: fill; position: absolute;
                                         margin: auto;
@@ -228,18 +236,19 @@
    white-space: -moz-pre-wrap; /* Firefox */
    white-space: -pre-wrap;     /* Opera <7 */
    white-space: -o-pre-wrap;   /* Opera 7 */
-   word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;">{{$pub->description}} </span> </div>
-                                    <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="{{ $pub->id }}" data-title="{{ $pub->title }}" data-description="{{ $pub->description }}" data-category="{{ $pub->category }}" data-subCategory="{{ $pub->sub_category }}"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
-                                    <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="{{ $pub->id }}"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
-                                    <span class="pull-right text-muted">{{ $pub->views }} views - {{ $pub->ratings }} ratings</span>
+   word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;"><?php echo e($pub->description); ?> </span> </div>
+                                    <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="<?php echo e($pub->id); ?>" data-title="<?php echo e($pub->title); ?>" data-description="<?php echo e($pub->description); ?>" data-category="<?php echo e($pub->category); ?>" data-subCategory="<?php echo e($pub->sub_category); ?>"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
+                                    <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="<?php echo e($pub->id); ?>"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
+                                    <span class="pull-right text-muted"><?php echo e($pub->views); ?> views - <?php echo e($pub->ratings); ?> ratings</span>
                                     </div>
                                   </div>
                             </div>
                         </div>
-                    @endforeach
-                    @endif
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-                {{ $pubs->links() }}
+                <?php echo e($pubs->links()); ?>
+
                 </div><!-- timeline-item end -->
                 </div><!-- panel-body start -->
             </div><!-- /.collapsible end -->
@@ -259,11 +268,13 @@
             </div>
             <div class="modal-footer">
             <form id="deleteForm" action="" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
+                <?php echo e(csrf_field()); ?>
+
+                <?php echo e(method_field('DELETE')); ?>
+
                  <div class="form-group"><input type="hidden" name="id" id = "id"></div>
                 <button type="submit" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-danger"><a href="{{ url('upload/photo') }}" style="color:#fff; ">No</a></button>
+                <button type="button" class="btn btn-danger"><a href="<?php echo e(url('upload/photo')); ?>" style="color:#fff; ">No</a></button>
             </form>
 
             </div>
@@ -282,26 +293,28 @@
             </div>
             <div class="modal-body">
                 <form id="editForm" action="" method="POST" style="width:101%;">
-                             {{ csrf_field() }}
-                             {{ method_field('PATCH') }}
+                             <?php echo e(csrf_field()); ?>
+
+                             <?php echo e(method_field('PATCH')); ?>
+
                              <div class="form-group"><input type="hidden" name="id" id = "id"></div>
-                             <div class="form-group has-feedback  {{ $errors->has('title') ? ' has-error' : '' }}" >
+                             <div class="form-group has-feedback  <?php echo e($errors->has('title') ? ' has-error' : ''); ?>" >
                                  <label for="title">Title</label>
                                  <input type="text" class="form-control" name="title" placeholder="Title" style="border-radius:3px"   id="title" required>
-                                 @if ($errors->has('title'))
+                                 <?php if($errors->has('title')): ?>
                                      <span class="help-block">
-                                         <strong>{{ $errors->first('title') }}</strong>
+                                         <strong><?php echo e($errors->first('title')); ?></strong>
                                      </span>
-                                 @endif
+                                 <?php endif; ?>
                              </div>
-                             <div class="form-group has-feedback  {{ $errors->has('description') ? ' has-error' : '' }}">
+                             <div class="form-group has-feedback  <?php echo e($errors->has('description') ? ' has-error' : ''); ?>">
                                  <label for="description">Brief description</label>
                                  <textarea type="text" class="form-control" name="description" rows="3" value="Brief description" placeholder="Brief description" style="border-radius:3px" id="description" required></textarea>
-                                 @if ($errors->has('description'))
+                                 <?php if($errors->has('description')): ?>
                                      <span class="help-block">
-                                         <strong>{{ $errors->first('description') }}</strong>
+                                         <strong><?php echo e($errors->first('description')); ?></strong>
                                      </span>
-                                 @endif
+                                 <?php endif; ?>
                              </div>
                              <div class="form-group has-feedback">
                                  <label for="category">Category</label>
@@ -323,13 +336,13 @@
                                    <option value="ngo">NGO</option>
                                  </select>
                              </div>
-                             @if(Auth::check())
-                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                             @endif
+                             <?php if(Auth::check()): ?>
+                                <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
+                             <?php endif; ?>
                              &nbsp;
                              <div class="form-group has-feedback" style="float:right">
                                 <button id="update" type="submit" class="btn btn-primary">Update</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="{{ url('upload/photo') }}" style="color:#fff; ">Cancel</a></button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="<?php echo e(url('upload/photo')); ?>" style="color:#fff; ">Cancel</a></button>
                              </div>
 
                          </form>
@@ -349,9 +362,9 @@
 
 
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('javascript')
+<?php $__env->startSection('javascript'); ?>
     <script type="text/javascript">
 
         $('#alertEdit').on('show.bs.modal', function(e){
@@ -377,4 +390,6 @@
         });
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
