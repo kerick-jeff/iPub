@@ -2301,3 +2301,52 @@ Stack trace:
 [2016-07-17 12:33:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in /home/trodrige/Documents/iPub/app/Http/Controllers/HomeController.php:27
 Stack trace:
 #0 {main}  
+[2016-12-04 13:50:21] production.ERROR: RuntimeException: No supported encrypter found. The cipher and / or key length are invalid. in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
+Stack trace:
+#0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
+#1 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1353): Illuminate\Encryption\EncryptionServiceProvider->Illuminate\Encryption\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1309): Illuminate\Container\Container->build(Object(Closure), Array)
+#3 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1871): Illuminate\Container\Container->make('encrypter', Array)
+#4 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1410): Illuminate\Foundation\Application->make('encrypter')
+#5 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1387): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#6 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1373): Illuminate\Container\Container->getDependencies(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1309): Illuminate\Container\Container->build('App\\Http\\Middle...', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1871): Illuminate\Container\Container->make('App\\Http\\Middle...', Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9921): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
+#10 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#13 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8192): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8183): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(8173): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2416): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(3283): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9926): call_user_func_array(Array, Array)
+#23 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/trodrige/Documents/iPub/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#25 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#26 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(9911): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#27 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2363): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#28 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2347): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#29 /home/trodrige/Documents/iPub/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#30 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
+#31 {main}  
+[2016-12-04 13:50:21] production.ERROR: RuntimeException: No supported encrypter found. The cipher and / or key length are invalid. in /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php:7737
+Stack trace:
+#0 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(7727): Illuminate\Encryption\EncryptionServiceProvider->getEncrypterForKeyAndCipher(NULL, 'AES-256-CBC')
+#1 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1353): Illuminate\Encryption\EncryptionServiceProvider->Illuminate\Encryption\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1309): Illuminate\Container\Container->build(Object(Closure), Array)
+#3 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1871): Illuminate\Container\Container->make('encrypter', Array)
+#4 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1410): Illuminate\Foundation\Application->make('encrypter')
+#5 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1387): Illuminate\Container\Container->resolveClass(Object(ReflectionParameter))
+#6 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1373): Illuminate\Container\Container->getDependencies(Array, Array)
+#7 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1309): Illuminate\Container\Container->build('App\\Http\\Middle...', Array)
+#8 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(1871): Illuminate\Container\Container->make('App\\Http\\Middle...', Array)
+#9 /home/trodrige/Documents/iPub/bootstrap/cache/compiled.php(2370): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
+#10 /home/trodrige/Documents/iPub/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#11 /home/trodrige/Documents/iPub/server.php(21): require_once('/home/trodrige/...')
+#12 {main}  
