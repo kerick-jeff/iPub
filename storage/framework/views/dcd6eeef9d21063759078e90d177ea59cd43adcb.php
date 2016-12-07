@@ -17,9 +17,8 @@
         filter: alpha(opacity=0);
     }
     @media(max-width: 767px) {
-        #collapseOne {
-            padding-right: 35px;
-        }
+        #collapseOne { padding-right: 35px; }
+        #collapseTwo { padding-right: 35px; }
     }
 </style>
 <?php $__env->stopSection(); ?>
@@ -87,11 +86,11 @@
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingTwo" style="padding: 0px">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  Click me to upload a new photo
-                </a>
+                <button class="collapsed btn-block btn-primary" style="height: 50px; border-style: none" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  <i class="icon fa fa-mouse-pointer"></i>&nbsp;Click me to upload a new photo
+              </button>
               </h4>
             </div>
             <!-- It is the 'in' in the class attribute that makes this panel to be hidden by default -->
@@ -106,7 +105,7 @@
                              <?php echo e(method_field('PUT')); ?>
 
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
-                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <span><i class="icon fa fa-file"></i>&nbsp;CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
@@ -133,7 +132,7 @@
                              <div class="form-group has-feedback">
                                  <label for="category">Category</label>
                                  <select class="form-control" name="category" style="border-radius:3px">
-                                   <option value="electronics">Electronics</option>
+                            <i class="icon fa fa-mouse-pointer"></i>&nbsp;       <option value="electronics">Electronics</option>
                                    <option value="fashion">Fashion</option>
                                    <option value="sports">Sports</option>
                                    <option value="health">Health</option>
@@ -155,7 +154,7 @@
                              <?php endif; ?>
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
+                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD
                                  </div>
                              </div>
                              &nbsp;
@@ -184,11 +183,11 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingOne" style="padding: 0px; margin-bottom:18px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                 See all photos
-                </a>
+                <button  class="btn-block btn-primary" data-toggle="collapse" style="height: 50px; border-style: none" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                 <i class="icon fa fa-eye"></i>&nbsp;See all photos
+                </button>
               </h4>
             </div>
             <div>

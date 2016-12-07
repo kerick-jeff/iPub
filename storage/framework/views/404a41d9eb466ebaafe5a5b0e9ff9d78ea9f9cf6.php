@@ -17,9 +17,8 @@
         filter: alpha(opacity=0);
     }
     @media(max-width: 767px) {
-        #collapseOne {
-            padding-right: 35px;
-        }
+        #collapseOne { padding-right: 35px; }
+        #collapseTwo { padding-right: 35px; }
     }
 </style>
 <?php $__env->stopSection(); ?>
@@ -87,11 +86,11 @@
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingTwo" style="padding: 0px">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Click me to upload a new video
-                </a>
+                <button class="collapsed btn-block btn-primary" style="height: 50px; border-style: none" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <i class="icon fa fa-mouse-pointer"></i>&nbsp;Click me to upload a new video
+              </button>
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse <?php echo e(session('aria') ? session('aria') : ''); ?>" role="tabpanel" aria-labelledby="headingTwo">
@@ -102,7 +101,7 @@
                              <?php echo e(csrf_field()); ?>
 
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
-                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <span><i class="icon fa fa-file"></i>&nbsp; CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
@@ -182,11 +181,11 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingOne" style="padding: 0px; margin-bottom:18px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn-block btn-primary" data-toggle="collapse" style="height: 50px; border-style: none" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                  <i class="icon fa fa-eye"></i>&nbsp; See all video
-                </a>
+             </button>
               </h4>
             </div>
             <div>
