@@ -17,9 +17,8 @@
         filter: alpha(opacity=0);
     }
     @media(max-width: 767px) {
-        #collapseOne {
-            padding-right: 35px;
-        }
+        #collapseOne { padding-right: 35px; }
+        #collapseTwo { padding-right: 35px; }
     }
 </style>
 <?php $__env->stopSection(); ?>
@@ -34,68 +33,67 @@
 
 <?php $__env->startSection('content'); ?>
 <section class="content" style="margin-top:-35px">
-    <div class="callout callout-info">
+
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
-        <p>Your pictures should be of medium size.  Click 'SEE ALL VIDEOS' to see older videos</p>
+        <p><b>Your pictures should be of medium size.  Click 'SEE ALL VIDEOS' to see older videos</b></p>
     </div>
 
+    <?php if(session('success')): ?>
+        <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('success')); ?>
 
-                <?php if(session('success')): ?>
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <?php echo e(session('success')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('typeError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('typeError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('typeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('typeError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('widthError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('widthError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('widthError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('widthError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('sizeError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('sizeError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('sizeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('sizeError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('fileError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('fileError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('fileError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('fileError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('editFormMessage')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('editFormMessage')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('editFormMessage')): ?>
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo e(session('editFormMessage')); ?>
-
-                </div>
-            <?php endif; ?>
-
+        </div>
+    <?php endif; ?>
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingTwo" style="padding: 0px">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="collapsed btn-block btn-primary" style="height: 50px; border-style: none" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Click me to upload a new video
-                </a>
+              </button>
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse <?php echo e(session('aria') ? session('aria') : ''); ?>" role="tabpanel" aria-labelledby="headingTwo">
-                
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
@@ -103,7 +101,7 @@
                              <?php echo e(csrf_field()); ?>
 
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
-                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <span><i class="icon fa fa-file"></i>&nbsp; CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
@@ -152,7 +150,7 @@
                              <?php endif; ?>
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
+                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
                                  </div>
                              </div>
                              &nbsp;
@@ -167,6 +165,7 @@
             <?php if(session('successDelete')): ?>
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Deleted <br />
                     <?php echo e(session('successDelete')); ?>
 
                 </div>
@@ -174,6 +173,7 @@
             <?php if(session('failDelete')): ?>
                 <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
                     <?php echo e(session('failDelete')); ?>
 
                 </div>
@@ -181,18 +181,18 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingOne" style="padding: 0px; margin-bottom:18px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn-block btn-primary" data-toggle="collapse" style="height: 50px; border-style: none" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                  See all video
-                </a>
+             </button>
               </h4>
             </div>
             <div>
                  <?php if( count($pubs) === 0 ): ?>
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                    <div class="alert alert-info alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p style="text-align:centre; margin-left: 15px"><b>You have no video. Upload a video to get going.<b></p>
+                        <p style="text-align:centre; margin-left: 15px"><b><i class = "icon fa fa-info"></i>You have no video. Upload a video to get going.<b></p>
                     </div>
                  <?php elseif( count($pubs) > 0): ?>
             </div>
@@ -206,7 +206,7 @@
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
                                       <span class="username"> <?php echo e($pub->title); ?></span>
-                                      <span class="description">Shared publicly - <?php echo e(substr("$pub->created_at", 0, -9)); ?></span> 
+                                      <span class="description">Shared publicly - <?php echo e(substr("$pub->created_at", 0, -9)); ?></span>
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -218,20 +218,19 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body" id="box" >
-                                   <div style="padding-left: 0%; height:100%; "> 
+                                   <div style="padding-left: 0%; height:100%; ">
 
                                     <video style="object-fit: fill; max-width: 100%;min-height: 320px; max-height: 100%" controls>
-                                      <source src="<?php echo e(url('video/' . $pub->pubFiles()->first()->filename )); ?>" type="video/mp4">
+                                      <source src="<?php echo e(url('video/' . $pub->pubFiles()->first()->filename )); ?>" >
                                     Your browser does not support the video tag.
                                     </video>
 
-                                    <!--<img class="img-responsive pad" src="<?php echo e(url('video/' . $pub->pubFiles()->first()->filename )); ?>" alt="video"  style=" max-height: 400px" /> -->
                                    </div>
                                    <div style=" height:100px">
-                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px;white-space: pre-wrap;      /* CSS3 */   
-   white-space: -moz-pre-wrap; /* Firefox */    
-   white-space: -pre-wrap;     /* Opera <7 */   
-   white-space: -o-pre-wrap;   /* Opera 7 */    
+                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px;white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
    word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;"><?php echo e($pub->description); ?> </span> </div>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="<?php echo e($pub->id); ?>" data-title="<?php echo e($pub->title); ?>" data-description="<?php echo e($pub->description); ?>" data-category="<?php echo e($pub->category); ?>" data-subCategory="<?php echo e($pub->sub_category); ?>"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
                                     <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="<?php echo e($pub->id); ?>"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
@@ -239,7 +238,7 @@
                                     </div>
                                   </div>
                             </div>
-                        </div> 
+                        </div>
                     <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
@@ -272,7 +271,7 @@
                 <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-danger"><a href="<?php echo e(url('upload/video')); ?>" style="color:#fff; ">No</a></button>
             </form>
-                
+
             </div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
@@ -340,14 +339,12 @@
                                 <button id="update" type="submit" class="btn btn-primary">Update</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="<?php echo e(url('upload/video')); ?>" style="color:#fff; ">Cancel</a></button>
                              </div>
-                              
                          </form>
             </div>
             <div class="modal-footer"></div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
-</div> <!-- 
-<!-- Edit modal end -->
+</div> <!-- Edit modal end -->
 
 
     <script>

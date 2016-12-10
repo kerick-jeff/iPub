@@ -312,7 +312,7 @@ class Request
             'SERVER_NAME' => 'localhost',
             'SERVER_PORT' => 80,
             'HTTP_HOST' => 'localhost',
-            'HTTP_USER_AGENT' => 'Symfony/3.X',
+            'HTTP_USER_AGENT' => 'Symfony/2.X',
             'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'HTTP_ACCEPT_LANGUAGE' => 'en-us,en;q=0.5',
             'HTTP_ACCEPT_CHARSET' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
@@ -701,30 +701,43 @@ class Request
     }
 
     /**
-     * Gets a "parameter" value from any bag.
+     * Gets a "parameter" value.
      *
-     * This method is mainly useful for libraries that want to provide some flexibility. If you don't need the
-     * flexibility in controllers, it is better to explicitly get request parameters from the appropriate
-     * public property instead (attributes, query, request).
+     * This method is mainly useful for libraries that want to provide some flexibility.
      *
-     * Order of precedence: PATH (routing placeholders or custom attributes), GET, BODY
+     * Order of precedence: GET, PATH, POST
+     *
+     * Avoid using this method in controllers:
+     *
+     *  * slow
+     *  * prefer to get from a "named" source
+     *
+     * It is better to explicitly get request parameters from the appropriate
+     * public property instead (query, attributes, request).
+     *
+     * Note: Finding deep items is deprecated since version 2.8, to be removed in 3.0.
      *
      * @param string $key     the key
      * @param mixed  $default the default value if the parameter key does not exist
+     * @param bool   $deep    is parameter deep in multidimensional array
      *
      * @return mixed
      */
-    public function get($key, $default = null)
+    public function get($key, $default = null, $deep = false)
     {
-        if ($this !== $result = $this->attributes->get($key, $this)) {
+        if ($deep) {
+            @trigger_error('Using paths to find deeper items in '.__METHOD__.' is deprecated since version 2.8 and will be removed in 3.0. Filter the returned value in your own code instead.', E_USER_DEPRECATED);
+        }
+
+        if ($this !== $result = $this->query->get($key, $this, $deep)) {
             return $result;
         }
 
-        if ($this !== $result = $this->query->get($key, $this)) {
+        if ($this !== $result = $this->attributes->get($key, $this, $deep)) {
             return $result;
         }
 
-        if ($this !== $result = $this->request->get($key, $this)) {
+        if ($this !== $result = $this->request->get($key, $this, $deep)) {
             return $result;
         }
 
@@ -1364,7 +1377,7 @@ class Request
      * Here is the process to determine the format:
      *
      *  * format defined by the user (with setRequestFormat())
-     *  * _format request attribute
+     *  * _format request parameter
      *  * $default
      *
      * @param string $default The default format
@@ -1374,7 +1387,7 @@ class Request
     public function getRequestFormat($default = 'html')
     {
         if (null === $this->format) {
-            $this->format = $this->attributes->get('_format', $default);
+            $this->format = $this->get('_format', $default);
         }
 
         return $this->format;
@@ -1467,6 +1480,16 @@ class Request
     }
 
     /**
+     * Checks whether the method is cacheable or not.
+     *
+     * @return bool
+     */
+    public function isMethodCacheable()
+    {
+        return in_array($this->getMethod(), array('GET', 'HEAD'));
+    }
+
+    /**
      * Returns the request body content.
      *
      * @param bool $asResource If true, a resource will be returned
@@ -1509,7 +1532,7 @@ class Request
             return stream_get_contents($this->content);
         }
 
-        if (null === $this->content) {
+        if (null === $this->content || false === $this->content) {
             $this->content = file_get_contents('php://input');
         }
 
@@ -1657,7 +1680,7 @@ class Request
      * It works if your JavaScript library sets an X-Requested-With HTTP header.
      * It is known to work with common JavaScript frameworks:
      *
-     * @link http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
+     * @see http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
      *
      * @return bool true if the request is an XMLHttpRequest, false otherwise
      */

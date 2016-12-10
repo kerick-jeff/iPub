@@ -92,7 +92,7 @@ Route::get('video/{filename}', function( $filename ){
     return $response;
 });
 Route::patch('/video/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editVideo');
-Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo'); 
+Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo');
 
 
 /* SettingsController routes */

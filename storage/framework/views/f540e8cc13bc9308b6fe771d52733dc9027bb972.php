@@ -31,7 +31,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" id = "body">
 <div class="login-box" style="margin-top:15px">
   <div class="login-logo">
     <a href="/"><b>iP</b>ub</a>
@@ -39,7 +39,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
 
-<?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->yieldContent('content'); ?>
 
   </div>
   <!-- /.login-box-body -->
@@ -64,5 +64,8 @@
     });
   });
 </script>
+
+<?php echo $__env->yieldContent('javascript'); ?>
+
 </body>
 </html>

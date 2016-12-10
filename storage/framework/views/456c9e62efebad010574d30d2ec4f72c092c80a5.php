@@ -21,8 +21,9 @@
               </div>
           </div>
         <?php endif; ?>
+
+        <img src="<?php echo e(asset('land2.jpg')); ?>" alt="welcome to iPub" style="max-width: 100%;" />
     </div>
-    <img src="<?php echo e(asset('images/land2.jpg')); ?>" alt="landing_page" style="max-width: 100%;" />
     </div>
 </div>
 <?php $__env->stopSection(); ?>

@@ -19,9 +19,8 @@
         filter: alpha(opacity=0);
     }
     @@media (max-width: 767px) {
-        #collapseOne {
-            padding-right: 35px;
-        }
+        #collapseOne { padding-right: 35px; }
+        #collapseTwo { padding-right: 35px; }
     }
 </style>
 @endsection
@@ -36,63 +35,64 @@
 
 @section('content')
 <section class="content" style="margin-top:-35px">
-    <div class="callout callout-info">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
-        <p>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</p>
+        <p><b>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</b></p>
     </div>
 
 
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if(session('typeError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('typeError') }}
-                    </div>
-                @endif
-                @if(session('widthError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('widthError') }}
-                    </div>
-                @endif
-                @if(session('sizeError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('sizeError') }}
-                    </div>
-                @endif
-                @if(session('fileError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('fileError') }}
-                    </div>
-                @endif
-                @if(session('editFormMessage'))
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{ session('editFormMessage') }}
-                </div>
-            @endif
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('typeError'))
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('typeError') }}
+        </div>
+    @endif
+    @if(session('widthError'))
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('widthError') }}
+        </div>
+    @endif
+    @if(session('sizeError'))
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('sizeError') }}
+        </div>
+    @endif
+    @if(session('fileError'))
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('fileError') }}
+        </div>
+    @endif
+    @if(session('editFormMessage'))
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('editFormMessage') }}
+        </div>
+    @endif
 
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingTwo" style="padding: 0px">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <button class="collapsed btn-block btn-primary" style="height: 50px; border-style: none" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                   Click me to upload a new photo
-                </a>
+              </button>
               </h4>
             </div>
             <!-- It is the 'in' in the class attribute that makes this panel to be hidden by default -->
             <div id="collapseTwo" class="panel-collapse collapse {{ session('aria') ? session('aria') : '' }}" role="tabpanel" aria-labelledby="headingTwo">
-                
+
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
@@ -100,7 +100,7 @@
                              {{ csrf_field() }}
                              {{ method_field('PUT') }}
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
-                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <span><i class="icon fa fa-file"></i>&nbsp;CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="photo" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
@@ -127,7 +127,7 @@
                              <div class="form-group has-feedback">
                                  <label for="category">Category</label>
                                  <select class="form-control" name="category" style="border-radius:3px">
-                                   <option value="electronics">Electronics</option>
+                            <i class="icon fa fa-mouse-pointer"></i>&nbsp;       <option value="electronics">Electronics</option>
                                    <option value="fashion">Fashion</option>
                                    <option value="sports">Sports</option>
                                    <option value="health">Health</option>
@@ -149,7 +149,7 @@
                              @endif
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
+                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD
                                  </div>
                              </div>
                              &nbsp;
@@ -161,6 +161,7 @@
         </div>
 
         <div class="row">
+            <!-- Delete photo messages-->
             @if(session('successDelete'))
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -173,23 +174,39 @@
                     {{ session('failDelete') }}
                 </div>
             @endif
+
+            <!-- Edit photo messages -->
+            @if(session('successEdit'))
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Edited <br />
+                    {{ session('successEdit') }}
+                </div>
+            @endif
+            @if(session('failEdit'))
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
+                    {{ session('failEdit') }}
+                </div>
+            @endif
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingOne" style="padding: 0px; margin-bottom:18px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <button  class="btn-block btn-primary" data-toggle="collapse" style="height: 50px; border-style: none" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                  See all photos
-                </a>
+                </button>
               </h4>
             </div>
             <div>
-                 @if( count($pubs) === 0 )
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p style="text-align:centre; margin-left: 15px"><b>You have no photos. Upload a photo to get going.<b></p>
-                    </div>
-                 @elseif( count($pubs) > 0)
+                @if( count($pubs) === 0 )
+                   <div class="alert alert-info alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                       <p style="text-align:centre; margin-left: 15px"><b><i class = "icon fa fa-info"></i>You have no photo. Upload a photo to get going.<b></p>
+                   </div>
+                @elseif( count($pubs) > 0)
             </div>
             <div id="collapseOne" class="panel-collapse collapse {{ session('aria') ? '' : 'in'}}" role="tabpanel" aria-labelledby="headingOne"><!-- /.collapsible start -->
                 <div class="panel-body" style="margin-left:60px"> <!-- panel-body start -->
@@ -201,7 +218,7 @@
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
                                       <span class="username"> {{ $pub->title }}</span>
-                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span> 
+                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span>
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -213,9 +230,9 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body" style="min-height:500px">
-                                   <div style="padding-left: 5%; min-height:400px;"> 
-                                    <img class="img-responsive pad" src="{{ url('photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style=" 
-                                        max-height: 400px; 
+                                   <div style="padding-left: 5%; min-height:400px;">
+                                    <img class="img-responsive pad" src="{{ url('photo/' . $pub->pubFiles()->first()->filename )}}" alt="Photo"  style="
+                                        max-height: 400px;
                                         object-fit: fill; position: absolute;
                                         margin: auto;
                                         top: 0;
@@ -224,10 +241,10 @@
                                         bottom: 0;" />
                                    </div>
                                    <div style=" height:100px">
-                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px; margin-top:10%;white-space: pre-wrap;      /* CSS3 */   
-   white-space: -moz-pre-wrap; /* Firefox */    
-   white-space: -pre-wrap;     /* Opera <7 */   
-   white-space: -o-pre-wrap;   /* Opera 7 */    
+                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px; margin-top:10%;white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
    word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;">{{$pub->description}} </span> </div>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="{{ $pub->id }}" data-title="{{ $pub->title }}" data-description="{{ $pub->description }}" data-category="{{ $pub->category }}" data-subCategory="{{ $pub->sub_category }}"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
                                     <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="{{ $pub->id }}"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
@@ -235,7 +252,7 @@
                                     </div>
                                   </div>
                             </div>
-                        </div> 
+                        </div>
                     @endforeach
                     @endif
                 </div>
@@ -259,14 +276,13 @@
             </div>
             <div class="modal-footer">
             <form id="deleteForm" action="" method="POST">
-            <!-- <form id="deleteForm" action="{{ url('photo/'.$pub->id.'/destroy') }}" method="POST"> -->
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                  <div class="form-group"><input type="hidden" name="id" id = "id"></div>
                 <button type="submit" class="btn btn-primary">Yes</button>
                 <button type="button" class="btn btn-danger"><a href="{{ url('upload/photo') }}" style="color:#fff; ">No</a></button>
             </form>
-                
+
             </div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
@@ -332,13 +348,13 @@
                                 <button id="update" type="submit" class="btn btn-primary">Update</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="{{ url('upload/photo') }}" style="color:#fff; ">Cancel</a></button>
                              </div>
-                              
+
                          </form>
             </div>
             <div class="modal-footer"></div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
-</div> <!-- 
+</div> <!--
 <!-- Edit modal end -->
 
 
