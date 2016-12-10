@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use File;
 use Auth;
 use Image;
+use FFMPEG;
 use App\Pub;
 use Storage;
 use App\User;
@@ -51,11 +52,11 @@ class UploadController extends Controller
 		            	Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/photo/');
 		            }
 
-                if($width > 450 && $height > 500) { 
+                if($width > 450 && $height > 500) {
                   $photo = $image->resize(450,500);
                   $photo->save($path.$name, 70);
                 }
-                else{ 
+                else{
                   $image->save($path.$name, 70);
                 }
 
@@ -100,13 +101,17 @@ class UploadController extends Controller
 
     Pub::where('id', $request->id)
         ->update([
-          'title' => $request->title, 
-          'description' => $request->description, 
-          'category' => $request->category, 
+          'title' => $request->title,
+          'description' => $request->description,
+          'category' => $request->category,
           'sub_category' => $request->sub_category
         ]);
-          
-    return redirect('/upload/photo');
+
+        if ($edited) {
+            return redirect('/upload/photo')->with('successEdit', 'Successfully edited photo');
+        } else {
+            return redirect('/upload/photo')->with('failEdit', 'Failed to edit photo');
+        }
   }
 
 	public function destroyPhoto($id)
@@ -122,14 +127,14 @@ class UploadController extends Controller
       }
       else{
       	return redirect('/upload/photo')->with('failDelete', 'Failed to delete image');
-      }  
+      }
 	}
 
   public function storeVideo(Request $request){
       // validate the inputs
       $validate = Validator::make($request->all(), [
                     'title' => 'required|max:255',
-                    'description' => 'required|255',
+                    'description' => 'required|max:255',
                     'video' => 'required'
                   ]);
 
@@ -143,8 +148,9 @@ class UploadController extends Controller
       $videoFile = File::get($request->video);
       $mime = $request->file('video')->getClientMimeType();
       $name = $request->file('video')->getClientOriginalName();
+      $extension = $request->file('video')->getClientOriginalExtension();
 
-      if($request->hasFile('video') && $request->file('video')->isValid() && substr($request->file('video')->getClientMimeType(), 0, strlen($type)) === $type){  // check video exists and valid and mime type
+  if($request->hasFile('video') && $request->file('video')->isValid() /* && substr($mime, 0, strlen($type)) === $type*/){  // check video exists and valid and mime type
         if($request->file('video')->getClientSize() < 524288000){  // check video size
           $path = Auth::user()->id."-".Auth::user()->name."/video/";
 
@@ -152,7 +158,16 @@ class UploadController extends Controller
                   Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/video/');
                 }
 
-                Storage::disk('public')->put($path.$name, File::get($request->video));
+                $oname = $name;
+                $dotPos = strrpos($name, '.');
+                $name = substr($name,0, $dotPos);
+
+                if ($extension == 'mp4') {
+                    Storage::disk('public')->put($path.$oname, File::get($request->video));
+                } else {
+                    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video/';
+                    FFMPEG::convert()->input($request->file('video')->getRealPath().'/'.$oname)->bitrate(300, 'video')->output($path.$name.'.mp4')->go();
+                }
 
                 $pub = Pub::create([
                         'user_id' => $user_id,
@@ -165,10 +180,10 @@ class UploadController extends Controller
 
                 PubFile::create([
                     'pub_id' => $pub->id,
-                    'filename' => $request->file('video')->getClientOriginalName(),
+                    'filename' => $name.'.mp4',
                     'type' => $type,
                     'size' => $request->file('video')->getClientSize(),
-                    'extension' => $request->file('video')->getClientOriginalExtension(),
+                    'extension' => $extension,
                 ]);
 
                 return back()->with('success', 'Your video was successfully uploaded');
@@ -192,7 +207,7 @@ class UploadController extends Controller
     }
     else{
       return redirect('/upload/video')->with('failDelete', 'Failed to delete video');
-    }  
+    }
   }
 
 
@@ -209,15 +224,19 @@ class UploadController extends Controller
       return redirect('/upload/video')->withErrors($validate)->withInput();
     }
 
-    Pub::where('id', $request->id)
+    $edited = Pub::where('id', $request->id)
         ->update([
-          'title' => $request->title, 
-          'description' => $request->description, 
-          'category' => $request->category, 
+          'title' => $request->title,
+          'description' => $request->description,
+          'category' => $request->category,
           'sub_category' => $request->sub_category
         ]);
-          
-    return redirect('/upload/video');
+    if ($edited) {
+        return redirect('/upload/video')->with('successEdit', 'Successfully edited video');
+    } else {
+        return redirect('/upload/video')->with('failEdit', 'Failed to edit video');
+    }
+
   }
 
 

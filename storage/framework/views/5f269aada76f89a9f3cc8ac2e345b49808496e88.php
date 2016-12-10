@@ -63,8 +63,8 @@
 
           <!-- Messages: style can be found in dropdown.less-->
 
-          <li style="right: 120%"><a href="/pubs" >Pubs</a></li>
-          <li style="right: 120%"><a href="/about" >About Us</a></li>
+          <li style="right: 105%"><a href="/pubs" >Pubs</a></li>
+          <li style="right: 105%"><a href="/about" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
