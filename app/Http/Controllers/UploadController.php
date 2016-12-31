@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use File;
 use Auth;
 use Image;
-use FFMPEG;
 use App\Pub;
 use Storage;
 use App\User;
@@ -46,10 +45,11 @@ class UploadController extends Controller
 		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and type type
 		    if($image->filesize() < 5242880){  // check file size
 		        if( $width >= 200 && $height >= 200 ){ //check file dimensions
-					$path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".User::find($user_id)->value('name').'/photo/';
+                    $userName = str_replace(' ', '-', User::find($user_id)->value('name'));
+					$path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".$userName.'/photo/';
 
-		            if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/photo/')){
-		            	Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/photo/');
+		            if(!Storage::disk('public')->exists($user_id."-".$userName.'/photo/')){
+		            	Storage::disk('public')->makeDirectory($user_id."-".$userName.'/photo/');
 		            }
 
                 if($width > 450 && $height > 500) {
@@ -119,7 +119,8 @@ class UploadController extends Controller
       $photo = Pub::find($id);
       $pub_files = PubFile::where('pub_id', $photo->id)->first();
 
-      $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
+      $userName = str_replace(' ', '-', User::find(Auth::user()->id)->value('name'));
+      $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".$userName.'/photo';
       File::Delete($path . '/' . $pub_files->filename );
 
       if($photo->delete() && $pub_files->delete() ){
@@ -152,21 +153,30 @@ class UploadController extends Controller
 
   if($request->hasFile('video') && $request->file('video')->isValid() /* && substr($mime, 0, strlen($type)) === $type*/){  // check video exists and valid and mime type
         if($request->file('video')->getClientSize() < 524288000){  // check video size
-          $path = Auth::user()->id."-".Auth::user()->name."/video/";
+            $userName = str_replace(' ', '-', User::find($user_id)->value('name'));
+            //$path = Auth::user()->id . "-" . $userName . "/video/";
 
-                if(!Storage::disk('public')->exists($user_id."-".User::find($user_id)->value('name').'/video/')){
-                  Storage::disk('public')->makeDirectory($user_id."-".User::find($user_id)->value('name').'/video/');
+                if(!Storage::disk('public')->exists($user_id . "-" . $userName . '/video/')){
+                  Storage::disk('public')->makeDirectory($user_id . "-" . $userName . '/video/');
                 }
 
+            //    $name = str_replace(' ','',$name);
+            //    dump($name);
                 $oname = $name;
                 $dotPos = strrpos($name, '.');
                 $name = substr($name,0, $dotPos);
+                $noSpaceName = str_replace(' ', '-', $name);
+                $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".$userName.'/video/';
 
                 if ($extension == 'mp4') {
-                    Storage::disk('public')->put($path.$oname, File::get($request->video));
+                    //Storage::disk('public')->put($path.$oname, File::get($request->video));
+                    $request->file('video')->move($path, $noSpaceName.".mp4");
                 } else {
-                    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video/';
-                    FFMPEG::convert()->input($request->file('video')->getRealPath().'/'.$oname)->bitrate(300, 'video')->output($path.$name.'.mp4')->go();
+                    //Storage::disk('public')->put($path1.$oname, File::get($request->video));
+                    $request->file('video')->move($path, $noSpaceName.".mp4");
+                    shell_exec("ffmpeg -y -i " . $path.$oname . " -strict -2 " . $path.$noSpaceName . ".mp4 &");
+                    //echo "Done.\n";
+                    //return dump("ffmpeg -i " . $path.$oname . " " . $path.$noSpaceName . ".mp4 &");
                 }
 
                 $pub = Pub::create([
@@ -180,7 +190,7 @@ class UploadController extends Controller
 
                 PubFile::create([
                     'pub_id' => $pub->id,
-                    'filename' => $name.'.mp4',
+                    'filename' => $noSpaceName.".mp4",
                     'type' => $type,
                     'size' => $request->file('video')->getClientSize(),
                     'extension' => $extension,
@@ -199,7 +209,8 @@ class UploadController extends Controller
     $video = Pub::find($id);
     $pub_files = PubFile::where('pub_id', $video->id)->first();
 
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video';
+    $userName = str_replace(' ', '-', User::find(Auth::user()->id)->value('name'));
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".$userName.'/video';
     File::Delete($path . '/' . $pub_files->filename );
 
     if($video->delete() && $pub_files->delete() ){

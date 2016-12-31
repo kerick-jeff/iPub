@@ -34,7 +34,6 @@ return array(
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'LinkThrow\\Ffmpeg\\' => array($vendorDir . '/linkthrow/ffmpeg/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'LaravelCaptcha\\' => array($vendorDir . '/captcha-com/laravel-captcha/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/imagecache/src/Intervention/Image', $vendorDir . '/intervention/image/src/Intervention/Image'),

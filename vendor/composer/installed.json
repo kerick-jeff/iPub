@@ -3968,65 +3968,6 @@
         ]
     },
     {
-        "name": "linkthrow/ffmpeg",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/linkthrow/ffmpeg.git",
-            "reference": "01aafe9449141ba9079615a9985b7fb97154fb83"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/linkthrow/ffmpeg/zipball/01aafe9449141ba9079615a9985b7fb97154fb83",
-            "reference": "01aafe9449141ba9079615a9985b7fb97154fb83",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.1.*"
-        },
-        "time": "2016-05-09 19:30:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "LinkThrow\\Ffmpeg\\": "src"
-            },
-            "files": [
-                "src/Classes/FFMPEG.php",
-                "src/Helpers.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Rafael Sampaio",
-                "email": "rafaelsampaio@live.com"
-            },
-            {
-                "name": "Closca Costel",
-                "email": "closca.costel@gmail.com"
-            },
-            {
-                "name": "Hussan Choudhry",
-                "email": "hussan@uselinkthrow.com"
-            }
-        ],
-        "description": "A laravel audio and video conversion, thumbnail generator and metadata editor package powered by ffmpeg",
-        "keywords": [
-            "converter",
-            "ffmpeg",
-            "ffprobe",
-            "laravel"
-        ]
-    },
-    {
         "name": "phpunit/phpunit",
         "version": "4.8.31",
         "version_normalized": "4.8.31.0",

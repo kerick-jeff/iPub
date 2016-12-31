@@ -145,7 +145,7 @@
                              @endif
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
+                                     <button type = "submit" id = "save" class = "btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
                                  </div>
                              </div>
                              &nbsp;
@@ -363,7 +363,23 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
+
+<script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#save").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Uploading...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
 
     // This function is for editing video
         $('#alertEdit').on('show.bs.modal', function(e){
@@ -389,6 +405,8 @@
             var id = $(e.relatedTarget).data('id');
             $('#deleteForm').attr("action", "/video/" + id + "/destroy" );
         });
+
+    });
 
     </script>
 @endsection

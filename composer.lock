@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "78e17fbe669ddef95222d0e294393178",
-    "content-hash": "6c089c0f20618a1aa08ca9c442116c7e",
+    "hash": "e3e02d2ef6963682c8c88af851675f57",
+    "content-hash": "ee42c31e24c1feb2f7e15be60fc46f68",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -846,63 +846,6 @@
                 "storage"
             ],
             "time": "2016-10-19 20:38:46"
-        },
-        {
-            "name": "linkthrow/ffmpeg",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/linkthrow/ffmpeg.git",
-                "reference": "01aafe9449141ba9079615a9985b7fb97154fb83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/linkthrow/ffmpeg/zipball/01aafe9449141ba9079615a9985b7fb97154fb83",
-                "reference": "01aafe9449141ba9079615a9985b7fb97154fb83",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LinkThrow\\Ffmpeg\\": "src"
-                },
-                "files": [
-                    "src/Classes/FFMPEG.php",
-                    "src/Helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rafael Sampaio",
-                    "email": "rafaelsampaio@live.com"
-                },
-                {
-                    "name": "Closca Costel",
-                    "email": "closca.costel@gmail.com"
-                },
-                {
-                    "name": "Hussan Choudhry",
-                    "email": "hussan@uselinkthrow.com"
-                }
-            ],
-            "description": "A laravel audio and video conversion, thumbnail generator and metadata editor package powered by ffmpeg",
-            "keywords": [
-                "converter",
-                "ffmpeg",
-                "ffprobe",
-                "laravel"
-            ],
-            "time": "2016-05-09 19:30:00"
         },
         {
             "name": "monolog/monolog",
@@ -3971,9 +3914,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "linkthrow/ffmpeg": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

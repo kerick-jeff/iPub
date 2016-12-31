@@ -150,7 +150,7 @@
                              <?php endif; ?>
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
+                                     <button type = "submit" id = "save" class = "btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
                                  </div>
                              </div>
                              &nbsp;
@@ -162,6 +162,7 @@
         </div>
 
         <div class="row">
+            <!-- Delete video messages -->
             <?php if(session('successDelete')): ?>
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -175,6 +176,24 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
                     <?php echo e(session('failDelete')); ?>
+
+                </div>
+            <?php endif; ?>
+
+            <!-- Edit video messages -->
+            <?php if(session('successEdit')): ?>
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Edited <br />
+                    <?php echo e(session('successEdit')); ?>
+
+                </div>
+            <?php endif; ?>
+            <?php if(session('failEdit')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
+                    <?php echo e(session('failEdit')); ?>
 
                 </div>
             <?php endif; ?>
@@ -358,7 +377,23 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascript'); ?>
-    <script type="text/javascript">
+
+<script type="text/javascript" src = "<?php echo e(asset('js/loading/waitMe.js')); ?>"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#save").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Uploading...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
 
     // This function is for editing video
         $('#alertEdit').on('show.bs.modal', function(e){
@@ -384,6 +419,8 @@
             var id = $(e.relatedTarget).data('id');
             $('#deleteForm').attr("action", "/video/" + id + "/destroy" );
         });
+
+    });
 
     </script>
 <?php $__env->stopSection(); ?>

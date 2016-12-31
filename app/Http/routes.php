@@ -85,7 +85,9 @@ Route::get('/upload/video', function(){
     return view('upload.video', ['pubs' => $pubs]);
 });
 Route::get('video/{filename}', function( $filename ){
-    $path = Auth::user()->id."-".Auth::user()->name.'/video/';
+    $user_id = Auth::user()->id;
+    $userName = str_replace(' ', '-', User::find($user_id)->value('name'));
+    $path = $user_id."-".$userName.'/video/';
     $fileContents =  Storage::disk('public')->get($path.$filename);
     $response = Response::make($fileContents, 200);
     $response->header('Content-Type', "video/mp4");

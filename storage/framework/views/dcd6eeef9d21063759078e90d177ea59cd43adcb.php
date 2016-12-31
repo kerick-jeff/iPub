@@ -33,55 +33,55 @@
 
 <?php $__env->startSection('content'); ?>
 <section class="content" style="margin-top:-35px">
-    <div class="callout callout-info callout-dismissible">
-        <button type="button" class="close" data-dismiss="callout" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
-        <p>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</p>
+        <p><b>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</b></p>
     </div>
 
 
-                <?php if(session('success')): ?>
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <?php echo e(session('success')); ?>
+    <?php if(session('success')): ?>
+        <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('success')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('typeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('typeError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('typeError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('typeError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('widthError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('widthError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('widthError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('widthError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('sizeError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('sizeError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('sizeError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('sizeError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('fileError')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <?php echo e(session('fileError')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('fileError')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('fileError')); ?>
 
-                    </div>
-                <?php endif; ?>
-                <?php if(session('editFormMessage')): ?>
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo e(session('editFormMessage')); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(session('editFormMessage')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo e(session('editFormMessage')); ?>
 
-                </div>
-            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -167,6 +167,7 @@
         </div>
 
         <div class="row">
+            <!-- Delete photo messages-->
             <?php if(session('successDelete')): ?>
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -178,6 +179,24 @@
                 <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <?php echo e(session('failDelete')); ?>
+
+                </div>
+            <?php endif; ?>
+
+            <!-- Edit photo messages -->
+            <?php if(session('successEdit')): ?>
+                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Edited <br />
+                    <?php echo e(session('successEdit')); ?>
+
+                </div>
+            <?php endif; ?>
+            <?php if(session('failEdit')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
+                    <?php echo e(session('failEdit')); ?>
 
                 </div>
             <?php endif; ?>
