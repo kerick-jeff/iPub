@@ -5,8 +5,11 @@
 <!-- provide author and page desc -->
 
 @section('breadcrumb')
+<h1>
+  Account
+</h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Account</li>
 </ol>
 @endsection
@@ -19,6 +22,7 @@
         {{ $errors->first('link') }}
     </div>
 @endif
+
 <!-- alert user of successfully sending an invitation -->
 @if(session('success'))
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -27,6 +31,7 @@
          {{ session('success') }}
     </div>
 @endif
+
 @if(session('failure'))
     <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -39,23 +44,20 @@
   <div class="col-md-3">
 
     <!-- Profile Image -->
-    <div class="box box-primary">
+    <div class="box box-primary spacious-bottom">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ asset('ipub/dist/img/user4-128x128.jpg') }}" alt="User profile picture">
-
-        <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-        <p class="text-muted text-center">Software Engineer</p>
-
+        <img class="profile-user-img img-responsive img-circle" src="{{ url('/profile-picture') }}" alt="User profile picture">
+        <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
+        <p class="text-muted text-center">{{ Auth::user()->type }}</p>
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
             <b>Rating</b>
             <a class="pull-right">
-              <i class = "fa fa-star" style = "color: #FFC733"></i>
-              <i class = "fa fa-star" style = "color: #FFC733"></i>
-              <i class = "fa fa-star-half-full" style = "color: #FFC733"></i>
-              <i class = "fa fa-star-o" style = "color: #FFC733"></i>
-              <i class = "fa fa-star-o" style = "color: #FFC733"></i>
+              <i class = "fa fa-star starry"></i>
+              <i class = "fa fa-star starry"></i>
+              <i class = "fa fa-star-half-full starry"></i>
+              <i class = "fa fa-star-o starry"></i>
+              <i class = "fa fa-star-o starry"></i>
             </a>
           </li>
           <li class="list-group-item">
@@ -107,35 +109,43 @@
       </div>
       <!-- /.box-header -->
       <div class="box-body">
-        <strong><i class="icon fa fa-file-text"></i> Description </strong>
-        <p class="text-muted">
-          B.S. in Computer Science from the University of Tennessee at Knoxville
-        </p>
-        <a href = "/setings#description" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-edit"></i>Edit</a>
-        <hr>
+        @if(!empty(Auth::user()->description))
+          <a><strong><i class="icon fa fa-file-text"></i> Description </strong></a>
+          <textarea class="text-muted" rows = "8" style = "border: none; width: 100%; margin-bottom: 5%" disabled >
+            {{ Auth::user()->description }}
+          </textarea>
+          <a href = "/setings#description" class = "btn btn-primary btn-block">Edit</a>
+          <hr>
+        @endif
 
-        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+        <a><strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong></a>
         <p class="text-muted">
           Malibu, California
         </p>
-        <a href = "/settings#location" type="button" class = "btn btn-primary btn-xs"><i class = "fa fa-circle"></i>Set</a>
+        <a href = "/settings#location" type="button" class = "btn btn-primary btn-block">Set</a>
         <hr>
 
-        <strong><i class="icon fa fa-envelope"></i> Email </strong>
+        <a><strong><i class="icon fa fa-envelope"></i> Email </strong></a>
         <p class="text-muted">
-            frukerickjeff@gmail.com
+            {{ Auth::user()->email }}
         </p>
         <hr>
 
         @if(!empty(Auth::user()->phone_number))
-          <strong><i class="icon fa fa-phone"></i> Phone </strong>
+          <a><strong><i class="icon fa fa-phone"></i> Phone </strong></a>
           <p class="text-muted">
-            ( {{ Auth::user()->country_code}} ) {{ chunk_split(Auth::user()->phone_number, 3) }}
+            ( +{{ Auth::user()->dial_code}} ) {{ chunk_split(Auth::user()->phone_number, 3) }}
           </p>
           <hr>
         @endif
 
-        <strong><i class="fa fa-list-alt"></i> Products/Services </strong>
+        <a><strong><i class="icon fa fa-clock-o"></i> Joined </strong></a>
+        <p class="text-muted">
+            {{ Auth::user()->created_at->diffForHumans() }}
+        </p>
+        <hr>
+
+        <a><strong><i class="fa fa-list-alt"></i> Products/Services </strong></a>
         <p>
           <span class="label label-danger">UI Design</span>
         </p>
@@ -160,17 +170,18 @@
   </div>
   <!-- /.col -->
   <div class="col-md-9">
-    <div class="nav-tabs-custom">
+    <div class="nav-tabs-custom spacious-bottom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#general" data-toggle="tab">General</a></li>
-        <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+        <li class = "active"><a href = "#general" data-toggle = "tab">General</a></li>
+        <li><a href = "#timeline" data-toggle = "tab">Timeline</a></li>
+        <li><a href = "#others" data-toggle = "tab">Others</a></li>
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="general">
           <!-- status -->
           <div class="box box-info">
             <div class="box-header">
-              <h3 class = "fa fa-spinner">Status</h3>
+              <h3 class = "fa fa-spinner">&nbsp; Status</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -178,21 +189,97 @@
             </div>
             <div class="box-body">
               <p>
-                Your account is 60% complete
+                Your account status is {{ $status }}% complete
               </p>
               <div class="progress">
-                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                  <span class="sr-only">60% Complete</span>
+                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $status }}%">
+                  <span class="sr-only">{{ $status }}% Complete</span>
                 </div>
               </div>
             </div>
           </div>
           <!-- end status box-->
 
+          <!-- subscriptions box -->
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class = "fa fa-credit-card">&nbsp; Subscriptions</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <ul class="todo-list">
+                    <li>
+                      <span class="text">Video pub subscription</span>
+                      <small class="label label-info"> <i class = "fa fa-clock-o">2016-07-13 to 2016-08-13</i> </small>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#extendsubs" title = "Extend subscription"><i class="fa fa-arrow-circle-o-right"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#cancelsubs" title = "Cancel subscription"><i class="fa fa-close"></i></button>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="text">Continuous pub subscription</span>
+                      <small class="label label-info"> <i class = "fa fa-clock-o">2016-07-13 to 2016-08-13</i> </small>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#extendsubs" title = "Extend subscription"><i class="fa fa-arrow-circle-o-right"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#cancelsubs" title = "Cancel subscription"><i class="fa fa-close"></i></button>
+                      </div>
+                    </li>
+              </ul>
+            </div>
+            <div class="box-footer clearfix no-border">
+                <!-- subscription modal -->
+                <button type="button" class="btn btn-primary btn-block" title = "Subscripe for an iPub service" data-toggle = "modal" data-target = "#subscribe">Add Subscription </button>
+
+                <form action = "/subscribe" method = "POST">
+                  {{ csrf_field() }}
+                  <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="Subscription" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Subscribe for an iPub service</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group has-feedback">
+                              <label>Select service</label>
+                              <select name = "service" class="form-control select2" style="width: 100%;">
+                                <option selected="video_pub_subscription" value = "video_pub_subscription">Video Pub Subscription</option>
+                                <option value = "continuous_pub_subscription">Continuous Pub Subscription</option>
+                                <option value = "priority_zone_subscription">Priority Zone Subscription</option>
+                              </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                              <label>Period (Duration of service)</label>
+                              <select name = "service" class="form-control select2" style="width: 100%;">
+                                <option selected="1" value = "1">1 month</option>
+                                <option value = "2">2 months</option>
+                                <option value = "3">3 months</option>
+                                <option value = "6">6 months</option>
+                                <option value = "12">1 year</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type = "submit" class="btn btn-primary">Subscribe</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- add link/contact modal -->
+            </div>
+          </div>
+          <!-- end subscriptions box -->
+
           <!-- contact List -->
           <div class="box box-info">
             <div class="box-header">
-              <h3 class="fa fa-link">Link/Contact List</h3>
+              <h3 class="fa fa-link">&nbsp; Link/Contact List</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -265,7 +352,7 @@
                         <h4 class="modal-title" id="deletelinkLabel">Delete Link/Contact</h4>
                       </div>
                       <div class="modal-body">
-                          <p> Are you sure you want to delete this? </p>
+                          <p> Are you sure you want to delete this link/contact? </p>
                       </div>
                       <div class="modal-footer">
                         <form id="deleteform" method="POST">
@@ -283,7 +370,7 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix no-border">
                 <!-- add link/contact modal -->
-                <button type="button" class="btn btn-primary pull-right" title = "Add a link or contact information, for iPub visitors to see" data-toggle = "modal" data-target = "#addlink"><i class="fa fa-plus"></i> Add Link/Contact</button>
+                <button type="button" class="btn btn-primary btn-block" title = "Add a link or contact information, for iPub visitors to see" data-toggle = "modal" data-target = "#addlink">Add Link/Contact</button>
 
                 <form action = "/link/add" method = "POST">
                   {{ csrf_field() }}
@@ -340,50 +427,19 @@
                     </button>
                   </div>
                 </div>
+
                 <!-- /.box-header -->
+                @if(count($followers) > 0)
                 <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Alexander Pierce</a>
-                      <span class="users-list-date">Today</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user8-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Norman</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user7-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Jane</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user6-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">John</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user2-160x160.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Alexander</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user5-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Sarah</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user4-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Nora</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="{{ asset('ipub/dist/img/user3-128x128.jpg') }}" alt="Follower Image">
-                      <a class="users-list-name" href="#">Nadia</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                  </ul>
+                    <ul class="users-list clearfix">
+                      @foreach($followers as $follower)
+                        <li>
+                          <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
+                          {{ empty($follower->name) ? "empty is the game" : $follower->name }}
+                          <span class="users-list-name" >{{ $follower->email }}</span>
+                        </li>
+                      @endforeach
+                    </ul>
                   <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
@@ -391,6 +447,16 @@
                   <a href="javascript:void(0)" class="uppercase">View All</a>
                 </div>
                 <!-- /.box-footer -->
+                @else
+                <div class="box-body no-padding">
+                    <p style = "margin-left: 30%">You have no followers!</p>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to follow you on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
+                </div>
+                <!-- /.box-footer -->
+                @endif
               </div>
               <!--/.box -->
             </div>
@@ -413,7 +479,7 @@
                 <ul class="products-list product-list-in-box">
                   <li class="item">
                     <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
+                      <img src="{{ asset('ipub/dist/img/avatar.png') }}" alt="Product Image">
                     </div>
                     <div class="product-info">
                       <a href="javascript:void(0)" class="product-title">Samsung TV
@@ -573,7 +639,37 @@
             </li>
           </ul>
         </div>
-
+        <div class="tab-pane" id = "others">
+          <!-- Others -->
+          @if(!empty($geoLocations))
+            <!-- Location -->
+            <div class="box box-info">
+              <div class="box-header">
+                <h3 class = "fa fa-map-marker">&nbsp; Location</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
+                <hr />
+                <ul class = "todo-list">
+                  @foreach($locations as $location)
+                    <li>
+                      <span class="text">Latitude: {{ $location['lat'] }}, Longitude: {{ $location['lon'] }}</span>
+                      <div class="tools">
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editgeolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-edit"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletegeolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-trash-o"></i></button>
+                      </div>
+                    </li>
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+            <!-- end Location box-->
+          @endif
+        </div>
       <!-- /.tab-content -->
     </div>
     <!-- /.nav-tabs-custom -->
@@ -585,7 +681,12 @@
 @endsection
 
 @section('javascript')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/map/map.js" ></script>
 <script type="text/javascript">
+    var locations = {!! json_encode($locations) !!};
+    displayMap(locations);
+
     //when edit link/contact modal is about to be shown
     $("#editlink").on('show.bs.modal', function(e){
         var lid = $(e.relatedTarget).data('lid');

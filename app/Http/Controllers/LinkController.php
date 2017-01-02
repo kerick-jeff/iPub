@@ -23,7 +23,7 @@ class LinkController extends Controller
       /**
        * Get a validator for an incoming registration request.
        *
-       * @param  array  $data
+       * @param  Array $data
        * @return \Illuminate\Contracts\Validation\Validator
        */
       protected function validator(array $data)
@@ -53,6 +53,9 @@ class LinkController extends Controller
 
     /**
      * edit the selected link/contact
+     * @param Integer $id
+     * @param String $link
+     * @param String $caption
      */
     public function edit($id, $link, $caption){
         Link::where('id', $id)
@@ -62,6 +65,7 @@ class LinkController extends Controller
 
     /**
      * edit the selected link/contact
+     * @param Integer $id
      */
     public function delete($id){
         Link::destroy($id);

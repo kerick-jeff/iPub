@@ -1,3 +1,17 @@
+<?php $__env->startSection('css'); ?>
+<style type = "text/css" media="screen">
+    .spacious-bottom {
+        margin-bottom: 15%;
+    }
+
+    @media(max-width: 768px) {
+        .spacious-bottom {
+            margin-bottom: 25%;
+        }
+    }
+</style>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('toggle'); ?>
 <!-- Sidebar toggle button-->
 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -11,18 +25,16 @@
 <?php $__env->startSection('extendable_content'); ?>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-
+  <?php if(Auth::check()): ?>
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
 
-<?php if(Auth::check()): ?>
-
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo e(asset('ipub/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo e(url('/profile-picture')); ?>" class="img-circle" alt="User profile picture">
         </div>
         <div class="pull-left info">
           <p><?php echo e(Auth::user()->name); ?></p>
@@ -30,27 +42,51 @@
         </div>
       </div>
 
-<?php endif; ?>
-
-      <!-- search form -->
-
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="<?php echo e(url('/inbox')); ?>">
-            <i class="fa fa-inbox"></i> <span>Inbox</span>
-            <span class="pull-right-container">
-              <span class="label label-success pull-right">10</span>
-            </span>
+        <li class="header" style = "text-align: center">WELCOME</li>
+        <li>
+          <a href="<?php echo e(url('/account')); ?>">
+            <i class="fa fa-user"></i> <span>Account</span>
           </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo e(url('/mailbox')); ?>">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <a href="<?php echo e(url('/mailbox/compose')); ?>"><i class="fa fa-edit"></i> Compose
+                <span class="pull-right-container">
+                  <small class="label label-primary pull-right">new</small>
+                </span>
+              </a>
+            </li>
+            <li><a href="<?php echo e(url('/mailbox/inbox')); ?>"><i class="fa fa-inbox"></i> Inbox
+                    <span class="pull-right-container">
+                      <small class="label label-info pull-right"><b id = "noInbox"><?php echo e(session('noInbox')); ?></b></small>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?php echo e(url('/mailbox/sent')); ?>"><i class="fa fa-send"></i> Sent
+                    <span class="pull-right-container">
+                      <small class="label pull-right bg-green"><b id = "noSent"><?php echo e(session('noSent')); ?></b></small>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?php echo e(url('/mailbox/drafts')); ?>"><i class="fa fa-file-text-o"></i> Drafts
+                    <span class="pull-right-container">
+                      <small class="label label-warning pull-right"><b id = "noDrafts"><?php echo e(session('noDrafts')); ?></b></small>
+                    </span>
+                </a>
+            </li>
+          </ul>
         </li>
         <li class="treeview">
           <a href="<?php echo e(url('/notifications')); ?>">
             <i class="fa fa-bell"></i> <span>Notifications</span>
             <span class="pull-right-container">
-              <span class="label label-warning pull-right">20</span>
+              <span class="label label-info pull-right">20</span>
             </span>
           </a>
         </li>
@@ -62,13 +98,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo e(url('/uploads/photo')); ?>"><i class="fa fa-photo"></i> Photo
+            <li><a href="<?php echo e(url('/upload/photo')); ?>"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
                 </a>
             </li>
-            <li><a href="<?php echo e(url('/uploads/video')); ?>"><i class="fa fa-video-camera"></i> Video
+            <li><a href="<?php echo e(url('/upload/video')); ?>"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
                       <small class="label pull-right bg-green">new</small>
                     </span>
@@ -77,8 +113,8 @@
           </ul>
         </li>
         <li>
-          <a href="<?php echo e(url('/account')); ?>">
-            <i class="fa fa-user"></i> <span>Account</span>
+          <a href="<?php echo e(url('/events')); ?>">
+            <i class="fa fa-calendar"></i> <span>Events</span>
           </a>
         </li>
         <li>
@@ -122,207 +158,14 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  <footer class="main-footer" style = "position: fixed; bottom: 0px; left: 0px; right: 0px">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.5
+      <b>Version</b> 1.0.1
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; <?php echo e(date('Y')); ?> <a href="/">iPub.com</a>.</strong> All rights reserved.
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Show me as online
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Turn off notifications
-              <input type="checkbox" class="pull-right">
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+  <?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

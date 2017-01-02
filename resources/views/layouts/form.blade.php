@@ -31,15 +31,15 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" id = "body">
 <div class="login-box" style="margin-top:15px">
   <div class="login-logo">
-    <a href="/"><b>iP</b>ub</a>
+    <a href="{{ url('/') }}"><b>iP</b>ub</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
 
-@yield('content')
+    @yield('content')
 
   </div>
   <!-- /.login-box-body -->
@@ -64,5 +64,8 @@
     });
   });
 </script>
+
+@yield('javascript')
+
 </body>
 </html>

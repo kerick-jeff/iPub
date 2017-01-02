@@ -1,5 +1,5 @@
 <?php $__env->startSection('extendable_content'); ?>
-<div class="container-fluid" style="margin-left: -70px; margin-right: -15px">
+<div class="container-fluid" style="margin-left: -70px; margin-right: -15px;">
     <div class="row">
         <?php if(session('follow')): ?>
           <!-- follow status modal -->
@@ -21,10 +21,17 @@
               </div>
           </div>
         <?php endif; ?>
-    </div>
-    <img src="<?php echo e(asset('images/land2.jpg')); ?>" alt="landing_page" style="max-width: 100%; height: auto" />
+
     </div>
 </div>
+
+<footer class="main-footer" style = "margin-left: 0px; position: fixed; bottom: 0px; left: 0px; right: 0px">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0.1
+  </div>
+  <strong>Copyright &copy; <?php echo e(date('Y')); ?> <a href="/">iPub.com</a>.</strong> All rights reserved.
+</footer>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascript'); ?>
