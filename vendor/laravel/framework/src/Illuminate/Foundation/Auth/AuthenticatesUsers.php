@@ -57,6 +57,10 @@ trait AuthenticatesUsers
     public function login(Request $request)
     {
         $this->validateLogin($request);
+        $user = User::where('email', $request->email)->first();
+        if(!empty($user) && $user->confirmed == 0){
+            return redirect('/login')->with('warning', 'You need to verify your email. An email was sent to you.');
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -114,6 +118,19 @@ trait AuthenticatesUsers
         if (method_exists($this, 'authenticated')) {
             return $this->authenticated($request, Auth::guard($this->getGuard())->user());
         }
+
+        // set session values for the number of corresponding mailItems
+        $noInbox = $noSent = $noDrafts = 0;
+
+        $noInbox = count(Auth::user()->mailitems()
+                                   ->where('is_sent', 0)
+                                   ->where('is_draft', 0)
+                                   ->get());
+
+        $noSent = count(Auth::user()->mailitems()->where('is_sent', 1)->get());
+        $noDrafts = count(Auth::user()->mailitems()->where('is_draft', 1)->get());
+
+        session(['noInbox' => $noInbox, 'noSent' => $noSent, 'noDrafts' => $noDrafts]);
 
         return redirect()->intended($this->redirectPath());
     }

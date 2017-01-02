@@ -6,7 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "guzzlehttp/guzzle": "^6.2",
+        "intervention/image": "^2.3",
+        "intervention/imagecache": "^2.3",
+        "nesbot/carbon": "~1.18"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -14,7 +18,10 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-	      "laravel/cashier": "~5.0"
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "captcha-com/laravel-captcha": "4.*",
+  	    "paypal/rest-api-sdk-php": "*",
+  	    "laravel/cashier": "~5.0"
     },
     "autoload": {
         "classmap": [
