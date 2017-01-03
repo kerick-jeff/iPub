@@ -92,8 +92,8 @@
 
           <!-- Messages: style can be found in dropdown.less-->
 
-          <li style = "right: 120%" ><a href="/pubs" >Pubs</a></li>
-          <li style = "right: 120%" ><a href="/about" >About Us</a></li>
+          <li style="right: 105%"><a href="/pubs" >Pubs</a></li>
+          <li style="right: 105%"><a href="/about" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -465,6 +465,21 @@ $(document).ready(function(){
         }
     });
   }, 10000);
+
+  // check number of uploads, photos and videos after every 10s
+  setInterval(function(){
+    $.ajax({
+        type: 'POST',
+        url: '/upload/count',
+        data: '_token={{ csrf_token() }}',
+        success: function(data){
+            $("#numUploads").html(data.numUploads);
+            $("#numPhotos").html(data.numPhotos);
+            $("#numVideos").html(data.numVideos);
+        }
+    });
+  }, 10000);
+
 });
 
 </script>

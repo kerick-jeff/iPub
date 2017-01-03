@@ -1,29 +1,29 @@
 @extends('layouts.master')
 
 @section('css')
-<style>
-    .fileUpload {
-        position: relative;
-        overflow: hidden;
-        margin: 10px;
-    }
-    .fileUpload input.upload {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0;
-        filter: alpha(opacity=0);
-    }
-    @@media (max-width: 767px) {
-        #collapseOne {
-            padding-right: 35px;
+    <link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
+    <style>
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
         }
-    }
-</style>
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        @@media (max-width: 767px) {
+            #collapseOne { padding-right: 35px; }
+            #collapseTwo { padding-right: 35px; }
+        }
+    </style>
 @endsection
 
 @section('breadcrumb')
@@ -34,71 +34,91 @@
 </ol>
 @endsection
 
-@section('content')
+@section('content')    <style>
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        @@media (max-width: 767px) {
+            #collapseOne { padding-right: 35px; }
+            #collapseTwo { padding-right: 35px; }
+        }
+    </style>
 <section class="content" style="margin-top:-35px">
-    <div class="callout callout-info">
+
+    <div class="alert alert-warning alert-dismissible" id="message" role="alert">
+        <button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
-        <p>Your pictures should be of medium size.  Click 'SEE ALL VIDEOS' to see older videos</p>
+        <p><b>Your pictures should be of medium size.  Click 'SEE ALL VIDEOS' to see older videos</b></p>
     </div>
 
-
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if(session('typeError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('typeError') }}
-                    </div>
-                @endif
-                @if(session('widthError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('widthError') }}
-                    </div>
-                @endif
-                @if(session('sizeError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('sizeError') }}
-                    </div>
-                @endif
-                @if(session('fileError'))
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         {{ session('fileError') }}
-                    </div>
-                @endif
-                @if(session('editFormMessage'))
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    {{ session('editFormMessage') }}
-                </div>
-            @endif
-
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('typeError'))
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('typeError') }}
+        </div>
+    @endif
+    @if(session('widthError'))
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('widthError') }}
+        </div>
+    @endif
+    @if(session('sizeError'))
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('sizeError') }}
+        </div>
+    @endif
+    @if(session('fileError'))
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('fileError') }}
+        </div>
+    @endif
+    @if(session('editFormMessage'))
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ session('editFormMessage') }}
+        </div>
+    @endif
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default" id="panel2">
-            <div class="panel-heading" role="tab" id="headingTwo">
+            <div class="panel-heading" role="tab" id="headingTwo" style="padding: 0px">
               <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="collapsed btn-block btn-primary" style="height: 50px; border-style: none" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Click me to upload a new video
-                </a>
+              </button>
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse {{ session('aria') ? session('aria') : '' }}" role="tabpanel" aria-labelledby="headingTwo">
-                
               <div class="panel-body">
                   <div class="timeline-item " style="background:none;margin-top:-20px">
                       <div class="col-md-12" style="margin-left:-5px; margin-right:-35px;">&nbsp
                           <form action="{{ url('/video/store') }}" method="POST" style="width:101%;" enctype="multipart/form-data">
                              {{ csrf_field() }}
                              <div class="fileUpload btn  btn-file btn-primary" style="width:100%; margin-left:2px">
-                                 <span> CLICK HERE TO CHOOSE</span>
+                                 <span><i class="icon fa fa-file"></i>&nbsp; CLICK HERE TO CHOOSE</span>
                                  <input type="file" class="upload"  id="uploadBtn" name="video" style="border-radius:3px" required>
                              </div>
                              <span style="margin-left:2px;">
@@ -147,7 +167,7 @@
                              @endif
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px">UPLOAD
+                                     <button type = "submit" id = "upload" class = "btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
                                  </div>
                              </div>
                              &nbsp;
@@ -158,34 +178,53 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="sessionMessages">
+            <!-- Delete video messages -->
             @if(session('successDelete'))
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Deleted <br />
                     {{ session('successDelete') }}
                 </div>
             @endif
             @if(session('failDelete'))
                 <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
                     {{ session('failDelete') }}
+                </div>
+            @endif
+
+            <!-- Edit video messages -->
+            @if(session('successEdit'))
+                <div  class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-check"></i> Edited <br />
+                    {{ session('successEdit') }}
+                </div>
+            @endif
+            @if(session('failEdit'))
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <i class = "icon fa fa-icon-warning-sign"></i>&nbsp;
+                    {{ session('failEdit') }}
                 </div>
             @endif
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading" role="tab" id="headingOne" style="padding: 0px; margin-bottom:18px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn-block btn-primary" data-toggle="collapse" style="height: 50px; border-style: none" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                  See all video
-                </a>
+             </button>
               </h4>
             </div>
             <div>
                  @if( count($pubs) === 0 )
-                    <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+                    <div class="alert alert-info alert-dismissible" role="alert" style="width:98%; margin-left:10px">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p style="text-align:centre; margin-left: 15px"><b>You have no video. Upload a video to get going.<b></p>
+                        <p style="text-align:centre; margin-left: 15px"><b><i class = "icon fa fa-info"></i>You have no video. Upload a video to get going.<b></p>
                     </div>
                  @elseif( count($pubs) > 0)
             </div>
@@ -194,12 +233,12 @@
                 <div class="timeline-item">  <!-- timeline-item start -->
                 <div class="col-md-12" style="margin-left: -35px">
                     @foreach( $pubs as $pub )
-                        <div class="col-md-6" style="height: 550px">
+                        <div class="col-md-6" style="height: 650px; margin-top:-20px">
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
                                       <span class="username"> {{ $pub->title }}</span>
-                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span> 
+                                      <span class="description">Shared publicly - {{ substr("$pub->created_at", 0, -9) }}</span>
                                     </div>
                                     <!-- /.user-block -->
                                     <div class="box-tools">
@@ -211,20 +250,19 @@
                                   </div>
                                   <!-- /.box-header -->
                                   <div class="box-body" id="box" >
-                                   <div style="padding-left: 0%; height:100%; "> 
+                                   <div style="padding-left: 0%; height:100%; ">
 
                                     <video style="object-fit: fill; max-width: 100%;min-height: 320px; max-height: 100%" controls>
-                                      <source src="{{ url('video/' . $pub->pubFiles()->first()->filename )}}" type="video/mp4">
+                                      <source src="{{ url('video/' . $pub->pubFiles()->first()->filename )}}" >
                                     Your browser does not support the video tag.
                                     </video>
 
-                                    <!--<img class="img-responsive pad" src="{{ url('video/' . $pub->pubFiles()->first()->filename )}}" alt="video"  style=" max-height: 400px" /> -->
                                    </div>
                                    <div style=" height:100px">
-                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px;white-space: pre-wrap;      /* CSS3 */   
-   white-space: -moz-pre-wrap; /* Firefox */    
-   white-space: -pre-wrap;     /* Opera <7 */   
-   white-space: -o-pre-wrap;   /* Opera 7 */    
+                                   <div class="eg" style=" background-color: #F0F0F0; border-radius: 3px;overflow: hidden; white-space: pre-wrap;text-overflow: ellipsis; margin-bottom: 10px;white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
    word-wrap: break-word;"> <span class="description" style="margin-left:10px;padding:10px auto;">{{$pub->description}} </span> </div>
                                     <button id="editButton" type="button" class="btn btn-primary btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertEdit" data-id="{{ $pub->id }}" data-title="{{ $pub->title }}" data-description="{{ $pub->description }}" data-category="{{ $pub->category }}" data-subCategory="{{ $pub->sub_category }}"><i class="fa fa-pencil-square-o">&nbsp;Edit</i></button>
                                     <button id="deleteButton" type="button" class="btn btn-danger btn-xs" style="margin-left:10px" data-toggle="modal" data-target="#alertDelete" data-id ="{{ $pub->id }}"><i class="fa fa-trash-o">&nbsp;Delete</i></button>
@@ -232,7 +270,7 @@
                                     </div>
                                   </div>
                             </div>
-                        </div> 
+                        </div>
                     @endforeach
                     @endif
                 </div>
@@ -259,10 +297,10 @@
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                  <div class="form-group"><input type="hidden" name="id" id = "id"></div>
-                <button type="submit" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-danger"><a href="{{ url('upload/video') }}" style="color:#fff; ">No</a></button>
+                <button type="submit button" id="deleteYes" class="btn btn-primary">Yes</button>
+                <button type="button" id="deleteNo" class="btn btn-danger"><a href="{{ url('upload/video') }}" style="color:#fff; ">No</a></button>
             </form>
-                
+
             </div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
@@ -328,14 +366,12 @@
                                 <button id="update" type="submit" class="btn btn-primary">Update</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="{{ url('upload/video') }}" style="color:#fff; ">Cancel</a></button>
                              </div>
-                              
                          </form>
             </div>
             <div class="modal-footer"></div>
         </div> <!-- modal-content -->
     </div> <!-- modal-dialog -->
-</div> <!-- 
-<!-- Edit modal end -->
+</div> <!-- Edit modal end -->
 
 
     <script>
@@ -349,9 +385,65 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
 
-    // This function is for editing video
+<script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("#upload").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Uploading...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#deleteYes").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Deleting...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#deleteNo").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Deleting...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#update").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Updating...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        // This function is for editing video
         $('#alertEdit').on('show.bs.modal', function(e){
             $('#alertEdit #title').val($(e.relatedTarget).data('title'));
             $('#alertEdit #description').val($(e.relatedTarget).data('description'));
@@ -368,13 +460,21 @@
         });
 
 
-// This function is for deleting video
+        // This function is for deleting video
         $('#alertDelete').on('show.bs.modal', function(e){
             $('#alertDelete #id').val($(e.relatedTarget).data('id'));
            // var id = $('#alertDelete #id').val($(e.relatedTarget).data('id'));
             var id = $(e.relatedTarget).data('id');
             $('#deleteForm').attr("action", "/video/" + id + "/destroy" );
         });
+
+        // This function is to hide the "Note" and session alerts after 30seconds
+        setTimeout(function(){
+            $("#message").hide();
+            $("#sessionMessages").hide();
+        }, 30000);
+
+    });
 
     </script>
 @endsection

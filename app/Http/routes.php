@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
 use App\Pub;
+use App\User;
 use App\PubFile;
 use App\MailItem;
 use App\FileMetric;
@@ -65,6 +65,7 @@ Route::get('/profile-picture', function(){
     return Image::make($path."anonymous.jpg")->response("jpg");
 });
 
+
 /* Tour Video Route */
 Route::get('/tour-video', function(){
     $path = Auth::user()->id."-".Auth::user()->name."/";
@@ -75,39 +76,49 @@ Route::get('/tour-video', function(){
     return Storage::disk('anonymous')->get('anonymous.mp4');
 });
 
-/* UploadController routes*/
 
+/* UploadController routes*/
+/* Photo routes */
 Route::put('/photo/store', 'UploadController@storePhoto');
+
 Route::get('/upload/photo', function(){
     $pubs = Auth::user()->pubs()->where('type', 0)->orderBy('created_at', 'desc')->paginate(6);
-   // $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
-
     return view('upload.photo', ['pubs' => $pubs]);
 });
+
 Route::get('/photo/{filename}', function( $filename ){
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/photo';
-    return Image::make($path."/".$filename)->response("jpg");
+    $userName = str_replace(' ', '-', User::find(Auth::user()->id)->value('name'));
+    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".$userName.'/photo/';
+    return Image::make($path . $filename)->response("jpg");
 });
+
 Route::patch('/photo/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editPhoto');
+
 Route::delete('/photo/{id}/destroy', 'UploadController@destroyPhoto');
 
-
+/* Video routes*/
 Route::post('/video/store', 'UploadController@storeVideo');
+
 Route::get('/upload/video', function(){
     $pubs = Auth::user()->pubs()->where('type', 1)->orderBy('created_at', 'desc')->paginate(6);
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name.'/video';
-
     return view('upload.video', ['pubs' => $pubs]);
 });
+
 Route::get('video/{filename}', function( $filename ){
-    $path = Auth::user()->id."-".Auth::user()->name.'/video/';
-    $fileContents =  Storage::disk('public')->get($path.$filename);
+    $user_id = Auth::user()->id;
+    $userName = str_replace(' ', '-', User::find($user_id)->value('name'));
+    $path = $user_id."-".$userName.'/video/';
+    $fileContents =  Storage::disk('public')->get($path . $filename);
     $response = Response::make($fileContents, 200);
     $response->header('Content-Type', "video/mp4");
     return $response;
 });
+
 Route::patch('/video/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editVideo');
+
 Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo');
+
+Route::post('/upload/count', 'UploadController@uploadCount');
 
 
 /* SettingsController routes */
@@ -125,6 +136,7 @@ Route::post('/settings/description', 'SettingsController@setDescription');
 
 Route::post('/settings/location', 'SettingsController@setLocation');
 
+
 /* EmailController routes */
 Route::get('/register/verify/{email}/{code}', 'EmailController@verifyRegistrationEmail');
 
@@ -132,8 +144,10 @@ Route::get('/resend/{email}/{name}', 'EmailController@resendVerificationEmail');
 
 Route::post('/invite', 'EmailController@invite', ['middleware' => 'auth']);
 
+
 /* AccountController routes */
 Route::get('/account', 'AccountController@index');
+
 
 /* LinkController routes */
 Route::post('/link/add', 'LinkController@add');
@@ -142,12 +156,15 @@ Route::patch('/link/edit/{id}/{link}/{caption}', 'LinkController@edit');
 
 Route::delete('/link/delete/{id}', 'LinkController@delete');
 
+
 /* FollowController routes */
-// an invited visitor or guest agrees to follow an iPub user on iPub
+/* an invited visitor or guest agrees to follow an iPub user on iPub */
 Route::get('/follow/agree/{user_id}/{user_name}/{email}', 'FollowController@agree');
+
 
 /* PubsController routes */
 Route::get('/pubs', 'PubsController@index');
+
 
 /* MailboxController */
 Route::get('/mailbox/compose', 'MailboxController@getCompose');
