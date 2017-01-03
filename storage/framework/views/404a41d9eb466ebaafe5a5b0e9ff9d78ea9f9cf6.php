@@ -1,26 +1,27 @@
 <?php $__env->startSection('css'); ?>
-<style>
-    .fileUpload {
-        position: relative;
-        overflow: hidden;
-        margin: 10px;
-    }
-    .fileUpload input.upload {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0;
-        filter: alpha(opacity=0);
-    }
-    @media(max-width: 767px) {
-        #collapseOne { padding-right: 35px; }
-        #collapseTwo { padding-right: 35px; }
-    }
-</style>
+    <link rel="stylesheet" href="<?php echo e(asset('js/loading/waitMe.css')); ?>" media="screen" title="no title">
+    <style>
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        @media(max-width: 767px) {
+            #collapseOne { padding-right: 35px; }
+            #collapseTwo { padding-right: 35px; }
+        }
+    </style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
@@ -31,52 +32,73 @@
 </ol>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('content'); ?>    <style>
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        @media(max-width: 767px) {
+            #collapseOne { padding-right: 35px; }
+            #collapseTwo { padding-right: 35px; }
+        }
+    </style>
 <section class="content" style="margin-top:-35px">
 
-    <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="alert alert-warning alert-dismissible" id="message" role="alert">
+        <button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p><b>Your pictures should be of medium size.  Click 'SEE ALL VIDEOS' to see older videos</b></p>
     </div>
 
     <?php if(session('success')): ?>
-        <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-success alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('success')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('typeError')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('typeError')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('widthError')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('widthError')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('sizeError')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('sizeError')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('fileError')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('fileError')); ?>
 
         </div>
     <?php endif; ?>
     <?php if(session('editFormMessage')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo e(session('editFormMessage')); ?>
 
@@ -150,7 +172,7 @@
                              <?php endif; ?>
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type = "submit" id = "save" class = "btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
+                                     <button type = "submit" id = "upload" class = "btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD</button>
                                  </div>
                              </div>
                              &nbsp;
@@ -161,7 +183,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="sessionMessages">
             <!-- Delete video messages -->
             <?php if(session('successDelete')): ?>
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
@@ -182,7 +204,7 @@
 
             <!-- Edit video messages -->
             <?php if(session('successEdit')): ?>
-                <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+                <div  class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <i class = "icon fa fa-check"></i> Edited <br />
                     <?php echo e(session('successEdit')); ?>
@@ -220,7 +242,7 @@
                 <div class="timeline-item">  <!-- timeline-item start -->
                 <div class="col-md-12" style="margin-left: -35px">
                     <?php foreach( $pubs as $pub ): ?>
-                        <div class="col-md-6" style="height: 550px">
+                        <div class="col-md-6" style="height: 650px; margin-top:-20px">
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
@@ -287,8 +309,8 @@
                 <?php echo e(method_field('DELETE')); ?>
 
                  <div class="form-group"><input type="hidden" name="id" id = "id"></div>
-                <button type="submit" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-danger"><a href="<?php echo e(url('upload/video')); ?>" style="color:#fff; ">No</a></button>
+                <button type="submit button" id="deleteYes" class="btn btn-primary">Yes</button>
+                <button type="button" id="deleteNo" class="btn btn-danger"><a href="<?php echo e(url('upload/video')); ?>" style="color:#fff; ">No</a></button>
             </form>
 
             </div>
@@ -380,9 +402,10 @@
 
 <script type="text/javascript" src = "<?php echo e(asset('js/loading/waitMe.js')); ?>"></script>
 <script type="text/javascript">
+
     $(document).ready(function(){
 
-        $("#save").click(function(){
+        $("#upload").click(function(){
             $("#body").waitMe({
                 effect: 'roundBounce',
                 text: 'Uploading...',
@@ -395,7 +418,46 @@
             });
         });
 
-    // This function is for editing video
+        $("#deleteYes").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Deleting...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#deleteNo").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Deleting...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#update").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Updating...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        // This function is for editing video
         $('#alertEdit').on('show.bs.modal', function(e){
             $('#alertEdit #title').val($(e.relatedTarget).data('title'));
             $('#alertEdit #description').val($(e.relatedTarget).data('description'));
@@ -412,13 +474,19 @@
         });
 
 
-// This function is for deleting video
+        // This function is for deleting video
         $('#alertDelete').on('show.bs.modal', function(e){
             $('#alertDelete #id').val($(e.relatedTarget).data('id'));
            // var id = $('#alertDelete #id').val($(e.relatedTarget).data('id'));
             var id = $(e.relatedTarget).data('id');
             $('#deleteForm').attr("action", "/video/" + id + "/destroy" );
         });
+
+        // This function is to hide the "Note" and session alerts after 30seconds
+        setTimeout(function(){
+            $("#message").hide();
+            $("#sessionMessages").hide();
+        }, 30000);
 
     });
 

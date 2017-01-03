@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
 <style>
     .fileUpload {
         position: relative;
@@ -35,7 +36,8 @@
 
 @section('content')
 <section class="content" style="margin-top:-35px">
-    <div class="alert alert-warning alert-dismissible" role="alert">
+
+    <div class="alert alert-warning alert-dismissible" id="message" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4><i class="fa fa-exclamation-triangle"> </i> Note</h4>
         <p><b>Your pictures should be of medium size.  Click 'SEE ALL PHOTOS' to see older photos</b></p>
@@ -43,37 +45,37 @@
 
 
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-success alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('success') }}
         </div>
     @endif
     @if(session('typeError'))
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('typeError') }}
         </div>
     @endif
     @if(session('widthError'))
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('widthError') }}
         </div>
     @endif
     @if(session('sizeError'))
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('sizeError') }}
         </div>
     @endif
     @if(session('fileError'))
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:98%; margin-left:10px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('fileError') }}
         </div>
     @endif
     @if(session('editFormMessage'))
-        <div class="alert alert-danger alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
+        <div class="alert alert-danger alert-dismissible" id="sessionMessages" role="alert" style="width:100%">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ session('editFormMessage') }}
         </div>
@@ -149,7 +151,7 @@
                              @endif
                              <div class="row">
                                  <div class="col-xs-12">
-                                     <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD
+                                     <button type="submit" id="upload" class="btn btn-primary btn-block btn-flat" style="border-radius:3px"><i class="icon fa fa-upload"></i>&nbsp;UPLOAD
                                  </div>
                              </div>
                              &nbsp;
@@ -160,7 +162,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="sessionMessages">
             <!-- Delete photo messages-->
             @if(session('successDelete'))
                 <div class="alert alert-success alert-dismissible" role="alert" style="width:97.2%; margin-left:15px">
@@ -213,7 +215,7 @@
                 <div class="timeline-item">  <!-- timeline-item start -->
                 <div class="col-md-12" style="margin-left: -35px">
                     @foreach( $pubs as $pub )
-                        <div class="col-md-6" style="height: 650px;margin-top: 10px;">
+                        <div class="col-md-6" style="height: 650px;margin-top: -20px;">
                             <div class="box box-widget">
                                   <div class="box-header with-border">
                                     <div class="user-block" style="margin-left:-40px">
@@ -279,8 +281,8 @@
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                  <div class="form-group"><input type="hidden" name="id" id = "id"></div>
-                <button type="submit" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-danger"><a href="{{ url('upload/photo') }}" style="color:#fff; ">No</a></button>
+                <button type="submit button" id="deleteYes" class="btn btn-primary">Yes</button>
+                <button type="button" id="deleteNo" class="btn btn-danger"><a href="{{ url('upload/photo') }}" style="color:#fff; ">No</a></button>
             </form>
 
             </div>
@@ -369,7 +371,63 @@
 @endsection
 
 @section('javascript')
+
+    <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
     <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $("#upload").click(function(){
+                $("#body").waitMe({
+                    effect: 'roundBounce',
+                    text: 'Uploading...',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#3c8dbc',
+                    sizeW: '',
+                    sizeH: '',
+                    source: '',
+                    onClose: function(){}
+                });
+            });
+
+            $("#deleteYes").click(function(){
+                $("#body").waitMe({
+                    effect: 'roundBounce',
+                    text: 'Deleting...',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#3c8dbc',
+                    sizeW: '',
+                    sizeH: '',
+                    source: '',
+                    onClose: function(){}
+                });
+            });
+
+            $("#deleteNo").click(function(){
+                $("#body").waitMe({
+                    effect: 'roundBounce',
+                    text: 'Deleting...',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#3c8dbc',
+                    sizeW: '',
+                    sizeH: '',
+                    source: '',
+                    onClose: function(){}
+                });
+            });
+
+            $("#update").click(function(){
+                $("#body").waitMe({
+                    effect: 'roundBounce',
+                    text: 'Updating...',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#3c8dbc',
+                    sizeW: '',
+                    sizeH: '',
+                    source: '',
+                    onClose: function(){}
+                });
+            });
 
         $('#alertEdit').on('show.bs.modal', function(e){
             $('#alertEdit #title').val($(e.relatedTarget).data('title'));
@@ -392,6 +450,14 @@
             var id = $(e.relatedTarget).data('id');
             $('#deleteForm').attr("action", "/photo/" + id + "/destroy" );
         });
+
+        // This function is to hide the "Note" and session alerts after 30seconds
+        setTimeout(function(){
+            $("#message").hide();
+            $("#sessionMessages").hide();
+        }, 30000);
+
+    });
 
     </script>
 @endsection

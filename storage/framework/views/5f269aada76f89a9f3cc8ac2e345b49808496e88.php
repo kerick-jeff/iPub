@@ -436,6 +436,21 @@ $(document).ready(function(){
         }
     });
   }, 10000);
+
+  // check number of uploads, photos and videos after every 10s
+  setInterval(function(){
+    $.ajax({
+        type: 'POST',
+        url: '/upload/count',
+        data: '_token=<?php echo e(csrf_token()); ?>',
+        success: function(data){
+            $("#numUploads").html(data.numUploads);
+            $("#numPhotos").html(data.numPhotos);
+            $("#numVideos").html(data.numVideos);
+        }
+    });
+  }, 10000);
+
 });
 
 </script>
