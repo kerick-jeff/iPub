@@ -13,9 +13,9 @@
   Mailbox
 </h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Mailbox</li>
-    <li><a href="/mailbox/{{ $category }}">{{ $category }}</a></li>
+    <li><a href="{{ url('/mailbox/'.$category) }}">{{ $category }}</a></li>
     <li class="active">Read Mail</li>
 </ol>
 @endsection
@@ -45,6 +45,23 @@
          {{ session('notSent') }}
     </div>
 @endif
+
+@if(session('forwarded'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-check"></i> Success <br />
+         {{ session('forwarded') }}
+    </div>
+@endif
+
+@if(session('notForwarded'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <i class = "icon fa fa-close"></i> Failed <br />
+         {{ session('notForwarded') }}
+    </div>
+@endif
+
 
 <div class="row">
   <div class="col-md-3">
@@ -118,7 +135,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-          <div class="box box-primary">
+          <div class="box box-primary" style = "margin-bottom: 20%">
             <div class="box-header with-border">
               <h3 class="box-title">Read Mail</h3>
 
@@ -140,7 +157,7 @@
 
             <div class="box-body no-padding">
               <div class="mailbox-read-info">
-                Subject: {{ $readmail->subject }} <span class="mailbox-read-time pull-right">{{ $readmail->created_at }}</span></h5>
+                Subject: {{ $readmail->subject }} <span class="mailbox-read-time pull-right">{{ $readmail->created_at->diffForHumans() }}</span></h5>
               </div>
               <div class="mailbox-read-info">
                 @if($category == "Inbox")
@@ -153,7 +170,7 @@
               <div class="mailbox-read-message">
                 Body:
                 <p>
-                  {{ $readmail->body }}
+                  {!! $readmail->body !!}
                 </p>
               </div>
               <!-- /.mailbox-read-message -->
@@ -167,7 +184,7 @@
                     <div class="mailbox-attachment-info">
                       <a href="{{ url('/download/'.$readmail->attachment) }}" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
                           <span class="mailbox-attachment-size">
-                            {{ $attachmentSize }}
+                            {{ FileMetric::represent($attachmentSize) }}
                             <a href="{{ url('/download/'.$readmail->attachment) }}" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                           </span>
                     </div>
@@ -189,7 +206,7 @@
                     <input type="hidden" name="body" value="{{ $readmail->body }}">
                     <input type="hidden" name="attachment" value="{{ $readmail->attachment }}">
 
-                    <button type="submit" name="send" class = "btn btn-primary"><i class = "fa fa-send"></i> Send</button>
+                    <button type="submit" name="send" id = "send" class = "btn btn-primary"><i class = "fa fa-send"></i> Send</button>
                   </form>
                 @elseif($category == "Sent")
                   <button type="button" class="btn btn-primary" data-toggle = "modal" data-target = "#forwardmail"><i class="fa fa-mail-forward"></i> Forward</button>
@@ -218,7 +235,7 @@
                       <form id="deleteform" action = "/mailbox/delete/{{ $category }}/{{ $readmail->id }}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-primary">Yes</button>
+                          <button type="submit" id = "delete" class="btn btn-primary">Yes</button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                       </form>
                     </div>
@@ -266,7 +283,7 @@
                               <div class="mailbox-attachment-info">
                                 <a href="{{ url('/download/'.$readmail->attachment) }}" class="mailbox-attachment-name" style = "word-wrap: break-word"><i class="fa fa-file"></i> {{ $readmail->attachment }}</a>
                                     <span class="mailbox-attachment-size">
-                                      1.5 MB
+                                      {{ FileMetric::represent($attachmentSize) }}
                                       <a href="{{ url('/download/'.$readmail->attachment) }}" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
                                     </span>
                               </div>
@@ -275,7 +292,7 @@
                         @endif
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" name = "forward" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
+                        <button type="submit" name = "forward" id = "forward" class="btn btn-primary"><i class = "fa fa-send"></i> Send</button>
                       </div>
                     </form>
                   </div>
@@ -307,6 +324,32 @@
               }
           });
         }, 10000);
+
+        $("#send, #forward").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Sending ...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
+
+        $("#delete").click(function(){
+            $("#body").waitMe({
+                effect: 'roundBounce',
+                text: 'Deleting mail',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#3c8dbc',
+                sizeW: '',
+                sizeH: '',
+                source: '',
+                onClose: function(){}
+            });
+        });
     });
 </script>
 @endsection

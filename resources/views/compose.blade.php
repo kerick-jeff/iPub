@@ -6,6 +6,9 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('js/loading/waitMe.css') }}" media="screen" title="no title">
+
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{{ asset('ipub/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @endsection('css')
 
 @section('breadcrumb')
@@ -13,7 +16,7 @@
   Mailbox
 </h1>
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> iPub</a></li>
+  <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub</a></li>
   <li>Mailbox</li>
   <li class="active">Compose</li>
 </ol>
@@ -48,7 +51,7 @@
 <div class="row">
     <div class="col-md-3">
       <a href="{{ url('/mailbox/inbox') }}" class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
-        <div class="box box-solid">
+        <div class="box box-solid spacious-bottom">
           <div class="box-header with-border">
             <h3 class="box-title">Folders</h3>
             <div class="box-tools">
@@ -86,9 +89,9 @@
       {{ csrf_field() }}
 
       <div class="col-md-9">
-        <div class="box box-primary">
+        <div class="box box-primary spacious-bottom">
           <div class="box-header with-border">
-            <h3 class="box-title">Compose New Message</h3>
+            <h3 class="box-title">Compose New Mail</h3>
           </div>
           <!-- /.box-header -->
 
@@ -115,7 +118,7 @@
               @endif
             </div>
             <div class="form-group">
-              <textarea name = "body" id="compose-textarea" class="form-control" style="height: 100px"> </textarea>
+              <textarea name = "body" id="compose-textarea" class="form-control" style="height: 300px"> </textarea>
               @if ($errors->has('body'))
                   <span class="help-block" style = "color: #DD4B39 !important;">
                       <strong>{{ $errors->first('body') }}</strong>
@@ -124,7 +127,7 @@
             </div>
             <div class="form-group">
               <i class="fa fa-paperclip"></i> Attachment
-              <input class="btn btn-info btn-file" type="file" name="attachment" style = "max-width: 500px">
+              <input class="btn btn-info btn-sm btn-file" type="file" name = "attachment" style = "max-width: 100%">
               <p class="help-block">Max. 32MB</p>
               @if ($errors->has('attachment'))
                   <span class="help-block" style = "color: #DD4B39 !important;">
@@ -134,12 +137,12 @@
             </div>
           </div>
           <!-- /.box-body -->
-          <div class="box-footer">
+          <div class="box-footer" style = "margin-bottom: 25%">
+            <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
             <div class="pull-right">
               <button type="submit" name = "save" id = "save" class="btn btn-warning"><i class="fa fa-save"></i> Save as draft</button>
               <button type="submit" name = "send" id = "send" class="btn btn-primary"><i class="fa fa-send"></i> Send</button>
             </div>
-            <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
           </div>
           <!-- /.box-footer -->
         </div>
@@ -154,6 +157,10 @@
 
 @section('javascript')
 <script type="text/javascript" src = "{{ asset('js/loading/waitMe.js') }}"></script>
+
+<!-- Bootstrap WYSIHTML5 -->
+<script type = "text/javascript" src="{{  asset('ipub/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         // check number of inbox, sent and drafts mailItems after every 10s
@@ -168,7 +175,7 @@
                   $("#numDrafts").html(data.numDrafts);
               }
           });
-        }, 10{{ session('') }}000);
+        }, 10000);
 
         $("#save").click(function(){
             $("#body").waitMe({
@@ -186,7 +193,7 @@
         $("#send").click(function(){
             $("#body").waitMe({
                 effect: 'roundBounce',
-                text: 'Sending...',
+                text: 'Sending ...',
                 bg: 'rgba(255,255,255,0.7)',
                 color: '#3c8dbc',
                 sizeW: '',
@@ -195,6 +202,9 @@
                 onClose: function(){}
             });
         });
+
+        // add text editor
+        $("#compose-textarea").wysihtml5();
     });
 </script>
 @endsection

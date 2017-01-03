@@ -16,12 +16,15 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'password',
+        'type',
+        'profile_picture',
+        'tour_video',
         'description',
         'country',
         'dial_code',
-        'geo_longitude',
-        'geo_latitude',
         'stars',
+        'invited',
+        'followers',
         'confirmed',
         'confirmation_code'
     ];
@@ -90,5 +93,13 @@ class User extends Authenticatable
      */
      public function mailitems(){
         return $this->hasMany('App\MailItem');
+     }
+
+     /**
+      * a user has 0 or more geolocations
+      * @return App\GeoLocation
+      */
+     public function geoLocations(){
+         return $this->hasMany('App\GeoLocation');
      }
 }

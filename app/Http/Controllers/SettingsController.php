@@ -7,6 +7,7 @@ use Image;
 use Storage;
 use File;
 use Validator;
+use App\GeoLocation;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -23,7 +24,7 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
-    public function settings(){
+    public function index(){
         return view('settings');
     }
 
@@ -34,7 +35,7 @@ class SettingsController extends Controller
     public function setProfilePicture(Request $request){
         $validator = Validator::make($request->all(), [
             'profile_picture' => 'required|image|max:255',
-        ], ['profile_picture.required' => 'No picture was selected', 'profile_picture.image' => 'Please select a picture', 'profile_picture.size' => 'The picture size must not be greater than 5 MB', 'profile_picture.max' => 'The caption of the selected picture should not be more than 255 characters']);
+        ], ['profile_picture.required' => 'No picture was selected', 'profile_picture.image' => 'Please select a picture', 'profile_picture.size' => 'The picture size must not be greater than 5 MB', 'profile_picture.max' => 'The size of the picture should not be more than ...']);
 
         if($validator->fails()){
             $this->throwValidationException(
@@ -50,6 +51,33 @@ class SettingsController extends Controller
             Image::make($picture)->resize(300, 300)->save($path."/".$filename);
             User::where('id', Auth::user()->id)
                 ->update(['profile_picture' => $filename]);
+            if(!empty($old)){
+                File::Delete($old);
+            }
+        }
+
+        return redirect('/settings');
+    }
+
+    public function setTourVideo(Request $request){
+        $validator = Validator::make($request->all(), [
+            'tour_video' => 'required|mimes:mp4,mpeg,ogg,avi,mov|max:800000',
+        ], ['tour_video.required' => 'No video was selected', 'tour.mimes' => 'Please select a video', 'tour_video.max' => 'The size of the video should not exceed ...']);
+
+        if($validator->fails()){
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        if($request->hasFile('tour_video')){
+            $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+            $old = $path."/".Auth::user()->tour_video;
+            $filename = $request->tour_video->getClientOriginalName();
+            $path = Auth::user()->id."-".Auth::user()->name."/";
+            Storage::disk('public')->put($path.$filename, File::get($request->tour_video));
+            User::where('id', Auth::user()->id)
+                ->update(['tour_video' => $filename]);
             if(!empty($old)){
                 File::Delete($old);
             }
@@ -138,9 +166,7 @@ class SettingsController extends Controller
             );
         }
 
-        User::where('id', Auth::user()->id)
-            ->update(['geo_latitude' => $request->geo_latitude, 'geo_longitude' => $request->geo_longitude]);
-
-        return redirect('/settings');
+        GeoLocation::create($request->all());
+        return redirect('/settings')->with('geolocation', 'New location set at latitude: '.$request->geo_latitude.", longitude: ".$request->geo_longitude);
     }
 }

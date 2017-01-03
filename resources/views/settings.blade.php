@@ -26,18 +26,29 @@
 @endsection
 
 @section('breadcrumb')
+<h1>
+  Settings
+</h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Settings</li>
 </ol>
 @endsection
 
 @section('content')
 
+@if(session('geolocation'))
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <i class = "icon fa fa-check"></i> Success <br />
+    {{ session('geolocation') }}
+  </div>
+@endif
+
 <div class="row" id = "container">
   <div class="col-md-12">
     <!-- settings/pin -->
-    <div class="box box-primary">
+    <div class="box box-primary spacious-bottom">
       <div class="box-header with-border">
         <h3 class = "fa fa-cogs">&nbsp;Settings/Configurations</h3>
       </div>
@@ -50,8 +61,8 @@
                 {{ csrf_field() }}
                 <strong><i class = "fa fa-camera"></i>&nbsp; Profile Picture </strong>
                 <div class="form-group has-feedback">
-                   <img id = "profile" class="img-responsive img-thumbnail" src="{{ url('/profilePicture') }}" alt="User profile picture" title = "Click to change profile picture">
-                   <input type="file" id = "file" name="profile_picture" style = "width: 100%">
+                   <img id = "profile" class="img-responsive img-thumbnail" src="{{ url('/profile-picture') }}" alt="User profile picture" title = "Click to change profile picture"> <br /> <br />
+                   <input type="file" id = "file" name="profile_picture"  class="btn btn-info btn-sm btn-file" style = "max-width: 100%">
                    @if ($errors->has('profile_picture'))
                        <span class="help-block" style = "color: #DD4B39 !important;">
                            <strong>{{ $errors->first('profile_picture') }}</strong>
@@ -117,6 +128,7 @@
               <form action="/settings/location" method="POST">
                 {{ csrf_field() }}
                 <div class="hidden">
+                    <input type="hidden" name = "user_id" value = "{{ Auth::user()->id }}" >
                     <input type="hidden" id = "latitude" name="latitude" value="{{ Auth::user()->geo_latitude }}">
                     <input type="hidden" id = "longitude" name="longitude" value="{{ Auth::user()->geo_longitude }}">
                 </div>
@@ -128,7 +140,6 @@
                 </div>
 
                 <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
-                  <strong>Latitude ({{ Auth::user()->geo_latitude }})</strong>
                   <input type="number" step = "0.00000001" class = "form-control" name="geo_latitude" id = "geo_latitude" value="{{ empty(Auth::user()->geo_latitude) ? '' : Auth::user()->geo_latitude }}" min = "-90" max = "90">
                   @if ($errors->has('geo_latitude'))
                       <span class="help-block" style = "color: #DD4B39 !important;">
@@ -137,7 +148,6 @@
                   @endif
                 </div>
                 <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
-                  <strong>Longitude ({{ Auth::user()->geo_longitude }})</strong>
                   <input type="number" step = "0.00000001" class = "form-control" name="geo_longitude" id = "geo_longitude" value = "{{ empty(Auth::user()->geo_longitude) ? '' : Auth::user()->geo_longitude }}" min = "-180" max = "180">
                   @if ($errors->has('geo_longitude'))
                       <span class="help-block" style = "color: #DD4B39 !important;">
@@ -146,7 +156,7 @@
                   @endif
                 </div>
                 <div class="form-group has-feedback">
-                  <button type="submit" id = "set_location" class = "btn btn-primary" title = "Set geolocation">Set</button>
+                  <button type="submit" id = "set_location" class = "btn btn-primary btn-block" title = "Set geolocation">Set</button>
                 </div>
               </form>
               <hr />
@@ -154,6 +164,7 @@
               <!-- description form -->
               <form action="/settings/description" method="POST">
                 {{ csrf_field() }}
+
                 <div class="form-group has-feedback">
                   <strong><i class = "fa fa-file-text"></i> Description </strong>
                   <textarea class="form-control" id = "description" name = "description" rows="8" placeholder="Hint: Provide accurate description about what you (organisation, company, individual, NGO or business) do, how you operate, products you sell or give out and the services you offer." disabled > {{ Auth::user()->description }} </textarea>
@@ -165,6 +176,30 @@
                 </div>
                 <div class="form-group has-feedback">
                   <button type="submit" id = "set_description" class = "btn btn-primary btn-block" title = "Set description">Save</button>
+                </div>
+              </form>
+              <hr />
+
+              <!-- tour video form -->
+              <form action="/settings/tour-video" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <strong><i class = "fa fa-video-camera"></i> Tour Video </strong>
+                <div class="form-group has-feedback">
+                  <video width="100%" title = "A video which gives information about what you do" controls>
+                    <source src="{{ url('/tour-video') }}" type="video/mp4">
+                    <source src="{{ url('/tour-video') }}" type="video/ogg">
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <input type="file" name="tour_video"  class="btn btn-info btn-sm btn-file" style = "max-width: 100%">
+                  @if ($errors->has('tour_video'))
+                    <span class="help-block" style = "color: #DD4B39 !important;">
+                      <strong>{{ $errors->first('tour_video') }}</strong>
+                    </span>
+                  @endif
+                </div>
+                <div class="form-group has-feedback">
+                  <button type="submit" id = "set_tour_video" class = "btn btn-success btn-block" title = "Set a video which gives information about what you do" >Set Tour Video</button>
                 </div>
               </form>
               <hr />
@@ -182,22 +217,17 @@
 @section('javascript')
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="js/map/map.js" ></script>
 <script type="text/javascript" src="js/countrytel/build/js/intlTelInput.js"></script>
 <script type="text/javascript" src="js/loading/waitMe.js"></script>
 <script type="text/javascript">
     //map
     $(document).ready(function(){
-        /*$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-            var latitude = data.lat;
-            var longitude = data.lon;
-          //  alert(latitude + " - " + longitude);
-            displayMap(latitude, longitude);
-          });*/
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(function(position){
                 $("#geo_latitude").val(position.coords.latitude);
                 $("#geo_longitude").val(position.coords.longitude);
-                displayMap(position.coords.latitude, position.coords.longitude);
+                initMap(position.coords.latitude, position.coords.longitude);
             }, function(error){
                 alert(error.code + " - " + error.message);
             });
@@ -205,49 +235,6 @@
             document.getElementById("map_canvas").innerHTML = "Sorry, geolocation services are not supported by your browser";
         }
     });
-
-    function displayMap(lat, lon){
-        var position = new google.maps.LatLng(lat, lon);
-		    var myOptions = {
-  		      zoom: 10,
-  		      minZoom: 3,
-  		      maxZoom: 18,
-  		      zoomControl: true,
-    			  zoomControlOptions: {
-    				    style: google.maps.ZoomControlStyle.DEFAULT
-    			  },
-    		    center: position,
-    		    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    			  scrollwheel: false,
-    			  //all of the below are set to to true by default
-    			  panControl: false,
-    			  mapTypeControl: false,
-    			  scaleControl: false,
-    			  streetViewControl: false,
-    			  overviewMapControl: false,
-    			  rotateControl: false
-		    };
-
-		    var map = new google.maps.Map(
-		        document.getElementById("map_canvas"),
-		        myOptions
-        );
-
-		    var marker = new google.maps.Marker({
-		        position: position,
-		        map: map,
-		        title: "{{ Auth::user()->name }}"
-		    });
-
-		    var contentString = 'Set your location';
-		    var infowindow = new google.maps.InfoWindow({
-		        content: contentString
-		    });
-
-		    google.maps.event.addListener(marker, 'click', function() {
-		      infowindow.open(map,marker);
-		    });
-    }
 
     //phoneNumber
     $("#phone").intlTelInput({
@@ -289,7 +276,7 @@
         document.getElementById('file').click();
     });
 
-    $("#change_profile_picture, #set_phone_number, #change_password, #set_location, #set_description").click(function(){
+    $("#change_profile_picture, #set_phone_number, #change_password, #set_location, #set_description, #set_tour_video").click(function(){
         $("#body").waitMe({
             effect: 'roundBounce',
             text: 'Saving account information',

@@ -20,11 +20,10 @@ class CreateUsersTable extends Migration
              $table->string('password', 60);
              $table->enum('type', ['individual', 'business', 'company', 'organisation', 'ngo'])->default('individual');
              $table->string('profile_picture', 255);
+             $table->string('tour_video', 255);
              $table->text('description');
              $table->string('country');
              $table->char('dial_code', 6);
-             $table->decimal('geo_longitude', 11, 8);
-             $table->decimal('geo_latitude', 10, 8);
              $table->enum('stars', [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5])->default(0);
              $table->integer('invited')->default(0);
              $table->integer('followers')->default(0);

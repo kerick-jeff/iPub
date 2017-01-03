@@ -14,7 +14,7 @@
   Mailbox
 </h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Mailbox</li>
     <li class="active">Inbox</li>
 </ol>

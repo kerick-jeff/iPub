@@ -4,9 +4,9 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h2 style = "color: rgba(51,122,183, 1); font-size: 24px"> <?php echo e($subject); ?> </h2>
+        <h2 style = "color: rgba(51,122,183, 1); font-size: 24px"> <?php echo $subject; ?> </h2>
         <div class="container">
-            <?php echo e($body); ?>
+            <?php echo $body; ?>
 
         </div>
     </body>

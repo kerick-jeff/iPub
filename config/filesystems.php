@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'anonymous' => [
+            'driver' => 'local',
+            'root' => storage_path('app/anonymous'),
+            'visibility' => 'public',
+        ],
+
         'followers' => [
             'driver' => 'local',
             'root' => storage_path('app/followers'),

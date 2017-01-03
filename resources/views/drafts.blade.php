@@ -14,7 +14,7 @@
   Mailbox
 </h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Mailbox</li>
     <li class="active">Drafts</li>
 </ol>
@@ -26,16 +26,16 @@
 @if(session('deleted'))
     <div class="alert alert-success alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i> <br />
+         <i class = "icon fa fa-check"></i> Deleted<br />
          {{ session('deleted') }}
     </div>
 @endif
 
 <!-- alert user that mail has not been deleted -->
 @if(session('notDeleted'))
-    <div class="alert alert-success alert-dismissible" role="alert">
+    <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <i class = "icon fa fa-check"></i>  <br />
+         <i class = "icon fa fa-close"></i> Failed <br />
          {{ session('notDeleted') }}
     </div>
 @endif
@@ -112,7 +112,7 @@
                     @else
                       <td></td>
                     @endif
-                    <td class="mailbox-date">{{ $draft->created_at }}</td>
+                    <td class="mailbox-date">{{ $draft->created_at->diffForHumans() }}</td>
                   </tr>
                 @endforeach
               </tbody>

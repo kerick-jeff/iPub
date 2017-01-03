@@ -14,7 +14,7 @@
   Mailbox
 </h1>
 <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> iPub </a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> iPub </a></li>
     <li>Mailbox</li>
     <li class="active">Sent</li>
 </ol>
@@ -96,16 +96,16 @@
         <div class="box-body no-padding">
           <div class="mailbox-controls">
             <!-- Check all button -->
-            <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All"><i class="fa fa-square-o"></i></button>
-            <button type="button" id = "deleteBtn" class="btn btn-danger btn-sm" data-toggle = "modal" data-target = "#deletemail" title = "Delete" ><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn btn-primary btn-sm checkbox-toggle" data-toggle = "tooltip" title = "Mark All" onclick = "activate()"><i class="fa fa-square-o"></i></button>
+            <button type="button" id = "deleteBtn" class="btn btn-danger btn-sm" data-toggle = "modal"  title = "Delete" ><i class="fa fa-trash"></i></button>
           </div>
           <div class="table-responsive mailbox-messages">
             <table class="table table-hover table-striped">
               <tbody>
-                <form id = "checkboxes">
+                <form>
                   @foreach($sent_mails as $sent_mail)
                     <tr>
-                      <td><input type="checkbox" id = "{{ $sent_mail->id }}" ></td>
+                      <td><input type="checkbox" class = "checkbox-item" id = "{{ $sent_mail->id }}" onclick = "act(this)" ></td>
                       <td class="mailbox-name"><a href="{{ url('/mailbox/readmail/Sent/'.$sent_mail->id) }}">{{ $sent_mail->recipient }}</a></td>
                       <td class="mailbox-subject"><b>iPub</b> - {{ $sent_mail->subject }} </td>
                       @if($sent_mail->attachment != "")
@@ -113,7 +113,7 @@
                       @else
                         <td></td>
                       @endif
-                      <td class="mailbox-date">{{ $sent_mail->created_at }}</td>
+                      <td class="mailbox-date">{{ $sent_mail->created_at->diffForHumans() }}</td>
                     </tr>
                   @endforeach
                 </form>
@@ -211,15 +211,26 @@ $(document).ready(function() {
   }, 10000);
 });
 
-$("#delete").click(function(){
-    var ids = [];
+    $("#delete").click(function(){
+        var ids = [];
 
-    $("input:checkbox:checked").each(function () {
-        if($(this).attr("id") != null)
-            ids.push($(this).attr("id"));
+        $("input:checkbox:checked").each(function () {
+            if($(this).attr("id") != null)
+                ids.push($(this).attr("id"));
+        });
+
+        $("#deleteform").attr("action", "/mailbox/deletemails/Sent/" + JSON.stringify(ids));
     });
 
-    $("#deleteform").attr("action", "/mailbox/deletemails/Sent/" + JSON.stringify(ids));
+    $("#deleteBtn").click(function(){
+        $("#deleteBtn").removeAttr("data-target");
+        $("input:checkbox.checkbox-item").each(function(){
+            if($(this).is(":checked") == true){
+                $("#deleteBtn").attr("data-target", "#deletemail");
+                return false;
+            }
+        });
+    });
 });
 </script>
 

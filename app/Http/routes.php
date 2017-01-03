@@ -4,6 +4,7 @@ use App\Pub;
 use App\User;
 use App\PubFile;
 use App\MailItem;
+use App\FileMetric;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -36,6 +37,9 @@ Route::get('/paginate', function(){
     $links = DB::table('links')->paginate(2);
     return view('paginate', ['links' => $links]);
 });
+Route::get('/metric/{bytes}', function($bytes){
+    echo FileSizeMetric::represent($bytes);
+});
 // end test routes
 
 Route::get('/', function () {
@@ -51,13 +55,25 @@ Route::get('/download/{filename}', function($filename){
 });
 
 /* Profile Picture route */
-Route::get('/profilePicture', function(){
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+Route::get('/profile-picture', function(){
     if(!empty(Auth::user()->profile_picture)){
+        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
         return Image::make($path."/".Auth::user()->profile_picture)->response("jpg");
     }
-    $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+
+    $path = Storage::disk('anonymous')->getDriver()->getAdapter()->getPathPrefix();
     return Image::make($path."anonymous.jpg")->response("jpg");
+});
+
+
+/* Tour Video Route */
+Route::get('/tour-video', function(){
+    $path = Auth::user()->id."-".Auth::user()->name."/";
+    if(!empty(Auth::user()->tour_video)){
+        return Storage::disk('public')->get($path.Auth::user()->tour_video);
+    }
+
+    return Storage::disk('anonymous')->get('anonymous.mp4');
 });
 
 
@@ -97,6 +113,7 @@ Route::get('video/{filename}', function( $filename ){
     $response->header('Content-Type', "video/mp4");
     return $response;
 });
+
 Route::patch('/video/edit/{id}/{title}/{description}/{category}/{subCategory}', 'UploadController@editVideo');
 
 Route::delete('/video/{id}/destroy', 'UploadController@destroyVideo');
@@ -105,9 +122,11 @@ Route::post('/upload/count', 'UploadController@uploadCount');
 
 
 /* SettingsController routes */
-Route::get('/settings', 'SettingsController@settings');
+Route::get('/settings', 'SettingsController@index');
 
 Route::post('/settings/profile-picture', 'SettingsController@setProfilePicture');
+
+Route::post('/settings/tour-video', 'SettingsController@setTourVideo');
 
 Route::post('/settings/phone-number', 'SettingsController@setPhoneNumber');
 
@@ -144,7 +163,7 @@ Route::get('/follow/agree/{user_id}/{user_name}/{email}', 'FollowController@agre
 
 
 /* PubsController routes */
-Route::get('/pubs', 'PubsController@pubs');
+Route::get('/pubs', 'PubsController@index');
 
 
 /* MailboxController */

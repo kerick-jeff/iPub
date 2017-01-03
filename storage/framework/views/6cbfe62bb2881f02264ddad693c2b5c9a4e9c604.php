@@ -1,3 +1,17 @@
+<?php $__env->startSection('css'); ?>
+<style type = "text/css" media="screen">
+    .spacious-bottom {
+        margin-bottom: 15%;
+    }
+
+    @media(max-width: 768px) {
+        .spacious-bottom {
+            margin-bottom: 25%;
+        }
+    }
+</style>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('toggle'); ?>
 <!-- Sidebar toggle button-->
 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -20,7 +34,7 @@
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo e(url('/profilePicture')); ?>" class="img-circle" alt="User profile picture">
+          <img src="<?php echo e(url('/profile-picture')); ?>" class="img-circle" alt="User profile picture">
         </div>
         <div class="pull-left info">
           <p><?php echo e(Auth::user()->name); ?></p>
@@ -31,16 +45,22 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header" style = "text-align: center">WELCOME</li>
+        <li>
+          <a href="<?php echo e(url('/account')); ?>">
+            <i class="fa fa-user"></i> <span>Account</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="<?php echo e(url('/mailbox')); ?>">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo e(url('/mailbox/compose')); ?>"><i class="fa fa-edit"></i> Compose
-                    <span class="pull-right-container">
-                      <small class="label label-primary pull-right">new</small>
-                    </span>
-                </a>
+            <li>
+              <a href="<?php echo e(url('/mailbox/compose')); ?>"><i class="fa fa-edit"></i> Compose
+                <span class="pull-right-container">
+                  <small class="label label-primary pull-right">new</small>
+                </span>
+              </a>
             </li>
             <li><a href="<?php echo e(url('/mailbox/inbox')); ?>"><i class="fa fa-inbox"></i> Inbox
                     <span class="pull-right-container">
@@ -93,8 +113,8 @@
           </ul>
         </li>
         <li>
-          <a href="<?php echo e(url('/account')); ?>">
-            <i class="fa fa-user"></i> <span>Account</span>
+          <a href="<?php echo e(url('/events')); ?>">
+            <i class="fa fa-calendar"></i> <span>Events</span>
           </a>
         </li>
         <li>
@@ -138,7 +158,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  <footer class="main-footer" style = "position: fixed; bottom: 0px; left: 0px; right: 0px">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.1
     </div>

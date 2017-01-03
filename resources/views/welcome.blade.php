@@ -1,7 +1,7 @@
 @extends('layouts.extendable')
 
 @section('extendable_content')
-<div class="container-fluid" style="margin-left: -70px; margin-right: -15px">
+<div class="container-fluid" style="margin-left: -70px; margin-right: -15px;">
     <div class="row">
         @if(session('follow'))
           <!-- follow status modal -->
@@ -24,10 +24,16 @@
           </div>
         @endif
 
-        <img src="{{ asset('land2.jpg') }}" alt="welcome to iPub" style="max-width: 100%;" />
-    </div>
     </div>
 </div>
+
+<footer class="main-footer" style = "margin-left: 0px; position: fixed; bottom: 0px; left: 0px; right: 0px">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0.1
+  </div>
+  <strong>Copyright &copy; {{ date('Y') }} <a href="/">iPub.com</a>.</strong> All rights reserved.
+</footer>
+
 @endsection
 
 @section('javascript')

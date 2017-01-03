@@ -205,21 +205,12 @@ class JsonResponseTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Exception
      * @expectedExceptionMessage This error is expected
-     * @requires PHP 5.4
      */
     public function testSetContentJsonSerializeError()
     {
         $serializable = new JsonSerializableObject();
 
         JsonResponse::create($serializable);
-    }
-
-    public function testSetComplexCallback()
-    {
-        $response = JsonResponse::create(array('foo' => 'bar'));
-        $response->setCallback('ಠ_ಠ["foo"].bar[0]');
-
-        $this->assertEquals('/**/ಠ_ಠ["foo"].bar[0]({"foo":"bar"});', $response->getContent());
     }
 }
 

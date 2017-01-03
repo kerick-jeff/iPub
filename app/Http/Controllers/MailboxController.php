@@ -38,6 +38,8 @@ class MailboxController extends Controller
         $numSent = count(Auth::user()->mailitems()->where('is_sent', 1)->get());
         $numDrafts = count(Auth::user()->mailitems()->where('is_draft', 1)->get());
 
+        session(['noInbox' => $numInbox, 'noSent' => $numSent, 'noDrafts' => $numDrafts]);
+
         return response()->json(['numInbox' => $numInbox, 'numSent' => $numSent, 'numDrafts' => $numDrafts], 200);
     }
 
@@ -198,7 +200,7 @@ class MailboxController extends Controller
         if($request->hasFile('attachment')){
             $path = Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
             $filename = $request->attachment->getClientOriginalName();
-
+            
             $mail_item = new MailItem();
             $mail_item->user_id = $request->user_id;
             $mail_item->sender = $request->sender;
@@ -339,9 +341,9 @@ class MailboxController extends Controller
         }
 
         if($forwarded){
-            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['sent' => 'Your mail has been forwarded.']);
+            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['forwarded' => 'Your mail has been forwarded.']);
         } else {
-            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['notSent' => 'Unable to forward mail. Please try again.']);
+            return redirect('/mailbox/readmail/'.$category.'/'.$request->id)->with(['notForwarded' => 'Unable to forward mail. Please try again.']);
         }
     }
 
@@ -421,14 +423,24 @@ class MailboxController extends Controller
         $mail_item = Auth::user()->mailitems()->where('id', $id)->first();
         $deleted = false;
 
-        if($mail_item->attachment){
-            $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
-            $mail_item->delete();
-            File::delete($path.$mail_item->attachment);
-            $deleted = true;
+        if($mail_item->is_draft == 1 && $mail_item->is_sent == 1){
+            if($category == "Sent"){
+                $mail_item->update(['is_sent' => 0]);
+                $deleted = true;
+            } elseif($category == "Drafts"){
+                $mail_item->update(['is_draft' => 0]);
+                $deleted = true;
+            }
         } else {
-            $mail_item->delete();
-            $deleted = true;
+            if($mail_item->attachment){
+                $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name."/mail_attachments/";
+                $mail_item->delete();
+                File::delete($path.$mail_item->attachment);
+                $deleted = true;
+            } else {
+                $mail_item->delete();
+                $deleted = true;
+            }
         }
 
        return $deleted;

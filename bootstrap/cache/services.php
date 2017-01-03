@@ -23,10 +23,11 @@
     19 => 'Illuminate\\Validation\\ValidationServiceProvider',
     20 => 'Illuminate\\View\\ViewServiceProvider',
     21 => 'Intervention\\Image\\ImageServiceProvider',
-    22 => 'App\\Providers\\AppServiceProvider',
-    23 => 'App\\Providers\\AuthServiceProvider',
-    24 => 'App\\Providers\\EventServiceProvider',
-    25 => 'App\\Providers\\RouteServiceProvider',
+    22 => 'App\\Providers\\FileMetricProvider',
+    23 => 'App\\Providers\\AppServiceProvider',
+    24 => 'App\\Providers\\AuthServiceProvider',
+    25 => 'App\\Providers\\EventServiceProvider',
+    26 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -167,6 +168,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'App\\Providers\\FileMetricProvider' => 
     array (
     ),
   ),

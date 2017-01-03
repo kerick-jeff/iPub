@@ -1,5 +1,19 @@
 @extends('layouts.extendable')
 
+@section('css')
+<style type = "text/css" media="screen">
+    .spacious-bottom {
+        margin-bottom: 15%;
+    }
+
+    @media(max-width: 768px) {
+        .spacious-bottom {
+            margin-bottom: 25%;
+        }
+    }
+</style>
+@endsection
+
 @section('toggle')
 <!-- Sidebar toggle button-->
 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -22,7 +36,7 @@
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ url('/profilePicture') }}" class="img-circle" alt="User profile picture">
+          <img src="{{ url('/profile-picture') }}" class="img-circle" alt="User profile picture">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name}}</p>
@@ -33,16 +47,22 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header" style = "text-align: center">WELCOME</li>
+        <li>
+          <a href="{{ url('/account') }}">
+            <i class="fa fa-user"></i> <span>Account</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="{{ url('/mailbox') }}">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/mailbox/compose') }}"><i class="fa fa-edit"></i> Compose
-                    <span class="pull-right-container">
-                      <small class="label label-primary pull-right">new</small>
-                    </span>
-                </a>
+            <li>
+              <a href="{{ url('/mailbox/compose') }}"><i class="fa fa-edit"></i> Compose
+                <span class="pull-right-container">
+                  <small class="label label-primary pull-right">new</small>
+                </span>
+              </a>
             </li>
             <li><a href="{{ url('/mailbox/inbox') }}"><i class="fa fa-inbox"></i> Inbox
                     <span class="pull-right-container">
@@ -95,8 +115,8 @@
           </ul>
         </li>
         <li>
-          <a href="{{ url('/account') }}">
-            <i class="fa fa-user"></i> <span>Account</span>
+          <a href="{{ url('/events') }}">
+            <i class="fa fa-calendar"></i> <span>Events</span>
           </a>
         </li>
         <li>
@@ -140,7 +160,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  <footer class="main-footer" style = "position: fixed; bottom: 0px; left: 0px; right: 0px">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.1
     </div>

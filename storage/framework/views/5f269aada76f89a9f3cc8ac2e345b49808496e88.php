@@ -31,18 +31,47 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  <style type = "text/css">
+    html {
+      background: url(land1.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .starry {
+      color: #FFC733
+    }
+
+    .truncate {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 768px){
+        .user-footer #btn-account {
+          background: #3c8dbc;
+        }
+        .user-footer #btn-logout {
+          background: #dd4b39;
+        }
+    }
+  </style>
+
   <?php echo $__env->yieldContent('css'); ?>
 
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-<body class="hold-transition skin-blue fixed sidebar-mini" id = "body">
+<body class="hold-transition skin-blue sidebar-mini" id = "body" style = "height: 100%">
 <!-- Site wrapper -->
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="<?php echo e(url('/')); ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size:45px"><b>iP</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -78,7 +107,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?php echo e(url('/profilePicture')); ?>" class="img-circle" alt="User profile picture">
+                        <img src="<?php echo e(url('/profile_picture')); ?>" class="img-circle" alt="User profile picture">
                       </div>
                       <h4>
                         Support Team
@@ -149,13 +178,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo e(url('/profilePicture')); ?>" class="user-image" alt="User profile picture">
+              <img src="<?php echo e(url('/profile-picture')); ?>" class="user-image" alt="User profile picture">
               <span class="hidden-xs"><?php echo e(Auth::user()->name); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo e(url('/profilePicture')); ?>" class="img-circle" alt="User profile picture">
+                <img src="<?php echo e(url('/profile-picture')); ?>" class="img-circle" alt="User profile picture">
 
                 <p>
                  <?php echo e(Auth::user()->name); ?> - Web Developer
@@ -184,10 +213,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/account" class="btn btn-primary btn-flat"><i class = "fa fa-user"></i> &nbsp; Account</a>
+                  <a href="/account" id = "btn-account" class="btn btn-primary btn-flat"><i class = "fa fa-user"></i> &nbsp; Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="/logout" class="btn btn-danger btn-flat">Logout &nbsp; <i class = "fa fa-sign-out"></i></a>
+                  <a href="/logout" id = "btn-logout" class="btn btn-danger btn-flat">Logout &nbsp; <i class = "fa fa-sign-out"></i></a>
                 </div>
               </li>
             </ul>
@@ -396,7 +425,7 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 
-<?php echo $__env->yieldContent('extendable_content'); ?>
+  <?php echo $__env->yieldContent('extendable_content'); ?>
 
 </div>
 <!-- ./wrapper -->
