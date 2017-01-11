@@ -13,8 +13,8 @@ class GeoLocation extends Model
      */
     protected $fillable = [
         'user_id',
-        'geo_longitude',
-        'geo_latitude'
+        'geo_latitude',
+        'geo_longitude'
     ];
 
     /**

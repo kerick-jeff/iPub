@@ -7,7 +7,7 @@
   @yield('description')
   @yield('author')
   <!-- favicon -->
-  <link rel = "shortcut icon" href = "ipub.ico">
+  <link rel = "shortcut icon" href = "favicon.ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -33,7 +33,7 @@
 
   <style type = "text/css">
     html {
-      background: url(land1.jpg) no-repeat center center fixed;
+      background: url({{ asset('land1.jpg') }}) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -452,6 +452,7 @@
 <script type = "text/javascript">
 
 $(document).ready(function(){
+
   // check number of inbox, sent and drafts mailItems after every 10s
   setInterval(function(){
     $.ajax({

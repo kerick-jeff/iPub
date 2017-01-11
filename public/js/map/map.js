@@ -1,4 +1,12 @@
-function initMap(lat, lon){
+function initMap(lat, lon, editHolder){
+    var holder;
+
+    if(editHolder == true) {
+        holder = document.getElementById("edit-geolocation").getElementsByClassName("map-canvas")[0];
+    } else {
+        holder = document.getElementById("map-canvas");
+    }
+
     var position = new google.maps.LatLng(lat, lon);
     var mapOptions = {
         zoom: 10,
@@ -21,27 +29,30 @@ function initMap(lat, lon){
     };
 
     var map = new google.maps.Map(
-        document.getElementById("map_canvas"),
+        holder,
         mapOptions
     );
 
     var marker = new google.maps.Marker({
         position: position,
         map: map,
-        title: "{{ Auth::user()->name }}"
     });
 
-    var contentString = 'Set your location';
-    var infoWindow = new google.maps.infoWindow({
-        content: contentString
-    });
+    var infoWindow = new google.maps.infoWindow({});
 
     google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent("set your location");
       infoWindow.open(map,marker);
     });
 }
 
-function displayMap(locations){
+function displayMap(locations, hLatLon){
+    if(hLatLon == null) {
+        hLatLon = new Array(0, 0);
+    }
+
+    var locationIndex = (parseInt(Math.random() * 10) % locations.length);
+
     var mapOptions = {
         zoom: 1,
         minZoom: 0,
@@ -50,21 +61,36 @@ function displayMap(locations){
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.DEFAULT
         },
-        center: new google.maps.LatLng(locations[0]['lat'], locations[0]['lon']),
+        center: new google.maps.LatLng(locations[locationIndex]['lat'], locations[locationIndex]['lon']),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
 
-    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    var infoWindow = new google.maps.InfoWindow();
+    var infoWindow = new google.maps.InfoWindow({});
 
     for(var i = 0; i < locations.length; i++){
         var location = locations[i];
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(location['lat'], location['lon']),
-            map: map,
-            title: location['info']
-        });
+        var marker;
+
+        if(location['lat'] == hLatLon[0] && location['lon'] == hLatLon[1]) {
+            marker = new google.maps.Marker({
+                icon: {
+                    url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                    scaledSize: new google.maps.Size(37, 40)
+                },
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(location['lat'], location['lon']),
+                map: map,
+                title: location['info'].replace(/<(?:.|\n)*?>/gm, '')
+            });
+        } else {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(location['lat'], location['lon']),
+                map: map,
+                title: location['info'].replace(/<(?:.|\n)*?>/gm, '')
+            });
+        }
 
         // passing data in the loop into the closure (marker, location)
         (function(marker, location) {
@@ -73,7 +99,7 @@ function displayMap(locations){
             var directionsService = new google.maps.DirectionsService();
 
             directionsDisplay.setMap(map);
-            directionsDisplay.setPanel(document.getElementById('map_canvas'), mapOptions);
+            directionsDisplay.setPanel(document.getElementById('map-canvas'), mapOptions);
 
             google.maps.event.addListener(directionsDisplay, "directions_changed", function(){
                 //do what you wanna do here i.e. get the modified path of the direction
@@ -93,22 +119,4 @@ function displayMap(locations){
             });
         })(marker, location);
     }
-}
-
-function getAddress(lat, lon){
-    var latLng = new google.maps.LatLng(lat, lon);
-    var geocoder = new google.maps.Geocoder();
-    var address = "";
-
-    function reverseGeocode(){
-        geocoder.geocode({'latLng' :  latLng}, function(results, status){
-            if(status == google.maps.GeocoderStatus.OK){
-                if(results[1]){
-                    address = results[1].formatted_address;
-                }
-            }
-        });
-    }
-
-    reverseGeocode();
 }

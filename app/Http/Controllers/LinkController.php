@@ -64,7 +64,7 @@ class LinkController extends Controller
     }
 
     /**
-     * edit the selected link/contact
+     * delete the selected link/contact
      * @param Integer $id
      */
     public function delete($id){

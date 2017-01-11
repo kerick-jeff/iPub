@@ -20,6 +20,9 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo e(asset('ipub/dist/css/skins/_all-skins.min.css')); ?>">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -53,13 +56,13 @@
     </nav>
   </header>
 
-    <!-- Main content -->
-    <section class="content"  style = "background-color: #ecf0f5;">
+  <!-- Main content -->
+  <section class="content"  style = "background-color: #ecf0f5;">
 
-       <?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->yieldContent('content'); ?>
 
-    </section>
-    <!-- /.content -->
+  </section>
+  <!-- /.content -->
 
   <footer class="main-footer" style = "margin-left: 0px; position: fixed; bottom: 0px; left: 0px; right: 0px">
     <div class="pull-right hidden-xs">
@@ -77,7 +80,11 @@
 <!-- Bootstrap 3.3.6 -->
 <!--        <script src="../../bootstrap/js/bootstrap.min.js"></script>     -->
 <script src="<?php echo e(asset('ipub/bootstrap/js/bootstrap.min.js')); ?>"></script>
-
-
+<script type = "text/javascript">
+  $(document).ready(function(){
+      var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      $(".content").css("min-height", height + "px");
+  });
+</script>
 </body>
 </html>

@@ -29,6 +29,10 @@ Route::get('/photo/{session_name()}', function($name){
 
 */
 
+Route::get('/500', function(){
+    return view('errors.500');
+});
+
 Route::get('/geo', function(){
     return view('geo');
 });
@@ -141,6 +145,11 @@ Route::post('/link/add', 'LinkController@add');
 Route::patch('/link/edit/{id}/{link}/{caption}', 'LinkController@edit');
 
 Route::delete('/link/delete/{id}', 'LinkController@delete');
+
+/* GeoLocation routes */
+Route::put('/geolocation/edit/{id}/{geoLatitude}/{geoLongitude}', 'GeoLocationController@edit');
+
+Route::delete('/geolocation/delete/{id}', 'GeoLocationController@delete');
 
 /* FollowController routes */
 // an invited visitor or guest agrees to follow an iPub user on iPub

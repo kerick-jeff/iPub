@@ -4,6 +4,16 @@
 
 <!-- provide author and page desc -->
 
+@section('css')
+<style type = "text/css" media="screen">
+  .markerLabel {
+    color: black;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 1);
+  }
+</style>
+@endsection
+
 @section('breadcrumb')
 <h1>
   Account
@@ -294,8 +304,8 @@
                       <span class="text">{{ $link->link }}</span>
                       <small class="label label-info"> {{ $link->caption }} </small>
                       <div class="tools">
-                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editlink" data-lid = "{{ $link->id }}" data-link = "{{ $link->link }}" data-caption = "{{ $link->caption }}"><i class="fa fa-edit"></i></button>
-                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletelink" data-lid = "{{ $link->id }}"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#edit-link" data-lid = "{{ $link->id }}" data-link = "{{ $link->link }}" data-caption = "{{ $link->caption }}"><i class="fa fa-edit"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#delete-link" data-lid = "{{ $link->id }}" data-caption = "{{ $link->caption }}" ><i class="fa fa-trash-o"></i></button>
                       </div>
                     </li>
                   @endforeach
@@ -305,12 +315,12 @@
               </ul>
 
               <!-- edit link/contact modal -->
-              <div class="modal fade" id="editlink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+              <div class="modal fade" id="edit-link" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                      <h4 class="modal-title" id="editlinkLabel">Edit Link/Contact</h4>
+                      <h4 class="modal-title" id="edit-link-label">Edit Link/Contact</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group has-feedback">
@@ -330,10 +340,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                      <form id="editform" method="POST">
+                      <form id="edit-link-form" method = "post">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
-                        <input type="hidden" name="lid" id = "lid" >
+
                         <button type="submit" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                       </form>
@@ -344,20 +354,21 @@
               <!-- edit link/contact modal -->
 
               <!-- delete link/contact modal -->
-                <div class="modal fade" id="deletelink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+                <div class="modal fade" id="delete-link" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                        <h4 class="modal-title" id="deletelinkLabel">Delete Link/Contact</h4>
+                        <h4 class="modal-title" id="delete-link-label">Delete Link/Contact</h4>
                       </div>
                       <div class="modal-body">
                           <p> Are you sure you want to delete this link/contact? </p>
                       </div>
                       <div class="modal-footer">
-                        <form id="deleteform" method="POST">
+                        <form id="delete-link-form" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
+
                             <button type="submit" class="btn btn-primary">Yes</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                         </form>
@@ -370,16 +381,16 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix no-border">
                 <!-- add link/contact modal -->
-                <button type="button" class="btn btn-primary btn-block" title = "Add a link or contact information, for iPub visitors to see" data-toggle = "modal" data-target = "#addlink">Add Link/Contact</button>
+                <button type="button" class="btn btn-primary btn-block" title = "Add a link or contact information, for iPub visitors to see" data-toggle = "modal" data-target = "#add-link">Add Link/Contact</button>
 
                 <form action = "/link/add" method = "POST">
                   {{ csrf_field() }}
-                  <div class="modal fade" id="addlink" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
+                  <div class="modal fade" id="add-link" tabindex="-1" role="dialog" aria-labelledby="Link/Contact" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Add Link/Contact</h4>
+                          <h4 class="modal-title" id="add-link-label">Add Link/Contact</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group has-feedback">
@@ -652,15 +663,16 @@
                 </div>
               </div>
               <div class="box-body">
-                <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
+                <div  id ="map-canvas" style = "width 100%; height: 320px"> </div>
                 <hr />
                 <ul class = "todo-list">
                   @foreach($locations as $location)
-                    <li>
+                    <li id = "location-{{ $location['id'] }}">
                       <span class="text">Latitude: {{ $location['lat'] }}, Longitude: {{ $location['lon'] }}</span>
                       <div class="tools">
-                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#editgeolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-edit"></i></button>
-                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#deletegeolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class = "btn btn-info btn-xs" onclick = "showGeolocation({{ $location['lat'] }}, {{ $location['lon'] }})" ><i class="fa fa-map-marker"></i></button>
+                        <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#edit-geolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-edit"></i></button>
+                        <button type="button" class = "btn btn-danger btn-xs" data-toggle = "modal" data-target = "#delete-geolocation" data-geoid = "{{ $location['id'] }}" ><i class="fa fa-trash-o"></i></button>
                       </div>
                     </li>
                   @endforeach
@@ -668,6 +680,86 @@
               </div>
             </div>
             <!-- end Location box-->
+
+            <!-- show geolocation modal -->
+            <div class="modal fade" id="show-geolocation1" tabindex="-1" role="dialog" aria-labelledby="GeoLocation" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                    <h4 class="modal-title" id="show-geolocation-label">View Location On Map</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div  id ="map-canvas" style = "width 100%; height: 320px"> </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end show geolocation modal -->
+
+            <!-- edit geolocation modal -->
+            <div class="modal fade" id="edit-geolocation" tabindex="-1" role="dialog" aria-labelledby="GeoLocation" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                    <h4 class="modal-title" id="edit-geolocation-label">Edit Location</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group has-feedback">
+                      <strong><i class = "fa fa-map-marker"></i> Location </strong>
+                      <p> Hint: For accurate results, use Chrome browser. </p>
+                      <div  id ="map-canvas" class = "map-canvas" style = "width 100%; height: 320px"> </div>
+                    </div>
+
+                    <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
+                      <input type="number" step = "0.00000001" class = "form-control" name="geo_latitude" id = "geo_latitude" value="{{ empty(Auth::user()->geo_latitude) ? '' : Auth::user()->geo_latitude }}" min = "-90" max = "90">
+                      @if ($errors->has('geo_latitude'))
+                          <span class="help-block" style = "color: #DD4B39 !important;">
+                              <strong>{{ $errors->first('geo_latitude') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                    <div class="form-group has-feedback" style = "display: inline-block; width: 49%;">
+                      <input type="number" step = "0.00000001" class = "form-control" name="geo_longitude" id = "geo_longitude" value = "{{ empty(Auth::user()->geo_longitude) ? '' : Auth::user()->geo_longitude }}" min = "-180" max = "180">
+                      @if ($errors->has('geo_longitude'))
+                          <span class="help-block" style = "color: #DD4B39 !important;">
+                              <strong>{{ $errors->first('geo_longitude') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id = "btn-edit-geolocation" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end edit geolocation modal -->
+
+            <!-- delete geolocation modal -->
+              <div class="modal fade" id="delete-geolocation" tabindex="-1" role="dialog" aria-labelledby="GeoLocation" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                      <h4 class="modal-title" id="delete-geolocation-label">Delete Location</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p> Are you sure you want to delete this location? </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id = "btn-delete-geolocation" data-dismiss="modal">Yes</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- end delete geolocation modal -->
           @endif
         </div>
       <!-- /.tab-content -->
@@ -682,31 +774,115 @@
 
 @section('javascript')
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="js/map/map.js" ></script>
+<script type="text/javascript" src="{{ asset('js/map/map.js') }}" ></script>
 <script type="text/javascript">
-    var locations = {!! json_encode($locations) !!};
-    displayMap(locations);
-
-    //when edit link/contact modal is about to be shown
-    $("#editlink").on('show.bs.modal', function(e){
+    // when edit link/contact modal is about to be shown
+    $("#edit-link").on('show.bs.modal', function(e){
         var lid = $(e.relatedTarget).data('lid');
         var link = $(e.relatedTarget).data('link');
         var caption = $(e.relatedTarget).data('caption');
-        $("#editlink #lid").val(lid);
-        $("#editlink #link").val(link);
-        $("#editlink #caption").val(caption);
-        $("#editform").submit(function(){
-            var newlink = $("#editlink #link").val();
-            var newcaption = $("#editlink #caption").val();
-            $("#editform").attr("action", "/link/edit/" + lid + "/" + newlink + "/" + newcaption);
+        $("#edit-link #lid").val(lid);
+        $("#edit-link #link").val(link);
+        $("#edit-link #caption").val(caption);
+
+        $("#edit-link-form").submit(function(){
+            var newlink = $("#edit-link #link").val();
+            var newcaption = $("#edit-link #caption").val();
+            $("#edit-link-form").attr("action", "/link/edit/" + lid + "/" + newlink + "/" + newcaption);
         });
     });
 
-    //when delete link/contact modal is about to be shown
-    $("#deletelink").on('show.bs.modal', function(e){
+    // when delete link/contact modal is about to be shown
+    $("#delete-link").on('show.bs.modal', function(e){
         var lid = $(e.relatedTarget).data('lid');
-        $("#deletelink #lid").val(lid);
-        $("#deleteform").attr("action", "/link/delete/" + lid);
+        var caption = $(e.relatedTarget).data('caption');
+        $("#delete-link-form").attr("action", "/link/delete/" + lid);
     });
+
+
+
+    // when edit geolocation modal is about to be shown
+    $("#edit-geolocation").on('show.bs.modal', function(e){
+        var geoid = $(e.relatedTarget).data('geoid');
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function(position){
+                $("#edit-geolocation #geo_latitude").val(position.coords.latitude);
+                $("#edit-geolocation #geo_longitude").val(position.coords.longitude);
+                initMap(position.coords.latitude, position.coords.longitude, true);
+            }, function(error){
+                alert(error.code + " - " + error.message);
+            });
+        } else {
+            $("#edit-geolocation #map-canvas").val("Sorry, geolocation services are not supported by your browser");
+        }
+
+        $("#edit-geolocation #btn-edit-geolocation").click(function(){
+            var geoLatitude = $("#edit-geolocation #geo_latitude").val();
+            var geoLongitude = $("#edit-geolocation #geo_longitude").val();
+            $.ajax({
+                type : 'PUT',
+                url : '/geolocation/edit/' + geoid + "/" + geoLatitude + "/" + geoLongitude,
+                data : "_token={{ csrf_token() }}",
+                dataType : "json",
+                success : function(data) {
+                    console.log(data);
+                    var locationItem = "<li id = 'location-" + data.id + "'>";
+                    locationItem += "<span class='text'>Latitude: " + data.geo_latitude + ", Longitude: " + data.geo_longitude + "</span>";
+                    locationItem += "<div class='tools'>";
+                    locationItem += "<button type='button' class = 'btn btn-info btn-xs' ><i class='fa fa-map-marker'></i></button>";
+                    locationItem += "<button type='button' class = 'btn btn-primary btn-xs' data-toggle = 'modal' data-target = '#edit-geolocation' data-geoid = '" + data.id + "' ><i class='fa fa-edit'></i></button>";
+                    locationItem += "<button type='button' class = 'btn btn-danger btn-xs' data-toggle = 'modal' data-target = '#delete-geolocation' data-geoid = '" + data.id + "' ><i class='fa fa-trash-o'></i></button>";
+                    locationItem += "</div>";
+                    locationItem += "</li>";
+
+                    $("#location-" + data.id).replaceWith(task);
+                },
+                error : function(data) {
+                    console.log("error: " + data.status);
+                }
+            });
+        });
+    });
+
+    // when delete geolocation modal is about to be shown
+    $("#delete-geolocation").on('show.bs.modal', function(e){
+        var geoid = $(e.relatedTarget).data('geoid');
+
+        $("#delete-geolocation #btn-delete-geolocation").click(function() {
+            $.ajax({
+                type : "DELETE",
+                url : "/geolocation/delete/" + geoid,
+                data : "_token={{ csrf_token() }}",
+                success : function(data) {
+                    $("#location-" + geoid).remove();
+                },
+                error : function(data) {
+                    console.log("error: " + data);
+                }
+            });
+        });
+    });
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var target = $(e.target).attr("href") // activated tab
+        if(target == "#others"){
+            if(navigator.geolocation){
+                var locations = {!! json_encode($locations) !!};
+                displayMap(locations);
+            } else {
+                $("#others #map-canvas").val("Sorry, geolocation services are not supported by your browser");
+            }
+        }
+    });
+
+    function showGeolocation(lat, lon) {
+        if(navigator.geolocation){
+            var locations = {!! json_encode($locations) !!};
+            displayMap(locations, new Array(lat, lon));
+        } else {
+            $("#others #map-canvas").val("Sorry, geolocation services are not supported by your browser");
+        }
+    }
 </script>
 @endsection

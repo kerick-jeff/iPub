@@ -138,8 +138,8 @@
 
                 <div class="form-group has-feedback">
                   <strong><i class = "fa fa-map-marker"></i> Location </strong>
-                  <p> Hint: You can set your location by either choosing the longitude and latitude of your location or by finding your location on the map and clicking on set. </p>
-                  <div  id ="map_canvas" style = "width 100%; height: 320px"> </div>
+                  <p> Hint: For accurate results, use Chrome browser. </p>
+                  <div  id ="map-canvas" style = "width 100%; height: 320px"> </div>
                 </div>
 
                 <div class = "form-group has-feedback" style = "display: inline-block; width: 50%;">
@@ -232,12 +232,12 @@
             navigator.geolocation.getCurrentPosition(function(position){
                 $("#geo_latitude").val(position.coords.latitude);
                 $("#geo_longitude").val(position.coords.longitude);
-                initMap(position.coords.latitude, position.coords.longitude);
+                initMap(position.coords.latitude, position.coords.longitude, false);
             }, function(error){
                 alert(error.code + " - " + error.message);
             });
         } else {
-            document.getElementById("map_canvas").innerHTML = "Sorry, geolocation services are not supported by your browser";
+            $("#map-canvas").val("Sorry, geolocation services are not supported by your browser");
         }
     });
 

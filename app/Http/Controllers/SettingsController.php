@@ -59,6 +59,10 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
+    /**
+     * set tour video video
+     * @param Request $request
+     */
     public function setTourVideo(Request $request){
         $validator = Validator::make($request->all(), [
             'tour_video' => 'required|mimes:mp4,mpeg,ogg,avi,mov|max:800000',
