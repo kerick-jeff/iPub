@@ -135,7 +135,7 @@
 
                 <div class="form-group has-feedback">
                   <strong><i class = "fa fa-map-marker"></i> Location </strong>
-                  <p> Hint: For accurate results, use Chrome browser. </p>
+                  <p> Hint: For accuracy, use Chrome browser. </p>
                   <div  id ="map-canvas" style = "width 100%; height: 320px"> </div>
                 </div>
 
