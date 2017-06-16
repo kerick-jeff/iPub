@@ -71,15 +71,15 @@
             </a>
           </li>
           <li class="list-group-item">
-            <b>Followers</b> <a class="pull-right">1247</a>
+            <b>Raters</b> <a class="pull-right">{{ $noRaters }}</a>
           </li>
           <li class="list-group-item">
-            <b>Invited</b> <a class="pull-right">543</a>
+            <b>Invited</b> <a class="pull-right">{{ Auth::user()->invited }}</a>
           </li>
         </ul>
 
+        <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to rate your pubs on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
         <!-- invite modal -->
-        <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to follow you on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
         <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-labelledby="Invite" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -87,7 +87,7 @@
                 {{ csrf_field() }}
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Invite someone to follow you on iPub</h4>
+                  <h4 class="modal-title" id="myModalLabel">Invite someone to rate your pubs on iPub</h4>
                 </div>
                 <div class="modal-body">
                   <div class="form-group has-feedback">
@@ -124,16 +124,8 @@
           <textarea class="text-muted" rows = "8" style = "border: none; width: 100%; margin-bottom: 5%" disabled >
             {{ Auth::user()->description }}
           </textarea>
-          <a href = "/setings#description" class = "btn btn-primary btn-block">Edit</a>
           <hr>
         @endif
-
-        <a><strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong></a>
-        <p class="text-muted">
-          Malibu, California
-        </p>
-        <a href = "/settings#location" type="button" class = "btn btn-primary btn-block">Set</a>
-        <hr>
 
         <a><strong><i class="icon fa fa-envelope"></i> Email </strong></a>
         <p class="text-muted">
@@ -155,24 +147,15 @@
         </p>
         <hr>
 
-        <a><strong><i class="fa fa-list-alt"></i> Products/Services </strong></a>
-        <p>
-          <span class="label label-danger">UI Design</span>
-        </p>
-        <p>
-          <span class="label label-success">Coding</span>
-        </p>
-        <p>
-          <span class="label label-info">Javascript</span>
-        </p>
-        <p>
-          <span class="label label-warning">PHP</span>
-        </p>
-        <p>
-          <span class="label label-primary">Node.js</span>
-        </p>
-
-        <hr>
+        @if(count($products) > 0)
+          <a><strong><i class="fa fa-list-alt"></i> Products/Services </strong></a>
+          @foreach($products as $product)
+            <p class="text-muted" id = "product-{{ $product->id }}" style = "font-size: 20px">
+              <span class="label label-{{ $labels[rand(0, 4)] }}" style = "white-space: pre-wrap; display: inline-flex">{{ $product->name }} <a class = "delete-product pull-right fa fa-close" style = "color: #ccc; cursor: pointer" title = "Delete this product/service. You cannot undo this action" style = "cursor: pointer" data-id = "{{ $product->id }}"></a></span>
+            </p>
+          @endforeach
+          <hr>
+        @endif
       </div>
       <!-- /.box-body -->
     </div>
@@ -199,7 +182,7 @@
             </div>
             <div class="box-body">
               <p>
-                Your account status is {{ $status }}% complete
+                Your account is {{ $status }}% complete. {{ (100 - $status) }}% more to go!!!
               </p>
               <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $status }}%">
@@ -425,13 +408,13 @@
 
           <!-- row -->
           <div class="row">
-            <!-- followers list -->
+            <!-- raters list -->
             <div class="col-md-6">
-              <div class="box box-info" id = "followers">
+              <div class="box box-info" id = "raters">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Followers</h3>
+                  <h3 class="box-title">Raters</h3>
                   <div class="box-tools pull-right">
-                    <span class="label label-info">8 New Followers</span>
+                    <span class="label label-info">{{ $noRaters == 1 ? "1 Rater" : $noRaters." Raters" }}</span>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -440,40 +423,67 @@
                 </div>
 
                 <!-- /.box-header -->
-                @if(count($followers) > 0)
-                <div class="box-body no-padding">
-                    <ul class="users-list clearfix">
-                      @foreach($followers as $follower)
-                        <li>
-                          <img src="{{ asset('ipub/dist/img/user1-128x128.jpg') }}" alt="Follower Image">
-                          {{ empty($follower->name) ? "empty is the game" : $follower->name }}
-                          <span class="users-list-name" >{{ $follower->email }}</span>
+                @if($noRaters > 0)
+                  <div class="box-body">
+                    <ul class="products-list product-list-in-box">
+                      @foreach($ratings as $rating)
+                        <li class="item">
+                          <div class="product-img">
+                            <img src="{{ asset('ipub/dist/img/boxed-bg.jpg') }}" alt="Rater background">
+                          </div>
+                          <div class="product-info">
+                            <a class="product-title">{{ $rating['rater']->email }}</a>
+                            <span class="product-description">
+                              Rated : {{ $rating['noRatings'] }} [of your pubs]
+                            </span>
+                          </div>
                         </li>
                       @endforeach
                     </ul>
-                  <!-- /.users-list -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="javascript:void(0)" class="uppercase">View All</a>
-                </div>
-                <!-- /.box-footer -->
+                  </div>
+                  <!-- /.box-body -->
+                  @if($noRaters > count($ratings))
+                    <div class="box-footer text-center">
+                      <a href="#view-all-raters" data-toggle = "modal" class="uppercase">View All</a>
+                      <!-- View all raters modal -->
+                      <div class="modal fade" id="view-all-raters" tabindex="-1" role="dialog" aria-labelledby="ViewAllRaters" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                              <h4 class="modal-title" id="edit-link-label">Your rater(s)</h4>
+                            </div>
+                            <div class="modal-body">
+                              <ul class="products-list product-list-in-box" id = "raters">
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- edit view all raters modal -->
+                    </div>
+                    <!-- /.box-footer -->
+                  @endif
                 @else
-                <div class="box-body no-padding">
-                    <p style = "margin-left: 30%">You have no followers!</p>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to follow you on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
-                </div>
-                <!-- /.box-footer -->
+                  <div class="box-body no-padding">
+                    <div class="alert alert-info alert-dismissible" role="alert"style="font-size: 20px; margin: 10px">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      You have no raters yet!!!
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer text-center">
+                    <button type = "button" class="btn btn-primary btn-block" title = "Invite someone to rate your pubs on iPub" data-toggle = "modal" data-target = "#invite"><b>Invite</b></button>
+                  </div>
+                  <!-- /.box-footer -->
                 @endif
               </div>
               <!--/.box -->
             </div>
             <!-- /.col -->
 
-            <!-- recently added products -->
+            <!-- recently added Pubs -->
           <div class = "col-md-6">
             <div class="box box-info">
               <div class="box-header with-border">
@@ -773,7 +783,7 @@
 @endsection
 
 @section('javascript')
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMEmwSkmHfq-9OA9Sq4-ecVmHSrfYFSts" type="text/javascript"></script>
 <script type="text/javascript" src="{{ asset('js/map/map.js') }}" ></script>
 <script type="text/javascript">
     // when edit link/contact modal is about to be shown
@@ -826,7 +836,6 @@
                 data : "_token={{ csrf_token() }}",
                 dataType : "json",
                 success : function(data) {
-                    console.log(data);
                     var locationItem = "<li id = 'location-" + data.id + "'>";
                     locationItem += "<span class='text'>Latitude: " + data.geo_latitude + ", Longitude: " + data.geo_longitude + "</span>";
                     locationItem += "<div class='tools'>";
@@ -836,10 +845,10 @@
                     locationItem += "</div>";
                     locationItem += "</li>";
 
-                    $("#location-" + data.id).replaceWith(task);
+                    $("#location-" + data.id).replaceWith(locationItem);
                 },
-                error : function(data) {
-                    console.log("error: " + data.status);
+                error : function(error) {
+                    console.log("error: " + error.status);
                 }
             });
         });
@@ -857,8 +866,8 @@
                 success : function(data) {
                     $("#location-" + geoid).remove();
                 },
-                error : function(data) {
-                    console.log("error: " + data);
+                error : function(error) {
+                    console.log("error: " + error.status);
                 }
             });
         });
@@ -869,9 +878,13 @@
         if(target == "#others"){
             if(navigator.geolocation){
                 var locations = {!! json_encode($locations) !!};
-                displayMap(locations);
+                if(locations.length > 0) {
+                    displayMap(locations);
+                } else {
+                    $("#others #map-canvas").html("There are no locations to display");
+                }
             } else {
-                $("#others #map-canvas").val("Sorry, geolocation services are not supported by your browser");
+                $("#others #map-canvas").html("Sorry, geolocation services are not supported by your browser");
             }
         }
     });
@@ -884,5 +897,51 @@
             $("#others #map-canvas").val("Sorry, geolocation services are not supported by your browser");
         }
     }
+
+    $('.delete-product').on('click', function (e) {
+        var id = $(e.target).data('id');
+        $.ajax({
+            type : "DELETE",
+            url : "/product/delete/" + id,
+            data : "_token={{ csrf_token() }}",
+            success : function(data) {
+                $("#product-" + id).remove();
+            },
+            error : function(error) {
+                console.log("error: " + error.status);
+            }
+        });
+    });
+
+    // when view all raters modal is about to be shown
+    $("#view-all-raters").on('show.bs.modal', function(e){
+        $.ajax({
+            type : "GET",
+            url : "/account/raters",
+            data : "_token={{ csrf_token() }}",
+            success : function(ratings) {
+                var result = "";
+
+                for(var i = 0; i < ratings.length; i++) {
+                    result += "<li class='item'>";
+                    result += "<div class='product-img'>";
+                    result += "<img src='{{ asset('ipub/dist/img/boxed-bg.jpg') }}' alt='Rater background'>";
+                    result += "</div>";
+                    result += "<div class='product-info' style = 'text-align: left'>";
+                    result += "<a class='product-title'>" + ratings[i]['rater'].email + "</a>";
+                    result += "<span class='product-description'>";
+                    result += "Rated : " + ratings[i]['noRatings'] + " [of your pubs]";
+                    result += "</span>";
+                    result += "</div>";
+                    result += "</li>";
+                }
+
+                $("#view-all-raters #raters").html(result);
+            },
+            error : function(error) {
+                console.log("error: " + error.status);
+            }
+        });
+    });
 </script>
 @endsection

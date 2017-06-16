@@ -19,6 +19,12 @@ class PubFile extends Model
     ];
 
     /**
+     * The model should not be timestamped
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * a pub file belongs to a pub
      * @return \App\Pub
      */

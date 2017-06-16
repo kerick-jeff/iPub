@@ -72,7 +72,6 @@ function displayMap(locations, hLatLon){
     for(var i = 0; i < locations.length; i++){
         var location = locations[i];
         var marker;
-
         if(location['lat'] == hLatLon[0] && location['lon'] == hLatLon[1]) {
             marker = new google.maps.Marker({
                 icon: {

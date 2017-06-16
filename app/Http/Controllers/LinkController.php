@@ -48,7 +48,7 @@ class LinkController extends Controller
 
         // validation test returned true, save link/contact now
         Link::create($request->all());
-        return redirect('account');
+        return redirect('/account');
     }
 
     /**

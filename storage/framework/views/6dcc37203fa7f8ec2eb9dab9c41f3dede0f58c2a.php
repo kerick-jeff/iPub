@@ -51,7 +51,7 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="<?php echo e(url('/mailbox')); ?>">
+          <a href="#mailbox">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
           <ul class="treeview-menu">
@@ -94,28 +94,23 @@
           <a href="<?php echo e(url('/upload')); ?>">
             <i class="fa fa-upload"></i> <span>Upload</span>
             <span class="pull-right-container">
-              <span class="label label-info pull-right">28</span>
+              <span class="label label-info pull-right"><b id = "numUploads"><?php echo e(session('numUploads')); ?></b></span>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo e(url('/upload/photo')); ?>"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">new</small>
+                      <small class="label pull-right bg-green"><b id = "numPhotos"><?php echo e(session('numPhotos')); ?></b></small>
                     </span>
                 </a>
             </li>
             <li><a href="<?php echo e(url('/upload/video')); ?>"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">new</small>
+                      <small class="label pull-right bg-green"><b id = "numVideos"><?php echo e(session('numVideos')); ?></b></small>
                     </span>
                 </a>
             </li>
           </ul>
-        </li>
-        <li>
-          <a href="<?php echo e(url('/events')); ?>">
-            <i class="fa fa-calendar"></i> <span>Events</span>
-          </a>
         </li>
         <li>
           <a href="<?php echo e(url('/statistics')); ?>">
@@ -162,7 +157,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.1
     </div>
-    <strong>Copyright &copy; <?php echo e(date('Y')); ?> <a href="/">iPub.com</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; <?php echo e(date('Y')); ?> <a href="/">iPub.com</a></strong> . All rights reserved.
   </footer>
 
   <?php endif; ?>

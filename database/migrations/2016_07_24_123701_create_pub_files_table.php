@@ -19,7 +19,6 @@ class CreatePubFilesTable extends Migration
             $table->string('type');
             $table->integer('size');
             $table->string('extension', 10);
-            $table->timestamps();
             $table->foreign('pub_id')
                   ->references('id')->on('pubs')
                   ->onDelete('cascade');

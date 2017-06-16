@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Link;
+use App\Invited;
 use Mail;
 use Auth;
 use Storage;
@@ -19,7 +20,7 @@ class EmailController extends Controller
     */
     public function verifyRegistrationEmail($email, $code) {
         $user = User::where('email', $email)->first();
-        if(!empty($user) && $user->confirmed == 0){
+        if(count($user) > 0 && $user->confirmed == 0){
             $user->update(['confirmation_code' => $code, 'confirmed' => 1]);
 
             //insert email the first link/contact of the user
@@ -55,20 +56,22 @@ class EmailController extends Controller
       });
       return redirect('/login')->with(['info' => 'Please verify your email. Click the link in the email sent to you', 'email' => $email, 'name' => $name]);
     }
-    
+
     /**
      * an authenticated user can invite someone through email to follow his pubs on iPub
      * @param Request $request
      */
     public function invite(Request $request){
         $email = $request->email;
-        $send = @Mail::send('emails.invite', ['user' => Auth::user(), 'email' => $email], function($message) use ($email){
+        $send = @Mail::send('emails.invite', ['email' => $email], function($message) use ($email){
             $message->from('frukerickjeff@gmail.com', 'iPub');
             $message->to($email)
-                    ->subject('iPub. Invitation to follow');
+                    ->subject('iPub. Invitation to Rate');
         });
+
         if($send){
-            return redirect('/account')->with('success', 'Your invitation has been sent to '.$email);
+            Invited::create(['user_id' => Auth::user()->id, 'email' => $email, 'accepted' => 0]);
+            return redirect('/account')->with('success', 'Your invitation has been successfully sent to '.$email);
         } else {
             return redirect('/account')->with('failure', 'Sending your invitation to'.$email." failed");
         }

@@ -7,7 +7,7 @@
   <?php echo $__env->yieldContent('description'); ?>
   <?php echo $__env->yieldContent('author'); ?>
   <!-- favicon -->
-  <link rel = "shortcut icon" href = "ipub.ico">
+  <link rel = "shortcut icon" href = "<?php echo e(asset('favicon.ico')); ?>">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->

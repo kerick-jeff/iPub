@@ -65,7 +65,7 @@ trait RegistersUsers
         //Auth::guard($this->getGuard())->login($this->create($request->all()));
         $this->create($request->all());
 
-        // send verification email
+        // generate confirmation code
         $confirmation_code = str_random(30);
 
         Mail::send('auth.emails.verify', ['confirmation_code' => $confirmation_code, 'email' => $request->input('email')], function($message) use ($request) {

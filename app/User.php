@@ -48,11 +48,27 @@ class User extends Authenticatable
     }
 
     /**
+     * a user can invite 0 or more persons
+     * @return \App\Invited
+     */
+    public function inviteds(){
+        return $this->hasMany('App\Invited');
+    }
+
+    /**
      * a user has 0 or more links (contact links) i.e website url, additional email, phone number, fax and other contact links, place address
      * @return \App\Link
      */
     public function links(){
         return $this->hasMany('App\Link');
+    }
+
+    /**
+     * a user offers 0 or more products/services
+     * @return \App\Product
+     */
+    public function products(){
+        return $this->hasMany('App\Product');
     }
 
     /**

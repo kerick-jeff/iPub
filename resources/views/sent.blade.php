@@ -208,7 +208,8 @@ $(document).ready(function() {
               $("#numDrafts").html(data.numDrafts);
           }
       });
-    }, 10000);
+  }, 10000);
+});
 
     $("#delete").click(function(){
         var ids = [];

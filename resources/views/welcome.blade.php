@@ -1,45 +1,58 @@
+
 @extends('layouts.extendable')
 
+@section('css')
+<style type = "text/css">
+#bg {
+  background: url("{{ asset('land1.jpg') }}") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0px;
+}
+
+#label {
+  position: absolute;
+  margin: 20%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  color: white;
+  font-size: 300%;
+  width: 50%;
+}
+
+@media (max-width: 768px){
+  #label {
+    position: absolute;
+    margin: 10%;
+    margin-top: 20%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 200%;
+    width: 90%;
+  }
+}
+</style>
+@endsection
+
 @section('extendable_content')
-<div class="container-fluid" style="margin-left: -70px; margin-right: -15px;">
-    <div class="row">
-        @if(session('follow'))
-          <!-- follow status modal -->
-          <div class="modal fade" id = "followModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">{{ session('followHeader') }}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p> {{ session('follow') }} </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-        @endif
-
-    </div>
-</div>
-
-<footer class="main-footer" style = "margin-left: 0px; position: fixed; bottom: 0px; left: 0px; right: 0px">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 1.0.1
+  <!-- Dislay landing page image -->
+  <div class="content-wrapper" id = "bg">
+    <h1 id = "label">&ldquo;What are you, your friends, families and relations craving about?<br /> Tell'em it's on iPub&rdquo; &mdash; <i>Fru Kerick</i></h1>
   </div>
-  <strong>Copyright &copy; {{ date('Y') }} <a href="/">iPub.com</a>.</strong> All rights reserved.
-</footer>
 
+  <footer class="main-footer" style = "margin-left: 0px; background-color: ; position: fixed; bottom: 0px; left: 0px; right: 0px">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0.1
+    </div>
+    <strong>Copyright &copy; {{ date('Y') }} <a href="/">iPub.com</a>.</strong> All rights reserved.
+  </footer>
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
-        $(window).load(function(){
-            $('#followModal').modal('show');
-        });
-    </script>
+<script type = "text/javascript">
+    // Ensure that the layout is fixed so that scroll bars don't appear when the page loads
+    $("body").toggleClass("fixed");
+</script>
 @endsection

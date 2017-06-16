@@ -37,6 +37,15 @@
 
 @section('content')
 
+@if(session('product'))
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <i class = "icon fa fa-check"></i> Success <br />
+    {{ session('product') }}
+  </div>
+@endif
+
+
 @if(session('geolocation'))
   <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -95,7 +104,7 @@
               <hr />
 
               <!-- security form -->
-              <form action = "settings/security" method = "POST">
+              <form action = "/settings/security" method = "POST">
                 {{ csrf_field() }}
                 <strong><i class = "fa fa-lock"></i>&nbsp; Security </strong>
                 <div class="form-group has-feedback">
@@ -118,6 +127,25 @@
                 </div>
                 <div class="form-group has-feedback">
                   <button type="submit" id = "change_password" class = "btn btn-primary btn-block" title = "Change your password">Change your password</button>
+                </div>
+              </form>
+              <hr />
+
+              <!-- product/service form -->
+              <form action = "/settings/product-service" method = "POST">
+                {{ csrf_field() }}
+                <strong><i class = "fa fa-list-alt"></i>&nbsp; Products &amp; Services </strong>
+                <div class="form-group has-feedback">
+                  <input type="hidden" name = "user_id" value = "{{ Auth::user()->id }}" >
+                  <input type="text" class="form-control" name = "name" placeholder="Name of product or service">
+                  @if ($errors->has('name'))
+                      <span class="help-block" style = "color: #DD4B39 !important;">
+                          <strong>{{ $errors->first('name') }}</strong>
+                      </span>
+                  @endif
+                </div>
+                <div class="form-group has-feedback">
+                  <button type="submit" id = "add_product_service" class = "btn btn-primary btn-block" title = "Add product or service">Add product/service</button>
                 </div>
               </form>
               <hr />
@@ -180,29 +208,6 @@
               </form>
               <hr />
 
-              <!-- tour video form -->
-              <form action="/settings/tour-video" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <strong><i class = "fa fa-video-camera"></i> Tour Video </strong>
-                <div class="form-group has-feedback">
-                  <video width="100%" title = "A video which gives information about what you do" controls>
-                    <source src="{{ url('/tour-video') }}" type="video/mp4">
-                    <source src="{{ url('/tour-video') }}" type="video/ogg">
-                    Your browser does not support the video tag.
-                  </video>
-
-                  <input type="file" name="tour_video"  class="btn btn-info btn-sm btn-file" style = "max-width: 100%">
-                  @if ($errors->has('tour_video'))
-                    <span class="help-block" style = "color: #DD4B39 !important;">
-                      <strong>{{ $errors->first('tour_video') }}</strong>
-                    </span>
-                  @endif
-                </div>
-                <div class="form-group has-feedback">
-                  <button type="submit" id = "set_tour_video" class = "btn btn-success btn-block" title = "Set a video which gives information about what you do" >Set Tour Video</button>
-                </div>
-              </form>
-              <hr />
             </div>
           </div>
       </div>
@@ -216,10 +221,10 @@
 
 @section('javascript')
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="js/map/map.js" ></script>
-<script type="text/javascript" src="js/countrytel/build/js/intlTelInput.js"></script>
-<script type="text/javascript" src="js/loading/waitMe.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMEmwSkmHfq-9OA9Sq4-ecVmHSrfYFSts" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('js/map/map.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('js/countrytel/build/js/intlTelInput.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/loading/waitMe.js') }}"></script>
 <script type="text/javascript">
     //map
     $(document).ready(function(){
@@ -276,7 +281,7 @@
         document.getElementById('file').click();
     });
 
-    $("#change_profile_picture, #set_phone_number, #change_password, #set_location, #set_description, #set_tour_video").click(function(){
+    $("#change_profile_picture, #set_phone_number, #change_password, #set_location, #set_description, #add_product_service").click(function(){
         $("#body").waitMe({
             effect: 'roundBounce',
             text: 'Saving account information',

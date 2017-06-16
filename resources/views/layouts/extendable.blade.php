@@ -7,7 +7,7 @@
   @yield('description')
   @yield('author')
   <!-- favicon -->
-  <link rel = "shortcut icon" href = "favicon.ico">
+  <link rel = "shortcut icon" href = "{{ asset('favicon.ico') }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -32,14 +32,6 @@
   <![endif]-->
 
   <style type = "text/css">
-    html {
-      background: url({{ asset('land1.jpg') }}) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-
     .starry {
       color: #FFC733
     }
@@ -79,8 +71,7 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-
-@yield('toggle')
+    @yield('toggle')
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         @if (Auth::guest())
@@ -92,8 +83,8 @@
 
           <!-- Messages: style can be found in dropdown.less-->
 
-          <li style = "right: 120%" ><a href="/pubs" >Pubs</a></li>
-          <li style = "right: 120%" ><a href="/about" >About Us</a></li>
+          <li style="right: 105%"><a href="/pubs" >Pubs</a></li>
+          <li style="right: 105%"><a href="/about" >About Us</a></li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -107,7 +98,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="{{ url('/profile_picture') }}" class="img-circle" alt="User profile picture">
+                        <img src="{{ url('/profile-picture') }}" class="img-circle" alt="User profile picture">
                       </div>
                       <h4>
                         Support Team
@@ -466,6 +457,21 @@ $(document).ready(function(){
         }
     });
   }, 10000);
+
+  // check number of uploads, photos and videos after every 10s
+  setInterval(function(){
+    $.ajax({
+        type: 'POST',
+        url: '/upload/count',
+        data: '_token={{ csrf_token() }}',
+        success: function(data){
+            $("#numUploads").html(data.numUploads);
+            $("#numPhotos").html(data.numPhotos);
+            $("#numVideos").html(data.numVideos);
+        }
+    });
+  }, 10000);
+
 });
 
 </script>

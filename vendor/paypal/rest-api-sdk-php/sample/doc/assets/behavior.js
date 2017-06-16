@@ -6,25 +6,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 
   tableOfContents = [
     {
-      "type": "file",
-      "data": {
-        "language": {
-          "nameMatchers": [{}, ".fbp"],
-          "pygmentsLexer": "php",
-          "singleLineComment": ["//"],
-          "ignorePrefix": "}",
-          "foldPrefix": "^",
-          "name": "PHP"
-        },
-        "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/index.php",
-        "projectPath": "index.php",
-        "targetPath": "index",
-        "pageTitle": "index",
-        "title": "index"
-      },
-      "depth": 1,
-      "outline": []
-    }, {
       "type": "folder",
       "data": {
         "path": "billing",
@@ -43,13 +24,35 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/CreateBillingAgreementWithCreditCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/CreateBillingAgreementWithCreditCard.php",
             "projectPath": "billing/CreateBillingAgreementWithCreditCard.php",
             "targetPath": "billing/CreateBillingAgreementWithCreditCard",
             "pageTitle": "billing/CreateBillingAgreementWithCreditCard",
             "title": "CreateBillingAgreementWithCreditCard"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Create Billing Agreement with Credit Card as Payment Source",
+                "slug": "create-billing-agreement-with-credit-card-as-payment-source"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Create Agreement",
+                    "slug": "create-agreement"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -61,7 +64,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/CreateBillingAgreementWithPayPal.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/CreateBillingAgreementWithPayPal.php",
             "projectPath": "billing/CreateBillingAgreementWithPayPal.php",
             "targetPath": "billing/CreateBillingAgreementWithPayPal",
             "pageTitle": "billing/CreateBillingAgreementWithPayPal",
@@ -79,7 +82,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/CreatePlan.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/CreatePlan.php",
             "projectPath": "billing/CreatePlan.php",
             "targetPath": "billing/CreatePlan",
             "pageTitle": "billing/CreatePlan",
@@ -97,7 +100,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/DeletePlan.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/DeletePlan.php",
             "projectPath": "billing/DeletePlan.php",
             "targetPath": "billing/DeletePlan",
             "pageTitle": "billing/DeletePlan",
@@ -115,7 +118,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/ExecuteAgreement.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/ExecuteAgreement.php",
             "projectPath": "billing/ExecuteAgreement.php",
             "targetPath": "billing/ExecuteAgreement",
             "pageTitle": "billing/ExecuteAgreement",
@@ -133,7 +136,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/GetBillingAgreement.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/GetBillingAgreement.php",
             "projectPath": "billing/GetBillingAgreement.php",
             "targetPath": "billing/GetBillingAgreement",
             "pageTitle": "billing/GetBillingAgreement",
@@ -151,7 +154,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/GetPlan.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/GetPlan.php",
             "projectPath": "billing/GetPlan.php",
             "targetPath": "billing/GetPlan",
             "pageTitle": "billing/GetPlan",
@@ -169,7 +172,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/ListPlans.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/ListPlans.php",
             "projectPath": "billing/ListPlans.php",
             "targetPath": "billing/ListPlans",
             "pageTitle": "billing/ListPlans",
@@ -187,7 +190,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/ReactivateBillingAgreement.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/ReactivateBillingAgreement.php",
             "projectPath": "billing/ReactivateBillingAgreement.php",
             "targetPath": "billing/ReactivateBillingAgreement",
             "pageTitle": "billing/ReactivateBillingAgreement",
@@ -205,7 +208,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/SearchBillingTransactions.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/SearchBillingTransactions.php",
             "projectPath": "billing/SearchBillingTransactions.php",
             "targetPath": "billing/SearchBillingTransactions",
             "pageTitle": "billing/SearchBillingTransactions",
@@ -223,7 +226,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/SuspendBillingAgreement.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/SuspendBillingAgreement.php",
             "projectPath": "billing/SuspendBillingAgreement.php",
             "targetPath": "billing/SuspendBillingAgreement",
             "pageTitle": "billing/SuspendBillingAgreement",
@@ -241,7 +244,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/UpdateBillingAgreement.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/UpdateBillingAgreement.php",
             "projectPath": "billing/UpdateBillingAgreement.php",
             "targetPath": "billing/UpdateBillingAgreement",
             "pageTitle": "billing/UpdateBillingAgreement",
@@ -259,7 +262,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/UpdatePlan.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/UpdatePlan.php",
             "projectPath": "billing/UpdatePlan.php",
             "targetPath": "billing/UpdatePlan",
             "pageTitle": "billing/UpdatePlan",
@@ -277,7 +280,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/billing/UpdatePlanPaymentDefinitions.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/billing/UpdatePlanPaymentDefinitions.php",
             "projectPath": "billing/UpdatePlanPaymentDefinitions.php",
             "targetPath": "billing/UpdatePlanPaymentDefinitions",
             "pageTitle": "billing/UpdatePlanPaymentDefinitions",
@@ -286,62 +289,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "depth": 2
         }
       ]
-    }, {
-      "type": "file",
-      "data": {
-        "language": {
-          "nameMatchers": [{}, ".fbp"],
-          "pygmentsLexer": "php",
-          "singleLineComment": ["//"],
-          "ignorePrefix": "}",
-          "foldPrefix": "^",
-          "name": "PHP"
-        },
-        "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/bootstrap.php",
-        "projectPath": "bootstrap.php",
-        "targetPath": "bootstrap",
-        "pageTitle": "bootstrap",
-        "title": "bootstrap"
-      },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 4,
-            "title": "SDK configuration",
-            "slug": "sdk-configuration"
-          },
-          "depth": 4
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Api context",
-            "slug": "api-context"
-          },
-          "depth": 3
-        }
-      ]
-    }, {
-      "type": "file",
-      "data": {
-        "language": {
-          "nameMatchers": [{}, ".fbp"],
-          "pygmentsLexer": "php",
-          "singleLineComment": ["//"],
-          "ignorePrefix": "}",
-          "foldPrefix": "^",
-          "name": "PHP"
-        },
-        "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/common.php",
-        "projectPath": "common.php",
-        "targetPath": "common",
-        "pageTitle": "common",
-        "title": "common"
-      },
-      "depth": 1,
-      "outline": []
     }, {
       "type": "folder",
       "data": {
@@ -361,7 +308,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice-templates/CreateInvoiceTemplate.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice-templates/CreateInvoiceTemplate.php",
             "projectPath": "invoice-templates/CreateInvoiceTemplate.php",
             "targetPath": "invoice-templates/CreateInvoiceTemplate",
             "pageTitle": "invoice-templates/CreateInvoiceTemplate",
@@ -379,7 +326,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice-templates/DeleteInvoiceTemplate.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice-templates/DeleteInvoiceTemplate.php",
             "projectPath": "invoice-templates/DeleteInvoiceTemplate.php",
             "targetPath": "invoice-templates/DeleteInvoiceTemplate",
             "pageTitle": "invoice-templates/DeleteInvoiceTemplate",
@@ -397,14 +344,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice-templates/GetAllInvoiceTemplates.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice-templates/GetAllInvoiceTemplates.php",
             "projectPath": "invoice-templates/GetAllInvoiceTemplates.php",
             "targetPath": "invoice-templates/GetAllInvoiceTemplates",
             "pageTitle": "invoice-templates/GetAllInvoiceTemplates",
             "title": "GetAllInvoiceTemplates"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
@@ -416,35 +362,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice-templates/GetInvoiceTemplate.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice-templates/GetInvoiceTemplate.php",
             "projectPath": "invoice-templates/GetInvoiceTemplate.php",
             "targetPath": "invoice-templates/GetInvoiceTemplate",
             "pageTitle": "invoice-templates/GetInvoiceTemplate",
             "title": "GetInvoiceTemplate"
           },
-          "depth": 2,
-          "outline": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Retrieve Invoice Template Sample",
-                "slug": "retrieve-invoice-template-sample"
-              },
-              "depth": 1,
-              "children": [
-                {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Retrieve Invoice Template",
-                    "slug": "retrieve-invoice-template"
-                  },
-                  "depth": 3
-                }
-              ]
-            }
-          ]
+          "depth": 2
         }, {
           "type": "file",
           "data": {
@@ -456,7 +380,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice-templates/UpdateInvoiceTemplate.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice-templates/UpdateInvoiceTemplate.php",
             "projectPath": "invoice-templates/UpdateInvoiceTemplate.php",
             "targetPath": "invoice-templates/UpdateInvoiceTemplate",
             "pageTitle": "invoice-templates/UpdateInvoiceTemplate",
@@ -484,7 +408,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/CancelInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/CancelInvoice.php",
             "projectPath": "invoice/CancelInvoice.php",
             "targetPath": "invoice/CancelInvoice",
             "pageTitle": "invoice/CancelInvoice",
@@ -502,7 +426,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/CreateInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/CreateInvoice.php",
             "projectPath": "invoice/CreateInvoice.php",
             "targetPath": "invoice/CreateInvoice",
             "pageTitle": "invoice/CreateInvoice",
@@ -520,7 +444,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/CreateThirdPartyInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/CreateThirdPartyInvoice.php",
             "projectPath": "invoice/CreateThirdPartyInvoice.php",
             "targetPath": "invoice/CreateThirdPartyInvoice",
             "pageTitle": "invoice/CreateThirdPartyInvoice",
@@ -538,7 +462,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/DeleteInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/DeleteInvoice.php",
             "projectPath": "invoice/DeleteInvoice.php",
             "targetPath": "invoice/DeleteInvoice",
             "pageTitle": "invoice/DeleteInvoice",
@@ -556,7 +480,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/GetInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/GetInvoice.php",
             "projectPath": "invoice/GetInvoice.php",
             "targetPath": "invoice/GetInvoice",
             "pageTitle": "invoice/GetInvoice",
@@ -574,7 +498,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/GetNextInvoiceNumber.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/GetNextInvoiceNumber.php",
             "projectPath": "invoice/GetNextInvoiceNumber.php",
             "targetPath": "invoice/GetNextInvoiceNumber",
             "pageTitle": "invoice/GetNextInvoiceNumber",
@@ -592,7 +516,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/ListInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/ListInvoice.php",
             "projectPath": "invoice/ListInvoice.php",
             "targetPath": "invoice/ListInvoice",
             "pageTitle": "invoice/ListInvoice",
@@ -610,7 +534,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/RecordPayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/RecordPayment.php",
             "projectPath": "invoice/RecordPayment.php",
             "targetPath": "invoice/RecordPayment",
             "pageTitle": "invoice/RecordPayment",
@@ -628,7 +552,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/RecordRefund.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/RecordRefund.php",
             "projectPath": "invoice/RecordRefund.php",
             "targetPath": "invoice/RecordRefund",
             "pageTitle": "invoice/RecordRefund",
@@ -646,7 +570,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/RemindInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/RemindInvoice.php",
             "projectPath": "invoice/RemindInvoice.php",
             "targetPath": "invoice/RemindInvoice",
             "pageTitle": "invoice/RemindInvoice",
@@ -664,7 +588,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/RetrieveQRCode.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/RetrieveQRCode.php",
             "projectPath": "invoice/RetrieveQRCode.php",
             "targetPath": "invoice/RetrieveQRCode",
             "pageTitle": "invoice/RetrieveQRCode",
@@ -682,7 +606,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/SearchInvoices.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/SearchInvoices.php",
             "projectPath": "invoice/SearchInvoices.php",
             "targetPath": "invoice/SearchInvoices",
             "pageTitle": "invoice/SearchInvoices",
@@ -700,7 +624,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/SendInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/SendInvoice.php",
             "projectPath": "invoice/SendInvoice.php",
             "targetPath": "invoice/SendInvoice",
             "pageTitle": "invoice/SendInvoice",
@@ -718,59 +642,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/invoice/UpdateInvoice.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/invoice/UpdateInvoice.php",
             "projectPath": "invoice/UpdateInvoice.php",
             "targetPath": "invoice/UpdateInvoice",
             "pageTitle": "invoice/UpdateInvoice",
             "title": "UpdateInvoice"
           },
-          "depth": 2,
-          "outline": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Update Invoice Sample",
-                "slug": "update-invoice-sample"
-              },
-              "depth": 1,
-              "children": [
-                {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Update Invoice",
-                    "slug": "update-invoice"
-                  },
-                  "depth": 3
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "NOTE: These are the work-around added to the",
-                    "slug": "note-these-are-the-work-around-added-to-the"
-                  },
-                  "depth": 3
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Update Invoice",
-                    "slug": "update-invoice"
-                  },
-                  "depth": 3
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Retrieve Invoice",
-                    "slug": "retrieve-invoice"
-                  },
-                  "depth": 3
-                }
-              ]
-            }
-          ]
+          "depth": 2
         }
       ]
     }, {
@@ -792,7 +670,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/lipp/GenerateAccessTokenFromRefreshToken.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/lipp/GenerateAccessTokenFromRefreshToken.php",
             "projectPath": "lipp/GenerateAccessTokenFromRefreshToken.php",
             "targetPath": "lipp/GenerateAccessTokenFromRefreshToken",
             "pageTitle": "lipp/GenerateAccessTokenFromRefreshToken",
@@ -810,7 +688,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/lipp/GetUserInfo.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/lipp/GetUserInfo.php",
             "projectPath": "lipp/GetUserInfo.php",
             "targetPath": "lipp/GetUserInfo",
             "pageTitle": "lipp/GetUserInfo",
@@ -828,7 +706,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/lipp/ObtainUserConsent.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/lipp/ObtainUserConsent.php",
             "projectPath": "lipp/ObtainUserConsent.php",
             "targetPath": "lipp/ObtainUserConsent",
             "pageTitle": "lipp/ObtainUserConsent",
@@ -846,7 +724,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/lipp/UserConsentRedirect.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/lipp/UserConsentRedirect.php",
             "projectPath": "lipp/UserConsentRedirect.php",
             "targetPath": "lipp/UserConsentRedirect",
             "pageTitle": "lipp/UserConsentRedirect",
@@ -874,7 +752,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/CreateWebhook.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/CreateWebhook.php",
             "projectPath": "notifications/CreateWebhook.php",
             "targetPath": "notifications/CreateWebhook",
             "pageTitle": "notifications/CreateWebhook",
@@ -892,7 +770,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/DeleteAllWebhooks.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/DeleteAllWebhooks.php",
             "projectPath": "notifications/DeleteAllWebhooks.php",
             "targetPath": "notifications/DeleteAllWebhooks",
             "pageTitle": "notifications/DeleteAllWebhooks",
@@ -910,7 +788,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/DeleteWebhook.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/DeleteWebhook.php",
             "projectPath": "notifications/DeleteWebhook.php",
             "targetPath": "notifications/DeleteWebhook",
             "pageTitle": "notifications/DeleteWebhook",
@@ -928,7 +806,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/GetWebhook.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/GetWebhook.php",
             "projectPath": "notifications/GetWebhook.php",
             "targetPath": "notifications/GetWebhook",
             "pageTitle": "notifications/GetWebhook",
@@ -946,7 +824,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/ListSubscribedWebhookEventTypes.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/ListSubscribedWebhookEventTypes.php",
             "projectPath": "notifications/ListSubscribedWebhookEventTypes.php",
             "targetPath": "notifications/ListSubscribedWebhookEventTypes",
             "pageTitle": "notifications/ListSubscribedWebhookEventTypes",
@@ -964,7 +842,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/ListWebhooks.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/ListWebhooks.php",
             "projectPath": "notifications/ListWebhooks.php",
             "targetPath": "notifications/ListWebhooks",
             "pageTitle": "notifications/ListWebhooks",
@@ -982,7 +860,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/SearchWebhookEvents.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/SearchWebhookEvents.php",
             "projectPath": "notifications/SearchWebhookEvents.php",
             "targetPath": "notifications/SearchWebhookEvents",
             "pageTitle": "notifications/SearchWebhookEvents",
@@ -1000,7 +878,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/UpdateWebhook.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/UpdateWebhook.php",
             "projectPath": "notifications/UpdateWebhook.php",
             "targetPath": "notifications/UpdateWebhook",
             "pageTitle": "notifications/UpdateWebhook",
@@ -1018,7 +896,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/ValidateWebhookEvent.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/ValidateWebhookEvent.php",
             "projectPath": "notifications/ValidateWebhookEvent.php",
             "targetPath": "notifications/ValidateWebhookEvent",
             "pageTitle": "notifications/ValidateWebhookEvent",
@@ -1036,7 +914,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/notifications/WebhookEventTypesList.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/notifications/WebhookEventTypesList.php",
             "projectPath": "notifications/WebhookEventTypesList.php",
             "targetPath": "notifications/WebhookEventTypesList",
             "pageTitle": "notifications/WebhookEventTypesList",
@@ -1064,35 +942,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/CreateWebProfile.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/CreateWebProfile.php",
             "projectPath": "payment-experience/CreateWebProfile.php",
             "targetPath": "payment-experience/CreateWebProfile",
             "pageTitle": "payment-experience/CreateWebProfile",
             "title": "CreateWebProfile"
           },
-          "depth": 2,
-          "outline": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Create Web Profile",
-                "slug": "create-web-profile"
-              },
-              "depth": 3,
-              "children": [
-                {
-                  "type": "heading",
-                  "data": {
-                    "level": 4,
-                    "title": "Payment Web experience profile resource",
-                    "slug": "payment-web-experience-profile-resource"
-                  },
-                  "depth": 4
-                }
-              ]
-            }
-          ]
+          "depth": 2
         }, {
           "type": "file",
           "data": {
@@ -1104,7 +960,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/DeleteWebProfile.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/DeleteWebProfile.php",
             "projectPath": "payment-experience/DeleteWebProfile.php",
             "targetPath": "payment-experience/DeleteWebProfile",
             "pageTitle": "payment-experience/DeleteWebProfile",
@@ -1122,7 +978,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/GetWebProfile.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/GetWebProfile.php",
             "projectPath": "payment-experience/GetWebProfile.php",
             "targetPath": "payment-experience/GetWebProfile",
             "pageTitle": "payment-experience/GetWebProfile",
@@ -1140,7 +996,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/ListWebProfiles.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/ListWebProfiles.php",
             "projectPath": "payment-experience/ListWebProfiles.php",
             "targetPath": "payment-experience/ListWebProfiles",
             "pageTitle": "payment-experience/ListWebProfiles",
@@ -1158,7 +1014,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/PartiallyUpdateWebProfile.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/PartiallyUpdateWebProfile.php",
             "projectPath": "payment-experience/PartiallyUpdateWebProfile.php",
             "targetPath": "payment-experience/PartiallyUpdateWebProfile",
             "pageTitle": "payment-experience/PartiallyUpdateWebProfile",
@@ -1176,7 +1032,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payment-experience/UpdateWebProfile.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payment-experience/UpdateWebProfile.php",
             "projectPath": "payment-experience/UpdateWebProfile.php",
             "targetPath": "payment-experience/UpdateWebProfile",
             "pageTitle": "payment-experience/UpdateWebProfile",
@@ -1204,7 +1060,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/AuthorizationCapture.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/AuthorizationCapture.php",
             "projectPath": "payments/AuthorizationCapture.php",
             "targetPath": "payments/AuthorizationCapture",
             "pageTitle": "payments/AuthorizationCapture",
@@ -1222,7 +1078,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/AuthorizePayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/AuthorizePayment.php",
             "projectPath": "payments/AuthorizePayment.php",
             "targetPath": "payments/AuthorizePayment",
             "pageTitle": "payments/AuthorizePayment",
@@ -1240,7 +1096,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/AuthorizePaymentUsingPayPal.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/AuthorizePaymentUsingPayPal.php",
             "projectPath": "payments/AuthorizePaymentUsingPayPal.php",
             "targetPath": "payments/AuthorizePaymentUsingPayPal",
             "pageTitle": "payments/AuthorizePaymentUsingPayPal",
@@ -1258,7 +1114,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/CreateFuturePayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/CreateFuturePayment.php",
             "projectPath": "payments/CreateFuturePayment.php",
             "targetPath": "payments/CreateFuturePayment",
             "pageTitle": "payments/CreateFuturePayment",
@@ -1276,13 +1132,99 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/CreatePayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/CreatePayment.php",
             "projectPath": "payments/CreatePayment.php",
             "targetPath": "payments/CreatePayment",
             "pageTitle": "payments/CreatePayment",
             "title": "CreatePayment"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "CreatePaymentSample",
+                "slug": "createpaymentsample"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "PaymentCard",
+                    "slug": "paymentcard"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "FundingInstrument",
+                    "slug": "fundinginstrument"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Payer",
+                    "slug": "payer"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Itemized information",
+                    "slug": "itemized-information"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Additional payment details",
+                    "slug": "additional-payment-details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Amount",
+                    "slug": "amount"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Transaction",
+                    "slug": "transaction"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Payment",
+                    "slug": "payment"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Create Payment",
+                    "slug": "create-payment"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -1294,7 +1236,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/CreatePaymentUsingPayPal.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/CreatePaymentUsingPayPal.php",
             "projectPath": "payments/CreatePaymentUsingPayPal.php",
             "targetPath": "payments/CreatePaymentUsingPayPal",
             "pageTitle": "payments/CreatePaymentUsingPayPal",
@@ -1312,7 +1254,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/CreatePaymentUsingSavedCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/CreatePaymentUsingSavedCard.php",
             "projectPath": "payments/CreatePaymentUsingSavedCard.php",
             "targetPath": "payments/CreatePaymentUsingSavedCard",
             "pageTitle": "payments/CreatePaymentUsingSavedCard",
@@ -1330,7 +1272,119 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/ExecutePayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/CreateThirdPartyPayment.php",
+            "projectPath": "payments/CreateThirdPartyPayment.php",
+            "targetPath": "payments/CreateThirdPartyPayment",
+            "pageTitle": "payments/CreateThirdPartyPayment",
+            "title": "CreateThirdPartyPayment"
+          },
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Create Third Party Payment using PayPal as payment method",
+                "slug": "create-third-party-payment-using-paypal-as-payment-method"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Payer",
+                    "slug": "payer"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Itemized information",
+                    "slug": "itemized-information"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Additional payment details",
+                    "slug": "additional-payment-details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Amount",
+                    "slug": "amount"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Payee",
+                    "slug": "payee"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Transaction",
+                    "slug": "transaction"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Redirect urls",
+                    "slug": "redirect-urls"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Payment",
+                    "slug": "payment"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Create Payment",
+                    "slug": "create-payment"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Get redirect url",
+                    "slug": "get-redirect-url"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [{}, ".fbp"],
+              "pygmentsLexer": "php",
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "PHP"
+            },
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/ExecutePayment.php",
             "projectPath": "payments/ExecutePayment.php",
             "targetPath": "payments/ExecutePayment",
             "pageTitle": "payments/ExecutePayment",
@@ -1348,7 +1402,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/GetAuthorization.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/GetAuthorization.php",
             "projectPath": "payments/GetAuthorization.php",
             "targetPath": "payments/GetAuthorization",
             "pageTitle": "payments/GetAuthorization",
@@ -1366,7 +1420,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/GetCapture.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/GetCapture.php",
             "projectPath": "payments/GetCapture.php",
             "targetPath": "payments/GetCapture",
             "pageTitle": "payments/GetCapture",
@@ -1384,13 +1438,35 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/GetPayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/GetPayment.php",
             "projectPath": "payments/GetPayment.php",
             "targetPath": "payments/GetPayment",
             "pageTitle": "payments/GetPayment",
             "title": "GetPayment"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "GetPaymentSample",
+                "slug": "getpaymentsample"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Retrieve payment",
+                    "slug": "retrieve-payment"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -1402,7 +1478,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/ListPayments.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/ListPayments.php",
             "projectPath": "payments/ListPayments.php",
             "targetPath": "payments/ListPayments",
             "pageTitle": "payments/ListPayments",
@@ -1420,7 +1496,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderAuthorize.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderAuthorize.php",
             "projectPath": "payments/OrderAuthorize.php",
             "targetPath": "payments/OrderAuthorize",
             "pageTitle": "payments/OrderAuthorize",
@@ -1438,7 +1514,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderCapture.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderCapture.php",
             "projectPath": "payments/OrderCapture.php",
             "targetPath": "payments/OrderCapture",
             "pageTitle": "payments/OrderCapture",
@@ -1456,7 +1532,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderCreateForAuthorization.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderCreateForAuthorization.php",
             "projectPath": "payments/OrderCreateForAuthorization.php",
             "targetPath": "payments/OrderCreateForAuthorization",
             "pageTitle": "payments/OrderCreateForAuthorization",
@@ -1474,7 +1550,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderCreateForCapture.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderCreateForCapture.php",
             "projectPath": "payments/OrderCreateForCapture.php",
             "targetPath": "payments/OrderCreateForCapture",
             "pageTitle": "payments/OrderCreateForCapture",
@@ -1492,7 +1568,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderCreateForVoid.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderCreateForVoid.php",
             "projectPath": "payments/OrderCreateForVoid.php",
             "targetPath": "payments/OrderCreateForVoid",
             "pageTitle": "payments/OrderCreateForVoid",
@@ -1510,7 +1586,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderCreateUsingPayPal.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderCreateUsingPayPal.php",
             "projectPath": "payments/OrderCreateUsingPayPal.php",
             "targetPath": "payments/OrderCreateUsingPayPal",
             "pageTitle": "payments/OrderCreateUsingPayPal",
@@ -1528,7 +1604,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderDoVoid.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderDoVoid.php",
             "projectPath": "payments/OrderDoVoid.php",
             "targetPath": "payments/OrderDoVoid",
             "pageTitle": "payments/OrderDoVoid",
@@ -1546,7 +1622,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/OrderGet.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/OrderGet.php",
             "projectPath": "payments/OrderGet.php",
             "targetPath": "payments/OrderGet",
             "pageTitle": "payments/OrderGet",
@@ -1564,7 +1640,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/Reauthorization.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/Reauthorization.php",
             "projectPath": "payments/Reauthorization.php",
             "targetPath": "payments/Reauthorization",
             "pageTitle": "payments/Reauthorization",
@@ -1582,13 +1658,35 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/RefundCapture.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/RefundCapture.php",
             "projectPath": "payments/RefundCapture.php",
             "targetPath": "payments/RefundCapture",
             "pageTitle": "payments/RefundCapture",
             "title": "RefundCapture"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Refund Capture Sample",
+                "slug": "refund-capture-sample"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Refund",
+                    "slug": "refund"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -1600,7 +1698,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/UpdatePayment.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/UpdatePayment.php",
             "projectPath": "payments/UpdatePayment.php",
             "targetPath": "payments/UpdatePayment",
             "pageTitle": "payments/UpdatePayment",
@@ -1618,7 +1716,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payments/VoidAuthorization.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payments/VoidAuthorization.php",
             "projectPath": "payments/VoidAuthorization.php",
             "targetPath": "payments/VoidAuthorization",
             "pageTitle": "payments/VoidAuthorization",
@@ -1646,7 +1744,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payouts/CancelPayoutItem.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payouts/CancelPayoutItem.php",
             "projectPath": "payouts/CancelPayoutItem.php",
             "targetPath": "payouts/CancelPayoutItem",
             "pageTitle": "payouts/CancelPayoutItem",
@@ -1664,7 +1762,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payouts/CreateBatchPayout.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payouts/CreateBatchPayout.php",
             "projectPath": "payouts/CreateBatchPayout.php",
             "targetPath": "payouts/CreateBatchPayout",
             "pageTitle": "payouts/CreateBatchPayout",
@@ -1682,7 +1780,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payouts/CreateSinglePayout.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payouts/CreateSinglePayout.php",
             "projectPath": "payouts/CreateSinglePayout.php",
             "targetPath": "payouts/CreateSinglePayout",
             "pageTitle": "payouts/CreateSinglePayout",
@@ -1700,7 +1798,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payouts/GetPayoutBatchStatus.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payouts/GetPayoutBatchStatus.php",
             "projectPath": "payouts/GetPayoutBatchStatus.php",
             "targetPath": "payouts/GetPayoutBatchStatus",
             "pageTitle": "payouts/GetPayoutBatchStatus",
@@ -1718,7 +1816,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/payouts/GetPayoutItemStatus.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/payouts/GetPayoutItemStatus.php",
             "projectPath": "payouts/GetPayoutItemStatus.php",
             "targetPath": "payouts/GetPayoutItemStatus",
             "pageTitle": "payouts/GetPayoutItemStatus",
@@ -1746,13 +1844,43 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/sale/GetSale.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/sale/GetSale.php",
             "projectPath": "sale/GetSale.php",
             "targetPath": "sale/GetSale",
             "pageTitle": "sale/GetSale",
             "title": "GetSale"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Get Sale sample",
+                "slug": "get-sale-sample"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Get Sale From Created Payment",
+                    "slug": "get-sale-from-created-payment"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Retrieve the sale object",
+                    "slug": "retrieve-the-sale-object"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -1764,41 +1892,51 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/sale/RefundSale.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/sale/RefundSale.php",
             "projectPath": "sale/RefundSale.php",
             "targetPath": "sale/RefundSale",
             "pageTitle": "sale/RefundSale",
             "title": "RefundSale"
           },
-          "depth": 2
-        }
-      ]
-    }, {
-      "type": "folder",
-      "data": {
-        "path": "tls",
-        "title": "tls"
-      },
-      "depth": 1,
-      "children": [
-        {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [{}, ".fbp"],
-              "pygmentsLexer": "php",
-              "singleLineComment": ["//"],
-              "ignorePrefix": "}",
-              "foldPrefix": "^",
-              "name": "PHP"
-            },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/tls/TlsCheck.php",
-            "projectPath": "tls/TlsCheck.php",
-            "targetPath": "tls/TlsCheck",
-            "pageTitle": "tls/TlsCheck",
-            "title": "TlsCheck"
-          },
-          "depth": 2
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Sale Refund Sample",
+                "slug": "sale-refund-sample"
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Refund amount",
+                    "slug": "refund-amount"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Refund object",
+                    "slug": "refund-object"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Sale",
+                    "slug": "sale"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
         }
       ]
     }, {
@@ -1820,7 +1958,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/CreateBankAccount.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/CreateBankAccount.php",
             "projectPath": "vault/CreateBankAccount.php",
             "targetPath": "vault/CreateBankAccount",
             "pageTitle": "vault/CreateBankAccount",
@@ -1838,7 +1976,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/CreateCreditCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/CreateCreditCard.php",
             "projectPath": "vault/CreateCreditCard.php",
             "targetPath": "vault/CreateCreditCard",
             "pageTitle": "vault/CreateCreditCard",
@@ -1856,7 +1994,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/DeleteBankAccount.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/DeleteBankAccount.php",
             "projectPath": "vault/DeleteBankAccount.php",
             "targetPath": "vault/DeleteBankAccount",
             "pageTitle": "vault/DeleteBankAccount",
@@ -1874,7 +2012,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/DeleteCreditCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/DeleteCreditCard.php",
             "projectPath": "vault/DeleteCreditCard.php",
             "targetPath": "vault/DeleteCreditCard",
             "pageTitle": "vault/DeleteCreditCard",
@@ -1892,7 +2030,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/GetBankAccount.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/GetBankAccount.php",
             "projectPath": "vault/GetBankAccount.php",
             "targetPath": "vault/GetBankAccount",
             "pageTitle": "vault/GetBankAccount",
@@ -1910,7 +2048,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/GetCreditCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/GetCreditCard.php",
             "projectPath": "vault/GetCreditCard.php",
             "targetPath": "vault/GetCreditCard",
             "pageTitle": "vault/GetCreditCard",
@@ -1928,7 +2066,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/ListCreditCards.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/ListCreditCards.php",
             "projectPath": "vault/ListCreditCards.php",
             "targetPath": "vault/ListCreditCards",
             "pageTitle": "vault/ListCreditCards",
@@ -1946,7 +2084,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "PHP"
             },
-            "sourcePath": "/Users/scoffey/paypal/server_sdk/PayPal-PHP-SDK/sample/vault/UpdateCreditCard.php",
+            "sourcePath": "/Users/japatel/paypal/github/PayPal-PHP-SDK/sample/vault/UpdateCreditCard.php",
             "projectPath": "vault/UpdateCreditCard.php",
             "targetPath": "vault/UpdateCreditCard",
             "pageTitle": "vault/UpdateCreditCard",

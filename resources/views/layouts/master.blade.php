@@ -53,7 +53,7 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="{{ url('/mailbox') }}">
+          <a href="#mailbox">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
           <ul class="treeview-menu">
@@ -96,28 +96,23 @@
           <a href="{{ url('/upload') }}">
             <i class="fa fa-upload"></i> <span>Upload</span>
             <span class="pull-right-container">
-              <span class="label label-info pull-right">28</span>
+              <span class="label label-info pull-right"><b id = "numUploads">{{ session('numUploads') }}</b></span>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('/upload/photo') }}"><i class="fa fa-photo"></i> Photo
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">new</small>
+                      <small class="label pull-right bg-green"><b id = "numPhotos">{{ session('numPhotos') }}</b></small>
                     </span>
                 </a>
             </li>
             <li><a href="{{ url('/upload/video') }}"><i class="fa fa-video-camera"></i> Video
                     <span class="pull-right-container">
-                      <small class="label pull-right bg-green">new</small>
+                      <small class="label pull-right bg-green"><b id = "numVideos">{{ session('numVideos') }}</b></small>
                     </span>
                 </a>
             </li>
           </ul>
-        </li>
-        <li>
-          <a href="{{ url('/events') }}">
-            <i class="fa fa-calendar"></i> <span>Events</span>
-          </a>
         </li>
         <li>
           <a href="{{ url('/statistics') }}">
@@ -164,7 +159,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.1
     </div>
-    <strong>Copyright &copy; {{ date('Y') }} <a href="/">iPub.com</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{ date('Y') }} <a href="/">iPub.com</a></strong> . All rights reserved.
   </footer>
 
   @endif

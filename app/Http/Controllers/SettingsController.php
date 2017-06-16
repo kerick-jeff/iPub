@@ -9,6 +9,7 @@ use File;
 use Validator;
 use App\GeoLocation;
 use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -44,11 +45,15 @@ class SettingsController extends Controller
         }
 
         if($request->hasFile('profile_picture')){
-            $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name;
+            $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().Auth::user()->id."-".Auth::user()->name."/";
             $old = $path."/".Auth::user()->profile_picture;
             $picture = $request->profile_picture;
             $filename = $picture->getClientOriginalName();
-            Image::make($picture)->resize(300, 300)->save($path."/".$filename);
+            // Create user account directory if it doesn't exists
+            if(!Storage::disk('public')->exists(Auth::user()->id."-".Auth::user()->name)){
+                Storage::disk('public')->makeDirectory(Auth::user()->id."-".Auth::user()->name);
+            }
+            Image::make($picture)->resize(300, 300)->save($path.$filename);
             User::where('id', Auth::user()->id)
                 ->update(['profile_picture' => $filename]);
             if(!empty($old)){
@@ -131,6 +136,26 @@ class SettingsController extends Controller
             ->update(['password' => bcrypt($request->password)]);
 
         return redirect('/settings');
+    }
+
+    /**
+     * adds a new product or service
+     * @param Request $request
+     */
+    public function setProduct(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+        ], ['name.required' => 'Please enter the name of a product/service']);
+
+        if($validator->fails()){
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Product::create($request->all());
+
+        return redirect('/settings')->with('product', 'New product/service added!');
     }
 
     /**
