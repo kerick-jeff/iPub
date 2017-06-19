@@ -63,14 +63,35 @@ class EmailController extends Controller
      */
     public function invite(Request $request){
         $email = $request->email;
-        $send = @Mail::send('emails.invite', ['email' => $email], function($message) use ($email){
-            $message->from('frukerickjeff@gmail.com', 'iPub');
-            $message->to($email)
-                    ->subject('iPub. Invitation to Rate');
-        });
+        $send = null;
+
+        if(Auth::user()->profile_picture) {
+            $imagePath = "/".Auth::user()->id."-".Auth::user()->name."/".Auth::user()->profile_picture;
+
+            $send = @Mail::send('emails.invite', ['email' => $email, 'profilePicture' => Storage::disk('public')->get($imagePath)], function($message) use ($email){
+                $message->from('frukerickjeff@gmail.com', 'iPub');
+                $message->to($email)
+                        ->subject('iPub. Invitation to Rate');
+            });
+        } else {
+            $imagePath = "/"."anonymous.jpg";
+
+            $send = @Mail::send('emails.invite', ['email' => $email, 'profilePicture' => Storage::disk('anonymous')->get($imagePath)], function($message) use ($email){
+                $message->from('frukerickjeff@gmail.com', 'iPub');
+                $message->to($email)
+                        ->subject('iPub. Invitation to Rate');
+            });
+        }
 
         if($send){
-            Invited::create(['user_id' => Auth::user()->id, 'email' => $email, 'accepted' => 0]);
+            $alreadyInvited = Invited::where('user_id', Auth::user()->id)
+                              ->where('email', $email)
+                              ->first();
+
+            if(!$alreadyInvited) {
+                Invited::create(['user_id' => Auth::user()->id, 'email' => $email, 'accepted' => 0]);
+            }
+
             return redirect('/account')->with('success', 'Your invitation has been successfully sent to '.$email);
         } else {
             return redirect('/account')->with('failure', 'Sending your invitation to'.$email." failed");

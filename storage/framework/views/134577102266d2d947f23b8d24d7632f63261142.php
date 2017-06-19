@@ -11,6 +11,7 @@
         @media  only screen and (min-device-width: 601px) {
           .content {width: 600px !important; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
         }
+
         .heading {padding: 40px 30px 20px 30px;}
         .col425 {width: 425px!important;}
         .subhead {font-size: 15px; color: #ffffff; letter-spacing: 4px;}
@@ -36,8 +37,6 @@
           body[yahoo] .buttonwrapper {background-color: transparent!important;}
           body[yahoo] .button a {background-color: #e05443; padding: 15px 15px 13px!important; display: block!important;}
         }
-        body[yahoo] .unsubscribe {display: block; margin-top: 20px; padding: 10px 50px; background: #2f3942; border-radius: 5px; text-decoration: none!important; font-weight: bold;}
-        body[yahoo] .hide {display: none!important;}
     </style>
   </head>
   <body yahoo bgcolor = "#f0f3f6">

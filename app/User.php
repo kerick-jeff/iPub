@@ -23,7 +23,6 @@ class User extends Authenticatable
         'country',
         'dial_code',
         'stars',
-        'invited',
         'followers',
         'confirmed',
         'confirmation_code'

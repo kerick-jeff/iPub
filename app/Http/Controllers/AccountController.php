@@ -42,6 +42,14 @@ class AccountController extends Controller
             array_push($ratings, $rating);
         }
 
+        // get people invited by an authenticated user
+        $noInviteds = count(Auth::user()->inviteds()->get());
+        $inviteds = Auth::user()
+                        ->inviteds()
+                        ->orderBy('created_at', 'desc')
+                        ->take(2)
+                        ->get();
+
         // geolocations
         $geoLocations = Auth::user()->geoLocations()->get();
 
@@ -68,7 +76,7 @@ class AccountController extends Controller
 
         $labels = ['primary', 'success', 'info', 'warning', 'danger'];
 
-        return view('account', ['links' => $links, 'products' => $products, 'ratings' => $ratings, 'noRaters' => $noRaters, 'status' => $status, 'geoLocations' => $geoLocations, 'locations' => $locations, 'labels' => $labels]);
+        return view('account', ['links' => $links, 'products' => $products, 'ratings' => $ratings, 'noRaters' => $noRaters, 'inviteds' => $inviteds, 'noInviteds' => $noInviteds, 'status' => $status, 'geoLocations' => $geoLocations, 'locations' => $locations, 'labels' => $labels]);
     }
 
     /**

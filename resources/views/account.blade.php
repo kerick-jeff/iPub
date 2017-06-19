@@ -74,7 +74,7 @@
             <b>Raters</b> <a class="pull-right">{{ $noRaters }}</a>
           </li>
           <li class="list-group-item">
-            <b>Invited</b> <a class="pull-right">{{ Auth::user()->invited }}</a>
+            <b>Invited</b> <a class="pull-right">{{ $noInviteds }}</a>
           </li>
         </ul>
 
@@ -483,83 +483,74 @@
             </div>
             <!-- /.col -->
 
-            <!-- recently added Pubs -->
-          <div class = "col-md-6">
-            <div class="box box-info">
-              <div class="box-header with-border">
-                <h3 class="box-title">Recently Added Pubs</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <!-- People invited -->
+            <div class="col-md-6">
+              <div class="box box-info" id = "inviteds">
+                <div class="box-header with-border">
+                  <h3 class="box-title">People you have Invited</h3>
+                  <div class="box-tools pull-right">
+                    <span class="label label-info">{{ $noInviteds }}</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
                 </div>
+
+                <!-- /.box-header -->
+                @if($noInviteds > 0)
+                  <div class="box-body">
+                    <ul class="products-list product-list-in-box">
+                      @foreach($inviteds as $invited)
+                        <li class="item">
+                          <div class="product-img">
+                            <img src="{{ asset('ipub/dist/img/boxed-bg.jpg') }}" alt="Invited background">
+                          </div>
+                          <div class="product-info">
+                            <a class="product-title">{{ $invited->email }}</a>
+                            <span class="product-description">
+                              Invitation status : {{ $invited->accepted ? "Accepted" : "Not accepted" }}
+                            </span>
+                          </div>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                  <!-- /.box-body -->
+                  @if($noInviteds > count($inviteds))
+                    <div class="box-footer text-center">
+                      <a href="#view-all-inviteds" data-toggle = "modal" class="uppercase">View All</a>
+                      <!-- View all inviteds modal -->
+                      <div class="modal fade" id="view-all-inviteds" tabindex="-1" role="dialog" aria-labelledby="ViewAllInviteds" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class = "text-danger">&times;</span></button>
+                              <h4 class="modal-title" id="invited-label">People you have Invited</h4>
+                            </div>
+                            <div class="modal-body">
+                              <ul class="products-list product-list-in-box" id = "inviteds">
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- edit view all inviteds modal -->
+                    </div>
+                    <!-- /.box-footer -->
+                  @endif
+                @else
+                  <div class="box-body no-padding">
+                    <div class="alert alert-info alert-dismissible" role="alert"style="font-size: 15px; margin: 10px">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      You have invited no one yet!!!
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                @endif
               </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <ul class="products-list product-list-in-box">
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/avatar.png') }}" alt="Product Image">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Samsung TV
-                        <span class="label label-warning pull-right">$1800</span></a>
-                          <span class="product-description">
-                            Samsung 32" 1080p 60Hz LED Smart HDTV.
-                          </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Bicycle
-                        <span class="label label-info pull-right">$700</span></a>
-                          <span class="product-description">
-                            26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                          </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                          <span class="product-description">
-                            Xbox One Console Bundle with Halo Master Chief Collection.
-                          </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="{{ asset('ipub/dist/img/default-50x50.gif') }}" alt="Product Image">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">PlayStation 4
-                        <span class="label label-success pull-right">$399</span></a>
-                          <span class="product-description">
-                            PlayStation 4 500GB Console (PS4)
-                          </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                </ul>
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All</a>
-              </div>
-              <!-- /.box-footer -->
+              <!--/.box -->
             </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
+            <!-- /.col -->
           </div>
 
           <!-- recently added pubs -->
@@ -917,7 +908,7 @@
     $("#view-all-raters").on('show.bs.modal', function(e){
         $.ajax({
             type : "GET",
-            url : "/account/raters",
+            url : "/account/raters/json",
             data : "_token={{ csrf_token() }}",
             success : function(ratings) {
                 var result = "";
@@ -937,6 +928,37 @@
                 }
 
                 $("#view-all-raters #raters").html(result);
+            },
+            error : function(error) {
+                console.log("error: " + error.status);
+            }
+        });
+    });
+
+    // when view all inviteds modal is about to be shown
+    $("#view-all-inviteds").on('show.bs.modal', function(e){
+        $.ajax({
+            type : "GET",
+            url : "/account/inviteds/json",
+            data : "_token={{ csrf_token() }}",
+            success : function(inviteds) {
+                var result = "";
+
+                for(var i = 0; i < inviteds.length; i++) {
+                    result += "<li class='item'>";
+                    result += "<div class='product-img'>";
+                    result += "<img src='{{ asset('ipub/dist/img/boxed-bg.jpg') }}' alt='Invited background'>";
+                    result += "</div>";
+                    result += "<div class='product-info' style = 'text-align: left'>";
+                    result += "<a class='product-title'>" + inviteds[i].email + "</a>";
+                    result += "<span class='product-description'>";
+                    result += "Invitation status : " + (inviteds[i].accepted ? "Accepted" : "Not accepted");
+                    result += "</span>";
+                    result += "</div>";
+                    result += "</li>";
+                }
+
+                $("#view-all-inviteds #inviteds").html(result);
             },
             error : function(error) {
                 console.log("error: " + error.status);

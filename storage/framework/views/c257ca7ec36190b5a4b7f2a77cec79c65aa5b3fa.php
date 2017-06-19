@@ -14,7 +14,7 @@
       <table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td height="115" style="padding: 0 20px 20px 0;">
-            <img src="<?php echo e(asset('land1.jpg')); ?>" width="115" height="115" border="0" alt="<?php echo e(Auth::user()->name); ?>" />
+            <img src="<?php echo e($message->embedData($profilePicture, 'profile picture')); ?>" width="115" height="115" border="0" alt="<?php echo e(Auth::user()->name); ?>" />
           </td>
         </tr>
       </table>
@@ -29,9 +29,9 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="bodycopy">
-                  By accepting this request: </br></br>
-                  An iPub Rater account will be created with your email if you do not already have one. </br></br>
-                  You will only be able to rate pubs on iPub when you are in Rating mode. </br></br>
+                  By accepting this request: <br /><br />
+                  An iPub Rater account will be created with your email if you do not already have one. <br /><br />
+                  You will only be able to rate pubs on iPub when you are in Rating mode. <br /><br />
                   You will be able to rate any pub, not only pubs created by <?php echo e(Auth::user()->name); ?>
 
                 </td>

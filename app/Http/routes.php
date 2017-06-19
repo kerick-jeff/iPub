@@ -239,6 +239,18 @@ Route::get('/account/raters/{returnType?}', function($returnType = null){
     }
 });
 
+Route::get('/account/inviteds/{returnType?}', function($returnType = null){
+    $inviteds = Auth::user()
+                    ->inviteds()
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+    if($returnType == null) {
+        return $inviteds;
+    } elseif ($returnType == "json") {
+        return Response::json($inviteds);
+    }
+});
 /* end of AccountController routes */
 
 /* LinkController routes */
