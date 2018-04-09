@@ -30,6 +30,11 @@ class EmailController extends Controller
             $link->caption = "email";
             $link->save();
 
+            //create rating instance
+            $rating = new Rating();
+            $rating->user_id = $user->id;
+            $rating->save();
+
             // create a directory for holding content for each user upon verification
             Storage::disk('public')->makeDirectory($user->id."-".$user->name);
 

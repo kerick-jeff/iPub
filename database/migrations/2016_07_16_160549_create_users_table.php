@@ -24,8 +24,6 @@ class CreateUsersTable extends Migration
              $table->text('description');
              $table->string('country');
              $table->char('dial_code', 6);
-             $table->enum('stars', [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5])->default(0);
-             $table->integer('followers')->default(0);
              $table->boolean('confirmed')->default(0); // unconfirmed user account(false), confirmed user account(true)
              $table->string('confirmation_code', 30)->nullable();
              $table->rememberToken();

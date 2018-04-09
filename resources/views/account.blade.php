@@ -414,7 +414,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Raters</h3>
                   <div class="box-tools pull-right">
-                    <span class="label label-info">{{ $noRaters == 1 ? "1 Rater" : $noRaters." Raters" }}</span>
+                    <span class="label label-info" id = "no-raters">{{ $noRaters }}</span>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -434,7 +434,7 @@
                           <div class="product-info">
                             <a class="product-title">{{ $rating['rater']->email }}</a>
                             <span class="product-description">
-                              Rated : {{ $rating['noRatings'] }} [of your pubs]
+                              Liked: {{ $rating['noLikes'] }}, Rated : {{ $rating['noRatings']  }} [of your pubs]
                             </span>
                           </div>
                         </li>
@@ -489,7 +489,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">People you have Invited</h3>
                   <div class="box-tools pull-right">
-                    <span class="label label-info">{{ $noInviteds }}</span>
+                    <span class="label label-info" id = "no-inviteds">{{ $noInviteds }}</span>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
@@ -921,12 +921,13 @@
                     result += "<div class='product-info' style = 'text-align: left'>";
                     result += "<a class='product-title'>" + ratings[i]['rater'].email + "</a>";
                     result += "<span class='product-description'>";
-                    result += "Rated : " + ratings[i]['noRatings'] + " [of your pubs]";
+                    result += "Liked: " + ratings[i]['noLikes'] + ", Rated : " + ratings[i]['noRatings'] + " [of your pubs]";
                     result += "</span>";
                     result += "</div>";
                     result += "</li>";
                 }
 
+                $("#raters #no-raters").html(ratings.length);
                 $("#view-all-raters #raters").html(result);
             },
             error : function(error) {
@@ -958,6 +959,7 @@
                     result += "</li>";
                 }
 
+                $("#inviteds #no-inviteds").html(inviteds.length);
                 $("#view-all-inviteds #inviteds").html(result);
             },
             error : function(error) {

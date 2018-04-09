@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PubRater extends Migration
+class CreatePubRaterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,15 @@ class PubRater extends Migration
         Schema::create('pub_rater', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pub_id')->unsigned();
-            $table->integer('rater_id')->unsigned();
+            $table->integer('liker_id')->unsigned()->nullable();
+            $table->integer('rater_id')->unsigned()->nullable();
             $table->foreign('pub_id')
                   ->references('id')->on('pubs')
                   ->onDelete('cascade');
             $table->foreign('rater_id')
+                  ->references('id')->on('raters')
+                  ->onDelete('cascade');
+            $table->foreign('liker_id')
                   ->references('id')->on('raters')
                   ->onDelete('cascade');
         });

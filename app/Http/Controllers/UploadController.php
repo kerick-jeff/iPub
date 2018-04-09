@@ -59,8 +59,8 @@ class UploadController extends Controller
 		   $image->mime() != null && substr($image->mime(), 0, strlen($type)) === $type){  // check file exists and valid and type type
 		    if($image->filesize() < 5242880){  // check file size
 		        if( $width >= 200 && $height >= 200 ){ //check file dimensions
-                    $userName = User::find($user_id)->value('name');
-					$path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".$userName.'/photo/';
+                $userName = User::find($user_id)->value('name');
+					      $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$user_id."-".$userName.'/photo/';
 
                 // Create photo directory if it doesn't exists
 		            if(!Storage::disk('public')->exists($user_id."-".$userName.'/photo/')){

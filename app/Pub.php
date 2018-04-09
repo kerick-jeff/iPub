@@ -18,8 +18,7 @@ class Pub extends Model
         'category',
         'sub_category',
         'priority',
-        'views',
-        'ratings'
+        'likes'
     ];
 
     /**

@@ -21,8 +21,7 @@ class CreatePubsTable extends Migration
             $table->string('category');
             $table->string('sub_category');
             $table->enum('priority', [0, 1, 2, 3]);
-            $table->integer('views')->unsigned();
-            $table->integer('ratings')->unsigned();
+            $table->integer('likes')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')
                   ->references('id')->on('users')

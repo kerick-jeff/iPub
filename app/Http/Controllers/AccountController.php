@@ -32,13 +32,14 @@ class AccountController extends Controller
         $products = Auth::user()->products;
 
         // get an authenticated user's raters
-        $noRaters = count(DB::select('SELECT DISTINCT raters.id FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND raters.id = pub_rater.rater_id', [Auth::user()->id]));
-        $raters = DB::select('SELECT DISTINCT raters.* FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND raters.id = pub_rater.rater_id LIMIT 1', [Auth::user()->id]);
+        $noRaters = count(DB::select('SELECT DISTINCT raters.id FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND (raters.id = pub_rater.rater_id OR raters.id = pub_rater.liker_id)', [Auth::user()->id]));
+        $raters = DB::select('SELECT DISTINCT raters.* FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND (raters.id = pub_rater.rater_id OR raters.id = pub_rater.liker_id) ORDER BY created_at DESC LIMIT 1', [Auth::user()->id]);
 
         $ratings = [];
         foreach ($raters as $rater) {
             $noRatings = count(DB::select('SELECT pub_rater.pub_id FROM pubs, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND pub_rater.rater_id = ?', [Auth::user()->id, $rater->id]));
-            $rating = ['rater' => $rater, 'noRatings' => $noRatings];
+            $noLikes = count(DB::select('SELECT pub_rater.pub_id FROM pubs, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND pub_rater.liker_id = ?', [Auth::user()->id, $rater->id]));
+            $rating = ['rater' => $rater, 'noRatings' => $noRatings, 'noLikes' => $noLikes];
             array_push($ratings, $rating);
         }
 

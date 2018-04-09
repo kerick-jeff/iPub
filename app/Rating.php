@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProfilePicture extends Model
+class Rating extends Model
 {
     /**
     * the attributes that are mass assignable
@@ -12,17 +12,16 @@ class ProfilePicture extends Model
     */
     protected $fillable = [
         'user_id',
-        'filename',
-        'type',
-        'size',
-        'extension'
+        'rate',
+        'level',
+        'total'
     ];
-    
+
     /**
-     * a profile picture is owned by a single user
-     * @return \App\User
-     */
+    * a user's rating
+    * @return \App\User
+    */
     public function user(){
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

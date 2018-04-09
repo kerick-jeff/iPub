@@ -13,24 +13,33 @@
 }
 
 #label {
-  position: absolute;
-  margin: 20%;
+  position: relative;
+  margin: 10%;
   margin-top: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 0;
+  font-family: monospace;
+  font-weight: bold;
+  line-height: 175%;
   color: white;
-  font-size: 300%;
-  width: 50%;
+  font-size: 400%;
+  width: 80%;
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
   #label {
-    position: absolute;
     margin: 10%;
     margin-top: 20%;
-    margin-bottom: 5%;
-    color: white;
     font-size: 200%;
-    width: 90%;
+    line-height: 125%;
+  }
+}
+
+@media (max-width: 992px){
+  #label {
+    margin: 5%;
+    margin-bottom: 8%;
+    font-size: 250%;
+    line-height: 125%;
   }
 }
 </style>
@@ -39,7 +48,7 @@
 @section('extendable_content')
   <!-- Dislay landing page image -->
   <div class="content-wrapper" id = "bg">
-    <h1 id = "label">&ldquo;What are you, your friends, families and relations craving about?<br /> Tell'em it's on iPub&rdquo; &mdash; <i>Fru Kerick</i></h1>
+    <h1 id = "label">&ldquo;What are you, your friends, families and relations craving about? Tell'em it's on iPub&rdquo; &mdash; <i>Fru Kerick</i></h1>
   </div>
 
   <footer class="main-footer" style = "margin-left: 0px; background-color: ; position: fixed; bottom: 0px; left: 0px; right: 0px">

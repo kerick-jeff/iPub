@@ -22,15 +22,12 @@ class User extends Authenticatable
         'description',
         'country',
         'dial_code',
-        'stars',
-        'followers',
         'confirmed',
         'confirmation_code'
     ];
 
     /**
       * The attributes that should be hidden for arrays.
-      *
       * @var array
       */
     protected $hidden = [
@@ -39,11 +36,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * a user has one profile picture
-     * @return App\ProfilePicture
+     * a user has a rating
+     * @return App\Rating
      */
-    public function profilePicture(){
-        return $this->hasOne('App\ProfilePicture');
+    public function rating(){
+        return $this->hasOne('App\Rating');
     }
 
     /**

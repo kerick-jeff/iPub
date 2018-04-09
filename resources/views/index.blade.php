@@ -186,8 +186,15 @@
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle" src="{{ url('/profile-picture/'.$pubEntity[2]->id.'/'.$pubEntity[2]->name.'/'.$pubEntity[2]->profile_picture) }}" alt="User Image">
-                    <span class="username"><a href="#">{{ $pubEntity[2]->name }}</a></span>
-                    <span class="description">Shared publicly - {{ $pubEntity[0]->created_at->diffForHumans() }}</span>
+                    <span class="username"><a data-toggle = "modal" data-target = "#more" data-userid = "{{ $pubEntity[2]->id }}" title = "View more about {{ $pubEntity[2]->name }}" style="cursor: pointer">{{ $pubEntity[2]->name }}</a></span>
+                    <span class="description">
+                      <i class = "fa fa-star starry"></i>
+                      <i class = "fa fa-star starry"></i>
+                      <i class = "fa fa-star-half-full starry"></i>
+                      <i class = "fa fa-star-o starry"></i>
+                      <i class = "fa fa-star-o starry"></i>
+                    </span>
+                    <span class="description">Posted publicly - {{ $pubEntity[0]->created_at->diffForHumans() }}</span>
                   </div>
                   <!-- /.user-block -->
                   <div class="box-tools">
@@ -215,24 +222,30 @@
                     @endif
                   </div>
                   <div class="mailbox-read-info">
-                    <button type="button" class="btn btn-info btn-xs" data-toggle = "popover"><i class="fa fa-share-alt"></i> Share</button> &nbsp;
+                    <!--<button type="button" class="btn btn-success btn-xs" data-toggle = "popover"><i class="fa fa-share-alt"></i> Share</button> &nbsp;-->
                     @if(session('rater'))
                       @if($pubEntity[3])
-                        <span id = 'btn-rate-{{ $pubEntity[0]->id }}'>
-                          <button type="button" class="rate btn btn-warning btn-xs" title = "Rate this pub" data-pub-id = '{{ $pubEntity[0]->id }}'><i class="fa fa-star"></i> Rate</button> &nbsp;
+                        <button type="button" id = "btn-rate-{{ $pubEntity[0]->id }}" class="rate btn btn-warning btn-xs" data-toggle = "popover" data-pub-id = '{{ $pubEntity[0]->id }}' ><i class="fa fa-star"></i> Rate</button> &nbsp;
+                      @else
+                        <button type="button" id = "btn-rate-{{ $pubEntity[0]->id }}" class="rate btn btn-warning btn-xs" data-toggle = "popover" data-pub-id = '{{ $pubEntity[0]->id }}' disabled><i class="fa fa-star"></i> Rate</button> &nbsp;
+                      @endif
+
+                      @if($pubEntity[4])
+                        <span id = 'btn-like-{{ $pubEntity[0]->id }}'>
+                          <button type="button" class="like btn btn-info btn-xs" title = "Like this pub" data-pub-id = '{{ $pubEntity[0]->id }}'><i class="fa fa-thumbs-up"></i> Like</button> &nbsp;
                         </span>
                       @else
-                        <span id = 'btn-unrate-{{ $pubEntity[0]->id }}'>
-                          <button type="button" class="unrate btn btn-warning btn-xs" title = "Unrate this pub" data-pub-id = '{{ $pubEntity[0]->id }}'><i class="fa fa-star-o"></i> Unrate</button> &nbsp;
+                        <span id = 'btn-unlike-{{ $pubEntity[0]->id }}'>
+                          <button type="button" class="unlike btn btn-info btn-xs" title = "Unlike this pub" data-pub-id = '{{ $pubEntity[0]->id }}'><i class="fa fa-thumbs-o-down"></i> Unlike</button> &nbsp;
                         </span>
                       @endif
                     @else
-                      <button type="button" class="btn btn-xs" title = "Enter Rating Mode inorder to rate this pub" disabled><i class="fa fa-star starry"></i> Rate</button> &nbsp;
+                      <button type="button" class="btn btn-xs" title = "Enter Rating Mode inorder to rate {{ $pubEntity[2]->name }}"><i class="fa fa-star-o" disabled ></i> Rate</button> &nbsp;
+                      <button type="button" class="btn btn-xs" title = "Enter Rating Mode inorder to like this pub" disabled><i class="fa fa-thumbs-o-up"></i> Like</button> &nbsp;
                     @endif
                     <button type="button" class = "btn btn-primary btn-xs" data-toggle = "modal" data-target = "#more" data-userid = "{{ $pubEntity[2]->id }}" title = "View more about {{ $pubEntity[2]->name }}" ><i class="fa fa-plus"> More</i></button>
                     <span class="pull-right text-muted">
-                      <b id = 'ratings-{{ $pubEntity[0]->id }}'>{{ $pubEntity[0]->ratings == 0 || $pubEntity[0]->ratings == 1 ? $pubEntity[0]->ratings." Rating | " : $pubEntity[0]->ratings." Ratings | " }}</b>
-                      <b>6 Shares</b>
+                      <b id = 'likes-{{ $pubEntity[0]->id }}'>{{ $pubEntity[0]->likes == 1 ? $pubEntity[0]->likes." Like" : $pubEntity[0]->likes." Likes" }}</b>
                      </span>
                   </div>
                 </div>
@@ -461,50 +474,147 @@
           });
       }
 
-      $("button[data-toggle=popover]").popover({
-          html: true,
-          trigger: 'focus',
-          placement: 'top',
-          content: function(){
-              return "<span id='popover'><a href='#' class='btn btn-xs btn-primary'> <i class='fa fa-facebook'></i> </a> <a href='#' class='btn btn-xs btn-info'> <i class='fa fa-twitter' ></i> </a></span>";
-          }
+      $(".rate").hover(function(e) {
+          var pubId = $(e.target).data('pub-id');
+          console.log(pubId);
+          $(".rate[data-toggle=popover]").popover({
+              html: true,
+              trigger: 'focus',
+              placement: 'top',
+              content: function(){
+                  return "<i id = 'rate1' class='starry fa fa-star-o' onmouseover = 'rate1MouseOver()' onmouseleave = 'rate1MouseLeave()' onclick = 'rate(" + pubId + ", 1)' style = 'cursor: pointer'></i> <i id = 'rate2' class='starry fa fa-star-o' onmouseover = 'rate2MouseOver()' onmouseleave = 'rate2MouseLeave()' onclick = 'rate(" + pubId + ", 2)' style = 'cursor: pointer'></i> <i id = 'rate3' class='starry fa fa-star-o' onmouseover = 'rate3MouseOver()' onmouseleave = 'rate3MouseLeave()' onclick = 'rate(" + pubId + ", 3)' style = 'cursor: pointer'></i> <i id = 'rate4' class='starry fa fa-star-o' onmouseover = 'rate4MouseOver()' onmouseleave = 'rate4MouseLeave()' onclick = 'rate(" + pubId + ", 4)' style = 'cursor: pointer'></i> <i id = 'rate5' class='starry fa fa-star-o' onmouseover = 'rate5MouseOver()' onmouseleave = 'rate5MouseLeave()' onclick = 'rate(" + pubId + ", 5)' style = 'cursor: pointer'></i>";
+              }
+          });
       });
+    /*.on("mouseenter", function() {
+          var _this = this;
+          $(this).popover("show");
+          $(".popover").on("mouseleave", function() {
+              $(_this).popover("hide");
+          });
+      }).on("mouseleave", function() {
+          var _this = this;
+          setTimeout(function() {
+              if(!$(".popover:hover").length) {
+                  $(_this).popover("hide");
+              }
+          });
+      });*/
 
-      $(".rate").click(function(e) {
-          alert();
+      function rate(pubId, stars) {
+          // stars = Math.ceil(Math.random() * 5);
+          alert(pubId + " : " + stars);
+          /*$.ajax({
+              type : 'GET',
+              url : '/pubs/rate/' + pubId + "/" + stars + "/json",
+              data : "_token={{ csrf_token() }}",
+              dataType : "json",
+              success : function(rate) {
+                  //alert(rate + " : " + stars);
+                  $("#btn-rate-" + pubId).attr('disabled', 'disabled');
+              },
+              error : function(error) {
+                  alert(error.status);
+                  console.log("error: ", error.status);
+              }
+          });*/
+      }
+
+      function rate1MouseOver() {
+          $("#rate1").removeClass("fa-star-o").addClass("fa-star");
+      }
+
+      function rate1MouseLeave() {
+          $("#rate1").removeClass("fa-star").addClass("fa-star-o");
+      }
+
+      function rate2MouseOver() {
+          $("#rate1, #rate2").removeClass("fa-star-o").addClass("fa-star");
+      }
+
+      function rate2MouseLeave() {
+          $("#rate1, #rate2").removeClass("fa-star").addClass("fa-star-o");
+      }
+
+      function rate3MouseOver() {
+          $("#rate1, #rate2, #rate3").removeClass("fa-star-o").addClass("fa-star");
+      }
+
+      function rate3MouseLeave() {
+          $("#rate1, #rate2, #rate3").removeClass("fa-star").addClass("fa-star-o");
+      }
+
+      function rate4MouseOver() {
+          $("#rate1, #rate2, #rate3, #rate4").removeClass("fa-star-o").addClass("fa-star");
+      }
+
+      function rate4MouseLeave() {
+          $("#rate1, #rate2, #rate3, #rate4").removeClass("fa-star").addClass("fa-star-o");
+      }
+
+      function rate5MouseOver() {
+          $("#rate1, #rate2, #rate3, #rate4, #rate5").removeClass("fa-star-o").addClass("fa-star");
+      }
+
+      function rate5MouseLeave() {
+          $("#rate1, #rate2, #rate3, #rate4, #rate5").removeClass("fa-star").addClass("fa-star-o");
+      }
+
+      $(".like").click(function(e) {
           var pubId = $(e.target).data('pub-id');
           $.ajax({
               type : 'GET',
-              url : '/pubs/rate/' + pubId + "/json",
+              url : '/pubs/like/' + pubId + "/json",
               data : "_token={{ csrf_token() }}",
               dataType : "json",
-              success : function(ratings) {
-                  $("#btn-rate-" + pubId).html("<button type='button' class='unrate btn btn-warning btn-xs' title = 'Unrate this pub' data-pub-id = '" + pubId + "'><i class='fa fa-star-o'></i> Unrate</button> &nbsp;");
-                  $("#ratings-" + pubId).html(ratings == 0 || ratings == 1 ? ratings + " Rating | " : ratings + " Ratings | ");
+              success : function(likes) {
+                  $("#btn-like-" + pubId).html("<button type='button' class='unlike btn btn-info btn-xs' title = 'Unlike this pub' data-pub-id = '" + pubId + "'><i class='fa fa-thumbs-o-down'></i> Unlike</button> &nbsp;");
+                  $("#likes-" + pubId).html(likes == 1 ? likes + " Like | " : likes + " Likes | ");
               },
               error : function(error) {
+                  alert(error.status);
                   console.log("error: ", error.status);
               }
           });
       });
 
-      $(".unrate").click(function(e) {
-          alert();
+      $(".unlike").click(function(e) {
           var pubId = $(e.target).data('pub-id');
           $.ajax({
               type : 'GET',
-              url : '/pubs/unrate/' + pubId + "/json",
+              url : '/pubs/unlike/' + pubId + "/json",
               data : "_token={{ csrf_token() }}",
               dataType : "json",
-              success : function(ratings) {
-                  $("#btn-unrate-" + pubId).html("<button type='button' class='rate btn btn-warning btn-xs' title = 'Rate this pub' data-pub-id = '" + pubId + "'><i class='fa fa-star'></i> Rate</button> &nbsp;");
-                  $("#ratings-" + pubId).html(ratings == 0 || ratings == 1 ? ratings + " Rating | " : ratings + " Ratings | ");
+              success : function(likes) {
+                  $("#btn-unlike-" + pubId).html("<button type='button' class='like btn btn-info btn-xs' title = 'Like this pub' data-pub-id = '" + pubId + "'><i class='fa fa-thumbs-up'></i> Like</button> &nbsp;");
+                  $("#likes-" + pubId).html(likes == 1 ? likes + " Like | " : likes + " Likes | ");
               },
               error : function(error) {
+                  alert(error.status);
                   console.log("error: ", error.status);
               }
           });
       });
+
+      /*$(".rate").click(function(e) {
+          var pubId = $(e.target).data('pub-id');
+          //var stars = $(e.target).data('stars');
+          var stars = Math.ceil(Math.random() * 5);
+          $.ajax({
+              type : 'GET',
+              url : '/pubs/rate/' + pubId + "/" + stars + "/json",
+              data : "_token={{ csrf_token() }}",
+              dataType : "json",
+              success : function(rate) {
+                  alert(rate + " : " + stars);
+                  //$("#btn-rate-" + pubId).attr('disabled', 'disabled');
+              },
+              error : function(error) {
+                  alert(error.status);
+                  console.log("error: ", error.status);
+              }
+          });
+      });*/
 
       // when more modal is about to be shown
       $("#more").on('show.bs.modal', function(e){

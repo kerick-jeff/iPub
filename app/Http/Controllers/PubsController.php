@@ -7,6 +7,7 @@ use App\User;
 use App\Pub;
 use App\PubFile;
 use App\Rater;
+use App\PubRater;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -24,22 +25,30 @@ class PubsController extends Controller
             $pubFile = PubFile::where('pub_id', $pub->id)->first();
             $author = User::find($pub->user_id);
 
-            // Determine if a visitor in Rating Mode can rate or unrate a pub
-            $rate = true;
+            // Determine if a visitor in Rating Mode can rate/like or unrate/unlike a pub
+            /*$pubRater = DB::table('pub_rater')
+                            ->select('pub_id', 'liker_id')
+                            ->where('pub_id', $pub->id)
+                            ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                            ->first();*/
+            $rate = $like = true;
             if(session('rater')) {
-                $pub_rater = DB::table('pub_rater')
-                                ->select('pub_id', 'rater_id')
-                                ->where('pub_id', $pub->id)
-                                ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
-                                ->first();
-                if($pub_rater) {
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->liker_id != null) {
+                    $like = false;
+                }
+
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->rater_id != null) {
                     $rate = false;
-                } else {
-                    $rate = true;
                 }
             }
 
-            $pubEntity = [$pub, $pubFile, $author, $rate];
+            $pubEntity = [$pub, $pubFile, $author, $rate, $like];
             array_push($pubEntities, $pubEntity);
         }
 
@@ -59,22 +68,25 @@ class PubsController extends Controller
             $pubFile = PubFile::where('pub_id', $pub->id)->first();
             $author = User::find($pub->user_id);
 
-            // Determine if a visitor in Rating Mode can rate or unrate a pub
-            $rate = true;
+            // Determine if a visitor in Rating Mode can rate/like or unrate/unlike a pub
+            $rate = $like = true;
             if(session('rater')) {
-                $pub_rater = DB::table('pub_rater')
-                                ->select('pub_id', 'rater_id')
-                                ->where('pub_id', $pub->id)
-                                ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
-                                ->first();
-                if($pub_rater) {
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->liker_id != null) {
+                    $like = false;
+                }
+
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->rater_id != null) {
                     $rate = false;
-                } else {
-                    $rate = true;
                 }
             }
 
-            $pubEntity = [$pub, $pubFile, $author, $rate];
+            $pubEntity = [$pub, $pubFile, $author, $rate, $like];
             array_push($pubEntities, $pubEntity);
         }
 
@@ -94,23 +106,26 @@ class PubsController extends Controller
         foreach ($pubs as $pub) {
             $pubFile = PubFile::where('pub_id', $pub->id)->first();
             $author = User::find($pub->user_id);
-
-            // Determine if a visitor in Rating Mode can rate or unrate a pub
-            $rate = true;
+            
+            // Determine if a visitor in Rating Mode can rate/like or unrate/unlike a pub
+            $rate = $like = true;
             if(session('rater')) {
-                $pub_rater = DB::table('pub_rater')
-                                ->select('pub_id', 'rater_id')
-                                ->where('pub_id', $pub->id)
-                                ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
-                                ->first();
-                if($pub_rater) {
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->liker_id != null) {
+                    $like = false;
+                }
+
+                $pubRater = PubRater::where('pub_id', $pub->id)
+                                    ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                                    ->first();
+                if($pubRater && $pubRater->rater_id != null) {
                     $rate = false;
-                } else {
-                    $rate = true;
                 }
             }
 
-            $pubEntity = [$pub, $pubFile, $author, $rate];
+            $pubEntity = [$pub, $pubFile, $author, $rate, $like];
             array_push($pubEntities, $pubEntity);
         }
 
@@ -129,22 +144,25 @@ class PubsController extends Controller
         $pubFile = PubFile::where('pub_id', $pub->id)->first();
         $author = User::find($pub->user_id);
 
-        // Determine if a visitor in Rating Mode can rate or unrate a pub
-        $rate = true;
+        // Determine if a visitor in Rating Mode can rate/like or unrate/unlike a pub
+        $rate = $like = true;
         if(session('rater')) {
-            $pub_rater = DB::table('pub_rater')
-                            ->select('pub_id', 'rater_id')
-                            ->where('pub_id', $pub->id)
-                            ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
-                            ->first();
-            if($pub_rater) {
+            $pubRater = PubRater::where('pub_id', $pub->id)
+                                ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                                ->first();
+            if($pubRater && $pubRater->liker_id != null) {
+                $like = false;
+            }
+
+            $pubRater = PubRater::where('pub_id', $pub->id)
+                                ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                                ->first();
+            if($pubRater && $pubRater->rater_id != null) {
                 $rate = false;
-            } else {
-                $rate = true;
             }
         }
 
-        $pubEntity = [$pub, $pubFile, $author, $rate];
+        $pubEntity = [$pub, $pubFile, $author, $rate, $like];
         array_push($pubEntities, $pubEntity);
 
         return view('index', ['pubEntities' => $pubEntities, 'categories' => Pub::getCategories()]);

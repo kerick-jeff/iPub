@@ -4,6 +4,7 @@ use App\Pub;
 use App\User;
 use App\PubFile;
 use App\Rater;
+use App\PubRater;
 use App\MailItem;
 use App\FileMetric;
 /*
@@ -223,13 +224,14 @@ Route::get('/invitation/accept/{userId}/{email}', 'Ac@acceptInvitation');
 Route::get('/account', 'AccountController@index');
 
 Route::get('/account/raters/{returnType?}', function($returnType = null){
-    $raters = DB::select('SELECT DISTINCT raters.* FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND raters.id = pub_rater.rater_id ORDER BY raters.created_at DESC', [Auth::user()->id]);
+    $raters = DB::select('SELECT DISTINCT raters.* FROM pubs, raters, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND (raters.id = pub_rater.rater_id OR raters.id = pub_rater.liker_id) ORDER BY created_at DESC', [Auth::user()->id]);
 
     $ratings = [];
     foreach ($raters as $rater) {
-        $noRatings = count(DB::select('SELECT pub_rater.pub_id FROM pubs, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND pub_rater.rater_id = ?', [Auth::user()->id, $rater->id]));
-        $rating = ['rater' => $rater, 'noRatings' => $noRatings];
-        array_push($ratings, $rating);
+      $noRatings = count(DB::select('SELECT pub_rater.pub_id FROM pubs, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND pub_rater.rater_id = ?', [Auth::user()->id, $rater->id]));
+      $noLikes = count(DB::select('SELECT pub_rater.pub_id FROM pubs, pub_rater WHERE pubs.user_id = ? AND pubs.id = pub_rater.pub_id AND pub_rater.liker_id = ?', [Auth::user()->id, $rater->id]));
+      $rating = ['rater' => $rater, 'noRatings' => $noRatings, 'noLikes' => $noLikes];
+      array_push($ratings, $rating);
     }
 
     if($returnType == null) {
@@ -279,41 +281,97 @@ Route::get('/pubs/{username}/{userId}', 'PubsController@findByUser');
 
 Route::get('/pubs/{id}', 'PubsController@findById');
 
-Route::get('/pubs/rate/{id}/{returnType?}', function($id, $returnType = null) {
+Route::get('/pubs/like/{id}/{returnType?}', function($id, $returnType = null) {
     if(session('rater')) {
         $pub = Pub::find($id);
-        $pub->ratings += 1;
+        $pub->likes += 1;
         $pub->save();
 
-        DB::table('pub_rater')->insert(
-            ['pub_id' => $pub->id, 'rater_id' => Rater::where('email', session('rater'))->value('id')]
-        );
+        $pubRater = PubRater::where('pub_id', $pub->id)
+                      ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                      ->first();
+
+        if($pubRater) {
+              DB::table('pub_rater')->where('pub_id', $pub->id)
+                ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+                ->update(['liker_id' => Rater::where('email', session('rater'))->value('id')]);
+        } else {
+            DB::table('pub_rater')->insert(
+                ['pub_id' => $pub->id, 'liker_id' => Rater::where('email', session('rater'))->value('id')]
+            );
+        }
 
         if($returnType == null) {
-            return $pub->ratings;
+            return $pub->likes;
         } elseif ($returnType == "json") {
-            return Response::json($pub->ratings);
+            return Response::json($pub->likes);
         }
     }
 
     return;
 });
 
-Route::get('/pubs/unrate/{id}/{returnType?}', function($id, $returnType = null) {
+Route::get('/pubs/unlike/{id}/{returnType?}', function($id, $returnType = null) {
     if(session('rater')) {
         $pub = Pub::find($id);
-        $pub->ratings -= 1;
+        $pub->likes -= 1;
         $pub->save();
 
-        DB::table('pub_rater')
-          ->where('pub_id', $pub->id)
-          ->where('rater_id', Rater::where('email', session('rater'))->value('id'))
+        DB::table('pub_rater')->where('pub_id', $pub->id)
+          ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+          ->update(['liker_id' => null]);
+
+        DB::table('pub_rater')->where('pub_id', $pub->id)
+          ->where('rater_id', null)
+          ->where('liker_id', null)
           ->delete();
 
         if($returnType == null) {
-            return $pub->ratings;
+            return $pub->likes;
         } elseif ($returnType == "json") {
-            return Response::json($pub->ratings);
+            return Response::json($pub->likes);
+        }
+    }
+
+    return;
+});
+
+Route::get('/pubs/rate/{id}/{stars}/{returnType?}', function($id, $stars, $returnType = null) {
+    if(session('rater')) {
+        $user = Pub::find($id)->user()->first();
+
+        $rating = $user->rating;
+        $rating->level += 1;
+        $rating->total += $stars;
+        $rating->rate = (float) $rating->total / (float) $rating->level;
+        $rating->rate = 3.7;
+        $rating->rate *= 2; // round up
+        $rating->rate = round($rating->rate); // $rating->rate to
+        $rating->rate /= 2; // the nearest half
+        /*$round = $rating * 2;
+        $round = ceil($round);
+        $round = $round / 2;*/
+        //$rating->save();
+
+        /*$pubRater = PubRater::where('pub_id', $id)
+                      ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                      ->first();
+
+        if($pubRater) {
+            DB::table('pub_rater')->where('pub_id', $id)
+                    ->where('liker_id', Rater::where('email', session('rater'))->value('id'))
+                    ->update(['rater_id' => Rater::where('email', session('rater'))->value('id')]);
+        } else {
+            DB::table('pub_rater')->insert(
+                ['pub_id' => $id, 'rater_id' => Rater::where('email', session('rater'))->value('id')]
+            );
+        }*/
+
+        if($returnType == null) {
+            return $user->rating->rate;
+        } elseif ($returnType == "json") {
+            //return Response::json($user->rating->rate);
+            return Response::json($rating->rate);
         }
     }
 
