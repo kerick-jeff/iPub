@@ -14,8 +14,8 @@ A web application that serves as an internet publicity platform where visitors c
 In the root directory, run `php artisan serve` to deploy the application locally.
 
 # Authors
-Fru Kerick
-Tayong Rodrige
+* Fru Kerick
+* Tayong Rodrige
 
 # License
 This project is licensed under the MIT License - see the `LICENSE.md` file for details
